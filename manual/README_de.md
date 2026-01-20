@@ -1,12 +1,20 @@
 # WSL Dashboard
 
+<p align="center">
+  <img src="../assets/logo/logo.png" width="128" height="128" />
+</p>
+
+---
+
+Ein modernes, leistungsstarkes und leichtgewichtiges Dashboard zur Verwaltung von WSL-Instanzen (Windows Subsystem for Linux). Entwickelt mit Rust und Slint für ein erstklassiges natives Erlebnis.
+
+---
+
 [![Rust](https://img.shields.io/badge/rust-v1.92+-orange.svg)](https://www.rust-lang.org)
 [![Slint](https://img.shields.io/badge/UI-Slint-blue.svg)](https://slint.dev)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 
-[简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [English](../README.md) | [日本語](./README_ja.md) | [Français](./README_fr.md) | [Español](./README_es.md) | [Русский](./README_ru.md) | [Português](./README_pt.md) | Deutsch | [Italiano](./README_it.md) | [Türkçe](./README_tr.md) | [Bahasa Indonesia](./README_id.md) | [हिन्दी](./README_hi.md) | [বাংলা](./README_bn.md)
-
-Ein modernes, leistungsstarkes und leichtgewichtiges Dashboard zur Verwaltung von WSL-Instanzen (Windows Subsystem for Linux). Entwickelt mit Rust und Slint für ein erstklassiges natives Erlebnis.
+I18N: [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [English](../README.md) | [日本語](./README_ja.md) | [Français](./README_fr.md) | [Español](./README_es.md) | [Русский](./README_ru.md) | [Português](./README_pt.md) | Deutsch | [Italiano](./README_it.md) | [Türkçe](./README_tr.md) | [Bahasa Indonesia](./README_id.md) | [हिन्दी](./README_hi.md) | [বাংলা](./README_bn.md)
 
 ---
 

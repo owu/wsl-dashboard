@@ -1,12 +1,18 @@
 # WSL Dashboard
 
+<p align="center">
+  <img src="assets/logo/logo.png" width="128" height="128" />
+</p>
+
+A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) instance management dashboard. Built with Rust and Slint for a premium native experience.
+
+---
+
 [![Rust](https://img.shields.io/badge/rust-v1.92+-orange.svg)](https://www.rust-lang.org)
 [![Slint](https://img.shields.io/badge/UI-Slint-blue.svg)](https://slint.dev)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 
-[简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | English | [日本語](./manual/README_ja.md) | [Français](./manual/README_fr.md) | [Español](./manual/README_es.md) | [Русский](./manual/README_ru.md) | [Português](./manual/README_pt.md) | [Deutsch](./manual/README_de.md) | [Italiano](./manual/README_it.md) | [Türkçe](./manual/README_tr.md) | [Bahasa Indonesia](./manual/README_id.md) | [हिन्दी](./manual/README_hi.md) | [বাংলা](./manual/README_bn.md)
-
-A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) instance management dashboard. Built with Rust and Slint for a premium native experience.
+I18N: [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | English | [日本語](./manual/README_ja.md) | [Français](./manual/README_fr.md) | [Español](./manual/README_es.md) | [Русский](./manual/README_ru.md) | [Português](./manual/README_pt.md) | [Deutsch](./manual/README_de.md) | [Italiano](./manual/README_it.md) | [Türkçe](./manual/README_tr.md) | [Bahasa Indonesia](./manual/README_id.md) | [हिन्दी](./manual/README_hi.md) | [বাংলা](./manual/README_bn.md)
 
 ---
 
