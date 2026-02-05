@@ -41,6 +41,27 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     });
 
 
+    // Shortcut
+    let ah = app_handle.clone();
+    app.on_create_distro_shortcut(move |name| {
+        info!("Operation: Create shortcut - {}", name);
+        let ah = ah.clone();
+        match crate::utils::shortcut::create_distro_shortcut(&name) {
+            Ok(_) => {
+                if let Some(app) = ah.upgrade() {
+                    app.set_current_message(format!("Desktop shortcut for {} created successfully.", name).into());
+                    app.set_show_message_dialog(true);
+                }
+            },
+            Err(e) => {
+                if let Some(app) = ah.upgrade() {
+                    app.set_current_message(format!("Failed to create shortcut: {}", e).into());
+                    app.set_show_message_dialog(true);
+                }
+            }
+        }
+    });
+
     // Terminal
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
@@ -169,6 +190,38 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     // Instance information
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
+    app.on_compact_distro(move |name, vhdx_path| {
+        info!("Operation: Compact disk - {}", name);
+        let ah = ah.clone();
+        let as_ptr = as_ptr.clone();
+        let name = name.to_string();
+        let vhdx_path = vhdx_path.to_string();
+        let _ = slint::spawn_local(async move {
+            if let Some(app) = ah.upgrade() {
+                app.set_task_status_text(format!("Compacting disk for {}...", name).into());
+                app.set_task_status_visible(true);
+            }
+            let result = {
+                let state = as_ptr.lock().await;
+                let executor = state.wsl_dashboard.executor().clone();
+                drop(state);
+                executor.compact_distro_disk(&name, &vhdx_path).await
+            };
+            if let Some(app) = ah.upgrade() {
+                app.set_task_status_visible(false);
+                if result.success {
+                    app.set_current_message(format!("Disk for {} compacted successfully.", name).into());
+                } else {
+                    app.set_current_message(format!("Failed to compact disk: {}", result.error.unwrap_or_default()).into());
+                }
+                app.set_show_message_dialog(true);
+            }
+            refresh_distros_ui(ah, as_ptr).await;
+        });
+    });
+
+    let ah = app_handle.clone();
+    let as_ptr = app_state.clone();
     app.on_information_clicked(move |name| {
         info!("Operation: Fetch information - {}", name);
         let ah = ah.clone();
@@ -193,10 +246,15 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                         slint_data.distro_name = data.distro_name.into();
                         slint_data.wsl_version = data.wsl_version.into();
                         slint_data.status = data.status.into();
+                        slint_data.ip_address = data.ip_address.into();
                         slint_data.install_location = data.install_location.into();
                         slint_data.vhdx_path = data.vhdx_path.into();
                         slint_data.vhdx_size = data.vhdx_size.into();
                         slint_data.actual_used = data.actual_used.into();
+                        
+                        let containers: Vec<slint::SharedString> = data.docker_containers.into_iter().map(|s| s.into()).collect();
+                        slint_data.docker_containers = slint::ModelRc::from(std::sync::Arc::new(slint::VecModel::from(containers)));
+                        
                         app.set_information(slint_data);
                         app.set_show_information(true);
                     }
@@ -238,9 +296,32 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                     state.config_manager.get_instance_config(&name)
                 };
                 
+                // Load Default UID
+                let default_uid = {
+                    let state = as_ptr.lock().await;
+                    let executor = state.wsl_dashboard.executor().clone();
+                    match executor.get_distro_default_uid(&name).await.data {
+                         Some(uid) => uid,
+                         None => 0
+                    }
+                };
+
+                // Load wsl.conf Configuration
+                let wsl_conf = {
+                    let state = as_ptr.lock().await;
+                    let executor = state.wsl_dashboard.executor().clone();
+                    executor.get_wsl_conf(&name).await
+                };
+
                 app.set_settings_distro_name(name.clone().into());
                 app.set_settings_is_default(is_default);
                 app.set_settings_lock_default(is_default);
+                app.set_settings_default_uid(default_uid.to_string().into());
+                app.set_settings_systemd_enabled(wsl_conf.systemd);
+                app.set_settings_generate_hosts(wsl_conf.generate_hosts);
+                app.set_settings_generate_resolv_conf(wsl_conf.generate_resolv_conf);
+                app.set_settings_interop_enabled(wsl_conf.interop_enabled);
+                app.set_settings_append_windows_path(wsl_conf.append_windows_path);
                 app.set_settings_terminal_dir(instance_config.terminal_dir.into());
                 app.set_settings_vscode_dir(instance_config.vscode_dir.into());
                 app.set_settings_startup_script(instance_config.startup_script.into());
@@ -258,7 +339,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     // Handle settings confirmation
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
-    app.on_confirm_distro_settings(move |name, terminal_dir, vscode_dir, is_default, autostart, startup_script| {
+    app.on_confirm_distro_settings(move |name, terminal_dir, vscode_dir, is_default, default_uid, systemd, hosts, resolv, interop, path, autostart, startup_script| {
         info!("Operation: Save settings - {}", name);
         let ah = ah.clone();
         let as_ptr = as_ptr.clone();
@@ -266,6 +347,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let terminal_dir = terminal_dir.to_string();
         let vscode_dir = vscode_dir.to_string();
         let startup_script = startup_script.to_string();
+        let default_uid_str = default_uid.to_string();
 
         let _ = slint::spawn_local(async move {
             let executor = {
@@ -344,7 +426,22 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 }
             }
 
-            // 3. Handle Default Distro (CLI)
+            // 3a. Save Default UID
+            if let Ok(uid) = default_uid_str.parse::<u32>() {
+                 let _ = executor.set_distro_default_uid(&name, uid).await;
+            }
+
+            // 3b. Save wsl.conf Configuration
+            let conf = crate::wsl::models::WslConf {
+                systemd,
+                generate_hosts: hosts,
+                generate_resolv_conf: resolv,
+                interop_enabled: interop,
+                append_windows_path: path,
+            };
+            let _ = executor.set_wsl_conf(&name, conf).await;
+
+            // 3c. Handle Default Distro (CLI)
             if is_default && !was_default {
                 let _ = executor.execute_command(&["--set-default", &name]).await;
             }

@@ -29,11 +29,22 @@ pub struct WslInformation {
     pub distro_name: String,
     pub wsl_version: String,
     pub status: String,
+    pub ip_address: String,
     pub install_location: String,
     pub vhdx_path: String,
     pub vhdx_size: String,
     pub actual_used: String,
+    pub docker_containers: Vec<String>,
     pub package_family_name: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
+pub struct WslConf {
+    pub systemd: bool,
+    pub generate_hosts: bool,
+    pub generate_resolv_conf: bool,
+    pub interop_enabled: bool,
+    pub append_windows_path: bool,
 }
 
 impl WslDistro {

@@ -408,4 +408,40 @@ impl WslCommandExecutor {
         let exec_res = self.execute_command(&["-d", distro_name, "-u", "root", "-e", "test", "-x", path]).await;
         (exists_res.success, exec_res.success)
     }
+
+    pub async fn get_distro_default_uid(&self, distro_name: &str) -> WslCommandResult<u32> {
+        crate::wsl::ops::info::get_distro_default_uid(self, distro_name).await
+    }
+
+    pub async fn set_distro_default_uid(&self, distro_name: &str, uid: u32) -> WslCommandResult<String> {
+        crate::wsl::ops::lifecycle::set_distro_default_uid(self, distro_name, uid).await
+    }
+
+    pub async fn get_systemd_status(&self, distro_name: &str) -> bool {
+        crate::wsl::ops::distro_config::get_systemd_status(self, distro_name).await
+    }
+
+    pub async fn set_systemd_status(&self, distro_name: &str, enabled: bool) -> WslCommandResult<String> {
+        crate::wsl::ops::distro_config::set_systemd_status(self, distro_name, enabled).await
+    }
+
+    pub async fn get_wsl_conf(&self, distro_name: &str) -> crate::wsl::models::WslConf {
+        crate::wsl::ops::distro_config::get_wsl_conf(self, distro_name).await
+    }
+
+    pub async fn check_windows_features(&self) -> WslCommandResult<Vec<(String, bool)>> {
+        crate::wsl::ops::info::check_windows_features(self).await
+    }
+
+    pub async fn set_wsl_conf(&self, distro_name: &str, conf: crate::wsl::models::WslConf) -> WslCommandResult<String> {
+        crate::wsl::ops::distro_config::set_wsl_conf(self, distro_name, conf).await
+    }
+
+    pub async fn reset_wsl_network(&self) -> WslCommandResult<String> {
+        crate::wsl::ops::lifecycle::reset_wsl_network(self).await
+    }
+
+    pub async fn compact_distro_disk(&self, distro_name: &str, vhdx_path: &str) -> WslCommandResult<String> {
+        crate::wsl::ops::lifecycle::compact_distro_disk(self, distro_name, vhdx_path).await
+    }
 }

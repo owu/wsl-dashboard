@@ -51,6 +51,7 @@ export component InformationDialog inherits Rectangle {
     in property <Information> info;
     callback close;
     callback open_path(string);
+    callback compact_disk(string, string);
     
     // Background mask
     background: #00000080;
@@ -65,7 +66,7 @@ export component InformationDialog inherits Rectangle {
     // Dialog Box
     Rectangle {
         width: 440px;
-        height: 260px;
+        height: 400px;
         background: Theme.card_bg;
         border-radius: 8px;
         border-width: 1px;
@@ -113,92 +114,152 @@ export component InformationDialog inherits Rectangle {
             }
 
             // Content
-            VerticalLayout {
-                spacing: 10px;
-                alignment: start;
-                InfoRow {
-                    label: AppI18n.t("dialog.wsl_version", [AppI18n.version]);
-                    value: root.info.wsl_version;
-                }
-
-                InfoRow {
-                    label: AppI18n.t("dialog.state", [AppI18n.version]);
-                    value: (root.info.status == "Running") ? AppI18n.t("distro.running", [AppI18n.version]) : AppI18n.t("distro.stopped", [AppI18n.version]);
-                    value_color: root.info.status == "Running" ? #28a745 : Theme.text_primary;
-                }
-
-                // Internal Usage (Pill style)
-                HorizontalLayout {
-                    spacing: 12px;
+            flick := Flickable {
+                viewport-height: content-layout.preferred-height;
+                content-layout := VerticalLayout {
+                    spacing: 10px;
                     alignment: start;
-                    Text {
-                        text: AppI18n.t("dialog.internal_usage", [AppI18n.version]);
-                        width: 100px;
-                        color: Theme.text_secondary;
-                        font-size: 13px;
-                        vertical-alignment: center;
+                    InfoRow {
+                        label: AppI18n.t("dialog.wsl_version", [AppI18n.version]);
+                        value: root.info.wsl_version;
                     }
 
-                    Rectangle {
-                        background: Theme.dark_mode ? #1E1E1E : #F3F3F3;
-                        border-radius: 4px;
-                        HorizontalLayout {
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 4px;
-                            padding-bottom: 4px;
-                            alignment: center; // Fix vertical centering
-                            Text {
-                                text: root.info.actual_used;
-                                color: Theme.accent;
-                                font-family: "Consolas";
-                                font-size: 13px;
-                                font-weight: 500;
-                                vertical-alignment: center;
+                    InfoRow {
+                        label: AppI18n.t("dialog.state", [AppI18n.version]);
+                        value: (root.info.status == "Running") ? AppI18n.t("distro.running", [AppI18n.version]) : AppI18n.t("distro.stopped", [AppI18n.version]);
+                        value_color: root.info.status == "Running" ? #28a745 : Theme.text_primary;
+                    }
+
+                    if root.info.status == "Running": InfoRow {
+                        label: "IP Address";
+                        value: root.info.ip_address;
+                    }
+
+                    // Internal Usage (Pill style)
+                    HorizontalLayout {
+                        spacing: 12px;
+                        alignment: start;
+                        Text {
+                            text: AppI18n.t("dialog.internal_usage", [AppI18n.version]);
+                            width: 100px;
+                            color: Theme.text_secondary;
+                            font-size: 13px;
+                            vertical-alignment: center;
+                        }
+
+                        Rectangle {
+                            background: Theme.dark_mode ? #1E1E1E : #F3F3F3;
+                            border-radius: 4px;
+                            HorizontalLayout {
+                                padding-left: 8px;
+                                padding-right: 8px;
+                                padding-top: 4px;
+                                padding-bottom: 4px;
+                                alignment: center; // Fix vertical centering
+                                Text {
+                                    text: root.info.actual_used;
+                                    color: Theme.accent;
+                                    font-family: "Consolas";
+                                    font-size: 13px;
+                                    font-weight: 500;
+                                    vertical-alignment: center;
+                                }
                             }
                         }
                     }
-                }
-                
-                // VHDX Size (Pill style match)
-                HorizontalLayout {
-                    spacing: 12px;
-                    alignment: start;
-                    Text {
-                        text: AppI18n.t("dialog.vhdx_usage", [AppI18n.version]);
-                        width: 100px;
-                        color: Theme.text_secondary;
-                        font-size: 13px;
-                        vertical-alignment: center;
-                    }
+                    
+                    // VHDX Size (Pill style match)
+                    HorizontalLayout {
+                        spacing: 12px;
+                        alignment: start;
+                        Text {
+                            text: AppI18n.t("dialog.vhdx_usage", [AppI18n.version]);
+                            width: 100px;
+                            color: Theme.text_secondary;
+                            font-size: 13px;
+                            vertical-alignment: center;
+                        }
 
-                    Rectangle {
-                        background: Theme.dark_mode ? #1E1E1E : #F3F3F3;
-                        border-radius: 4px;
                         HorizontalLayout {
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 4px;
-                            padding-bottom: 4px;
-                            alignment: center; // Fix vertical centering
-                            Text {
-                                text: root.info.vhdx_size;
-                                color: Theme.accent;
-                                font-family: "Consolas"; // Match font
-                                font-size: 13px;
-                                font-weight: 500;
-                                vertical-alignment: center;
+                            spacing: 8px;
+                            Rectangle {
+                                background: Theme.dark_mode ? #1E1E1E : #F3F3F3;
+                                border-radius: 4px;
+                                HorizontalLayout {
+                                    padding-left: 8px;
+                                    padding-right: 8px;
+                                    padding-top: 4px;
+                                    padding-bottom: 4px;
+                                    alignment: center; // Fix vertical centering
+                                    Text {
+                                        text: root.info.vhdx_size;
+                                        color: Theme.accent;
+                                        font-family: "Consolas"; // Match font
+                                        font-size: 13px;
+                                        font-weight: 500;
+                                        vertical-alignment: center;
+                                    }
+                                }
+                            }
+
+                            if root.info.status == "Stopped": Rectangle {
+                                background: Theme.accent;
+                                border-radius: 4px;
+                                TouchArea {
+                                    clicked => {
+                                        root.compact_disk(root.info.distro_name, root.info.vhdx_path);
+                                    }
+                                }
+                                HorizontalLayout {
+                                    padding-left: 8px;
+                                    padding-right: 8px;
+                                    Text {
+                                        text: "Compact";
+                                        color: white;
+                                        font-size: 11px;
+                                        font-weight: 600;
+                                        vertical-alignment: center;
+                                    }
+                                }
                             }
                         }
                     }
-                }
 
-                InfoRow {
-                    label: AppI18n.t("dialog.vhdx_location", [AppI18n.version]);
-                    value: root.info.vhdx_path;
-                    clickable: true;
-                    clicked => {
-                        root.open_path(root.info.install_location);
+                    InfoRow {
+                        label: AppI18n.t("dialog.vhdx_location", [AppI18n.version]);
+                        value: root.info.vhdx_path;
+                        clickable: true;
+                        clicked => {
+                            root.open_path(root.info.install_location);
+                        }
+                    }
+
+                    // Docker Containers Section
+                    if root.info.docker_containers.length > 0 : VerticalLayout {
+                        spacing: 8px;
+                        Rectangle { height: 4px; }
+                        Text {
+                            text: "Docker Containers:";
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: Theme.text_secondary;
+                        }
+                        for container in root.info.docker_containers : HorizontalLayout {
+                            padding-left: 8px;
+                            spacing: 8px;
+                            Text {
+                                text: "\u{E7E8}"; // Docker-like icon or generic box
+                                font-family: Theme.icon_font;
+                                color: Theme.accent;
+                                vertical-alignment: center;
+                            }
+                            Text {
+                                text: container;
+                                font-size: 12px;
+                                color: Theme.text_primary;
+                                vertical-alignment: center;
+                            }
+                        }
                     }
                 }
             }

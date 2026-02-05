@@ -132,8 +132,26 @@ pub async fn get_distro_information(executor: &WslCommandExecutor, distro_name: 
         }
     }
 
-    // Get df -B1M / statistics only if running
+    // Get statistics only if running
     if is_running {
+        // IP Address
+        let ip_result = executor.execute_command(&["-d", &distro_name_owned, "--exec", "hostname", "-I"]).await;
+        if ip_result.success {
+            information.ip_address = ip_result.output.trim().split_whitespace().next().unwrap_or("Unknown").to_string();
+        } else {
+            information.ip_address = "Error".to_string();
+        }
+
+        // Docker Containers
+        let docker_result = executor.execute_command(&["-d", &distro_name_owned, "--exec", "docker", "ps", "--format", "{{.Names}} ({{.Status}})"]).await;
+        if docker_result.success {
+            let containers: Vec<String> = docker_result.output.lines()
+                .map(|s| s.trim().to_string())
+                .filter(|s| !s.is_empty())
+                .collect();
+            information.docker_containers = containers;
+        }
+
         let df_result = executor.execute_command(&["-d", &distro_name_owned, "--exec", "df", "-B1M", "/"]).await;
         if df_result.success {
             let output = df_result.output.trim();
@@ -196,4 +214,76 @@ pub async fn get_distro_install_location(_executor: &WslCommandExecutor, distro_
     }
 
     WslCommandResult::error("".into(), "Failed to get install location".into())
+}
+
+pub async fn check_windows_features(_executor: &WslCommandExecutor) -> WslCommandResult<Vec<(String, bool)>> {
+    let ps_script = r#"
+        $features = @("Microsoft-Windows-Subsystem-Linux", "VirtualMachinePlatform")
+        $results = @()
+        foreach ($f in $features) {
+            $state = Get-WindowsOptionalFeature -Online -FeatureName $f -ErrorAction SilentlyContinue
+            $results += @{ name = $f; enabled = ($state.State -eq "Enabled") }
+        }
+        $results | ConvertTo-Json
+    "#;
+
+    let mut cmd = tokio::process::Command::new("powershell");
+    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
+    #[cfg(windows)]
+    {
+        cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
+    }
+
+    if let Ok(output) = cmd.output().await {
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        if let Ok(parsed) = serde_json::from_str::<Vec<serde_json::Value>>(&stdout) {
+            let mut features = Vec::new();
+            for item in parsed {
+                let name = item["name"].as_str().unwrap_or("").to_string();
+                let enabled = item["enabled"].as_bool().unwrap_or(false);
+                features.push((name, enabled));
+            }
+            return WslCommandResult::success(String::new(), Some(features));
+        }
+    }
+
+    WslCommandResult::error("".into(), "Failed to check Windows features".into())
+}
+
+pub async fn get_distro_default_uid(_executor: &WslCommandExecutor, distro_name: &str) -> WslCommandResult<u32> {
+    let distro_name_owned = distro_name.to_string();
+    
+    let ps_script = format!(r#"
+        $distro = "{}"
+        $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss"
+        $subkeys = Get-ChildItem $regPath -ErrorAction SilentlyContinue
+        foreach ($subkey in $subkeys) {{
+            $props = Get-ItemProperty $subkey.PSPath -ErrorAction SilentlyContinue
+            if ($props.DistributionName -eq $distro) {{
+                if ($props.DefaultUid) {{
+                    $props.DefaultUid
+                }} else {{
+                    0
+                }}
+                break
+            }}
+        }}
+    "#, distro_name_owned);
+
+    let mut cmd = tokio::process::Command::new("powershell");
+    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
+    #[cfg(windows)]
+    {
+        cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
+    }
+
+    if let Ok(output) = cmd.output().await {
+        let output_str = String::from_utf8_lossy(&output.stdout).trim().to_string();
+        if let Ok(uid) = output_str.parse::<u32>() {
+            return WslCommandResult::success(String::new(), Some(uid));
+        }
+    }
+
+    // Default to 0 (root) if not found or error
+    WslCommandResult::success(String::new(), Some(0))
 }

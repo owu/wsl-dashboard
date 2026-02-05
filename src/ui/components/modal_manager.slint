@@ -38,6 +38,7 @@ export component ModalManager inherits Rectangle {
     in property <string> clone_source_name: "";
     in-out property <string> clone_target_name;
     in-out property <string> clone_target_path;
+    in-out property <bool> clone_start_after: false;
     in property <string> clone_error: "";
     in property <string> move_source_name: "";
     in-out property <string> move_target_name;
@@ -52,6 +53,12 @@ export component ModalManager inherits Rectangle {
     in-out property <string> settings_vscode_dir: "/home";
     in-out property <bool> settings_is_default: false;
     in-out property <bool> settings_lock_default: false;
+    in-out property <string> settings_default_uid: "0";
+    in-out property <bool> settings_systemd_enabled: false;
+    in-out property <bool> settings_generate_hosts: true;
+    in-out property <bool> settings_generate_resolv_conf: true;
+    in-out property <bool> settings_interop_enabled: true;
+    in-out property <bool> settings_append_windows_path: true;
     in-out property <bool> settings_autostart: false;
     in-out property <string> settings_startup_script: "";
     in property <string> settings_terminal_dir_error: "";
@@ -67,7 +74,7 @@ export component ModalManager inherits Rectangle {
     callback confirm_export(string);
     callback cancel_export();
     callback browse_export();
-    callback confirm_clone(string, string);
+    callback confirm_clone(string, string, bool);
     callback cancel_clone();
     callback browse_clone();
     callback confirm_move(string);
@@ -85,7 +92,8 @@ export component ModalManager inherits Rectangle {
     callback cancel_install_warn();
     callback close_expire();
     callback close_information();
-    callback confirm_settings(string, string, string, bool, bool, string);
+    callback compact_disk(string, string);
+    callback confirm_settings(string, string, string, bool, string, bool, bool, bool, bool, bool, bool, string);
     callback close_settings();
     callback close_rootfs_help();
     callback close_vscode_startup();
@@ -126,6 +134,7 @@ export component ModalManager inherits Rectangle {
         distro_name: clone_source_name;
         clone_name <=> root.clone_target_name;
         clone_path <=> root.clone_target_path;
+        start_after_clone <=> root.clone_start_after;
         error_msg: clone_error;
         enabled: !root.is_installing;
         cancel => {
@@ -137,8 +146,8 @@ export component ModalManager inherits Rectangle {
         name_changed(text) => {
             root.clone_name_changed(text);
         }
-        confirm(name, path) => {
-            root.confirm_clone(name, path);
+        confirm(name, path, start) => {
+            root.confirm_clone(name, path, start);
         }
     }
     if (show_move): MoveDialog {
@@ -238,6 +247,9 @@ export component ModalManager inherits Rectangle {
         open_path(url) => {
             root.open_url(url);
         }
+        compact_disk(n, p) => {
+            root.compact_disk(n, p);
+        }
     }
     if (show_settings): SettingsDialog {
         width: 100%;
@@ -247,6 +259,12 @@ export component ModalManager inherits Rectangle {
         vscode_dir <=> settings_vscode_dir;
         is_default <=> settings_is_default;
         lock_default: settings_lock_default;
+        default_uid <=> settings_default_uid;
+        systemd_enabled <=> settings_systemd_enabled;
+        generate_hosts <=> settings_generate_hosts;
+        generate_resolv_conf <=> settings_generate_resolv_conf;
+        interop_enabled <=> settings_interop_enabled;
+        append_windows_path <=> settings_append_windows_path;
         autostart <=> settings_autostart;
         startup_script <=> settings_startup_script;
         terminal_dir_error: settings_terminal_dir_error;
@@ -254,7 +272,7 @@ export component ModalManager inherits Rectangle {
         startup_script_error: settings_startup_script_error;
         default_error: settings_default_error;
         save => {
-            root.confirm_settings(root.settings_target_name, root.settings_terminal_dir, root.settings_vscode_dir, root.settings_is_default, root.settings_autostart, root.settings_startup_script);
+            root.confirm_settings(root.settings_target_name, root.settings_terminal_dir, root.settings_vscode_dir, root.settings_is_default, root.settings_default_uid, root.settings_systemd_enabled, root.settings_generate_hosts, root.settings_generate_resolv_conf, root.settings_interop_enabled, root.settings_append_windows_path, root.settings_autostart, root.settings_startup_script);
         }
         close => {
             root.close_settings();

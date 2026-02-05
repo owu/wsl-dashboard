@@ -110,6 +110,103 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
+    app.on_reset_network(move || {
+        let ah = ah.clone();
+        let as_ptr = as_ptr.clone();
+        let _ = slint::spawn_local(async move {
+            let executor = {
+                let state = as_ptr.lock().await;
+                state.wsl_dashboard.executor().clone()
+            };
+            
+            if let Some(app) = ah.upgrade() {
+                app.set_task_status_text("Resetting WSL network...".into());
+                app.set_task_status_visible(true);
+            }
+
+            let result = executor.reset_wsl_network().await;
+
+            if let Some(app) = ah.upgrade() {
+                app.set_task_status_visible(false);
+                if result.success {
+                    app.set_current_message("WSL network reset successfully (Subsystem shutdown).".into());
+                } else {
+                    app.set_current_message(format!("Failed to reset WSL network: {}", result.error.unwrap_or_default()).into());
+                }
+                app.set_show_message_dialog(true);
+            }
+        });
+    });
+
+    let ah = app_handle.clone();
+    let as_ptr = app_state.clone();
+    app.on_check_windows_features(move || {
+        let ah = ah.clone();
+        let as_ptr = as_ptr.clone();
+        let _ = slint::spawn_local(async move {
+            let executor = {
+                let state = as_ptr.lock().await;
+                state.wsl_dashboard.executor().clone()
+            };
+            
+            let result = executor.check_windows_features().await;
+            if let Some(features) = result.data {
+                if let Some(app) = ah.upgrade() {
+                    for (name, enabled) in features {
+                        if name == "Microsoft-Windows-Subsystem-Linux" {
+                            app.set_feature_wsl_enabled(enabled);
+                        } else if name == "VirtualMachinePlatform" {
+                            app.set_feature_vmp_enabled(enabled);
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    // Trigger initial check
+    app.invoke_check_windows_features();
+
+    // Initial load of global wsl config
+    let global_conf = crate::wsl::ops::global_config::load_global_config();
+    app.set_global_memory(global_conf.memory.into());
+    app.set_global_processors(global_conf.processors.into());
+    app.set_global_networking_mode(global_conf.networking_mode.into());
+
+    let ah = app_handle.clone();
+    app.on_save_global_wsl_config(move |memory, processors, networking_mode| {
+        let ah = ah.clone();
+        let memory = memory.to_string();
+        let processors = processors.to_string();
+        let networking_mode = networking_mode.to_string();
+        
+        let _ = slint::spawn_local(async move {
+            let conf = crate::wsl::ops::global_config::GlobalWslConfig {
+                memory,
+                processors,
+                networking_mode,
+                swap: "".to_string(), // Keep simple for now
+            };
+            
+            match crate::wsl::ops::global_config::save_global_config(conf) {
+                Ok(_) => {
+                    if let Some(app) = ah.upgrade() {
+                        app.set_current_message("Global WSL configuration (.wslconfig) saved successfully. Please restart WSL to apply.".into());
+                        app.set_show_message_dialog(true);
+                    }
+                },
+                Err(e) => {
+                    if let Some(app) = ah.upgrade() {
+                        app.set_current_message(format!("Failed to save .wslconfig: {}", e).into());
+                        app.set_show_message_dialog(true);
+                    }
+                }
+            }
+        });
+    });
+
+    let ah = app_handle.clone();
+    let as_ptr = app_state.clone();
     app.on_toggle_theme(move || {
         let ah = ah.clone();
         let as_ptr = as_ptr.clone();

@@ -17,6 +17,7 @@ export component MainView inherits VerticalLayout {
     callback open_move_dialog(string);
     callback edit_bashrc_distro(string);
     callback information_clicked(string);
+    callback create_shortcut(string);
     callback delete_clicked(string);
     callback settings_clicked(string);
     in-out property <string> distro_to_delete;
@@ -80,6 +81,9 @@ export component MainView inherits VerticalLayout {
                     }
                     information_clicked => {
                         root.information_clicked(d.name);
+                    }
+                    create_shortcut => {
+                        root.create_shortcut(d.name);
                     }
                 }
             }

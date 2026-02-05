@@ -2,10 +2,12 @@ export struct Information {
     distro_name: string,
     wsl_version: string,
     status: string,
+    ip_address: string,
     install_location: string,
     vhdx_path: string,
     vhdx_size: string,
     actual_used: string,
+    docker_containers: [string],
 }
 
 export struct Distro {

@@ -57,8 +57,8 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
-    app.on_confirm_clone(move |source_name, target_name, target_path| {
-        info!("Operation: Confirm clone - Source: {}, Target: {}, Path: {}", source_name, target_name, target_path);
+    app.on_confirm_clone(move |source_name, target_name, target_path, start_after_clone| {
+        info!("Operation: Confirm clone - Source: {}, Target: {}, Path: {}, Start: {}", source_name, target_name, target_path, start_after_clone);
         let ah = match ah.upgrade() {
             Some(a) => a,
             None => return,
@@ -197,6 +197,14 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 app.set_task_status_visible(false);
                 app.set_is_cloning(false);
                 if import_result.success {
+                    if start_after_clone {
+                        // Start the new distro
+                        let state = as_ptr.lock().await;
+                        let executor = state.wsl_dashboard.executor().clone();
+                        drop(state);
+                        let _ = executor.execute_command(&["-d", &target_name, "--", "echo", "started"]).await;
+                    }
+
                     app.set_current_message(i18n::tr("dialog.clone_success", &[source_name.clone(), target_name.clone()]).into());
                     refresh_distros_ui(ah_clone.clone(), as_ptr.clone()).await;
                 } else {

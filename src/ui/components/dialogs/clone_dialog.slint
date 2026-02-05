@@ -5,8 +5,9 @@ export component CloneDialog inherits Rectangle {
     in property <string> distro_name;
     in-out property <string> clone_name;
     in-out property <string> clone_path;
+    in-out property <bool> start_after_clone: false;
     in property <string> error_msg;
-    callback confirm(string, string);
+    callback confirm(string, string, bool);
     callback cancel();
     callback browse();
     callback name_changed(string);
@@ -16,7 +17,7 @@ export component CloneDialog inherits Rectangle {
 
     Rectangle {
         width: 450px;
-        height: 320px;
+        height: 360px;
         background: Theme.card_bg;
         border-radius: 8px;
         border-width: 1px;
@@ -80,6 +81,13 @@ export component CloneDialog inherits Rectangle {
                 }
             }
 
+            import { CheckBox } from "std-widgets.slint";
+            CheckBox {
+                text: "Start after clone";
+                checked <=> start_after_clone;
+                enabled: root.enabled;
+            }
+
             if (error_msg != ""): Text {
                 text: error_msg;
                 color: #ff3333;
@@ -107,7 +115,7 @@ export component CloneDialog inherits Rectangle {
                     primary: true;
                     enabled: root.enabled;
                     clicked => {
-                        root.confirm(clone_name, clone_path);
+                        root.confirm(clone_name, clone_path, start_after_clone);
                     }
                 }
             }

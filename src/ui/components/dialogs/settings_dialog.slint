@@ -8,6 +8,12 @@ export component SettingsDialog inherits Rectangle {
     in-out property <string> vscode_dir: "/home";
     in property <bool> lock_default: false;
     in-out property <bool> is_default: false;
+    in-out property <string> default_uid: "0";
+    in-out property <bool> systemd_enabled: false;
+    in-out property <bool> generate_hosts: true;
+    in-out property <bool> generate_resolv_conf: true;
+    in-out property <bool> interop_enabled: true;
+    in-out property <bool> append_windows_path: true;
     in-out property <bool> autostart: false;
     in-out property <string> startup_script: "";
     in property <string> terminal_dir_error: "";
@@ -25,8 +31,8 @@ export component SettingsDialog inherits Rectangle {
 
     // Dialog Box
     Rectangle {
-        width: 440px;
-        height: 360px;
+        width: 500px;
+        height: 550px;
         background: Theme.card_bg;
         border-radius: 8px;
         border-width: 1px;
@@ -91,7 +97,14 @@ export component SettingsDialog inherits Rectangle {
                         spacing: 16px;
                         alignment: start;
 
-                        // 1. Set Default Distribution
+                        // 1. General Settings
+                        Text {
+                            text: "General";
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: Theme.accent;
+                        }
+
                         VerticalLayout {
                             spacing: 8px;
                             CustomCheckBox {
@@ -107,7 +120,64 @@ export component SettingsDialog inherits Rectangle {
                             }
                         }
 
-                        // 2. Autostart
+                        // Default UID
+                        VerticalLayout {
+                            spacing: 8px;
+                            Text {
+                                text: "Default User UID (0=root, 1000=user)";
+                                font-size: 13px;
+                                color: Theme.text_secondary;
+                            }
+                            
+                            CustomLineEdit {
+                                text <=> root.default_uid;
+                                placeholder-text: "0";
+                            }
+                        }
+
+                        // 2. System Configuration (wsl.conf)
+                        Rectangle { height: 8px; }
+                        Text {
+                            text: "System Configuration (wsl.conf)";
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: Theme.accent;
+                        }
+
+                        CustomCheckBox {
+                            text: "Enable Systemd (Docker Support)";
+                            checked <=> root.systemd_enabled;
+                        }
+                        
+                        CustomCheckBox {
+                            text: "Generate Hosts File";
+                            checked <=> root.generate_hosts;
+                        }
+                        
+                        CustomCheckBox {
+                            text: "Generate Resolv.conf (DNS)";
+                            checked <=> root.generate_resolv_conf;
+                        }
+                        
+                        CustomCheckBox {
+                            text: "Enable Windows Interop (Run .exe)";
+                            checked <=> root.interop_enabled;
+                        }
+                        
+                        CustomCheckBox {
+                            text: "Append Windows Path";
+                            checked <=> root.append_windows_path;
+                        }
+
+                        // 3. Automation
+                        Rectangle { height: 8px; }
+                        Text {
+                            text: "Automation";
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: Theme.accent;
+                        }
+
                         CustomCheckBox {
                             text: AppI18n.t("dialog.autostart", [AppI18n.version]);
                             checked <=> root.autostart;
@@ -134,7 +204,16 @@ export component SettingsDialog inherits Rectangle {
                             }
                         }
 
-                        // 3. Terminal default directory
+                        // 4. Integrations
+                        Rectangle { height: 8px; }
+                        Text {
+                            text: "Integrations";
+                            font-size: 14px;
+                            font-weight: 500;
+                            color: Theme.accent;
+                        }
+
+                        // Terminal default directory
                         VerticalLayout {
                             spacing: 8px;
                             Text {
@@ -155,7 +234,7 @@ export component SettingsDialog inherits Rectangle {
                             }
                         }
 
-                        // 4. VS Code working directory
+                        // VS Code working directory
                         VerticalLayout {
                             spacing: 8px;
                             Text {

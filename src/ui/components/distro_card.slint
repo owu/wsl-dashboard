@@ -21,6 +21,7 @@ export component DistroCard inherits Rectangle {
     callback clone_clicked;
     callback move_clicked;
     callback information_clicked;
+    callback create_shortcut;
     height: expanded ? 96px : 48px;
     background: (distro.is_default && !sole_distro) ? (Theme.dark_mode ? #2b3c4e : #e6f4ff98) : Theme.card_bg;
     border-radius: 6px;
@@ -239,6 +240,16 @@ export component DistroCard inherits Rectangle {
                         tooltip: AppI18n.t("distro.delete", [AppI18n.version]);
                         clicked => {
                             root.delete_clicked();
+                        }
+                    }
+
+                    ActionIcon {
+                        y: (parent.height - self.height) / 2;
+                        icon: "\u{E71B}"; // Link icon
+                        is_font_icon: true;
+                        tooltip: "Create Desktop Shortcut";
+                        clicked => {
+                            root.create_shortcut();
                         }
                     }
 

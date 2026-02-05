@@ -63,6 +63,7 @@ export component AppWindow inherits Window {
     in-out property <string> clone_source_name: "";
     in-out property <string> clone_target_name: "";
     in-out property <string> clone_target_path: "";
+    in-out property <bool> clone_start_after: false;
     in property <string> clone_error: "";
     in-out property <bool> show_move_dialog: false;
     in-out property <string> move_source_name: "";
@@ -91,6 +92,11 @@ export component AppWindow inherits Window {
     in-out property <int> check_update_interval: 7;
     in property <string> task_status_text: "";
     in property <bool> task_status_visible: false;
+    in property <bool> feature_wsl_enabled: false;
+    in property <bool> feature_vmp_enabled: false;
+    in-out property <string> global_memory: "";
+    in-out property <string> global_processors: "";
+    in-out property <string> global_networking_mode: "nat";
     in property <Information> information;
     in property <[RootFSHelpItem]> rootfs_help_list: [{ name: "Ubuntu", url: "https://cdimages.ubuntu.com/ubuntu-wsl/" }];
     in-out property <bool> show_information: false;
@@ -100,6 +106,12 @@ export component AppWindow inherits Window {
     in-out property <string> settings_vscode_dir: "/home";
     in-out property <bool> settings_is_default: false;
     in-out property <bool> settings_lock_default: false;
+    in-out property <string> settings_default_uid: "0";
+    in-out property <bool> settings_systemd_enabled: false;
+    in-out property <bool> settings_generate_hosts: true;
+    in-out property <bool> settings_generate_resolv_conf: true;
+    in-out property <bool> settings_interop_enabled: true;
+    in-out property <bool> settings_append_windows_path: true;
     in-out property <bool> settings_autostart: false;
     in-out property <string> settings_startup_script: "";
     in-out property <string> settings_terminal_dir_error: "";
@@ -115,6 +127,8 @@ export component AppWindow inherits Window {
     callback terminal_distro(string);
     callback folder_distro(string);
     callback vscode_distro(string);
+    callback compact_distro(string, string);
+    callback create_distro_shortcut(string);
     callback export_distro(string);
     callback delete_distro(string);
     callback install_distro(int, string, string, string, string);
@@ -125,7 +139,7 @@ export component AppWindow inherits Window {
     callback edit_bashrc_distro(string);
     callback information_clicked(string);
     callback settings_clicked(string);
-    callback confirm_distro_settings(string, string, string, bool, bool, string);
+    callback confirm_distro_settings(string, string, string, bool, string, bool, bool, bool, bool, bool, bool, string);
     callback delete_clicked(string);
     callback clone_distro(string);
     callback open_url(string);
@@ -138,7 +152,7 @@ export component AppWindow inherits Window {
     callback confirm_export(string, string);
     callback open_clone_dialog(string);
     callback select_clone_folder();
-    callback confirm_clone(string, string, string);
+    callback confirm_clone(string, string, string, bool);
     callback open_move_dialog(string);
     callback select_move_folder();
     callback confirm_move(string, string, string);
@@ -153,6 +167,9 @@ export component AppWindow inherits Window {
     callback save_settings();
     callback select_distro_folder();
     callback select_logs_folder();
+    callback reset_network();
+    callback check_windows_features();
+    callback save_global_wsl_config(string, string, string);
     callback toggle_theme();
     callback clone_name_changed(string);
     callback distro_selected(string);
@@ -242,6 +259,9 @@ export component AppWindow inherits Window {
                             information_clicked(n) => {
                                 root.information_clicked(n);
                             }
+                            create_shortcut(n) => {
+                                root.create_distro_shortcut(n);
+                            }
                             settings_clicked(n) => {
                                 root.settings_clicked(n);
                             }
@@ -296,6 +316,11 @@ export component AppWindow inherits Window {
                             log_level <=> root.log_level;
                             log_days <=> root.log_days;
                             check_update_interval <=> root.check_update_interval;
+                            feature_wsl_enabled: root.feature_wsl_enabled;
+                            feature_vmp_enabled: root.feature_vmp_enabled;
+                            global_memory <=> root.global_memory;
+                            global_processors <=> root.global_processors;
+                            global_networking_mode <=> root.global_networking_mode;
                             save-settings => {
                                 root.save_settings();
                             }
@@ -304,6 +329,12 @@ export component AppWindow inherits Window {
                             }
                             select-logs-folder => {
                                 root.select_logs_folder();
+                            }
+                            reset-network => {
+                                root.reset_network();
+                            }
+                            save-global-config(m, p, n) => {
+                                root.save_global_wsl_config(m, p, n);
                             }
                         }
                         if (selected_tab == 6): AboutView {
@@ -368,8 +399,8 @@ export component AppWindow inherits Window {
             clone_name_changed(text) => {
                 root.clone_name_changed(text);
             }
-            confirm_clone(n, p) => {
-                root.confirm_clone(root.clone_source_name, n, p);
+            confirm_clone(n, p, s) => {
+                root.confirm_clone(root.clone_source_name, n, p, s);
             }
             show_move: root.show_move_dialog;
             move_source_name: root.move_source_name;
@@ -435,20 +466,29 @@ export component AppWindow inherits Window {
             close_information => {
                 root.show_information = false;
             }
+            compact_disk(n, p) => {
+                root.compact_distro(n, p);
+            }
             show_settings: root.show_settings;
             settings_target_name: root.settings_distro_name;
             settings_terminal_dir <=> root.settings_terminal_dir;
             settings_vscode_dir <=> root.settings_vscode_dir;
             settings_is_default <=> root.settings_is_default;
             settings_lock_default <=> root.settings_lock_default;
+            settings_default_uid <=> root.settings_default_uid;
+            settings_systemd_enabled <=> root.settings_systemd_enabled;
+            settings_generate_hosts <=> root.settings_generate_hosts;
+            settings_generate_resolv_conf <=> root.settings_generate_resolv_conf;
+            settings_interop_enabled <=> root.settings_interop_enabled;
+            settings_append_windows_path <=> root.settings_append_windows_path;
             settings_autostart <=> root.settings_autostart;
             settings_startup_script <=> root.settings_startup_script;
             settings_terminal_dir_error: root.settings_terminal_dir_error;
             settings_vscode_dir_error: root.settings_vscode_dir_error;
             settings_startup_script_error: root.settings_startup_script_error;
             settings_default_error: root.settings_default_error;
-            confirm_settings(n, td, vd, id, as, ss) => {
-                root.confirm_distro_settings(n, td, vd, id, as, ss);
+            confirm_settings(n, td, vd, id, uid, systemd, hosts, resolv, interop, path, as, ss) => {
+                root.confirm_distro_settings(n, td, vd, id, uid, systemd, hosts, resolv, interop, path, as, ss);
             }
             close_settings => {
                 root.show_settings = false;

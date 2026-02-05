@@ -15,7 +15,12 @@ export component SettingsView inherits Rectangle {
     in-out property <int> log_days: 7;
     in-out property <int> check_update_interval: 7;
     in-out property <bool> auto_shutdown: false;
-    private property <bool> open-dropdown: combo-lang.open-dropdown || combo-log.open-dropdown || combo-log-retention.open-dropdown || combo-update.open-dropdown;
+    in property <bool> feature_wsl_enabled: false;
+    in property <bool> feature_vmp_enabled: false;
+    in-out property <string> global_memory: "";
+    in-out property <string> global_processors: "";
+    in-out property <string> global_networking_mode: "nat";
+    private property <bool> open-dropdown: combo-lang.open-dropdown || combo-log.open-dropdown || combo-log-retention.open-dropdown || combo-update.open-dropdown || combo-network.open-dropdown;
 
     // Language support configuration
     private property <[string]> language-options: [
@@ -138,6 +143,14 @@ export component SettingsView inherits Rectangle {
     callback save-settings();
     callback select-distro-folder();
     callback select-logs-folder();
+    callback reset-network();
+    callback save-global-config(string, string, string);
+    
+    private property <[string]> network-options: ["nat", "mirrored"];
+    pure function get-network-index(mode: string) -> int {
+        return (mode == "mirrored") ? 1 : 0;
+    }
+
     background: transparent;
     VerticalLayout {
         spacing: 0;
@@ -385,6 +398,137 @@ export component SettingsView inherits Rectangle {
                     CustomCheckBox {
                         checked <=> root.auto_shutdown;
                         text: AppI18n.t("settings.auto_shutdown_msg", [AppI18n.version]);
+                    }
+
+                    Rectangle {
+                        height: 12px;
+                    } // Spacer
+
+                    Rectangle {
+                        height: 1px;
+                        background: Theme.border_color;
+                    }
+
+                    Rectangle {
+                        height: 12px;
+                    } // Spacer
+
+                    // 7. Global WSL Configuration (.wslconfig)
+                    Text {
+                        text: "Global WSL Configuration (.wslconfig)";
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: Theme.accent;
+                    }
+
+                    GridLayout {
+                        spacing: 12px;
+                        Row {
+                            VerticalLayout {
+                                spacing: 8px;
+                                Text { text: "Memory Limit (e.g. 4GB):"; font-size: 13px; color: Theme.text_secondary; }
+                                CustomLineEdit { text <=> root.global_memory; placeholder-text: "System default"; }
+                            }
+                            VerticalLayout {
+                                spacing: 8px;
+                                Text { text: "Processors (e.g. 4):"; font-size: 13px; color: Theme.text_secondary; }
+                                CustomLineEdit { text <=> root.global_processors; placeholder-text: "System default"; }
+                            }
+                        }
+                        Row {
+                            VerticalLayout {
+                                spacing: 8px;
+                                Text { text: "Networking Mode:"; font-size: 13px; color: Theme.text_secondary; }
+                                combo-network := CustomComboBox {
+                                    model: root.network-options;
+                                    current-index: root.get-network-index(root.global_networking_mode);
+                                    height: 32px;
+                                    selected(idx) => {
+                                        root.global_networking_mode = (idx == 1) ? "mirrored" : "nat";
+                                    }
+                                }
+                            }
+                            VerticalLayout {
+                                alignment: end;
+                                CustomButton {
+                                    text: "Save Global Config";
+                                    height: 32px;
+                                    clicked => {
+                                        root.save-global-config(root.global_memory, root.global_processors, root.global_networking_mode);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        height: 12px;
+                    } // Spacer
+
+                    Rectangle {
+                        height: 1px;
+                        background: Theme.border_color;
+                    }
+
+                    Rectangle {
+                        height: 12px;
+                    } // Spacer
+
+                    // 8. System Maintenance
+                    Text {
+                        text: "System Maintenance";
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: Theme.text_primary;
+                    }
+
+                    HorizontalLayout {
+                        spacing: 12px;
+                        alignment: start;
+                        CustomButton {
+                            text: "Reset WSL Network (Shutdown)";
+                            height: 32px;
+                            clicked => {
+                                root.reset-network();
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        height: 8px;
+                    } // Spacer
+
+                    // Windows Features Status
+                    VerticalLayout {
+                        spacing: 8px;
+                        HorizontalLayout {
+                            spacing: 8px;
+                            Text {
+                                text: "Linux Subsystem:";
+                                font-size: 13px;
+                                color: Theme.text_secondary;
+                            }
+                            Text {
+                                text: root.feature_wsl_enabled ? "Enabled" : "Disabled";
+                                font-size: 13px;
+                                color: root.feature_wsl_enabled ? #28a745 : #dc3545;
+                                font-weight: 500;
+                            }
+                        }
+                        HorizontalLayout {
+                            spacing: 8px;
+                            Text {
+                                text: "Virtual Machine Platform:";
+                                font-size: 13px;
+                                color: Theme.text_secondary;
+                            }
+                            Text {
+                                text: root.feature_vmp_enabled ? "Enabled" : "Disabled";
+                                font-size: 13px;
+                                color: root.feature_vmp_enabled ? #28a745 : #dc3545;
+                                font-weight: 500;
+                            }
+                        }
                     }
                 }
             }

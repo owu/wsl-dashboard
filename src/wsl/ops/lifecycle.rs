@@ -242,3 +242,96 @@ pub async fn move_distro(executor: &WslCommandExecutor, distro_name: &str, new_p
     info!("Operation: Move WSL distribution - {} to {}", distro_name, new_path);
     executor.execute_command(&["--manage", distro_name, "--move", new_path]).await
 }
+
+pub async fn set_distro_default_uid(_executor: &WslCommandExecutor, distro_name: &str, uid: u32) -> WslCommandResult<String> {
+    info!("Operation: Set Default UID - {} to {}", distro_name, uid);
+    
+    let ps_script = format!(r#"
+        $distro = "{}"
+        $uid = {}
+        $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss"
+        $subkeys = Get-ChildItem $regPath -ErrorAction SilentlyContinue
+        
+        foreach ($subkey in $subkeys) {{
+            $props = Get-ItemProperty $subkey.PSPath -ErrorAction SilentlyContinue
+            if ($props.DistributionName -eq $distro) {{
+                Set-ItemProperty -Path $subkey.PSPath -Name "DefaultUid" -Value $uid -Type DWord
+                "Success"
+                break
+            }}
+        }}
+    "#, distro_name, uid);
+
+    let mut cmd = Command::new("powershell");
+    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
+    #[cfg(windows)]
+    {
+        const CREATE_NO_WINDOW: u32 = 0x08000000;
+        cmd.creation_flags(CREATE_NO_WINDOW);
+    }
+
+    match cmd.output().await {
+        Ok(output) => {
+             let stdout = String::from_utf8_lossy(&output.stdout).trim().to_string();
+             if stdout == "Success" {
+                 WslCommandResult::success("Default UID updated".to_string(), None)
+             } else {
+                 WslCommandResult::error(stdout, "Failed to find or update registry key".to_string())
+             }
+        },
+        Err(e) => WslCommandResult::error("".to_string(), e.to_string()),
+    }
+}
+
+pub async fn reset_wsl_network(executor: &WslCommandExecutor) -> WslCommandResult<String> {
+    info!("Operation: Reset WSL Network (Shutdown)");
+    executor.execute_command(&["--shutdown"]).await
+}
+
+pub async fn compact_distro_disk(executor: &WslCommandExecutor, distro_name: &str, vhdx_path: &str) -> WslCommandResult<String> {
+    info!("Operation: Compact VHDX - {} at {}", distro_name, vhdx_path);
+    
+    // 1. Ensure distro is stopped
+    let _ = stop_distro(executor, distro_name).await;
+    
+    // 2. Prepare diskpart script
+    // Note: This requires absolute Windows path. vhdx_path should already be one.
+    let diskpart_script = format!(
+        "select vdisk file=\"{}\"\r\nattach vdisk readonly\r\ncompact vdisk\r\ndetach vdisk\r\n",
+        vhdx_path
+    );
+    
+    let temp_script = std::env::temp_dir().join(format!("compact_{}.txt", distro_name));
+    if let Err(e) = std::fs::write(&temp_script, diskpart_script) {
+        return WslCommandResult::error("".into(), format!("Failed to create diskpart script: {}", e));
+    }
+
+    // 3. Execute diskpart
+    // We use powershell to run diskpart to handle potential path issues or elevation hints
+    let ps_script = format!(
+        "Start-Process diskpart.exe -ArgumentList '/s \"{}\"' -Wait -WindowStyle Hidden",
+        temp_script.display()
+    );
+
+    let mut cmd = Command::new("powershell");
+    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
+    #[cfg(windows)]
+    {
+        const CREATE_NO_WINDOW: u32 = 0x08000000;
+        cmd.creation_flags(CREATE_NO_WINDOW);
+    }
+
+    let result = match cmd.output().await {
+        Ok(output) => {
+            if output.status.success() {
+                WslCommandResult::success("Disk compacted successfully".into(), None)
+            } else {
+                WslCommandResult::error(String::from_utf8_lossy(&output.stdout).into(), "Diskpart failed".into())
+            }
+        },
+        Err(e) => WslCommandResult::error("".into(), e.to_string()),
+    };
+
+    let _ = std::fs::remove_file(temp_script);
+    result
+}
