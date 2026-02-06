@@ -1,5 +1,5 @@
-import { Button } from "std-widgets.slint";
 import { Theme, AppI18n } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
 
 export component CheckUpdateDialog inherits Rectangle {
     in property <string> message_content: "";
@@ -25,6 +25,7 @@ export component CheckUpdateDialog inherits Rectangle {
             Text {
                 text: root.is_expire ? AppI18n.t("dialog.expire_title", [AppI18n.version]) : AppI18n.t("dialog.update_check_title", [AppI18n.version]);
                 font-size: 18px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 color: Theme.text_primary;
             }
@@ -34,6 +35,7 @@ export component CheckUpdateDialog inherits Rectangle {
                 Text {
                     text: message_content;
                     font-size: 14px;
+                    font-family: Theme.default_font;
                     color: Theme.text_primary;
                     wrap: word-wrap;
                 }
@@ -41,6 +43,7 @@ export component CheckUpdateDialog inherits Rectangle {
                 Text {
                     text: AppI18n.t("dialog.update_check_info", [AppI18n.version]);
                     font-size: 13px;
+                    font-family: Theme.default_font;
                     color: Theme.text_secondary;
                     wrap: word-wrap;
                 }
@@ -53,14 +56,14 @@ export component CheckUpdateDialog inherits Rectangle {
             HorizontalLayout {
                 alignment: end;
                 spacing: 12px;
-                if (show_cancel): Button {
+                if (show_cancel): CustomButton {
                     text: AppI18n.t("dialog.download_later", [AppI18n.version]);
                     height: 32px;
                     clicked => {
                         root.close();
                     }
                 }
-                Button {
+                CustomButton {
                     text: AppI18n.t("dialog.download_now", [AppI18n.version]);
                     height: 32px;
                     primary: true;

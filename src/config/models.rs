@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 // Configuration file version constant
-pub const SETTINGS_VERSION: u32 = 2;
+pub const SETTINGS_VERSION: u32 = 3;
 
 // Application configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -53,6 +53,28 @@ pub struct UserSettings {
     pub log_days: u8,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct TraySettings {
+    #[serde(default)]
+    pub autostart: bool,
+    #[serde(rename = "start-minimized", default)]
+    pub start_minimized: bool,
+    #[serde(rename = "close-to-tray", default = "default_close_to_tray")]
+    pub close_to_tray: bool,
+}
+
+pub fn default_close_to_tray() -> bool { true }
+
+impl Default for TraySettings {
+    fn default() -> Self {
+        Self {
+            autostart: false,
+            start_minimized: false,
+            close_to_tray: true,
+        }
+    }
+}
+
 pub fn default_log_level() -> u8 { 3 }
 pub fn default_log_days() -> u8 { 7 }
 pub fn default_check_update() -> u8 { 7 }
@@ -63,6 +85,8 @@ pub struct Config {
     pub application: ApplicationConfig,
     pub system: SystemConfig,
     pub settings: UserSettings,
+    #[serde(default)]
+    pub tray: TraySettings,
 }
 
 impl Config {
@@ -107,6 +131,7 @@ impl Config {
                 log_level: 3,
                 log_days: 7,
             },
+            tray: TraySettings::default(),
         }
     }
 }

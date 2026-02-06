@@ -16,11 +16,30 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 let distro_location = app.get_distro_location().to_string();
                 let logs_location = app.get_logs_location().to_string();
                 let auto_shutdown = app.get_auto_shutdown();
+                let tray_autostart = app.get_tray_autostart();
+                let tray_start_minimized = app.get_tray_start_minimized();
+                let tray_close_to_tray = app.get_tray_close_to_tray();
                 let log_level = app.get_log_level() as u8;
                 let log_days = app.get_log_days() as u8;
                 let check_update = app.get_check_update_interval() as u8;
                 
                 let mut state = as_ptr.lock().await;
+
+                // Apply Dashboard autostart setting to Windows
+                if let Err(e) = crate::app::autostart::set_dashboard_autostart(tray_autostart, tray_start_minimized).await {
+                    error!("Failed to apply dashboard autostart: {}", e);
+                }
+
+                // Update tray settings in config
+                let tray_settings = config::TraySettings {
+                    autostart: tray_autostart,
+                    start_minimized: tray_start_minimized,
+                    close_to_tray: tray_close_to_tray,
+                };
+                if let Err(e) = state.config_manager.update_tray_settings(tray_settings) {
+                    error!("Failed to save tray settings: {}", e);
+                }
+
                 let temp_location = state.config_manager.get_settings().temp_location.clone();
                 let current_logs_location = state.config_manager.get_settings().logs_location.clone();
 
@@ -34,6 +53,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
                 // Update i18n
                 let system_lang = state.config_manager.get_config().system.system_language.clone();
+                let old_lang = state.config_manager.get_settings().ui_language.clone();
                 let lang_to_load = if ui_language == "auto" {
                     &system_lang
                 } else {
@@ -41,6 +61,28 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 };
                 i18n::load_resources(lang_to_load);
                 app.global::<AppI18n>().set_version(app.global::<AppI18n>().get_version() + 1);
+                crate::ui::data::refresh_localized_strings(&app);
+                
+                // Update font based on new language
+                let font_family = if crate::app::is_chinese_lang(lang_to_load) {
+                    crate::app::FONT_ZH
+                } else {
+                    crate::app::FONT_EN_FALLBACK
+                };
+                app.global::<Theme>().set_default_font(font_family.into());
+
+                // Re-initialize tray if language changed to update menu text
+                if old_lang != ui_language {
+                    info!("Language changed, triggering system tray re-initialization...");
+                    let _ = slint::invoke_from_event_loop({
+                        let ah = ah.clone();
+                        move || {
+                            if let Some(app) = ah.upgrade() {
+                                app.invoke_reinit_tray();
+                            }
+                        }
+                    });
+                }
 
                 let user_settings = config::UserSettings {
                     modify_time: chrono::Utc::now().timestamp_millis().to_string(),

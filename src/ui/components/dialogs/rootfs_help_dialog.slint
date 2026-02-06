@@ -1,5 +1,5 @@
-import { Button } from "std-widgets.slint";
 import { Theme, RootFSHelpItem, AppI18n } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
 
 export component RootFSHelpDialog inherits Rectangle {
     callback close;
@@ -25,6 +25,7 @@ export component RootFSHelpDialog inherits Rectangle {
             Text {
                 text: AppI18n.t("dialog.rootfs_help_title", [AppI18n.version]);
                 font-size: 16px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 color: Theme.text_primary;
                 horizontal-alignment: left;
@@ -44,6 +45,7 @@ export component RootFSHelpDialog inherits Rectangle {
                     horizontal-alignment: left;
                     color: Theme.text_secondary;
                     font-size: 13px;
+                    font-family: Theme.default_font;
                 }
 
                 Text {
@@ -54,6 +56,7 @@ export component RootFSHelpDialog inherits Rectangle {
                     horizontal-alignment: left;
                     color: Theme.text_secondary;
                     font-size: 13px;
+                    font-family: Theme.default_font;
                 }
             }
 
@@ -81,6 +84,7 @@ export component RootFSHelpDialog inherits Rectangle {
                             horizontal-alignment: left;
                             color: Theme.text_primary;
                             font-size: 13px;
+                            font-family: Theme.default_font;
                         }
                         
                         // Link Area
@@ -91,6 +95,7 @@ export component RootFSHelpDialog inherits Rectangle {
                             vertical-alignment: center;
                             horizontal-alignment: left;
                             font-size: 13px;
+                            font-family: Theme.default_font;
                             overflow: elide;
                             ta-link := TouchArea {
                                 mouse-cursor: pointer;
@@ -106,7 +111,7 @@ export component RootFSHelpDialog inherits Rectangle {
             // Footer
             HorizontalLayout {
                 alignment: end;
-                Button {
+                CustomButton {
                     text: AppI18n.t("dialog.confirm", [AppI18n.version]);
                     primary: true;
                     height: 30px;

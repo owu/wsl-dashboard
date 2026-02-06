@@ -13,6 +13,7 @@ component InfoRow inherits HorizontalLayout {
         width: 100px;
         color: Theme.text_secondary;
         font-size: 13px;
+        font-family: Theme.default_font;
         vertical-alignment: center;
     }
 
@@ -29,6 +30,7 @@ component InfoRow inherits HorizontalLayout {
                 text: root.value;
                 color: touch_area.has-hover ? Theme.accent : root.value_color;
                 font-size: 13px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 vertical-alignment: center;
                 overflow: elide;
@@ -40,6 +42,7 @@ component InfoRow inherits HorizontalLayout {
         text: root.value;
         color: root.value_color;
         font-size: 13px;
+        font-family: Theme.default_font;
         font-weight: 500;
         vertical-alignment: center;
         overflow: elide;
@@ -82,6 +85,7 @@ export component InformationDialog inherits Rectangle {
                 Text {
                     text: AppI18n.t("dialog.info_title", [root.info.distro_name, AppI18n.version]);
                     font-size: 18px;
+                    font-family: Theme.default_font;
                     font-weight: 500;
                     color: Theme.text_primary;
                 }
@@ -136,6 +140,7 @@ export component InformationDialog inherits Rectangle {
                         width: 100px;
                         color: Theme.text_secondary;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         vertical-alignment: center;
                     }
 
@@ -151,7 +156,7 @@ export component InformationDialog inherits Rectangle {
                             Text {
                                 text: root.info.actual_used;
                                 color: Theme.accent;
-                                font-family: "Consolas";
+                                font-family: Theme.default_font;
                                 font-size: 13px;
                                 font-weight: 500;
                                 vertical-alignment: center;
@@ -169,6 +174,7 @@ export component InformationDialog inherits Rectangle {
                         width: 100px;
                         color: Theme.text_secondary;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         vertical-alignment: center;
                     }
 
@@ -184,7 +190,7 @@ export component InformationDialog inherits Rectangle {
                             Text {
                                 text: root.info.vhdx_size;
                                 color: Theme.accent;
-                                font-family: "Consolas"; // Match font
+                                font-family: Theme.default_font; // Match font
                                 font-size: 13px;
                                 font-weight: 500;
                                 vertical-alignment: center;
@@ -216,6 +222,7 @@ export component InformationDialog inherits Rectangle {
                         text: AppI18n.t("dialog.confirm", [AppI18n.version]);
                         color: white;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         font-weight: 500;
                         horizontal-alignment: center;
                         vertical-alignment: center;

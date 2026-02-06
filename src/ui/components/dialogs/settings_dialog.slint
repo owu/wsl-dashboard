@@ -44,6 +44,7 @@ export component SettingsDialog inherits Rectangle {
                 Text {
                     text: AppI18n.t("dialog.settings_title", [root.distro_name, AppI18n.version]);
                     font-size: 18px;
+                    font-family: Theme.default_font;
                     font-weight: 500;
                     color: Theme.text_primary;
                 }
@@ -103,6 +104,7 @@ export component SettingsDialog inherits Rectangle {
                             if (root.default_error != ""): Text {
                                 text: root.default_error;
                                 font-size: 11px;
+                                font-family: Theme.default_font;
                                 color: #ff3333;
                             }
                         }
@@ -119,6 +121,7 @@ export component SettingsDialog inherits Rectangle {
                             Text {
                                 text: AppI18n.t("dialog.startup_script_title", [AppI18n.version]);
                                 font-size: 13px;
+                                font-family: Theme.default_font;
                                 color: Theme.text_secondary;
                             }
 
@@ -130,6 +133,7 @@ export component SettingsDialog inherits Rectangle {
                             if (root.startup_script_error != ""): Text {
                                 text: root.startup_script_error;
                                 font-size: 11px;
+                                font-family: Theme.default_font;
                                 color: #ff3333;
                             }
                         }
@@ -140,6 +144,7 @@ export component SettingsDialog inherits Rectangle {
                             Text {
                                 text: AppI18n.t("dialog.terminal_dir", [AppI18n.version]);
                                 font-size: 13px;
+                                font-family: Theme.default_font;
                                 color: Theme.text_secondary;
                             }
 
@@ -151,6 +156,7 @@ export component SettingsDialog inherits Rectangle {
                             if (root.terminal_dir_error != ""): Text {
                                 text: root.terminal_dir_error;
                                 font-size: 11px;
+                                font-family: Theme.default_font;
                                 color: #ff3333;
                             }
                         }
@@ -161,6 +167,7 @@ export component SettingsDialog inherits Rectangle {
                             Text {
                                 text: AppI18n.t("dialog.vscode_dir", [AppI18n.version]);
                                 font-size: 13px;
+                                font-family: Theme.default_font;
                                 color: Theme.text_secondary;
                             }
 
@@ -172,6 +179,7 @@ export component SettingsDialog inherits Rectangle {
                             if (root.vscode_dir_error != ""): Text {
                                 text: root.vscode_dir_error;
                                 font-size: 11px;
+                                font-family: Theme.default_font;
                                 color: #ff3333;
                             }
                         }
@@ -228,6 +236,7 @@ export component SettingsDialog inherits Rectangle {
                         text: AppI18n.t("dialog.cancel", [AppI18n.version]);
                         color: Theme.text_primary;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         font-weight: 500;
                         horizontal-alignment: center;
                         vertical-alignment: center;
@@ -250,6 +259,7 @@ export component SettingsDialog inherits Rectangle {
                         text: AppI18n.t("dialog.save", [AppI18n.version]);
                         color: white;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         font-weight: 500;
                         horizontal-alignment: center;
                         vertical-alignment: center;

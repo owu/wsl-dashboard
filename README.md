@@ -135,7 +135,7 @@ Log files are written to the configured log directory and can be attached when r
 - UI framework: Slint, a modern GPU-accelerated UI toolkit (backend: `winit`).
 - Async runtime: Tokio for highly concurrent, non-blocking system commands and I/O.
 - Performance:
-  - Memory usage: typically around 60–80 MB of RAM.
+  - Memory usage: typically around 10–35 MB of RAM.
   - Responsiveness: near-instant startup and real-time WSL status updates using streaming.
   - Binary size: optimized release build produces a single compact executable.
 

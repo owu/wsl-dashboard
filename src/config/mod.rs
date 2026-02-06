@@ -3,6 +3,7 @@ use std::path::PathBuf;
 use tracing::{info, error};
 
 mod migration;
+mod instances;
 pub mod models;
 
 pub use models::*;
@@ -125,26 +126,8 @@ impl ConfigManager {
 
         info!("Refreshing system language and timezone information...");
         
-        // Get system language and timezone
-        let mut cmd = tokio::process::Command::new("powershell");
-        cmd.args(&["-Command", "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $lang = (Get-Culture).Name; $offset = (Get-TimeZone).BaseUtcOffset; $sign = if ($offset.Ticks -ge 0) {'+'} else {'-'}; $tz = 'UTC{0}{1:00}:{2:00}' -f $sign, [Math]::Abs($offset.Hours), [Math]::Abs($offset.Minutes); \"$lang|$tz\""]);
-
-        #[cfg(windows)]
-        {
-            #[allow(unused_imports)]
-            use std::os::windows::process::CommandExt;
-            cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
-        }
-
-        if let Ok(output) = cmd.output().await
-        {
-            let res = String::from_utf8_lossy(&output.stdout).trim().to_string();
-            let parts: Vec<&str> = res.split('|').collect();
-            if parts.len() == 2 {
-                config.system.system_language = parts[0].to_string();
-                config.system.timezone = parts[1].to_string();
-            }
-        }
+        config.system.system_language = crate::utils::registry::get_system_locale();
+        config.system.timezone = crate::utils::registry::get_system_timezone();
     }
 
     // Load configuration file
@@ -193,6 +176,19 @@ impl ConfigManager {
         &self.config.settings
     }
 
+    // Get tray settings
+    pub fn get_tray_settings(&self) -> &TraySettings {
+        &self.config.tray
+    }
+
+    // Update tray settings and save
+    pub fn update_tray_settings(&mut self, tray: TraySettings) -> Result<(), Box<dyn std::error::Error>> {
+        self.config.tray = tray;
+        Self::save_config(&self.config_path, &mut self.config)?;
+        info!("✅ Tray configuration saved successfully");
+        Ok(())
+    }
+
     // Update popup detection timestamp
     pub fn update_check_time(&mut self) -> Result<(), Box<dyn std::error::Error>> {
         self.config.settings.check_time = chrono::Utc::now().timestamp_millis().to_string();
@@ -204,35 +200,11 @@ impl ConfigManager {
     // --- Instances Config Management ---
 
     fn load_instances() -> InstancesContainer {
-        let path = Self::get_instances_path();
-        if path.exists() {
-            if let Ok(content) = fs::read_to_string(&path) {
-                if let Ok(mut container) = toml::from_str::<InstancesContainer>(&content) {
-                    let old_version = container.common.setting_version;
-                    migration::migrate_instances_config(&mut container);
-                    
-                    // If version was upgraded, save it back immediately to complete fields
-                    if old_version < INSTANCES_VERSION {
-                        let _ = Self::save_instances_to_disk(&path, &container);
-                    }
-                    return container;
-                }
-            }
-        }
-        InstancesContainer::new()
+        instances::load_instances(&Self::get_instances_path())
     }
 
     fn save_instances_to_disk(path: &std::path::Path, container: &InstancesContainer) -> Result<(), Box<dyn std::error::Error>> {
-        if let Some(parent) = path.parent() {
-            let _ = fs::create_dir_all(parent);
-        }
-
-        let mut toml_string = toml::to_string_pretty(container)?;
-        // Ensure UNIX line endings 
-        toml_string = toml_string.replace("\r\n", "\n");
-        
-        fs::write(path, toml_string)?;
-        Ok(())
+        instances::save_instances_to_disk(path, container)
     }
 
     pub fn get_instance_config(&self, distro_name: &str) -> DistroInstanceConfig {

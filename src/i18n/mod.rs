@@ -132,41 +132,6 @@ fn load_file_to_map(lang: &str, map: &mut HashMap<String, String>) {
     }
 }
 
-#[cfg(debug_assertions)]
-pub fn verify_translations() {
-    if !cfg!(debug_assertions) { return; }
-
-    println!("--- i18n Integrity Check ---");
-    let mut en_map = HashMap::new();
-    load_file_to_map("en", &mut en_map);
-    println!("Base (en) keys: {}", en_map.len());
-
-    let langs = [
-        "zh-CN", "zh-TW", "fr", "es", "ru", "pt", "de", "ja", "hi", "bn", "id", "it", "tr"
-    ];
-
-    for lang in &langs {
-        let mut lang_map = HashMap::new();
-        load_file_to_map(lang, &mut lang_map);
-
-        let mut missing = Vec::new();
-        for key in en_map.keys() {
-            if !lang_map.contains_key(key) {
-                missing.push(key);
-            }
-        }
-
-        if !missing.is_empty() {
-             println!("[!] Language '{}' is missing {} keys:", lang, missing.len());
-             for key in missing {
-                 println!("    - {}", key);
-             }
-        } else {
-             println!("[+] Language '{}' is fully translated ({} keys).", lang, lang_map.len());
-        }
-    }
-    println!("----------------------------");
-}
 
 fn flatten_toml(prefix: &str, value: &Value, map: &mut HashMap<String, String>) {
     match value {

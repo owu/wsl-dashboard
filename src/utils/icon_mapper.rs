@@ -1,12 +1,51 @@
 use slint::{Image, SharedPixelBuffer, Rgba8Pixel};
 #[allow(unused_imports)]
 use std::path::PathBuf;
+use std::collections::HashMap;
+use std::sync::Mutex;
+use once_cell::sync::Lazy;
+
+#[derive(Clone)]
+pub enum IconData {
+    Pixels(SharedPixelBuffer<Rgba8Pixel>),
+    Svg(&'static [u8]),
+}
+
+// Implement Send/Sync for IconData to allow caching in a static Mutex
+// SharedPixelBuffer is already Send/Sync. &'static [u8] is already Send/Sync.
+unsafe impl Send for IconData {}
+unsafe impl Sync for IconData {}
+
+static ICON_CACHE: Lazy<Mutex<HashMap<String, IconData>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+static DYNAMIC_ICON_MAP: Lazy<Mutex<HashMap<String, &'static str>>> = Lazy::new(|| Mutex::new(HashMap::new()));
+static PROBED_DISTROS: Lazy<Mutex<std::collections::HashSet<String>>> = Lazy::new(|| Mutex::new(std::collections::HashSet::new()));
+
+pub fn is_distro_probed(name: &str) -> bool {
+    PROBED_DISTROS.lock().unwrap().contains(name)
+}
+
+pub fn mark_distro_probed(name: String) {
+    PROBED_DISTROS.lock().unwrap().insert(name);
+}
+
+pub fn unmark_distro_probed(name: &str) {
+    PROBED_DISTROS.lock().unwrap().remove(name);
+}
 
 pub fn get_initial(name: &str) -> String {
     name.chars().next().unwrap_or('?').to_uppercase().to_string()
 }
 
 pub fn map_name_to_icon_key(name: &str) -> Option<&'static str> {
+    // 1. Check dynamic map first
+    {
+        let dynamic_map = DYNAMIC_ICON_MAP.lock().unwrap();
+        if let Some(key) = dynamic_map.get(name) {
+            return Some(key);
+        }
+    }
+
+    // 2. Static mapping based on name
     let lower_name = name.to_lowercase();
     if lower_name.contains("ubuntu") { Some("ubuntu") }
     else if lower_name.contains("debian") { Some("debian") }
@@ -44,6 +83,11 @@ pub fn map_name_to_icon_key(name: &str) -> Option<&'static str> {
     else if lower_name.contains("sparky") { Some("sparky") }
     else if lower_name.contains("solus") { Some("solus") }
     else { None }
+}
+
+pub fn add_dynamic_mapping(distro_name: String, icon_key: &'static str) {
+    let mut dynamic_map = DYNAMIC_ICON_MAP.lock().unwrap();
+    dynamic_map.insert(distro_name, icon_key);
 }
 
 pub fn get_display_name(key: Option<&str>) -> String {
@@ -87,50 +131,87 @@ pub fn get_display_name(key: Option<&str>) -> String {
     }
 }
 
-fn load_png(data: &[u8]) -> Image {
+fn load_png_buffer(data: &[u8]) -> SharedPixelBuffer<Rgba8Pixel> {
     let img = image::load_from_memory(data).expect("Failed to load PNG from memory");
     let rgba = img.to_rgba8();
     let (width, height) = rgba.dimensions();
     let mut buffer = SharedPixelBuffer::<Rgba8Pixel>::new(width, height);
     buffer.make_mut_bytes().copy_from_slice(rgba.as_raw());
-    Image::from_rgba8(buffer)
+    buffer
 }
 
-fn load_svg(data: &[u8]) -> Image {
-    Image::load_from_svg_data(data).expect("Failed to load SVG from memory")
-}
-
+#[allow(dead_code)]
 pub fn load_icon(key: &str) -> Option<Image> {
-    match key {
-        "almalinux" => Some(load_png(include_bytes!("../../assets/icons/almalinux.png"))),
-        "alpine" => Some(load_png(include_bytes!("../../assets/icons/alpine.png"))),
-        "anduinos" => Some(load_png(include_bytes!("../../assets/icons/anduinos.png"))),
-        "antix" => Some(load_png(include_bytes!("../../assets/icons/antix.png"))),
-        "arch" => Some(load_png(include_bytes!("../../assets/icons/arch.png"))),
-        "centos" => Some(load_svg(include_bytes!("../../assets/icons/centos.svg"))),
-        "debian" => Some(load_svg(include_bytes!("../../assets/icons/debian.svg"))),
-        "elementary" => Some(load_png(include_bytes!("../../assets/icons/elementary.png"))),
-        "endeavouros" => Some(load_png(include_bytes!("../../assets/icons/endeavouros.png"))),
-        "fedora" => Some(load_png(include_bytes!("../../assets/icons/fedora.png"))),
-        "freebsd" => Some(load_png(include_bytes!("../../assets/icons/freebsd.png"))),
-        "garuda" => Some(load_png(include_bytes!("../../assets/icons/garuda.png"))),
-        "gentoo" => Some(load_png(include_bytes!("../../assets/icons/gentoo.png"))),
-        "kali" => Some(load_png(include_bytes!("../../assets/icons/kali.png"))),
-        "kdeneon" => Some(load_png(include_bytes!("../../assets/icons/kdeneon.png"))),
-        "manjaro" => Some(load_png(include_bytes!("../../assets/icons/manjaro.png"))),
-        "mint" => Some(load_png(include_bytes!("../../assets/icons/mint.png"))),
-        "mxlinux" => Some(load_png(include_bytes!("../../assets/icons/mxlinux.png"))),
-        "nixos" => Some(load_png(include_bytes!("../../assets/icons/nixos.png"))),
-        "nobara" => Some(load_png(include_bytes!("../../assets/icons/nobara.png"))),
-        "opensuse" => Some(load_png(include_bytes!("../../assets/icons/opensuse.png"))),
-        "oracle" => Some(load_png(include_bytes!("../../assets/icons/oracle.png"))),
-        "pop_os" => Some(load_png(include_bytes!("../../assets/icons/pop_os.png"))),
-        "puppy" => Some(load_png(include_bytes!("../../assets/icons/puppy.png"))),
-        "rockylinux" => Some(load_svg(include_bytes!("../../assets/icons/rockylinux.svg"))),
-        "solus" => Some(load_png(include_bytes!("../../assets/icons/solus.png"))),
-        "tuxedo" => Some(load_png(include_bytes!("../../assets/icons/tuxedo.png"))),
-        "ubuntu" => Some(load_png(include_bytes!("../../assets/icons/ubuntu.png"))),
-        "zorin" => Some(load_png(include_bytes!("../../assets/icons/zorin.png"))),
-        _ => None,
+    load_icon_data(key).and_then(|data| load_image_from_data(key.to_string(), data))
+}
+
+thread_local! {
+    static SLINT_IMAGE_CACHE: std::cell::RefCell<HashMap<String, Image>> = std::cell::RefCell::new(HashMap::new());
+}
+
+pub fn load_image_from_data(key: String, data: IconData) -> Option<Image> {
+    SLINT_IMAGE_CACHE.with(|cache| {
+        let mut cache = cache.borrow_mut();
+        if let Some(img) = cache.get(&key) {
+            return Some(img.clone());
+        }
+
+        let img = match data {
+            IconData::Pixels(buf) => Some(Image::from_rgba8(buf)),
+            IconData::Svg(svg) => Image::load_from_svg_data(svg).ok(),
+        };
+
+        if let Some(ref i) = img {
+            cache.insert(key, i.clone());
+        }
+        img
+    })
+}
+
+pub fn load_icon_data(key: &str) -> Option<IconData> {
+    {
+        let cache = ICON_CACHE.lock().unwrap();
+        if let Some(data) = cache.get(key) {
+            return Some(data.clone());
+        }
     }
+
+    let data = match key {
+        "almalinux" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/almalinux.png")))),
+        "alpine" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/alpine.png")))),
+        "anduinos" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/anduinos.png")))),
+        "antix" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/antix.png")))),
+        "arch" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/arch.png")))),
+        "centos" => Some(IconData::Svg(include_bytes!("../../assets/icons/centos.svg"))),
+        "debian" => Some(IconData::Svg(include_bytes!("../../assets/icons/debian.svg"))),
+        "elementary" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/elementary.png")))),
+        "endeavouros" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/endeavouros.png")))),
+        "fedora" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/fedora.png")))),
+        "freebsd" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/freebsd.png")))),
+        "garuda" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/garuda.png")))),
+        "gentoo" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/gentoo.png")))),
+        "kali" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/kali.png")))),
+        "kdeneon" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/kdeneon.png")))),
+        "manjaro" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/manjaro.png")))),
+        "mint" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/mint.png")))),
+        "mxlinux" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/mxlinux.png")))),
+        "nixos" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/nixos.png")))),
+        "nobara" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/nobara.png")))),
+        "opensuse" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/opensuse.png")))),
+        "oracle" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/oracle.png")))),
+        "pop_os" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/pop_os.png")))),
+        "puppy" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/puppy.png")))),
+        "rockylinux" => Some(IconData::Svg(include_bytes!("../../assets/icons/rockylinux.svg"))),
+        "solus" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/solus.png")))),
+        "tuxedo" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/tuxedo.png")))),
+        "ubuntu" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/ubuntu.png")))),
+        "zorin" => Some(IconData::Pixels(load_png_buffer(include_bytes!("../../assets/icons/zorin.png")))),
+        _ => None,
+    };
+
+    if let Some(d) = &data {
+        let mut cache = ICON_CACHE.lock().unwrap();
+        cache.insert(key.to_string(), d.clone());
+    }
+    data
 }

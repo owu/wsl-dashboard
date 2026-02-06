@@ -4,9 +4,14 @@ mod constants;
 use std::fs;
 use std::path::Path;
 use toml::Value;
+use std::collections::HashSet;
 
 fn main() {
     slint_build::compile("src/ui/app.slint").expect("Slint compilation failed");
+
+    println!("cargo:rerun-if-changed=Cargo.toml");
+    println!("cargo:rerun-if-changed=assets/i18n");
+    println!("cargo:rerun-if-changed=src/ui/app.slint");
 
     // Read Cargo.toml to get custom 'expire' field
     let cargo_toml_path = Path::new("Cargo.toml");
@@ -47,8 +52,20 @@ fn main() {
                 .decode()
                 .expect("Failed to decode PNG");
 
-            let resized_img = img.resize_to_fill(256, 256, image::imageops::FilterType::Lanczos3);
-            resized_img.save(ico_path).expect("Failed to save ICO file");
+            use image::imageops::FilterType;
+            let mut icon_dir = ico::IconDir::new(ico::ResourceType::Icon);
+            let sizes = [16, 32, 48, 64, 128, 256];
+            
+            for &size in &sizes {
+                let resized = img.resize_exact(size, size, FilterType::Lanczos3);
+                let rgba = resized.to_rgba8();
+                let icon_image = ico::IconImage::from_rgba_data(size, size, rgba.into_raw());
+                let entry = ico::IconDirEntry::encode(&icon_image).expect("Failed to encode icon image");
+                icon_dir.add_entry(entry);
+            }
+
+            let file = std::fs::File::create(ico_path).expect("Failed to create ICO file");
+            icon_dir.write(file).expect("Failed to write ICO file");
 
             let version = std::env::var("CARGO_PKG_VERSION").unwrap_or_else(|_| "0.0.1".to_string());
             let mut version_parts = version.split('.').map(|p| p.parse::<u16>().unwrap_or(0)).collect::<Vec<_>>();
@@ -65,7 +82,7 @@ fn main() {
                 icon_rc_path,
                 format!(r#"#include <windows.h>
 
-IDI_ICON1 ICON "logo.ico"
+1 ICON "logo.ico"
 
 VS_VERSION_INFO VERSIONINFO
  FILEVERSION {major},{minor},{patch},0
@@ -115,6 +132,82 @@ END
             ).expect("Failed to write icon.rc");
 
             embed_resource::compile(icon_rc_path, std::iter::empty::<&std::ffi::OsStr>());
+        }
+    }
+
+    // i18n Integrity Check
+    verify_translations();
+}
+
+fn verify_translations() {
+    let i18n_dir = Path::new("assets/i18n");
+    if !i18n_dir.exists() { return; }
+
+    let en_path = i18n_dir.join("en.toml");
+    if !en_path.exists() { return; }
+
+    let en_content = fs::read_to_string(&en_path).unwrap_or_default();
+    let en_toml: Value = toml::from_str(&en_content).unwrap_or(Value::Table(Default::default()));
+    
+    let mut en_keys = HashSet::new();
+    flatten_keys("", &en_toml, &mut en_keys);
+
+    println!("cargo:warning=--- i18n Integrity Check (Base: en.toml) ---");
+    
+    if let Ok(entries) = fs::read_dir(i18n_dir) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.extension().and_then(|s| s.to_str()) == Some("toml") {
+                let filename = path.file_name().and_then(|s| s.to_str()).unwrap_or("");
+                if filename == "en.toml" { continue; }
+
+                let content = fs::read_to_string(&path).unwrap_or_default();
+                let toml_val: Value = toml::from_str(&content).unwrap_or(Value::Table(Default::default()));
+                
+                let mut lang_keys = HashSet::new();
+                flatten_keys("", &toml_val, &mut lang_keys);
+
+                let mut missing = Vec::new();
+                for key in &en_keys {
+                    if !lang_keys.contains(key) {
+                        missing.push(key);
+                    }
+                }
+
+                if !missing.is_empty() {
+                    println!("cargo:warning=[!] Language '{}' is missing {} keys:", filename, missing.len());
+                    for key in missing {
+                        println!("cargo:warning=    - {}", key);
+                    }
+                }
+            }
+        }
+    }
+    println!("cargo:warning=------------------------------------------");
+}
+
+fn flatten_keys(prefix: &str, value: &Value, keys: &mut HashSet<String>) {
+    match value {
+        Value::Table(table) => {
+            for (k, v) in table {
+                let new_key = if prefix.is_empty() {
+                    k.clone()
+                } else {
+                    format!("{}.{}", prefix, k)
+                };
+                flatten_keys(&new_key, v, keys);
+            }
+        }
+        Value::String(_) | Value::Integer(_) | Value::Float(_) | Value::Boolean(_) | Value::Datetime(_) => {
+            if !prefix.is_empty() {
+                keys.insert(prefix.to_string());
+            }
+        }
+        Value::Array(arr) => {
+            for (i, v) in arr.iter().enumerate() {
+                let new_key = format!("{}[{}]", prefix, i);
+                flatten_keys(&new_key, v, keys);
+            }
         }
     }
 }

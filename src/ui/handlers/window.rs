@@ -1,12 +1,22 @@
 use slint::ComponentHandle;
 use crate::AppWindow;
+use tracing::info;
 
 pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>) {
     let ah = app_handle.clone();
-    app.on_window_close(move || {
+    app.window().on_close_requested(move || {
         if let Some(app) = ah.upgrade() {
-            let _ = app.hide();
+            if app.get_tray_close_to_tray() {
+                info!("Close requested, hiding window to tray...");
+                app.set_is_window_visible(false);
+                crate::app::window::set_skip_taskbar(&app, true);
+                return slint::CloseRequestResponse::KeepWindowShown;
+            } else {
+                info!("Close requested, quitting...");
+                let _ = slint::quit_event_loop();
+            }
         }
+        slint::CloseRequestResponse::HideWindow
     });
 
     let ah = app_handle.clone();
@@ -22,6 +32,20 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>) {
             let is_max = app.get_is_maximized();
             app.set_is_maximized(!is_max);
             app.window().set_maximized(!is_max);
+        }
+    });
+
+    let ah = app_handle.clone();
+    app.on_window_close(move || {
+        if let Some(app) = ah.upgrade() {
+            if app.get_tray_close_to_tray() {
+                info!("Title bar close clicked, hiding window to tray...");
+                app.set_is_window_visible(false);
+                crate::app::window::set_skip_taskbar(&app, true);
+            } else {
+                info!("Title bar close clicked, quitting...");
+                let _ = slint::quit_event_loop();
+            }
         }
     });
 

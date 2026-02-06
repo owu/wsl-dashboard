@@ -4,6 +4,10 @@ import { SidebarItem } from "common.slint";
 export component Sidebar inherits Rectangle {
     in-out property <bool> collapsed: false;
     in property <int> selected_tab: 0;
+    in property <string> home_text: "";
+    in property <string> add_text: "";
+    in property <string> settings_text: "";
+    in property <string> about_text: "";
     
     // Callbacks to bubble up
     callback tab_selected(int);
@@ -54,7 +58,7 @@ export component Sidebar inherits Rectangle {
 
         SidebarItem {
             icon: "\u{E80F}";
-            text: AppI18n.t("sidebar.home", [AppI18n.version]);
+            text: root.home_text;
             selected: selected_tab == 0;
             collapsed: root.collapsed;
             clicked => {
@@ -64,7 +68,7 @@ export component Sidebar inherits Rectangle {
 
         SidebarItem {
             icon: "\u{E710}";
-            text: AppI18n.t("sidebar.add", [AppI18n.version]);
+            text: root.add_text;
             selected: selected_tab == 1;
             collapsed: root.collapsed;
             clicked => {
@@ -89,7 +93,7 @@ export component Sidebar inherits Rectangle {
 
         SidebarItem {
             icon: "\u{E713}";
-            text: AppI18n.t("sidebar.settings", [AppI18n.version]);
+            text: root.settings_text;
             selected: selected_tab == 5;
             collapsed: root.collapsed;
             clicked => {
@@ -98,8 +102,8 @@ export component Sidebar inherits Rectangle {
         }
 
         SidebarItem {
-            icon: "\u{E946}";
-            text: AppI18n.t("sidebar.about", [AppI18n.version]);
+            icon: "\u{E9ce}";
+            text: root.about_text;
             selected: selected_tab == 6;
             collapsed: root.collapsed;
             clicked => {

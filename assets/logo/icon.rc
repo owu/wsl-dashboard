@@ -1,10 +1,10 @@
 #include <windows.h>
 
-IDI_ICON1 ICON "logo.ico"
+1 ICON "logo.ico"
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,2,3,0
- PRODUCTVERSION 0,2,3,0
+ FILEVERSION 0,3,0,0
+ PRODUCTVERSION 0,3,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -21,13 +21,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "WSL Dashboard"
             VALUE "FileDescription", "WSL Dashboard - Management Tool for WSL"
-            VALUE "FileVersion", "0.2.3.0"
+            VALUE "FileVersion", "0.3.0.0"
             VALUE "InternalName", "wsldashboard"
             VALUE "LegalCopyright", "2026 WSL Dashboard. All rights reserved."
             VALUE "LegalTrademarks", "https://github.com/owu/wsl-dashboard"
             VALUE "OriginalFilename", "wsldashboard.exe"
             VALUE "ProductName", "WSL Dashboard"
-            VALUE "ProductVersion", "0.2.3.0"
+            VALUE "ProductVersion", "0.3.0.0"
         END
     END
     BLOCK "VarFileInfo"

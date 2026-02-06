@@ -1,3 +1,4 @@
+pub mod decoder;
 pub mod executor;
 pub mod command;
 pub mod parser;

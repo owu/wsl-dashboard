@@ -1,6 +1,7 @@
-import { Theme, AppInfo, AppI18n } from "../theme.slint";
+import { Theme, AppInfo, AppI18n, AboutStrings } from "../theme.slint";
 
 export component AboutView inherits VerticalLayout {
+    in property <AboutStrings> strings;
     spacing: 20px;
     padding-left: 4px;
     padding-right: 16px;
@@ -20,15 +21,17 @@ export component AboutView inherits VerticalLayout {
             VerticalLayout {
                 spacing: 24px;
                 Text {
-                    text: AppI18n.t("about.title", [AppI18n.version]);
+                    text: root.strings.title;
                     font-size: 14px;
+                    font-family: Theme.default_font;
                     font-weight: 500;
                     color: Theme.text_primary;
                 }
 
                 Text {
-                    text: AppI18n.t("about.description", [AppI18n.version]);
+                    text: root.strings.description;
                     font-size: 14px;
+                    font-family: Theme.default_font;
                     color: Theme.text_secondary;
                     wrap: word-wrap;
                     min-height: 80px;
@@ -45,8 +48,9 @@ export component AboutView inherits VerticalLayout {
                 VerticalLayout {
                     spacing: 6px;
                     Text {
-                        text: AppI18n.t("about.version", [AppI18n.version]);
+                        text: root.strings.version;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         font-weight: 500;
                         color: Theme.text_primary;
                     }
@@ -57,6 +61,7 @@ export component AboutView inherits VerticalLayout {
                         Text {
                             text: "v" + AppInfo.version;
                             font-size: 13px;
+                            font-family: Theme.default_font;
                             color: Theme.text_secondary;
                             TouchArea {
                                 mouse-cursor: pointer;
@@ -67,13 +72,15 @@ export component AboutView inherits VerticalLayout {
                         }
 
                         if (AppInfo.checking_update): Text {
-                            text: "(" + AppI18n.t("about.check_update", [AppI18n.version]) + ")";
+                            text: "(" + root.strings.check_update + ")";
                             font-size: 12px;
+                            font-family: Theme.default_font;
                             color: Theme.accent;
                         }
                         if (!AppInfo.checking_update && AppInfo.has_update): Text {
                             text: "(" + AppI18n.t("about.new_version", [AppInfo.latest_version, AppI18n.version]) + ")";
                             font-size: 12px;
+                            font-family: Theme.default_font;
                             color: #FF4D4F;
                             TouchArea {
                                 mouse-cursor: pointer;
@@ -88,8 +95,9 @@ export component AboutView inherits VerticalLayout {
                 VerticalLayout {
                     spacing: 6px;
                     Text {
-                        text: AppI18n.t("about.homepage", [AppI18n.version]);
+                        text: root.strings.website;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         font-weight: 500;
                         color: Theme.text_primary;
                     }
@@ -97,6 +105,7 @@ export component AboutView inherits VerticalLayout {
                     Text {
                         text: AppInfo.homepage;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.accent;
                         TouchArea {
                             mouse-cursor: pointer;
@@ -110,8 +119,9 @@ export component AboutView inherits VerticalLayout {
                 VerticalLayout {
                     spacing: 6px;
                     Text {
-                        text: AppI18n.t("about.issues", [AppI18n.version]);
+                        text: root.strings.issues;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.text_primary;
                         TouchArea {
                             mouse-cursor: pointer;
@@ -125,8 +135,9 @@ export component AboutView inherits VerticalLayout {
                 VerticalLayout {
                     spacing: 6px;
                     Text {
-                        text: AppI18n.t("about.discussions", [AppI18n.version]);
+                        text: root.strings.discussions;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.text_primary;
                         TouchArea {
                             mouse-cursor: pointer;

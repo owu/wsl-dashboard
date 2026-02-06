@@ -55,67 +55,55 @@ pub async fn detect_fastest_source(_executor: &WslCommandExecutor) -> bool {
 
 pub async fn get_distro_information(executor: &WslCommandExecutor, distro_name: &str) -> WslCommandResult<WslInformation> {
     let distro_name_owned = distro_name.to_string();
-    
-    // Get registry information and VHDX size
-    let ps_script = format!(r#"
-        $distro = "{}"
-        $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss"
-        $subkeys = Get-ChildItem $regPath -ErrorAction SilentlyContinue
-        
-        $res = @{{
-            distro_name = $distro
-            wsl_version = "Unknown"
-            install_location = "Unknown"
-            vhdx_path = "Unknown"
-            vhdx_size = "0 GB"
-            package_family_name = ""
-        }}
-
-        foreach ($subkey in $subkeys) {{
-            $props = Get-ItemProperty $subkey.PSPath -ErrorAction SilentlyContinue
-            if ($props.DistributionName -eq $distro) {{
-                $res.install_location = $props.BasePath
-                $res.wsl_version = if ($props.Version -eq 2) {{ "WSL2" }} else {{ "WSL1" }}
-                $res.package_family_name = if ($props.PackageFamilyName) {{ $props.PackageFamilyName }} else {{ "" }}
-                
-                $vhdxPaths = @(
-                    (Join-Path $props.BasePath "ext4.vhdx"),
-                    (Join-Path $props.BasePath "LocalState\ext4.vhdx")
-                )
-                foreach ($p in $vhdxPaths) {{
-                    if (Test-Path $p) {{
-                        $res.vhdx_path = $p
-                        $size = (Get-Item $p).Length
-                        $res.vhdx_size = "$([math]::Round($size / 1GB, 2)) GB"
-                        break
-                    }}
-                }}
-                break
-            }}
-        }}
-        $res | ConvertTo-Json
-    "#, distro_name_owned);
-
-    let mut cmd = tokio::process::Command::new("powershell");
-    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
-    #[cfg(windows)]
-    {
-        #[allow(unused_imports)]
-        use std::os::windows::process::CommandExt;
-        cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
-    }
-
     let mut information = WslInformation::default();
     information.distro_name = distro_name_owned.clone();
 
-    if let Ok(output) = cmd.output().await {
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(&stdout) {
-            information.wsl_version = parsed["wsl_version"].as_str().unwrap_or("Unknown").to_string();
-            information.install_location = parsed["install_location"].as_str().unwrap_or("Unknown").to_string();
-            information.vhdx_path = parsed["vhdx_path"].as_str().unwrap_or("Unknown").to_string();
-            information.vhdx_size = parsed["vhdx_size"].as_str().unwrap_or("0 GB").to_string();
-            information.package_family_name = parsed["package_family_name"].as_str().unwrap_or("").to_string();
+    // Use native registry access instead of PowerShell
+    let distros_reg = crate::utils::registry::get_wsl_distros_from_reg();
+    if let Some(reg_info) = distros_reg.into_iter().find(|d| d.name == distro_name_owned) {
+        information.install_location = reg_info.base_path.clone();
+        information.wsl_version = format!("WSL{}", reg_info.version);
+        information.package_family_name = reg_info.package_family_name;
+
+        // VHDX Logic (ported from PS heuristic)
+        if reg_info.version == 2 {
+            let base_path = std::path::PathBuf::from(&reg_info.base_path);
+            let mut vhdx_path = None;
+
+            // Common locations
+            let probe_paths = vec![
+                base_path.join("ext4.vhdx"),
+                base_path.join("LocalState\\ext4.vhdx"),
+            ];
+
+            for p in probe_paths {
+                if p.exists() {
+                    vhdx_path = Some(p);
+                    break;
+                }
+            }
+
+            // Fallback: search in base path
+            if vhdx_path.is_none() && base_path.exists() {
+                if let Ok(entries) = std::fs::read_dir(&base_path) {
+                    for entry in entries.flatten() {
+                        if let Ok(file_type) = entry.file_type() {
+                            if file_type.is_file() && entry.path().extension().map_or(false, |ext| ext == "vhdx") {
+                                vhdx_path = Some(entry.path());
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if let Some(p) = vhdx_path {
+                information.vhdx_path = p.to_string_lossy().to_string();
+                if let Ok(metadata) = std::fs::metadata(p) {
+                    let size_gb = metadata.len() as f64 / (1024.0 * 1024.0 * 1024.0);
+                    information.vhdx_size = format!("{:.2} GB", size_gb);
+                }
+            }
         }
     }
 
@@ -162,38 +150,14 @@ pub async fn get_distro_information(executor: &WslCommandExecutor, distro_name: 
     WslCommandResult::success(String::new(), Some(information))
 }
 
-#[allow(dead_code)]
 pub async fn get_distro_install_location(_executor: &WslCommandExecutor, distro_name: &str) -> WslCommandResult<String> {
-    let distro_name_owned = distro_name.to_string();
-    
-    // Minimal PowerShell script to only get the BasePath (install location)
-    let ps_script = format!(r#"
-        $distro = "{}"
-        $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss"
-        $subkeys = Get-ChildItem $regPath -ErrorAction SilentlyContinue
-        foreach ($subkey in $subkeys) {{
-            $props = Get-ItemProperty $subkey.PSPath -ErrorAction SilentlyContinue
-            if ($props.DistributionName -eq $distro) {{
-                $props.BasePath
-                break
-            }}
-        }}
-    "#, distro_name_owned);
-
-    let mut cmd = tokio::process::Command::new("powershell");
-    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
-    #[cfg(windows)]
-    {
-        // use std::os::windows::process::CommandExt;
-        cmd.creation_flags(0x08000000); // CREATE_NO_WINDOW
-    }
-
-    if let Ok(output) = cmd.output().await {
-        let location = String::from_utf8_lossy(&output.stdout).trim().to_string();
-        if !location.is_empty() {
-            return WslCommandResult::success(String::new(), Some(location));
+    // Replace minimal PowerShell script with native registry access
+    let distros_reg = crate::utils::registry::get_wsl_distros_from_reg();
+    if let Some(reg_info) = distros_reg.into_iter().find(|d| d.name == distro_name) {
+        if !reg_info.base_path.is_empty() {
+            return WslCommandResult::success(String::new(), Some(reg_info.base_path));
         }
     }
 
-    WslCommandResult::error("".into(), "Failed to get install location".into())
+    WslCommandResult::error("".into(), "Failed to find install location in registry".into())
 }

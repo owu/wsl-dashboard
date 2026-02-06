@@ -1,4 +1,4 @@
-import { Theme, AppI18n } from "../theme.slint";
+import { Theme, AppI18n, SettingsStrings } from "../theme.slint";
 import { CustomScrollbar } from "../components/scrollbar.slint";
 import {
     CustomLineEdit,
@@ -15,7 +15,12 @@ export component SettingsView inherits Rectangle {
     in-out property <int> log_days: 7;
     in-out property <int> check_update_interval: 7;
     in-out property <bool> auto_shutdown: false;
-    private property <bool> open-dropdown: combo-lang.open-dropdown || combo-log.open-dropdown || combo-log-retention.open-dropdown || combo-update.open-dropdown;
+    in-out property <bool> tray_autostart: false;
+    in-out property <bool> tray_start_minimized: false;
+    in-out property <bool> tray_close_to_tray: true;
+    in property <SettingsStrings> strings;
+    
+    private property <bool> open-dropdown: combo-lang.open-dropdown || combo-update.open-dropdown || combo-log.open-dropdown || combo-log-retention.open-dropdown;
 
     // Language support configuration
     private property <[string]> language-options: [
@@ -53,39 +58,9 @@ export component SettingsView inherits Rectangle {
         AppI18n.t("settings.update_options.biweekly", [AppI18n.version]),
         AppI18n.t("settings.update_options.monthly", [AppI18n.version])
     ];
-       
-    // Calculate selected index based on check_update_interval
-    pure function get-check-update-index(days: int) -> int {
-        if (days == 1) {
-            return 0;
-        }
-        if (days == 7) {
-            return 1;
-        }
-        if (days == 15) {
-            return 2;
-        }
-        if (days == 30) {
-            return 3;
-        }
-        return 1;
-    }
-
-    // Calculate selected index based on log_days
-    pure function get-log-days-index(days: int) -> int {
-        if (days == 7) {
-            return 0;
-        }
-        if (days == 15) {
-            return 1;
-        }
-        if (days == 30) {
-            return 2;
-        }
-        return 0;
-    }
-    
-    // Calculate selected index based on ui_language
+    property <int> selected-language-index: get-language-index(ui_language);
+    property <int> selected-log-level-index: get-log-level-index(log_level);
+    property <int> selected-check-update-index: get-check-update-index(check_update_interval);
     pure function get-language-index(lang: string) -> int {
         if (lang == "en") {
             return 1;
@@ -129,24 +104,50 @@ export component SettingsView inherits Rectangle {
         if (lang == "tr") {
             return 14;
         }
+        return 0; // auto
+    }
+    pure function get-log-level-index(level: int) -> int {
+        if (level >= 1 && level <= 5) {
+            return level - 1;
+        }
+        return 2;
+    }
+    pure function get-check-update-index(interval: int) -> int {
+        if (interval == 1) {
+            return 0;
+        }
+        if (interval == 7) {
+            return 1;
+        }
+        if (interval == 15) {
+            return 2;
+        }
+        if (interval == 30) {
+            return 3;
+        }
+        return 1;
+    }
+    pure function get-log-days-index(days: int) -> int {
+        if (days == 30) {
+            return 2;
+        }
+        if (days == 15) {
+            return 1;
+        }
         return 0;
     }
-    
-    // Intermediate mutable property for ComboBox
-    property <int> selected-language-index: get-language-index(ui_language);
-    property <int> selected-check-update-index: get-check-update-index(check_update_interval);
     callback save-settings();
     callback select-distro-folder();
     callback select-logs-folder();
-    background: transparent;
     VerticalLayout {
-        spacing: 0;
-        
-        // Configuration form area (with scroll)
-        content-wrapper := Rectangle {
+        padding: 0px;
+        spacing: 0px;
+
+        // Content Area
+        Rectangle {
             vertical-stretch: 1;
             background: transparent;
-            z: 1; // Ensure this and its children stay above the Save button area
+            z: 1;
             clip: true;
             flickable := Flickable {
                 viewport-height: content-layout.preferred-height;
@@ -157,8 +158,8 @@ export component SettingsView inherits Rectangle {
                     padding-left: 4px;
                     padding-right: 16px;
                     padding-top: 4px;
-                    padding-bottom: 4px; // Minimal padding
-                    spacing: 10px; // Reduced as we flattened layout
+                    padding-bottom: 4px;
+                    spacing: 10px;
                     alignment: start;
 
                     // 1. Software language and Update check
@@ -175,8 +176,9 @@ export component SettingsView inherits Rectangle {
                                     min-width: 0;
                                     spacing: 10px;
                                     Text {
-                                        text: AppI18n.t("settings.language", [AppI18n.version]);
+                                        text: root.strings.language;
                                         font-size: 13px;
+                                        font-family: Theme.default_font;
                                         color: Theme.text_secondary;
                                     }
 
@@ -227,8 +229,9 @@ export component SettingsView inherits Rectangle {
                                     min-width: 0;
                                     spacing: 10px;
                                     Text {
-                                        text: AppI18n.t("settings.update_interval", [AppI18n.version]);
+                                        text: root.strings.auto_update;
                                         font-size: 13px;
+                                        font-family: Theme.default_font;
                                         color: Theme.text_secondary;
                                     }
 
@@ -256,47 +259,49 @@ export component SettingsView inherits Rectangle {
 
                     Rectangle {
                         height: 7px;
-                    } // Spacer
+                    } 
 
-                    // 2. Log level and Retention days
+                    // 2. Log level and Retention
                     Rectangle {
                         z: 40;
                         height: log-grid.preferred-height;
                         log-grid := GridLayout {
                             spacing: 12px;
                             Row {
-                                // Column 1: Log Level
+                                // Column 1: Log level
                                 VerticalLayout {
                                     horizontal-stretch: 1;
-                                    preferred-width: 0; // Force layout to ignore internal content width
+                                    preferred-width: 0;
                                     min-width: 0;
                                     spacing: 10px;
                                     Text {
-                                        text: AppI18n.t("settings.log_level", [AppI18n.version]);
+                                        text: root.strings.log_level;
                                         font-size: 13px;
+                                        font-family: Theme.default_font;
                                         color: Theme.text_secondary;
                                     }
 
                                     combo-log := CustomComboBox {
                                         model: root.log-level-options;
-                                        current-index: root.log-level - 1;
+                                        current-index <=> root.selected-log-level-index;
                                         height: 32px;
-                                        dropdown-height: 100px;
+                                        dropdown-height: 130px;
                                         selected(idx) => {
-                                            root.log-level = idx + 1;
+                                            root.log_level = idx + 1;
                                         }
                                     }
                                 }
 
-                                // Column 2: Retention Days
+                                // Column 2: Log retention days
                                 VerticalLayout {
                                     horizontal-stretch: 1;
-                                    preferred-width: 0; // Force layout to ignore internal content width
+                                    preferred-width: 0;
                                     min-width: 0;
                                     spacing: 10px;
                                     Text {
-                                        text: AppI18n.t("settings.log_retention_days", [AppI18n.version]);
+                                        text: root.strings.log_retention;
                                         font-size: 13px;
+                                        font-family: Theme.default_font;
                                         color: Theme.text_secondary;
                                     }
 
@@ -322,12 +327,13 @@ export component SettingsView inherits Rectangle {
 
                     Rectangle {
                         height: 7px;
-                    } // Spacer
+                    } 
 
                     // 3. Log path
                     Text {
-                        text: AppI18n.t("settings.log_path", [AppI18n.version]);
+                        text: root.strings.log_path;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.text_secondary;
                     }
 
@@ -340,7 +346,7 @@ export component SettingsView inherits Rectangle {
                         }
 
                         CustomButton {
-                            text: AppI18n.t("settings.select_folder", [AppI18n.version]);
+                            text: root.strings.select_folder;
                             height: 32px;
                             clicked => {
                                 root.select-logs-folder();
@@ -350,13 +356,13 @@ export component SettingsView inherits Rectangle {
 
                     Rectangle {
                         height: 7px;
-                    } // Spacer
-
+                    } 
 
                     // 5. Default distribution installation directory
                     Text {
-                        text: AppI18n.t("settings.distro_dir", [AppI18n.version]);
+                        text: root.strings.install_dir;
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.text_secondary;
                     }
 
@@ -369,7 +375,7 @@ export component SettingsView inherits Rectangle {
                         }
 
                         CustomButton {
-                            text: AppI18n.t("settings.select_folder", [AppI18n.version]);
+                            text: root.strings.select_folder;
                             height: 32px;
                             clicked => {
                                 root.select-distro-folder();
@@ -379,12 +385,27 @@ export component SettingsView inherits Rectangle {
 
                     Rectangle {
                         height: 7px;
-                    } // Spacer
+                    } 
                     
-                    // 6. Automatically close subsystem when exiting
+                    // 6. Automatically close subsystem
                     CustomCheckBox {
                         checked <=> root.auto_shutdown;
-                        text: AppI18n.t("settings.auto_shutdown_msg", [AppI18n.version]);
+                        text: root.strings.auto_close;
+                    }
+
+                    CustomCheckBox {
+                        checked <=> root.tray_autostart;
+                        text: root.strings.auto_start;
+                    }
+
+                    CustomCheckBox {
+                        checked <=> root.tray_start_minimized;
+                        text: root.strings.minimize_tray;
+                    }
+
+                    CustomCheckBox {
+                        checked <=> root.tray_close_to_tray;
+                        text: root.strings.close_to_tray;
                     }
                 }
             }
@@ -410,7 +431,7 @@ export component SettingsView inherits Rectangle {
             padding-right: 16px;
             alignment: end;
             CustomButton {
-                text: AppI18n.t("settings.save", [AppI18n.version]);
+                text: root.strings.save;
                 primary: true;
                 height: 32px;
                 clicked => {

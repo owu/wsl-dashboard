@@ -1,5 +1,5 @@
-import { Button } from "std-widgets.slint";
 import { Theme, AppI18n } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
 
 export component StoreInstallWarnDialog inherits Rectangle {
     callback confirm;
@@ -22,6 +22,7 @@ export component StoreInstallWarnDialog inherits Rectangle {
             Text {
                 text: AppI18n.t("dialog.store_warn_title", [AppI18n.version]);
                 font-size: 18px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 color: Theme.text_primary;
             }
@@ -29,6 +30,7 @@ export component StoreInstallWarnDialog inherits Rectangle {
             Text {
                 text: AppI18n.t("dialog.store_warn_msg", [AppI18n.version]);
                 font-size: 14px;
+                font-family: Theme.default_font;
                 color: Theme.text_primary;
                 wrap: word-wrap;
             }
@@ -40,7 +42,7 @@ export component StoreInstallWarnDialog inherits Rectangle {
             HorizontalLayout {
                 alignment: end;
                 spacing: 12px;
-                Button {
+                CustomButton {
                     text: AppI18n.t("dialog.store_exit", [AppI18n.version]);
                     height: 32px;
                     clicked => {
@@ -48,7 +50,7 @@ export component StoreInstallWarnDialog inherits Rectangle {
                     }
                 }
 
-                Button {
+                CustomButton {
                     text: AppI18n.t("dialog.store_continue", [AppI18n.version]);
                     height: 32px;
                     primary: true;

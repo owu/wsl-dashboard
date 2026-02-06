@@ -17,6 +17,7 @@ export component CustomLineEdit inherits Rectangle {
         input-focus := TextInput {
             text <=> root.text;
             color: Theme.text_primary;
+            font-family: Theme.default_font;
             vertical-alignment: center;
             single-line: true;
             enabled: root.enabled;
@@ -29,9 +30,10 @@ export component CustomLineEdit inherits Rectangle {
         }
     }
 
-    if (root.text == "" && root.placeholder-text != ""): Text {
+    Text {
         text: root.placeholder-text;
-        color: Theme.text_secondary;
+        color: (root.text == "" && root.placeholder-text != "") ? Theme.text_secondary : transparent;
+        font-family: Theme.default_font;
         vertical-alignment: center;
         x: 8px;
     }
@@ -42,14 +44,16 @@ export component CustomComboBox inherits Rectangle {
     in-out property <int> current-index;
     in-out property <bool> open-dropdown: false;
     in property <length> dropdown-height: 160px;
+    in property <bool> enabled: true;
     callback selected(int);
     height: 32px;
+    opacity: root.enabled ? 1.0 : 0.6;
     
     // Main Box
     Rectangle {
-        background: Theme.input_bg;
+        background: root.enabled ? Theme.input_bg : Theme.hover_bg;
         border-width: 1px;
-        border-color: Theme.input_border;
+        border-color: root.enabled ? Theme.input_border : Theme.border_color;
         border-radius: 4px;
         width: 100%;
         height: 100%;
@@ -60,6 +64,7 @@ export component CustomComboBox inherits Rectangle {
             Text {
                 text: root.model[root.current-index];
                 color: Theme.text_primary;
+                font-family: Theme.default_font;
                 vertical-alignment: center;
                 horizontal-stretch: 1;
                 overflow: elide;
@@ -75,6 +80,7 @@ export component CustomComboBox inherits Rectangle {
         }
 
         TouchArea {
+            enabled: root.enabled;
             clicked => {
                 root.open-dropdown = !root.open-dropdown;
             }
@@ -120,6 +126,7 @@ export component CustomComboBox inherits Rectangle {
                     Text {
                         text: item;
                         color: Theme.text_primary;
+                        font-family: Theme.default_font;
                         vertical-alignment: center;
                         x: 8px;
                     }
@@ -165,15 +172,15 @@ export component CustomCheckBox inherits Rectangle {
             border-radius: 3px;
 
             // Checkmark
-            if (root.checked): Text {
-                text: "✔";
-                color: #FFFFFF;
-                font-size: 13px;
-                font-weight: 400;
+            // Checkmark using Path for better performance and check without font issues
+            Path {
                 width: 100%;
                 height: 100%;
-                horizontal-alignment: center;
-                vertical-alignment: center;
+                // Simple checkmark path centered in 18x18 box
+                commands: "M 4 9 L 7 12 L 14 5";
+                stroke: #FFFFFF;
+                stroke-width: 1.5px;
+                opacity: root.checked ? 1 : 0;
             }
         }
 
@@ -181,6 +188,7 @@ export component CustomCheckBox inherits Rectangle {
         Text {
             text: root.text;
             font-size: 13px;
+            font-family: Theme.default_font;
             color: Theme.text_primary;
             vertical-alignment: center;
             wrap: word-wrap;
@@ -213,6 +221,7 @@ export component CustomButton inherits Rectangle {
         Text {
             text: root.text;
             color: root.primary ? #FFFFFF : Theme.text_primary;
+            font-family: Theme.default_font;
             vertical-alignment: center;
             horizontal-alignment: center;
         }

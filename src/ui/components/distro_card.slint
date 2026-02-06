@@ -6,7 +6,8 @@ export component DistroCard inherits Rectangle {
     in-out property <bool> show_settings: false;
     in property <bool> show_rootfs_help: false;
     in property <Distro> distro;
-    in-out property <bool> expanded: false;
+    // Changed to in property, controlled by parent
+    in property <bool> expanded: false;
     in property <bool> sole_distro: false;
     callback start_clicked;
     callback stop_clicked;
@@ -21,7 +22,11 @@ export component DistroCard inherits Rectangle {
     callback clone_clicked;
     callback move_clicked;
     callback information_clicked;
+    // New callback for expand toggle
+    callback expand_clicked;
     height: expanded ? 96px : 48px;
+    // Enable clip to hide expanded content when collapsed
+    clip: true;
     background: (distro.is_default && !sole_distro) ? (Theme.dark_mode ? #2b3c4e : #e6f4ff98) : Theme.card_bg;
     border-radius: 6px;
     border-width: 1px;
@@ -106,13 +111,14 @@ export component DistroCard inherits Rectangle {
                         text: distro.name;
                         font-size: 14px;
                         font-family: Theme.default_font;
-                        font-weight: 600;
+                        font-weight: 500;
                         color: Theme.text_primary;
                     }
 
                     Text {
                         text: (distro.status == "Running") ? AppI18n.t("distro.running", [AppI18n.version]) : AppI18n.t("distro.stopped", [AppI18n.version]);
                         font-size: 11px;
+                        font-family: Theme.default_font;
                         color: Theme.text_secondary;
                     }
                 }
@@ -158,13 +164,15 @@ export component DistroCard inherits Rectangle {
                     is_font_icon: true;
                     tooltip: expanded ? AppI18n.t("distro.collapse", [AppI18n.version]) : AppI18n.t("distro.expand", [AppI18n.version]);
                     clicked => {
-                        root.expanded = !root.expanded;
+                        root.expand_clicked();
                     }
                 }
             }
         }
 
-        if (expanded): Rectangle {
+        // Expanded content - removed if() to prevent memory leaks, using clip+opacity instead
+        Rectangle {
+            opacity: root.expanded ? 1 : 0;
             background: transparent;
             height: 48px;
             clip: true;
@@ -270,6 +278,7 @@ export component DistroCard inherits Rectangle {
             text: distro.distro_display_name;
             color: Theme.text_primary;
             font-size: 12px;
+            font-family: Theme.default_font;
             font-weight: 500;
             horizontal-alignment: center;
             vertical-alignment: center;

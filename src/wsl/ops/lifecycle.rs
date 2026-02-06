@@ -1,7 +1,6 @@
 use tokio::task;
 use tokio::process::Command;
 use tracing::{info, warn, error};
-use serde_json;
 use crate::wsl::executor::WslCommandExecutor;
 use crate::wsl::models::WslCommandResult;
 use crate::config::ConfigManager;
@@ -61,86 +60,22 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
     info!("Operation: Delete WSL distribution - {}", distro_name);
     
     // 1. Determine PackageFamilyName and if it's the only instance before unregistering
-    let ps_script = format!(r#"
-        $distro = "{}"
-        $regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss"
-        $subkeys = Get-ChildItem $regPath -ErrorAction SilentlyContinue
-        
-        $targetPfn = ""
-        $pfnCounts = @{{}}
-        
-        # First Pass: Identify the target's PFN and all Pfns in use
-        foreach ($subkey in $subkeys) {{
-            $props = Get-ItemProperty $subkey.PSPath -ErrorAction SilentlyContinue
-            $pfn = ""
-            
-            if ($props.PackageFamilyName) {{
-                $pfn = $props.PackageFamilyName.Trim()
-            }} elseif ($props.BasePath -match "LocalState$") {{
-                # Heuristic: Find PFN in BasePath if registry key is missing
-                if ($props.BasePath -match "Packages\\([^\\]+)\\LocalState") {{
-                    $pfn = $matches[1]
-                }}
-            }}
-            
-            if ($pfn) {{
-                $pfnCounts[$pfn] = [int]$pfnCounts[$pfn] + 1
-                if ($props.DistributionName.Trim() -eq $distro) {{
-                    $targetPfn = $pfn
-                }}
-            }}
-        }}
-        
-        $shouldRemove = $false
-        if ($targetPfn -and ($pfnCounts[$targetPfn] -eq 1)) {{
-            $shouldRemove = $true
-        }}
-        
-        @{{ pfn = $targetPfn; should_remove = $shouldRemove }} | ConvertTo-Json
-    "#, distro_name);
-
-    let mut cmd = Command::new("powershell");
-    cmd.args(&["-NoProfile", "-NonInteractive", "-Command", &ps_script]);
-    #[cfg(windows)]
-    {
-        const CREATE_NO_WINDOW: u32 = 0x08000000;
-        cmd.creation_flags(CREATE_NO_WINDOW);
-        // Set kill_on_drop so the process is terminated if wait_with_output times out and the future is dropped
-        cmd.kill_on_drop(true);
-    }
-
-    let mut pfn_to_remove = None;
+    // Use native registry access instead of slow PowerShell
+    let all_distros_reg = crate::utils::registry::get_wsl_distros_from_reg();
+    let target_distro_info = all_distros_reg.iter().find(|d| d.name == distro_name);
     
-    // Spawn and wait for output with timeout
-    let output_res = tokio::time::timeout(
-        std::time::Duration::from_secs(15), 
-        async {
-            match cmd.spawn() {
-                Ok(child) => child.wait_with_output().await,
-                Err(e) => Err(std::io::Error::new(std::io::ErrorKind::Other, e)),
+    let mut pfn_to_remove = None;
+    if let Some(info) = target_distro_info {
+        let pfn = &info.package_family_name;
+        if !pfn.is_empty() {
+            // Count how many distros use this same PFN
+            let pfn_count = all_distros_reg.iter().filter(|d| &d.package_family_name == pfn).count();
+            if pfn_count == 1 {
+                pfn_to_remove = Some(pfn.clone());
+                info!("Distribution '{}' is associated with package '{}' and is the only instance using it.", distro_name, pfn);
+            } else {
+                info!("Distribution '{}' is associated with package '{}', but {} other instances still use this launcher.", distro_name, pfn, pfn_count - 1);
             }
-        }
-    ).await;
-
-    match output_res {
-        Ok(Ok(output)) => {
-            let stdout = String::from_utf8_lossy(&output.stdout);
-            if let Ok(parsed) = serde_json::from_str::<serde_json::Value>(&stdout) {
-                let pfn = parsed["pfn"].as_str().unwrap_or("").to_string();
-                let should_remove = parsed["should_remove"].as_bool().unwrap_or(false);
-                if !pfn.is_empty() && should_remove {
-                    pfn_to_remove = Some(pfn);
-                    info!("Distribution '{}' is associated with package '{}' and is the only instance using it.", distro_name, pfn_to_remove.as_ref().unwrap());
-                } else if !pfn.is_empty() {
-                    info!("Distribution '{}' is associated with package '{}', but other instances still use this launcher.", distro_name, pfn);
-                }
-            }
-        }
-        Ok(Err(e)) => {
-            warn!("Failed to get output from PowerShell PFN detection: {}", e);
-        }
-        Err(_) => {
-            warn!("PowerShell PFN detection timed out after 15s (process killed by kill_on_drop)");
         }
     }
 

@@ -1,5 +1,5 @@
-import { Button } from "std-widgets.slint";
 import { Theme, AppI18n } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
 
 export component MessageDialog inherits Rectangle {
     in property <string> message;
@@ -23,6 +23,7 @@ export component MessageDialog inherits Rectangle {
         Text {
             text: AppI18n.t("dialog.info", [AppI18n.version]);
             font-size: 16px;
+            font-family: Theme.default_font;
             font-weight: 500;
             color: Theme.text_primary;
         }
@@ -32,6 +33,7 @@ export component MessageDialog inherits Rectangle {
             Text {
                 text: message;
                 font-size: 14px;
+                font-family: Theme.default_font;
                 color: Theme.text_primary;
                 wrap: word-wrap;
                 horizontal-alignment: left;
@@ -49,6 +51,7 @@ export component MessageDialog inherits Rectangle {
                     link_text_item := Text {
                         text: root.link_text;
                         font-size: 14px;
+                        font-family: Theme.default_font;
                         color: parent.has-hover ? Theme.accent.brighter(20%) : Theme.accent;
                         font-italic: true;
                         font-weight: 500;
@@ -69,6 +72,7 @@ export component MessageDialog inherits Rectangle {
                     action_text_item := Text {
                         text: root.action_text;
                         font-size: 14px;
+                        font-family: Theme.default_font;
                         color: parent.has-hover ? Theme.accent.brighter(20%) : Theme.accent;
                         font-italic: true;
                         font-weight: 500;
@@ -81,10 +85,11 @@ export component MessageDialog inherits Rectangle {
 
         HorizontalLayout {
             alignment: center;
-            Button {
+            CustomButton {
                 text: AppI18n.t("dialog.confirm", [AppI18n.version]);
                 height: 32px;
                 width: 100px;
+                primary: true;
                 clicked => {
                     root.close();
                 }

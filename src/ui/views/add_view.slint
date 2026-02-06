@@ -1,5 +1,10 @@
-import { Button, LineEdit, ComboBox } from "std-widgets.slint";
 import { Theme, AppI18n } from "../theme.slint";
+import {
+    CustomButton,
+    CustomLineEdit,
+    CustomComboBox,
+    CustomCheckBox,
+} from "../components/form_widgets.slint";
 
 export component AddInstanceView inherits VerticalLayout {
     spacing: 12px;
@@ -47,20 +52,22 @@ export component AddInstanceView inherits VerticalLayout {
 
         // Source type
         VerticalLayout {
+            z: 100; // Ensure dropdown is above other elements
             spacing: 0px;
             Text {
                 text: AppI18n.t("add.source_type", [AppI18n.version]);
                 font-size: 13px;
+                font-family: Theme.default_font;
                 color: Theme.text_secondary;
                 height: 16px;
             }
 
-            ComboBox {
+            CustomComboBox {
                 model: root.install_sources;
                 current-index <=> root.selected_source_idx;
                 height: 32px;
                 enabled: !root.is_installing;
-                selected(val) => {
+                selected(idx) => {
                     root.install_file_path = "";
                     root.new_instance_name = "";
                     root.new_instance_path = root.distro_location;
@@ -72,21 +79,24 @@ export component AddInstanceView inherits VerticalLayout {
 
         // Dynamic rendering
         if (root.selected_source_idx == 2): VerticalLayout {
+            z: 90;
             spacing: 0px;
             Text {
                 text: AppI18n.t("add.select_distro", [AppI18n.version]);
                 font-size: 13px;
+                font-family: Theme.default_font;
                 color: Theme.text_secondary;
                 height: 16px;
             }
 
-            ComboBox {
+            CustomComboBox {
                 model: root.installable_distro_names;
-                current-value <=> root.selected_install_distro;
+                current-index: 0; // Simplified for now since CustomComboBox uses index
                 height: 32px;
                 enabled: !root.is_installing;
-                selected(val) => {
-                    root.distro_selected(val);
+                selected(idx) => {
+                    root.selected_install_distro = root.installable_distro_names[idx];
+                    root.distro_selected(root.selected_install_distro);
                 }
             }
         }
@@ -98,6 +108,7 @@ export component AddInstanceView inherits VerticalLayout {
                 Text {
                     text: root.selected_source_idx == 0 ? AppI18n.t("add.select_rootfs", [AppI18n.version]) : AppI18n.t("add.select_vhdx", [AppI18n.version]);
                     font-size: 13px;
+                    font-family: Theme.default_font;
                     color: Theme.text_secondary;
                     height: 16px;
                 }
@@ -125,7 +136,7 @@ export component AddInstanceView inherits VerticalLayout {
 
             HorizontalLayout {
                 spacing: 8px;
-                LineEdit {
+                CustomLineEdit {
                     placeholder-text: AppI18n.t("add.no_file", [AppI18n.version]);
                     text <=> root.install_file_path;
                     height: 32px;
@@ -133,7 +144,7 @@ export component AddInstanceView inherits VerticalLayout {
                     enabled: false;
                 }
 
-                Button {
+                CustomButton {
                     text: AppI18n.t("add.select_file", [AppI18n.version]);
                     height: 32px;
                     enabled: !root.is_installing;
@@ -150,11 +161,12 @@ export component AddInstanceView inherits VerticalLayout {
             Text {
                 text: AppI18n.t("add.instance_name", [AppI18n.version]);
                 font-size: 13px;
+                font-family: Theme.default_font;
                 color: Theme.text_secondary;
                 height: 16px;
             }
 
-            LineEdit {
+            CustomLineEdit {
                 placeholder-text: AppI18n.t("add.placeholder_instance_name", [AppI18n.version]);
                 text <=> root.new_instance_name;
                 height: 32px;
@@ -171,6 +183,7 @@ export component AddInstanceView inherits VerticalLayout {
             if (name_error != ""): Text {
                 text: name_error;
                 font-size: 11px;
+                font-family: Theme.default_font;
                 color: #ff4d4f;
                 height: 16px;
             }
@@ -182,13 +195,14 @@ export component AddInstanceView inherits VerticalLayout {
             Text {
                 text: AppI18n.t("add.install_dir", [AppI18n.version]);
                 font-size: 13px;
+                font-family: Theme.default_font;
                 color: Theme.text_secondary;
                 height: 16px;
             }
 
             HorizontalLayout {
                 spacing: 8px;
-                LineEdit {
+                CustomLineEdit {
                     text <=> root.new_instance_path;
                     height: 32px;
                     horizontal-stretch: 1;
@@ -198,7 +212,7 @@ export component AddInstanceView inherits VerticalLayout {
                     }
                 }
 
-                Button {
+                CustomButton {
                     text: AppI18n.t("add.select_folder", [AppI18n.version]);
                     height: 32px;
                     enabled: !root.is_installing;
@@ -211,6 +225,7 @@ export component AddInstanceView inherits VerticalLayout {
             if (path_error != ""): Text {
                 text: path_error;
                 font-size: 11px;
+                font-family: Theme.default_font;
                 color: #ff4d4f;
                 height: 16px;
             }
@@ -220,7 +235,7 @@ export component AddInstanceView inherits VerticalLayout {
             height: 8px;
         }
 
-        Button {
+        CustomButton {
             text: root.is_installing ? AppI18n.t("add.installing", [AppI18n.version]) : AppI18n.t("add.create", [AppI18n.version]);
             enabled: !root.is_installing && root.new_instance_name != "" && path_error == "" && (root.selected_source_idx == 2 ? root.selected_install_distro != "" : root.install_file_path != "");
             primary: true;
@@ -238,6 +253,7 @@ export component AddInstanceView inherits VerticalLayout {
             text: root.install_status;
             color: root.install_success ? #4CAF50 : Theme.accent;
             font-size: 12px;
+            font-family: Theme.default_font;
             wrap: word-wrap;
         }
         if (terminal_output != ""): VerticalLayout {
@@ -253,7 +269,7 @@ export component AddInstanceView inherits VerticalLayout {
                         alignment: start;
                         Text {
                             text: terminal_output;
-                            font-family: "Consolas";
+                            font-family: Theme.default_font;
                             font-size: 11px;
                             color: Theme.dark_mode ? #cccccc : #333333;
                             wrap: word-wrap;
@@ -283,6 +299,7 @@ export component AddInstanceView inherits VerticalLayout {
         Text {
             text: AppI18n.t("add.note", [AppI18n.version]);
             font-size: 11px;
+            font-family: Theme.default_font;
             color: Theme.text_secondary;
             wrap: word-wrap;
         }

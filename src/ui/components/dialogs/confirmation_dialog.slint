@@ -29,6 +29,7 @@ export component ConfirmationDialog inherits Rectangle {
             Text {
                 text: root.title_text;
                 font-size: 18px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 color: Theme.text_primary;
             }
@@ -36,6 +37,7 @@ export component ConfirmationDialog inherits Rectangle {
             Text {
                 text: root.message;
                 font-size: 14px;
+                font-family: Theme.default_font;
                 color: Theme.text_primary;
                 wrap: word-wrap;
             }
@@ -55,6 +57,7 @@ export component ConfirmationDialog inherits Rectangle {
                     Text {
                         text: AppI18n.t("dialog.cancel", [AppI18n.version]);
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: Theme.text_primary;
                         horizontal-alignment: center;
                         vertical-alignment: center;
@@ -76,6 +79,7 @@ export component ConfirmationDialog inherits Rectangle {
                     Text {
                         text: AppI18n.t("dialog.confirm", [AppI18n.version]);
                         font-size: 13px;
+                        font-family: Theme.default_font;
                         color: white;
                         horizontal-alignment: center;
                         vertical-alignment: center;

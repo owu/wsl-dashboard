@@ -8,8 +8,12 @@ pub mod lifecycle;
 pub mod manage;
 pub mod export;
 pub mod clone;
+pub mod clone_logic;
 pub mod install;
+pub mod install_logic;
 pub mod move_distro;
+pub mod move_logic;
+pub mod settings_logic;
 
 pub fn sanitize_instance_name(name: &str) -> String {
     let mut sanitized: String = name.chars()

@@ -1,5 +1,5 @@
-import { Button, LineEdit } from "std-widgets.slint";
 import { Theme, AppI18n } from "../../theme.slint";
+import { CustomButton, CustomLineEdit } from "../form_widgets.slint";
 
 export component ExportDialog inherits Rectangle {
     in property <string> distro_name;
@@ -27,6 +27,7 @@ export component ExportDialog inherits Rectangle {
             Text {
                 text: AppI18n.t("dialog.export_title", [AppI18n.version]) + ": " + distro_name;
                 font-size: 18px;
+                font-family: Theme.default_font;
                 font-weight: 500;
                 color: Theme.text_primary;
             }
@@ -36,19 +37,20 @@ export component ExportDialog inherits Rectangle {
                 Text {
                     text: AppI18n.t("dialog.target_path", [AppI18n.version]) + ":";
                     font-size: 13px;
+                    font-family: Theme.default_font;
                     color: Theme.text_secondary;
                 }
 
                 HorizontalLayout {
                     spacing: 8px;
-                    LineEdit {
+                    CustomLineEdit {
                         text <=> export_path;
-                        read-only: true;
+                        enabled: false;
                         height: 32px;
                         horizontal-stretch: 1;
                     }
 
-                    Button {
+                    CustomButton {
                         text: AppI18n.t("settings.select_folder", [AppI18n.version]);
                         height: 32px;
                         enabled: root.enabled;
@@ -63,6 +65,7 @@ export component ExportDialog inherits Rectangle {
                 text: error_msg;
                 color: #ff3333;
                 font-size: 12px;
+                font-family: Theme.default_font;
                 wrap: word-wrap;
             }
             Rectangle {
@@ -72,7 +75,7 @@ export component ExportDialog inherits Rectangle {
             HorizontalLayout {
                 alignment: end;
                 spacing: 12px;
-                Button {
+                CustomButton {
                     text: AppI18n.t("dialog.cancel", [AppI18n.version]);
                     height: 32px;
                     clicked => {
@@ -80,7 +83,7 @@ export component ExportDialog inherits Rectangle {
                     }
                 }
 
-                Button {
+                CustomButton {
                     text: AppI18n.t("distro.export", [AppI18n.version]);
                     height: 32px;
                     primary: true;

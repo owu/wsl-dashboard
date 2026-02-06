@@ -21,6 +21,7 @@ export component MainView inherits VerticalLayout {
     callback settings_clicked(string);
     in-out property <string> distro_to_delete;
     in-out property <bool> show_delete_confirmation;
+    private property <string> expanded_distro: "";
     vertical-stretch: 1;
     spacing: 12px;
     Rectangle {
@@ -40,6 +41,14 @@ export component MainView inherits VerticalLayout {
                 for d in distros: DistroCard {
                     distro: d;
                     sole_distro: distros.length == 1;
+                    expanded: root.expanded_distro == d.name;
+                    expand_clicked => {
+                        if (root.expanded_distro == d.name) {
+                            root.expanded_distro = "";
+                        } else {
+                            root.expanded_distro = d.name;
+                        }
+                    }
                     start_clicked => {
                         root.start_distro(d.name);
                     }

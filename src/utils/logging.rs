@@ -47,10 +47,14 @@ impl<S: Subscriber> Filter<S> for DynamicLevelFilter {
     }
 }
 
+
+
 pub struct LoggingSystem {
     pub writer: SwapWriter,
     pub guard: Arc<Mutex<WorkerGuard>>,
     pub level: Arc<AtomicU8>,
+    pub log_dir: Arc<Mutex<String>>,
+    pub timezone_offset: FixedOffset,
 }
 
 use tracing_subscriber::fmt::time::FormatTime;
@@ -87,7 +91,15 @@ fn parse_timezone(tz_str: &str) -> FixedOffset {
 
 pub fn init_logging(log_dir: &str, level_num: u8, timezone_str: &str) -> LoggingSystem {
     let level_atomic = Arc::new(AtomicU8::new(level_num));
-    let timer = LocalTimer { offset: parse_timezone(timezone_str) };
+    let offset = parse_timezone(timezone_str);
+    let timer = LocalTimer { offset };
+    
+    let log_dir_arc = Arc::new(Mutex::new(log_dir.to_string()));
+
+    // Use current local date for the initial filename
+    let now = chrono::Utc::now().with_timezone(&offset);
+    let date_str = now.format("%Y-%m-%d").to_string();
+    let filename_prefix = format!("wsl-dashboard.{}", date_str);
     
     // Terminal output
     let stdout_layer = fmt::layer()
@@ -95,10 +107,11 @@ pub fn init_logging(log_dir: &str, level_num: u8, timezone_str: &str) -> Logging
         .with_target(false)
         .with_filter(DynamicLevelFilter { current_level: level_atomic.clone() });
     
-    // File output
+    // File output with manual rotation (Rotation::NEVER)
+    // We handle rotation manually to respect local timezone (daily at 00:00 Local)
     let file_appender = RollingFileAppender::builder()
-        .rotation(tracing_appender::rolling::Rotation::DAILY)
-        .filename_prefix("wsl-dashboard")
+        .rotation(tracing_appender::rolling::Rotation::NEVER) 
+        .filename_prefix(&filename_prefix)
         .filename_suffix("log")
         .build(log_dir)
         .expect("Failed to create log appender");
@@ -119,11 +132,80 @@ pub fn init_logging(log_dir: &str, level_num: u8, timezone_str: &str) -> Logging
         .with(file_layer)
         .init();
 
+    // Spawn rotation thread
+    spawn_rotation_thread(
+        swap_writer.clone(), 
+        guard_holder.clone(), 
+        log_dir_arc.clone(), 
+        offset
+    );
+
     LoggingSystem { 
         writer: swap_writer, 
         guard: guard_holder,
         level: level_atomic,
+        log_dir: log_dir_arc,
+        timezone_offset: offset,
     }
+}
+
+fn spawn_rotation_thread(
+    writer: SwapWriter, 
+    guard: Arc<Mutex<WorkerGuard>>, 
+    log_dir: Arc<Mutex<String>>, 
+    offset: FixedOffset
+) {
+    std::thread::spawn(move || {
+        let mut last_date = chrono::Utc::now().with_timezone(&offset).date_naive();
+
+        loop {
+            // Check every 30 seconds for date change
+            // This handles both natural time progression and manual system time changes
+            std::thread::sleep(std::time::Duration::from_secs(30));
+
+            let now = chrono::Utc::now().with_timezone(&offset);
+            let current_date = now.date_naive();
+
+            if current_date > last_date {
+                // Date has changed (forward), perform rotation
+                if let Ok(current_dir) = log_dir.lock() {
+                    let date_str = now.format("%Y-%m-%d").to_string();
+                    let filename_prefix = format!("wsl-dashboard.{}", date_str);
+                    
+                    let file_appender = RollingFileAppender::builder()
+                        .rotation(tracing_appender::rolling::Rotation::NEVER)
+                        .filename_prefix(&filename_prefix)
+                        .filename_suffix("log")
+                        .build(current_dir.as_str());
+                        
+                    match file_appender {
+                        Ok(appender) => {
+                             let (non_blocking, new_guard) = tracing_appender::non_blocking(appender);
+                             
+                             // Atomically swap the writer and guard
+                             if let Ok(mut w) = writer.inner.lock() {
+                                 *w = non_blocking;
+                             }
+                             if let Ok(mut g) = guard.lock() {
+                                 *g = new_guard;
+                             }
+                             
+                             // Update last_known date
+                             last_date = current_date;
+                        },
+                        Err(e) => {
+                            eprintln!("[Rotation] Failed to rotate log: {}", e);
+                            // Do not update last_date, will try again next cycle
+                        }
+                    }
+                }
+            } else if current_date < last_date {
+                // Time jump backwards? Just update tracking date so we don't rotate unnecessarily
+                // until we hit the 'next' day relative to this new time.
+                last_date = current_date;
+            }
+        }
+    });
 }
 
 fn map_level(level_num: u8) -> Level {
@@ -139,9 +221,19 @@ fn map_level(level_num: u8) -> Level {
 
 impl LoggingSystem {
     pub fn update_path(&self, log_dir: &str) {
+        // Update stored path for rotation thread
+        if let Ok(mut d) = self.log_dir.lock() {
+            *d = log_dir.to_string();
+        }
+
+        // Re-create appender immediately
+        let now = chrono::Utc::now().with_timezone(&self.timezone_offset);
+        let date_str = now.format("%Y-%m-%d").to_string();
+        let filename_prefix = format!("wsl-dashboard.{}", date_str);
+
         let file_appender = RollingFileAppender::builder()
-            .rotation(tracing_appender::rolling::Rotation::DAILY)
-            .filename_prefix("wsl-dashboard")
+            .rotation(tracing_appender::rolling::Rotation::NEVER)
+            .filename_prefix(&filename_prefix)
             .filename_suffix("log")
             .build(log_dir)
             .expect("Failed to create log appender");
@@ -162,5 +254,39 @@ impl LoggingSystem {
 impl Clone for SwapWriter {
     fn clone(&self) -> Self {
         Self { inner: self.inner.clone() }
+    }
+}
+
+// Cleanup expired log files
+pub fn cleanup_expired_logs(log_dir: &str, log_days: u8) {
+    let log_path = std::path::Path::new(log_dir);
+    if !log_path.exists() || !log_path.is_dir() {
+        return;
+    }
+
+    let now = chrono::Local::now().date_naive();
+    let expiration_date = now - chrono::TimeDelta::days(log_days as i64);
+
+    if let Ok(entries) = std::fs::read_dir(log_path) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if path.is_file() {
+                if let Some(file_name) = path.file_name().and_then(|s| s.to_str()) {
+                    // Pattern: wsl-dashboard.YYYY-MM-DD.log
+                    if file_name.starts_with("wsl-dashboard.") && file_name.ends_with(".log") {
+                        let date_part = file_name
+                            .trim_start_matches("wsl-dashboard.")
+                            .trim_end_matches(".log");
+                        
+                        if let Ok(file_date) = chrono::NaiveDate::parse_from_str(date_part, "%Y-%m-%d") {
+                            if file_date <= expiration_date {
+                                tracing::info!("Deleting expired log file: {:?}", file_name);
+                                let _ = std::fs::remove_file(path);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

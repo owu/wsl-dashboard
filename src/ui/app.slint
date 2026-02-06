@@ -6,6 +6,8 @@ import {
     Information,
     RootFSHelpItem,
     AppI18n,
+    SettingsStrings,
+    AboutStrings,
 } from "theme.slint";
 import { TitleBar } from "components/title_bar.slint";
 import { Sidebar } from "components/sidebar.slint";
@@ -20,7 +22,7 @@ import { TaskStatusToast } from "components/task_status_toast.slint";
 export { Theme, Distro, InstallableDistro, AppInfo, RootFSHelpItem, AppI18n }
 
 export component AppWindow inherits Window {
-    title: AppI18n.t("common.app_name", [AppI18n.version]);
+    title: "WSL_DASHBOARD_WINDOW_UI";
     width: 800px;
     height: 600px;
     background: transparent;
@@ -31,6 +33,9 @@ export component AppWindow inherits Window {
     in property <[InstallableDistro]> installable_distros: [];
     in property <int> selected_tab: 0;
     in-out property <bool> auto_shutdown: false;
+    in-out property <bool> tray_autostart: false;
+    in-out property <bool> tray_start_minimized: false;
+    in-out property <bool> tray_close_to_tray: true;
     in property <bool> is_maximized: false;
     in-out property <bool> sidebar_collapsed: false;
     in-out property <string> new_instance_name: "";
@@ -41,6 +46,7 @@ export component AppWindow inherits Window {
     in property <bool> is_exporting: false;
     in property <bool> is_cloning: false;
     in property <bool> is_moving: false;
+    in-out property <bool> is_window_visible: true;
     in property <string> install_status: "";
     in property <bool> install_success: false;
     in property <string> terminal_output: "";
@@ -84,6 +90,7 @@ export component AppWindow inherits Window {
     in-out property <bool> show_rootfs_help: false;
     in-out property <bool> show_vscode_startup: false;
     in-out property <string> ui_language: "auto";
+    in property <string> system_language: "en"; // Injected by backend at startup
     in-out property <string> distro_location: "";
     in-out property <string> logs_location: "";
     in-out property <int> log_level: 5;
@@ -93,6 +100,8 @@ export component AppWindow inherits Window {
     in property <bool> task_status_visible: false;
     in property <Information> information;
     in property <[RootFSHelpItem]> rootfs_help_list: [{ name: "Ubuntu", url: "https://cdimages.ubuntu.com/ubuntu-wsl/" }];
+    in property <SettingsStrings> settings_strings;
+    in property <AboutStrings> about_strings;
     in-out property <bool> show_information: false;
     in-out property <bool> show_settings: false;
     in-out property <string> settings_distro_name: "";
@@ -150,6 +159,7 @@ export component AppWindow inherits Window {
     callback check_update();
     callback download_update();
     callback close_expire_dialog();
+    callback reinit_tray();
     callback save_settings();
     callback select_distro_folder();
     callback select_logs_folder();
@@ -160,6 +170,50 @@ export component AppWindow inherits Window {
     callback close_vscode_startup();
     callback close_task_status();
 
+    // Dynamic Font Selection to optimize memory usage
+    // Helper function to map language to font (No recursion here)
+    pure function resolve-font(lang: string) -> string {
+
+
+        // Compatibility of Chinese and Japanese character display on Western language operating systems
+        // // Group 1: CJK (High Memory Impact)
+        // if (lang == "zh-CN" || lang == "zh-Hans-CN" || lang == "zh-SG") {
+        //     return "Microsoft YaHei UI";
+        // }
+        // if (lang == "zh-TW" || lang == "zh-Hant-TW" || lang == "zh-HK" || lang == "zh-MO") {
+        //     return "Microsoft JhengHei UI";
+        // }
+        // if (lang == "ja") {
+        //     return "Yu Gothic UI";
+        // }
+        
+        // // Group 2: Indic Scripts (Medium Impact)
+        // if (lang == "hi" || lang == "bn") {
+        //     return "Nirmala UI";
+        // }
+
+        // Group 3: Default (Western/Cyrillic - Low Memory Impact)
+        // Segoe UI covers all Latin and Cyrillic scripts efficiently.
+        return "Segoe UI";
+    }
+
+    // Main function with smart fallback logic
+    pure function get-font(lang: string) -> string {
+        if (lang == "auto") {
+            if (root.system_language == "auto") {
+
+                // Compatibility of Chinese and Japanese character display on Western language operating systems
+                //return "Microsoft YaHei UI";
+
+                return "Segoe UI";
+            } // Safe fallback
+             return resolve-font(root.system_language);
+        }
+        return resolve-font(lang);
+    }
+    init => {
+        Theme.default_font = root.get-font(root.ui_language);
+    }
 
     // --- Main Layout ---
 
@@ -193,6 +247,10 @@ export component AppWindow inherits Window {
                 Sidebar {
                     collapsed <=> root.sidebar_collapsed;
                     selected_tab: root.selected_tab;
+                    home_text: AppI18n.t("sidebar.home", [AppI18n.version]);
+                    add_text: AppI18n.t("sidebar.add", [AppI18n.version]);
+                    settings_text: AppI18n.t("sidebar.settings", [AppI18n.version]);
+                    about_text: AppI18n.t("sidebar.about", [AppI18n.version]);
                     tab_selected(idx) => {
                         root.select_tab(idx);
                     }
@@ -205,113 +263,139 @@ export component AppWindow inherits Window {
                     VerticalLayout {
                         padding: 16px;
                         padding-right: 6px;
-                        if (selected_tab == 0): MainView {
-                            distros: root.distros;
-                            distro_to_delete <=> root.distro_to_delete;
-                            show_delete_confirmation <=> root.show_delete_confirmation;
-                            start_distro(n) => {
-                                root.start_distro(n);
+                        Rectangle {
+                            MainView {
+                                visible: true;
+                                opacity: selected_tab == 0 ? 1 : 0;
+                                z: 3;
+                                x: selected_tab == 0 ? 0px : 10000px;
+                                distros: root.distros;
+                                distro_to_delete <=> root.distro_to_delete;
+                                show_delete_confirmation <=> root.show_delete_confirmation;
+                                start_distro(n) => {
+                                    root.start_distro(n);
+                                }
+                                stop_distro(n) => {
+                                    root.stop_distro(n);
+                                }
+                                restart_distro(n) => {
+                                    root.restart_distro(n);
+                                }
+                                terminal_distro(n) => {
+                                    root.terminal_distro(n);
+                                }
+                                folder_distro(n) => {
+                                    root.folder_distro(n);
+                                }
+                                vscode_distro(n) => {
+                                    root.vscode_distro(n);
+                                }
+                                open_export_dialog(n) => {
+                                    root.open_export_dialog(n);
+                                }
+                                open_clone_dialog(n) => {
+                                    root.open_clone_dialog(n);
+                                }
+                                open_move_dialog(n) => {
+                                    root.open_move_dialog(n);
+                                }
+                                edit_bashrc_distro(n) => {
+                                    root.edit_bashrc_distro(n);
+                                }
+                                information_clicked(n) => {
+                                    root.information_clicked(n);
+                                }
+                                settings_clicked(n) => {
+                                    root.settings_clicked(n);
+                                }
+                                delete_clicked(n) => {
+                                    root.delete_clicked(n);
+                                }
                             }
-                            stop_distro(n) => {
-                                root.stop_distro(n);
+
+                            AddInstanceView {
+                                visible: true;
+                                opacity: selected_tab == 1 ? 1 : 0;
+                                z: 4;
+                                x: selected_tab == 1 ? 0px : 10000px;
+                                new_instance_name <=> root.new_instance_name;
+                                new_instance_path <=> root.new_instance_path;
+                                selected_install_distro <=> root.selected_install_distro;
+                                distro_location: root.distro_location;
+                                installable_distro_names: root.installable_distro_names;
+                                is_installing: root.is_installing;
+                                install_status: root.install_status;
+                                install_success: root.install_success;
+                                terminal_output: root.terminal_output;
+                                name_error: root.name_error;
+                                path_error: root.path_error;
+                                install_sources: root.install_sources;
+                                selected_source_idx <=> root.selected_source_idx;
+                                install_file_path <=> root.install_file_path;
+                                show_install_warn_dialog <=> root.show_install_warn_dialog;
+                                show_rootfs_help <=> root.show_rootfs_help;
+                                source_selected(i) => {
+                                    root.source_selected(i);
+                                }
+                                select_install_file(i) => {
+                                    root.select_install_file(i);
+                                }
+                                check_install_path(p) => {
+                                    root.check_install_path(p);
+                                }
+                                select_folder() => {
+                                    root.select_folder();
+                                }
+                                install_distro(si, n, fn, ip, fp) => {
+                                    root.install_distro(si, n, fn, ip, fp);
+                                }
+                                distro_selected(distro) => {
+                                    root.distro_selected(distro);
+                                }
+                                show_rootfs_help_clicked => {
+                                    root.show_rootfs_help_clicked();
+                                }
                             }
-                            restart_distro(n) => {
-                                root.restart_distro(n);
+
+                            SettingsView {
+                                visible: true;
+                                opacity: selected_tab == 5 ? 1 : 0;
+                                z: 5;
+                                x: selected_tab == 5 ? 0px : 10000px;
+                                strings: root.settings_strings;
+                                auto_shutdown <=> root.auto_shutdown;
+                                ui_language <=> root.ui_language;
+                                distro_location <=> root.distro_location;
+                                logs_location <=> root.logs_location;
+                                log_level <=> root.log_level;
+                                log_days <=> root.log_days;
+                                check_update_interval <=> root.check_update_interval;
+                                tray_autostart <=> root.tray_autostart;
+                                tray_start_minimized <=> root.tray_start_minimized;
+                                tray_close_to_tray <=> root.tray_close_to_tray;
+                                save-settings => {
+                                    root.save_settings();
+                                }
+                                select-distro-folder => {
+                                    root.select_distro_folder();
+                                }
+                                select-logs-folder => {
+                                    root.select_logs_folder();
+                                }
                             }
-                            terminal_distro(n) => {
-                                root.terminal_distro(n);
-                            }
-                            folder_distro(n) => {
-                                root.folder_distro(n);
-                            }
-                            vscode_distro(n) => {
-                                root.vscode_distro(n);
-                            }
-                            open_export_dialog(n) => {
-                                root.open_export_dialog(n);
-                            }
-                            open_clone_dialog(n) => {
-                                root.open_clone_dialog(n);
-                            }
-                            open_move_dialog(n) => {
-                                root.open_move_dialog(n);
-                            }
-                            edit_bashrc_distro(n) => {
-                                root.edit_bashrc_distro(n);
-                            }
-                            information_clicked(n) => {
-                                root.information_clicked(n);
-                            }
-                            settings_clicked(n) => {
-                                root.settings_clicked(n);
-                            }
-                            delete_clicked(n) => {
-                                root.delete_clicked(n);
-                            }
-                        }
-                        if (selected_tab == 1): AddInstanceView {
-                            new_instance_name <=> root.new_instance_name;
-                            new_instance_path <=> root.new_instance_path;
-                            selected_install_distro <=> root.selected_install_distro;
-                            distro_location: root.distro_location;
-                            installable_distro_names: root.installable_distro_names;
-                            is_installing: root.is_installing;
-                            install_status: root.install_status;
-                            install_success: root.install_success;
-                            terminal_output: root.terminal_output;
-                            name_error: root.name_error;
-                            path_error: root.path_error;
-                            install_sources: root.install_sources;
-                            selected_source_idx <=> root.selected_source_idx;
-                            install_file_path <=> root.install_file_path;
-                            show_install_warn_dialog <=> root.show_install_warn_dialog;
-                            show_rootfs_help <=> root.show_rootfs_help;
-                            source_selected(i) => {
-                                root.source_selected(i);
-                            }
-                            select_install_file(i) => {
-                                root.select_install_file(i);
-                            }
-                            check_install_path(p) => {
-                                root.check_install_path(p);
-                            }
-                            select_folder() => {
-                                root.select_folder();
-                            }
-                            install_distro(si, n, fn, ip, fp) => {
-                                root.install_distro(si, n, fn, ip, fp);
-                            }
-                            distro_selected(distro) => {
-                                root.distro_selected(distro);
-                            }
-                            show_rootfs_help_clicked => {
-                                root.show_rootfs_help_clicked();
-                            }
-                        }
-                        if (selected_tab == 5): SettingsView {
-                            auto_shutdown <=> root.auto_shutdown;
-                            ui_language <=> root.ui_language;
-                            distro_location <=> root.distro_location;
-                            logs_location <=> root.logs_location;
-                            log_level <=> root.log_level;
-                            log_days <=> root.log_days;
-                            check_update_interval <=> root.check_update_interval;
-                            save-settings => {
-                                root.save_settings();
-                            }
-                            select-distro-folder => {
-                                root.select_distro_folder();
-                            }
-                            select-logs-folder => {
-                                root.select_logs_folder();
-                            }
-                        }
-                        if (selected_tab == 6): AboutView {
-                            open_url(url) => {
-                                root.open_url(url);
-                            }
-                            check_update_clicked => {
-                                root.check_update();
+
+                            AboutView {
+                                visible: true;
+                                opacity: selected_tab == 6 ? 1 : 0;
+                                z: 6;
+                                x: selected_tab == 6 ? 0px : 10000px;
+                                strings: root.about_strings;
+                                open_url(url) => {
+                                    root.open_url(url);
+                                }
+                                check_update_clicked => {
+                                    root.check_update();
+                                }
                             }
                         }
                     }

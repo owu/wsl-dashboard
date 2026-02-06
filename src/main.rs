@@ -2,7 +2,7 @@
 
 use std::sync::Arc;
 use tokio::sync::Mutex;
-use tracing::{info, debug};
+use tracing::{info, debug, error};
 use slint::{ComponentHandle, Model};
 
 // Define application modules
@@ -17,23 +17,46 @@ mod i18n;
 slint::include_modules!();
 
 use app::{AppState, APP_NAME, APP_ID, COMPANY_NAME, LEGAL_COPYRIGHT, GITHUB_URL, GITHUB_ISSUES};
-use ui::data::{refresh_data, refresh_distros_ui};
+use ui::data::refresh_data;
 use ui::handlers;
 
 #[tokio::main]
 async fn main() {
+    // Check for /silent command line argument first
+    let args: Vec<String> = std::env::args().collect();
+    let is_silent_mode = args.iter().any(|arg| arg.eq_ignore_ascii_case("/silent"));
+    
+    // 1. Single Instance check
+    let instance = app::single_instance::SingleInstance::new("wsldashboard-v0.3-lock");
+    if !instance.is_single() {
+        // Another instance is running
+        if !is_silent_mode {
+            // Try to activate the existing instance
+            if app::single_instance::try_activate_existing_instance() {
+                info!("Activated existing instance, exiting...");
+            } else {
+                eprintln!("Another instance is already running. Exiting.");
+            }
+        } else {
+            // In silent mode, just exit quietly
+            eprintln!("Another instance is already running (silent mode). Exiting.");
+        }
+        return;
+    }
+    
     // Initialize configuration manager to get log path
     let config_manager = config::ConfigManager::new().await;
-    let settings = config_manager.get_settings();
+    let settings = config_manager.get_settings().clone();
+    let tray_settings = config_manager.get_tray_settings().clone();
+
     // Load i18n based on settings
+    let system_language = config_manager.get_config().system.system_language.clone();
     let lang = if settings.ui_language == "auto" {
         &config_manager.get_config().system.system_language
     } else {
         &settings.ui_language
     };
     i18n::load_resources(lang);
-    #[cfg(debug_assertions)]
-    i18n::verify_translations();
     
     let initial_logs_location = settings.logs_location.clone();
     let log_level = settings.log_level;
@@ -43,15 +66,23 @@ async fn main() {
     let logging_system = utils::logging::init_logging(&initial_logs_location, log_level, &timezone);
 
     // Cleanup expired logs
-    cleanup_expired_logs(&initial_logs_location, settings.log_days);
+    utils::logging::cleanup_expired_logs(&initial_logs_location, settings.log_days);
 
     info!("Starting {} (ID: {})...", APP_NAME, APP_ID);
+    
+    if is_silent_mode {
+        info!("Silent mode detected via /silent parameter");
+    }
+
+    // 8. Path automatic repair: update registry if the exe has been moved
+    app::autostart::repair_autostart_path(tray_settings.autostart, tray_settings.start_minimized).await;
 
     // Create application state
     let app_state = Arc::new(Mutex::new(AppState::new(config_manager, logging_system)));
     
     // Create Slint application
     let app = AppWindow::new().expect("Failed to create app");
+    app.set_system_language(system_language.into());
     
     // Register i18n callback
     app.global::<AppI18n>().on_t(|key, args| {
@@ -71,11 +102,37 @@ async fn main() {
     
     let app_handle = app.as_weak();
 
+    // Initialize system tray (window is initially visible unless in silent mode)
+    if let Err(e) = app::tray::SystemTray::initialize(app_handle.clone(), !is_silent_mode) {
+        error!("Failed to initialize system tray: {}", e);
+    }
+    
+    // Rename windows for Task Manager identification
+    app::window::rename_app_windows();
+
+    // Handle tray re-initialization (e.g. on language change)
+    app.on_reinit_tray({
+        let ah = app_handle.clone();
+        let silent = is_silent_mode;
+        move || {
+            if let Err(e) = app::tray::SystemTray::initialize(ah.clone(), !silent) {
+                error!("Failed to re-initialize system tray: {}", e);
+            }
+        }
+    });
+
     // Initialize data refresh
     refresh_data(app_handle.clone(), app_state.clone()).await;
 
     // Load configuration to UI
-    load_settings_to_ui(&app, &app_state).await;
+    {
+        let state = app_state.lock().await;
+        let settings = state.config_manager.get_settings().clone();
+        let tray = state.config_manager.get_tray_settings().clone();
+        drop(state);
+        ui::data::load_settings_to_ui(&app, &app_state, &settings, &tray).await;
+        ui::data::refresh_localized_strings(&app);
+    }
 
     // Set release_url based on timezone
     {
@@ -99,139 +156,44 @@ async fn main() {
 
 
     // Start WSL status monitoring
-    spawn_wsl_monitor(app_state.clone());
+    app::tasks::spawn_wsl_monitor(app_state.clone());
 
     // Listen for distribution state changes and automatically update UI
-    spawn_state_listener(app_handle.clone(), app_state.clone());
+    app::tasks::spawn_state_listener(app_handle.clone(), app_state.clone());
 
     // Automatically check for updates and expiration at startup
     app::startup::spawn_check_task(app_handle.clone(), app_state.clone());
 
-    // Show window and center it
-    app::window::show_and_center(&app);
+    // Show window and center it only if NOT in silent mode
+    if !is_silent_mode {
+        app::window::show_and_center(&app);
+    } else {
+        // If /silent parameter is present, ensure window is hidden and taskbar is skipped
+        // We still use a short delay to ensure the Slint event loop is fully initialized 
+        // and the tray icon is correctly handled.
+        info!("Starting minimized to system tray (silent mode).");
+        let ah = app_handle.clone();
+        slint::Timer::single_shot(std::time::Duration::from_millis(100), move || {
+            if let Some(app) = ah.upgrade() {
+                app.set_is_window_visible(false);
+                app::window::set_skip_taskbar(&app, true);
+                debug!("Window hidden to tray after startup delay.");
+            }
+        });
+    }
 
-    // Run application
-    app.run().expect("Failed to run app");
+    // Run application event loop with a keep-alive timer to prevent exit when hidden
+    // We Box::leak to ensure the timer stays alive as long as the process runs.
+    let keep_alive_timer = Box::leak(Box::new(slint::Timer::default()));
+    keep_alive_timer.start(slint::TimerMode::Repeated, std::time::Duration::from_secs(1), || {
+        // Keep-alive heartbeat
+    });
+    
+    info!("Event loop started.");
+    slint::run_event_loop().expect("Failed to run event loop");
+    info!("Event loop exited.");
 
     // Processing after application exit
-    handle_app_exit(&app, &app_state).await;
+    app::tasks::handle_app_exit(&app, &app_state).await;
 }
 
-// Load configuration to UI
-async fn load_settings_to_ui(app: &AppWindow, app_state: &Arc<Mutex<AppState>>) {
-    let state = app_state.lock().await;
-    let settings = state.config_manager.get_settings();
-    app.set_ui_language(settings.ui_language.clone().into());
-    app.set_distro_location(settings.distro_location.clone().into());
-    app.set_new_instance_path(settings.distro_location.clone().into());
-    app.set_logs_location(settings.logs_location.clone().into());
-    app.set_auto_shutdown(settings.auto_shutdown);
-    app.set_log_level(settings.log_level as i32);
-    
-    // Validate and set log retention days
-    let mut log_days = settings.log_days;
-    if !vec![7, 15, 30].contains(&log_days) {
-        info!("Invalid log-days value ({}), resetting to 7", log_days);
-        log_days = 7;
-        // Note: we'll update it below along with check_update if needed
-    }
-    app.set_log_days(log_days as i32);
-
-    // Validate and set check_update interval
-    let mut check_update = settings.check_update;
-    if !vec![1, 7, 15, 30].contains(&check_update) {
-        info!("Invalid check-update value ({}), resetting to 7", check_update);
-        check_update = 7;
-    }
-    app.set_check_update_interval(check_update as i32);
-
-    // Update settings if any were invalid
-    if log_days != settings.log_days || check_update != settings.check_update {
-        let mut state_mut = app_state.lock().await;
-        let mut settings_mut = state_mut.config_manager.get_settings().clone();
-        settings_mut.log_days = log_days;
-        settings_mut.check_update = check_update;
-        let _ = state_mut.config_manager.update_settings(settings_mut);
-    }
-    
-    app.global::<Theme>().set_dark_mode(settings.dark_mode);
-    info!("Configuration loaded to UI (Language: {}, Mode: {}, LogLevel: {}, LogDays: {})", 
-          settings.ui_language, if settings.dark_mode { "Dark" } else { "Light" }, settings.log_level, log_days);
-}
-
-// Start WSL status monitoring task
-fn spawn_wsl_monitor(app_state: Arc<Mutex<AppState>>) {
-    tokio::spawn(async move {
-        let manager = {
-            let app_state = app_state.lock().await;
-            app_state.wsl_dashboard.clone()
-        };
-        manager.start_monitoring().await;
-    });
-}
-
-// Listen for distribution state changes and automatically update UI
-fn spawn_state_listener(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<AppState>>) {
-    tokio::spawn(async move {
-        loop {
-            {
-                let state = app_state.lock().await;
-                let state_changed = state.wsl_dashboard.state_changed().clone();
-                drop(state);
-                state_changed.notified().await;
-            }
-            
-            debug!("WSL state changed, updating UI...");
-            let _ = refresh_distros_ui(app_handle.clone(), app_state.clone()).await;
-        }
-    });
-}
-
-// Processing after application exit
-async fn handle_app_exit(app: &AppWindow, app_state: &Arc<Mutex<AppState>>) {
-    let auto_shutdown = app.get_auto_shutdown();
-    if auto_shutdown {
-        debug!("Auto-shutdown on exit is enabled, shutting down WSL...");
-        let manager = {
-            let state = app_state.lock().await;
-            state.wsl_dashboard.clone()
-        };
-        manager.shutdown_wsl().await;
-        debug!("WSL shut down completed");
-    }
-}
-
-// Cleanup expired log files
-fn cleanup_expired_logs(log_dir: &str, log_days: u8) {
-    let log_path = std::path::Path::new(log_dir);
-    if !log_path.exists() || !log_path.is_dir() {
-        return;
-    }
-
-    let now = chrono::Local::now().date_naive();
-    let expiration_date = now - chrono::TimeDelta::days(log_days as i64);
-
-    if let Ok(entries) = std::fs::read_dir(log_path) {
-        for entry in entries.flatten() {
-            let path = entry.path();
-            if path.is_file() {
-                if let Some(file_name) = path.file_name().and_then(|s| s.to_str()) {
-                    // Pattern: wsl-dashboard.YYYY-MM-DD.log
-                    if file_name.starts_with("wsl-dashboard.") && file_name.ends_with(".log") {
-                        let date_part = file_name
-                            .trim_start_matches("wsl-dashboard.")
-                            .trim_end_matches(".log");
-                        // Sometimes there might be a .1, .2 etc if multiple restarts in one day? 
-                        // Actually tracing-appender DAILY should just be YYYY-MM-DD
-                        if let Ok(file_date) = chrono::NaiveDate::parse_from_str(date_part, "%Y-%m-%d") {
-                            if file_date <= expiration_date {
-                                info!("Deleting expired log file: {:?}", file_name);
-                                let _ = std::fs::remove_file(path);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
