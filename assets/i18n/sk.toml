@@ -56,6 +56,7 @@ fi = "Fínčina (fi_FI)"
 sk = "Slovenčina (sk_SK)"
 is = "Islandčina (is_IS)"
 sl = "Slovinčina (sl_SI)"
+vi = "Vietnamčina (vi_VN)"
 
 [settings.log_levels]
 error = "Chyby (Error)"

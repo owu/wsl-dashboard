@@ -56,6 +56,7 @@ fi = "芬蘭語 (fi_FI)"
 sk = "斯洛伐克語 (sk_SK)"
 is = "冰島語 (is_IS)"
 sl = "斯洛文尼亞語 (sl_SI)"
+vi = "越南語 (vi_VN)"
 
 [settings.log_levels]
 error = "錯誤級別 (Error)"

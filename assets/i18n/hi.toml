@@ -56,6 +56,7 @@ fi = "फिनिश (fi_FI)"
 sk = "स्लोवाक (sk_SK)"
 is = "आइसलैंडिक (is_IS)"
 sl = "स्लोवेनियाई (sl_SI)"
+vi = "वियतनामी (vi_VN)"
 
 [settings.log_levels]
 error = "त्रुटि स्तर"

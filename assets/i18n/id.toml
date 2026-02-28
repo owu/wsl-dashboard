@@ -56,6 +56,7 @@ fi = "Finlandia (fi_FI)"
 sk = "Slovakia (sk_SK)"
 is = "Islandia (is_IS)"
 sl = "Slovenia (sl_SI)"
+vi = "Vietnam (vi_VN)"
 
 [settings.log_levels]
 error = "Tingkat Error"

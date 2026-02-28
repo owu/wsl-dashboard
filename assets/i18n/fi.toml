@@ -56,6 +56,7 @@ fi = "Suomi (fi_FI)"
 sk = "Slovakki (sk_SK)"
 is = "Islanti (is_IS)"
 sl = "Sloveeni (sl_SI)"
+vi = "Vietnamilainen (vi_VN)"
 
 [settings.log_levels]
 error = "Virhetaso (Error)"

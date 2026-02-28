@@ -56,6 +56,7 @@ fi = "Finlandese (fi_FI)"
 sk = "Slovacco (sk_SK)"
 is = "Islandese (is_IS)"
 sl = "Sloveno (sl_SI)"
+vi = "Vietnamita (vi_VN)"
 
 [settings.log_levels]
 error = "Livello Errore"

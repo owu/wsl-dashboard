@@ -56,6 +56,7 @@ fi = "Finn (fi_FI)"
 sk = "Szlovák (sk_SK)"
 is = "Izlandi (is_IS)"
 sl = "Szlovén (sl_SI)"
+vi = "Vietnami (vi_VN)"
 
 [settings.log_levels]
 error = "Hiba (Error)"

@@ -168,6 +168,9 @@ export component SettingsView inherits Rectangle {
         if (lang == "is") {
             return 29;
         }
+        if (lang == "vi") {
+            return 30;
+        }
         return 0; // auto
     }
     pure function get-log-level-index(level: int) -> int {
@@ -310,6 +313,8 @@ export component SettingsView inherits Rectangle {
                                                 root.ui_language = "sl";
                                             } else if (idx == 29) {
                                                 root.ui_language = "is";
+                                            } else if (idx == 30) {
+                                                root.ui_language = "vi";
                                             } else {
                                                 root.ui_language = "auto";
                                             }

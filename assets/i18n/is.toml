@@ -56,6 +56,7 @@ fi = "Finnska (fi_FI)"
 sk = "Slóvakíska (sk_SK)"
 is = "Íslenska (is_IS)"
 sl = "Slóvenska (sl_SI)"
+vi = "Víetnamska (vi_VN)"
 
 [settings.log_levels]
 error = "Villa (Error)"

@@ -56,6 +56,7 @@ fi = "الفنلندية (fi_FI)"
 sk = "السلوفاكية (sk_SK)"
 is = "الآيسلندية (is_IS)"
 sl = "السلوفينية (sl_SI)"
+vi = "الفيتنامية (vi_VN)"
 
 [settings.log_levels]
 error = "مستوى الخطأ"

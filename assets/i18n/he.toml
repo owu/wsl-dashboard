@@ -56,6 +56,7 @@ fi = "פינית (fi_FI)"
 sk = "סלובקית (sk_SK)"
 is = "איסלנדית (is_IS)"
 sl = "סלובנית (sl_SI)"
+vi = "וייטנאמית (vi_VN)"
 
 [settings.log_levels]
 error = "רמת שגיאה (Error)"
