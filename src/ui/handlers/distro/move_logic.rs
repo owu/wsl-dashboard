@@ -1,6 +1,6 @@
 use std::sync::Arc;
 use tokio::sync::Mutex;
-use tracing::{info, warn};
+use tracing::{error, info, warn};
 use crate::{AppWindow, AppState, i18n};
 use crate::ui::data::refresh_distros_ui;
 
@@ -73,12 +73,16 @@ pub fn run_move_process(
                 move_res = dashboard.move_distro(&source_name, &target_path).await;
                 
                 if move_res.success {
+                    info!("WSL 2 Move: Successfully moved '{}' to '{}'", source_name, target_path);
                     break;
                 }
-                
+
                 if move_res.output.contains("ERROR_SHARING_VIOLATION") || move_res.output.contains("0x80070020") {
+                    warn!("WSL 2 Move: Sharing violation detected, will retry - {}", move_res.output);
                     continue;
                 }
+
+                error!("WSL 2 Move failed: {}", move_res.error.clone().unwrap_or_else(|| move_res.output.clone()));
             }
             move_res
         } else {
@@ -89,6 +93,7 @@ pub fn run_move_process(
             app.set_task_status_visible(false);
             app.set_is_moving(false);
             if result.success {
+                info!("Move operation completed successfully: '{}' -> '{}'", source_name, target_path);
                 // shortcut.ico
                 if let Some(src_path) = old_install_location {
                     let ico_src = std::path::Path::new(&src_path).join("shortcut.ico");
@@ -104,6 +109,7 @@ pub fn run_move_process(
                 app.set_current_message(i18n::tr("dialog.move_success", &[source_name, target_path]).into());
             } else {
                 let err = result.error.unwrap_or_else(|| i18n::t("dialog.error"));
+                error!("Move operation failed: '{}' - Error: {}", source_name, err);
                 if result.output == "BACKUP_SAVED" {
                     app.set_current_message(i18n::tr("dialog.move_failed_backup", &[err.clone()]).into());
                     app.set_current_message_link(i18n::t("distro.explorer").into());
