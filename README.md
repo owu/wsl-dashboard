@@ -16,7 +16,7 @@ A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) in
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-blue.svg" alt="License" /></a>
 </p>
 
-I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | [हिन्दी](./manual/README_hi.md) | [Español](./manual/README_es.md) | [Français](./manual/README_fr.md) | [العربية](./manual/README_ar.md) | [বাংলা](./manual/README_bn.md) | [Português](./manual/README_pt.md) | [Русский](./manual/README_ru.md) | [اردو](./manual/README_ur.md) | [Bahasa Indonesia](./manual/README_id.md) | [Deutsch](./manual/README_de.md) | [日本語](./manual/README_ja.md) | [Türkçe](./manual/README_tr.md) | [한국어](./manual/README_ko.md) | [Italiano](./manual/README_it.md) | [Nederlands](./manual/README_nl.md) | [Svenska](./manual/README_sv.md) | [Čeština](./manual/README_cs.md) | [Ελληνικά](./manual/README_el.md) | [Magyar](./manual/README_hu.md) | [עברית](./manual/README_he.md) | [Norsk](./manual/README_no.md) | [Dansk](./manual/README_da.md) | [Suomi](./manual/README_fi.md) | [Slovenčina](./manual/README_sk.md) | [Slovenščina](./manual/README_sl.md) | [Íslenska](./manual/README_is.md)
+I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | [हिन्दी](./manual/README_hi.md) | [Español](./manual/README_es.md) | [Français](./manual/README_fr.md) | [العربية](./manual/README_ar.md) | [বাংলা](./manual/README_bn.md) | [Português](./manual/README_pt.md) | [Русский](./manual/README_ru.md) | [اردو](./manual/README_ur.md) | [Bahasa Indonesia](./manual/README_id.md) | [Deutsch](./manual/README_de.md) | [日本語](./manual/README_ja.md) | [Türkçe](./manual/README_tr.md) | [한국어](./manual/README_ko.md) | [Italiano](./manual/README_it.md) | [Nederlands](./manual/README_nl.md) | [Svenska](./manual/README_sv.md) | [Čeština](./manual/README_cs.md) | [Ελληνικά](./manual/README_el.md) | [Magyar](./manual/README_hu.md) | [עברית](./manual/README_he.md) | [Norsk](./manual/README_no.md) | [Dansk](./manual/README_da.md) | [Suomi](./manual/README_fi.md) | [Slovenčina](./manual/README_sk.md) | [Slovenščina](./manual/README_sl.md) | [Íslenska](./manual/README_is.md) | [Tiếng Việt](./manual/README_vi.md)
 
 ---
 
@@ -35,7 +35,7 @@ I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./ma
 
 ## 🌍 Language Support
 
-English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic, Bengali, Portuguese, Russian, Urdu, Indonesian, German, Japanese, Turkish, Korean, Italian, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic
+English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic, Bengali, Portuguese, Russian, Urdu, Indonesian, German, Japanese, Turkish, Korean, Italian, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic, Vietnamese
 
 <p align="left">
   <img src="assets/flags/us.svg" width="32" title="English" alt="English" />
@@ -67,6 +67,7 @@ English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic
   <img src="assets/flags/sk.svg" width="32" title="Slovak" alt="Slovak" />
   <img src="assets/flags/si.svg" width="32" title="Slovenian" alt="Slovenian" />
   <img src="assets/flags/is.svg" width="32" title="Icelandic" alt="Icelandic" />
+  <img src="assets/flags/vn.svg" width="32" title="Tiếng Việt" alt="Tiếng Việt" />
 </p>
 
 

@@ -111,6 +111,9 @@ pub fn normalize_language_code(lang: &str) -> String {
     if lower == "sl" || lower.starts_with("sl-") {
         return "sl".to_string();
     }
+    if lower == "vi" || lower.starts_with("vi-") {
+        return "vi".to_string();
+    }
     
     // Default fallback
     "en".to_string()
