@@ -89,14 +89,11 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 state.wsl_dashboard.executor().clone()
             };
             
-            let check_result = crate::wsl::ops::ui::check_vscode_version(&executor, &name).await;
+            let check_result = crate::wsl::ops::ui::check_vscode_extension(&executor).await;
             
             // 2. Logic based on pre-check result
-            // A valid version output must succeed and start with a digit (e.g., "1.108.2")
-            let is_valid_version = check_result.success && {
-                let stdout = check_result.output.trim();
-                !stdout.is_empty() && stdout.chars().next().map(|c| c.is_ascii_digit()).unwrap_or(false)
-            };
+            // Check if the required extension is in the list
+            let is_valid_version = check_result.success && check_result.output.contains("ms-vscode-remote.remote-wsl");
 
             if is_valid_version {
                 // Success: proceed with existing logic

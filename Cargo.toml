@@ -1,6 +1,6 @@
 [package]
 name = "wsldashboard"
-version = "0.5.0"
+version = "0.5.1"
 edition = "2024"
 description = "A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) instance management dashboard."
 repository = "https://github.com/owu/wsl-dashboard"

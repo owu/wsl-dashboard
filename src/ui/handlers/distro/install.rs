@@ -131,15 +131,30 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     let ah = app_handle.clone();
     app.on_distro_selected(move |val| {
         if let Some(app) = ah.upgrade() {
-            let sanitized = sanitize_instance_name(&val);
-            app.set_new_instance_name(sanitized.clone().into());
+            let app_typed: AppWindow = app;
+            let installables = app_typed.get_installable_distros();
+            let mut internal_id = val.to_string();
             
-            let distro_location = app.get_distro_location().to_string();
+            // Try to find the internal ID from the model
+            for i in 0..installables.row_count() {
+                if let Some(d) = installables.row_data(i) {
+                    if d.friendly_name == val {
+                        internal_id = d.name.to_string();
+                        break;
+                    }
+                }
+            }
+
+            let sanitized = sanitize_instance_name(&internal_id);
+            app_typed.set_new_instance_name(sanitized.clone().into());
+            app_typed.set_selected_install_distro(internal_id.into()); // Store internal ID
+            
+            let distro_location = app_typed.get_distro_location().to_string();
             let new_path = std::path::Path::new(&distro_location)
                 .join(&sanitized)
                 .to_string_lossy()
                 .to_string();
-            app.set_new_instance_path(new_path.into());
+            app_typed.set_new_instance_path(new_path.into());
         }
     });
 
@@ -168,10 +183,11 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                             app.set_task_status_visible(false);
                         }
                      } else {
-                        if let Some(first) = app.get_installable_distro_names().row_data(0) {
-                            let first_str: slint::SharedString = first; // Explicit type
-                            app.set_selected_install_distro(first_str.clone());
-                            app.invoke_distro_selected(first_str);
+                        if let Some(first) = app.get_installable_distros().row_data(0) {
+                            let first_id: slint::SharedString = first.name;
+                            let first_friendly: slint::SharedString = first.friendly_name;
+                            app.set_selected_install_distro(first_id);
+                            app.invoke_distro_selected(first_friendly);
                         }
                      }
                  }
@@ -189,8 +205,20 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let ah = ah.clone();
         let as_ptr = as_ptr.clone();
         
-        let _ = slint::spawn_local(async move {
-            super::install_logic::perform_install(ah, as_ptr, source_idx, name, friendly_name, install_path, file_path).await;
+        println!("\n[UI Event] on_install_distro: name={}, source={}", name, source_idx);
+        
+        let internal_id = if let Some(app) = ah.upgrade() {
+            if app.get_is_installing() {
+                println!("[UI Event] Installation already in progress, ignoring click.");
+                return;
+            }
+            app.get_selected_install_distro().to_string()
+        } else {
+            return;
+        };
+
+        let _ = tokio::spawn(async move {
+            super::install_logic::perform_install(ah, as_ptr, source_idx, name, friendly_name, internal_id, install_path, file_path).await;
         });
     });
 }

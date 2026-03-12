@@ -27,6 +27,7 @@ pub async fn perform_clone(
     };
 
     let distro_info = crate::wsl::ops::info::get_distro_information(&executor, &source_name).await;
+    let old_install_location = executor.get_distro_install_location(&source_name).await.data;
 
     let is_wsl2 = distro_info.success && distro_info.data.as_ref().map_or(false, |info| info.wsl_version == "WSL2");
     let vhdx_path = distro_info.data.as_ref().map(|info| info.vhdx_path.clone()).unwrap_or_default();
@@ -182,6 +183,16 @@ pub async fn perform_clone(
                 }
             });
 
+            // shortcut.ico
+            if let Some(src_path) = old_install_location.clone() {
+                let ico_src = std::path::Path::new(&src_path).join("shortcut.ico");
+                if ico_src.exists() {
+                    let ico_dst = std::path::Path::new(&target_path).join("shortcut.ico");
+                    info!("Cloning shortcut.ico from {:?} to {:?}", ico_src, ico_dst);
+                    let _ = std::fs::copy(ico_src, ico_dst);
+                }
+            }
+
             // 2. Refresh UI (Async)
             refresh_distros_ui(ah_clone.clone(), as_ptr.clone()).await;
             tokio::time::sleep(std::time::Duration::from_millis(500)).await;
@@ -294,6 +305,16 @@ pub async fn perform_clone(
                     app.set_current_message(i18n::tr("dialog.clone_success", &[source, target]).into());
                 }
             });
+
+            // shortcut.ico
+            if let Some(src_path) = old_install_location {
+                let ico_src = std::path::Path::new(&src_path).join("shortcut.ico");
+                if ico_src.exists() {
+                    let ico_dst = std::path::Path::new(&target_path).join("shortcut.ico");
+                    info!("Cloning shortcut.ico from {:?} to {:?}", ico_src, ico_dst);
+                    let _ = std::fs::copy(ico_src, ico_dst);
+                }
+            }
 
             refresh_distros_ui(ah_clone.clone(), as_ptr.clone()).await;
             tokio::time::sleep(std::time::Duration::from_millis(500)).await;

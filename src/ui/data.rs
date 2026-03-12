@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::rc::Rc;
 use tokio::sync::Mutex;
-use tracing::{debug, error};
+use tracing::{trace,debug, error};
 use slint::{ModelRc, VecModel, Model, ComponentHandle};
 use std::sync::atomic::{AtomicBool, Ordering};
 
@@ -20,19 +20,19 @@ pub fn should_refresh_wsl(reason: &str, is_visible: bool) -> bool {
         let elapsed = t.elapsed();
         // Allow manual trigger to bypass the 4s debounce
         if reason != "manual trigger" && elapsed < Duration::from_secs(4) {
-            debug!("WSL refresh skipped (reason: {}, elapsed: {:?})", reason, elapsed);
+            trace!("WSL refresh skipped (reason: {}, elapsed: {:?})", reason, elapsed);
             return false;
         }
     }
 
     // Manual triggers represent explicit user intent and should bypass visibility checks
     if !is_visible && reason != "manual trigger" {
-        debug!("WSL refresh skipped (reason: {}, window hidden in tray)", reason);
+        trace!("WSL refresh skipped (reason: {}, window hidden in tray)", reason);
         return false;
     }
 
     *last = Some(Instant::now());
-    debug!("WSL refresh triggered (reason: {})", reason);
+    trace!("WSL refresh triggered (reason: {})", reason);
     true
 }
 
@@ -42,19 +42,19 @@ pub fn should_refresh_usb(reason: &str, is_visible: bool) -> bool {
         let elapsed = t.elapsed();
         // Allow manual trigger to bypass the 4s debounce
         if reason != "manual trigger" && elapsed < Duration::from_secs(4) {
-            debug!("USB refresh skipped (reason: {}, elapsed: {:?})", reason, elapsed);
+            trace!("USB refresh skipped (reason: {}, elapsed: {:?})", reason, elapsed);
             return false;
         }
     }
 
     // Manual triggers represent explicit user intent and should bypass visibility checks
     if !is_visible && reason != "manual trigger" {
-        debug!("USB refresh skipped (reason: {}, window hidden in tray)", reason);
+        trace!("USB refresh skipped (reason: {}, window hidden in tray)", reason);
         return false;
     }
 
     *last = Some(Instant::now());
-    debug!("USB refresh triggered (reason: {})", reason);
+    trace!("USB refresh triggered (reason: {})", reason);
     true
 }
 

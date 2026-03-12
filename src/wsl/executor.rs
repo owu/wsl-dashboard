@@ -236,109 +236,131 @@ impl WslCommandExecutor {
         let args_owned: Vec<String> = args.iter().map(|&s| s.to_string()).collect();
         let command_str = format!("wsl {}", args_owned.join(" "));
         info!("Executing Streaming WSL command: {}", command_str);
- 
-        let mut cmd = tokio::process::Command::new("wsl.exe");
-        cmd.args(&args_owned)
-           .env("WSL_UTF8", "1")
-           .stdin(Stdio::null())
-           .stdout(Stdio::piped())
-           .stderr(Stdio::piped());
-        
-        #[cfg(windows)]
-        {
-            #[allow(unused_imports)]
-            use std::os::windows::process::CommandExt;
-            const CREATE_NO_WINDOW: u32 = 0x08000000;
-            cmd.creation_flags(CREATE_NO_WINDOW);
-        }
 
-        let mut child = match cmd.spawn()
-        {
-            Ok(child) => {
-                info!("Process spawned successfully, PID: {:?}", child.id());
-                child
-            },
-            Err(e) => return WslCommandResult::error(String::new(), format!("Failed to spawn wsl: {}", e)),
-        };
- 
-        let mut stdout = child.stdout.take().unwrap();
-        let mut stderr = child.stderr.take().unwrap();
-        
-        let mut full_output = String::new();
-        let mut out_buf = [0u8; 1024];
-        let mut err_buf = [0u8; 1024];
-        
-        let mut out_decoder = WslOutputDecoder::new();
-        let mut err_decoder = WslOutputDecoder::new();
-        
-        let mut stdout_done = false;
-        let mut stderr_done = false;
- 
-        let mut exit_status = None;
+        let future = async {
+            let mut cmd = tokio::process::Command::new("wsl.exe");
+            cmd.args(&args_owned)
+               .env("WSL_UTF8", "1")
+               .stdin(Stdio::null())
+               .stdout(Stdio::piped())
+               .stderr(Stdio::piped());
+            
+            #[cfg(windows)]
+            {
+                #[allow(unused_imports)]
+                use std::os::windows::process::CommandExt;
+                const CREATE_NO_WINDOW: u32 = 0x08000000;
+                cmd.creation_flags(CREATE_NO_WINDOW);
+            }
+            
+            // Ensure process is killed on drop
+            cmd.kill_on_drop(true);
 
-        while (!stdout_done || !stderr_done) && exit_status.is_none() {
-            tokio::select! {
-                result = stdout.read(&mut out_buf), if !stdout_done => {
-                    match result {
-                        Ok(0) => {
-                            info!("STDOUT reached EOF");
-                            stdout_done = true;
-                        }
-                        Ok(n) => {
-                            let text = out_decoder.decode(&out_buf[..n]);
-                            if !text.is_empty() {
-                                full_output.push_str(&text);
-                                callback(text);
+            let mut child = match cmd.spawn()
+            {
+                Ok(child) => {
+                    info!("Process spawned successfully, PID: {:?}", child.id());
+                    child
+                },
+                Err(e) => return Err(format!("Failed to spawn wsl: {}", e)),
+            };
+
+            let mut stdout = child.stdout.take().unwrap();
+            let mut stderr = child.stderr.take().unwrap();
+            
+            let mut full_output = String::new();
+            let mut out_buf = [0u8; 1024];
+            let mut err_buf = [0u8; 1024];
+            
+            let mut out_decoder = WslOutputDecoder::new();
+            let mut err_decoder = WslOutputDecoder::new();
+            
+            let mut stdout_done = false;
+            let mut stderr_done = false;
+
+            // Wait for both process exit AND EOF on streams
+            while !stdout_done || !stderr_done {
+                tokio::select! {
+                    result = stdout.read(&mut out_buf), if !stdout_done => {
+                        match result {
+                            Ok(0) => {
+                                debug!("Streaming STDOUT reached EOF for: {}", command_str);
+                                stdout_done = true;
+                            }
+                            Ok(n) => {
+                                let text = out_decoder.decode(&out_buf[..n]);
+                                if !text.is_empty() {
+                                    full_output.push_str(&text);
+                                    callback(text);
+                                }
+                            }
+                            Err(e) => {
+                                error!("Streaming STDOUT read error: {}", e);
+                                stdout_done = true;
                             }
                         }
-                        Err(e) => {
-                            error!("STDOUT read error: {}", e);
-                            stdout_done = true;
-                        }
                     }
-                }
-                result = stderr.read(&mut err_buf), if !stderr_done => {
-                    match result {
-                        Ok(0) => {
-                            stderr_done = true;
-                        }
-                        Ok(n) => {
-                            let text = err_decoder.decode(&err_buf[..n]);
-                            if !text.is_empty() {
-                                full_output.push_str(&text);
-                                callback(text);
+                    result = stderr.read(&mut err_buf), if !stderr_done => {
+                        match result {
+                            Ok(0) => {
+                                debug!("Streaming STDERR reached EOF for: {}", command_str);
+                                stderr_done = true;
+                            }
+                            Ok(n) => {
+                                let text = err_decoder.decode(&err_buf[..n]);
+                                if !text.is_empty() {
+                                    full_output.push_str(&text);
+                                    callback(text);
+                                }
+                            }
+                            Err(e) => {
+                                error!("Streaming STDERR read error: {}", e);
+                                stderr_done = true;
                             }
                         }
-                        Err(e) => {
-                            error!("STDERR read error: {}", e);
-                            stderr_done = true;
-                        }
                     }
-                }
-                status = child.wait() => {
-                    exit_status = Some(status);
+                    // We don't exit early on process exit, we wait for EOF to get all data
                 }
             }
-        }
 
-        let status = match exit_status {
-            Some(s) => s.map_err(|e| e.to_string()),
-            None => child.wait().await.map_err(|e| e.to_string()),
+            let status = child.wait().await.map_err(|e| format!("Wait failed: {}", e))?;
+            info!("Streaming process exited with status: {} for: {}", status, command_str);
+            
+            Ok((full_output, status))
         };
-        match status {
-            Ok(s) => {
-                info!("Process exited with status: {}", s);
-                if s.success() {
-                    WslCommandResult::success(full_output.clone(), None)
+
+        // Streaming commands usually used for install/import, so 30m timeout
+        let timeout_duration = std::time::Duration::from_secs(1800);
+        
+        // Also respect semaphore for consistency
+        let permit_timeout = std::time::Duration::from_secs(10);
+        let _permit = match tokio::time::timeout(permit_timeout, self.semaphore.acquire()).await {
+            Ok(Ok(p)) => p,
+            _ => {
+                warn!("Streaming WSL command started without semaphore slot (too busy): {}", command_str);
+                // We proceed anyway but with a warning, or we could return error. 
+                // For install, it's better to fail early if WSL is totally unresponsive.
+                return WslCommandResult::error(String::new(), "WSL service busy, please try again later".to_string());
+            }
+        };
+
+        match tokio::time::timeout(timeout_duration, future).await {
+            Ok(Ok((full_output, status))) => {
+                if status.success() {
+                    WslCommandResult::success(full_output, None)
                 } else {
-                    // FIX: Also handle streaming failure by checking if full_output contains error details
-                    let err_msg = format!("Process exited with error: {}", s);
+                    let err_msg = format!("Process exited with error: {}", status);
                     WslCommandResult::error(full_output, err_msg)
                 }
             }
-            Err(e) => {
-                error!("Failed to wait for process: {}", e);
-                WslCommandResult::error(full_output, e)
+            Ok(Err(e)) => {
+                error!("Streaming command failed: {}", e);
+                WslCommandResult::error(String::new(), e)
+            }
+            Err(_) => {
+                let error = format!("Streaming WSL command timed out after {}s: {}", timeout_duration.as_secs(), command_str);
+                error!("{}", error);
+                WslCommandResult::error(String::new(), error)
             }
         }
     }

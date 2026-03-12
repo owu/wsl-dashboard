@@ -21,12 +21,12 @@ export component Sidebar inherits Rectangle {
         easing: ease-out-quad;
     }
     VerticalLayout {
+        height: 100%;
         padding-left: 4px;
         padding-right: 4px;
         padding-top: 12px;
         padding-bottom: 16px;
         spacing: 4px;
-        alignment: start;
 
         // Space for floating logo
         Rectangle {
@@ -94,17 +94,22 @@ export component Sidebar inherits Rectangle {
 
         Rectangle {
             vertical-stretch: 1;
-        } // Spacer
+        } // Spacer: Pushes everything below it to the bottom
         
+        // Group of bottom items
         Rectangle {
             height: 8px;
         }
 
+        // Divider
         Rectangle {
-            x: 4px;
-            width: parent.width - 8px;
             height: 1px;
             background: Theme.border_color;
+            width: 100%;
+        }
+
+        Rectangle {
+            height: 4px;
         }
 
         SidebarItem {

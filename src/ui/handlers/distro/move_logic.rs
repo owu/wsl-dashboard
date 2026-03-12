@@ -52,6 +52,8 @@ pub fn run_move_process(
             let _ = dashboard.stop_distro(&source_name).await;
             tokio::time::sleep(std::time::Duration::from_millis(2000)).await;
         }
+        
+        let old_install_location = dashboard.executor().get_distro_install_location(&source_name).await.data;
 
         let result = if version == "2" {
             if let Some(app) = ah_move.upgrade() {
@@ -87,6 +89,18 @@ pub fn run_move_process(
             app.set_task_status_visible(false);
             app.set_is_moving(false);
             if result.success {
+                // shortcut.ico
+                if let Some(src_path) = old_install_location {
+                    let ico_src = std::path::Path::new(&src_path).join("shortcut.ico");
+                    if ico_src.exists() {
+                        let ico_dst = std::path::Path::new(&target_path).join("shortcut.ico");
+                        if ico_src != ico_dst {
+                           info!("Moving shortcut.ico from {:?} to {:?}", ico_src, ico_dst);
+                           let _ = std::fs::rename(ico_src, ico_dst);
+                        }
+                    }
+                }
+
                 app.set_current_message(i18n::tr("dialog.move_success", &[source_name, target_path]).into());
             } else {
                 let err = result.error.unwrap_or_else(|| i18n::t("dialog.error"));

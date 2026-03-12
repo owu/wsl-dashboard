@@ -67,6 +67,7 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
     }).await.unwrap_or_default();
     
     let target_distro_info = all_distros_reg.iter().find(|d| d.name == distro_name);
+    let exists_in_reg = target_distro_info.is_some();
     
     let mut pfn_to_remove = None;
     if let Some(info) = target_distro_info {
@@ -115,7 +116,7 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
     let cleanup_result = tokio::time::timeout(Duration::from_secs(15), cleanup_future).await;
     
     if cleanup_result.is_err() {
-        warn!("Parallel cleanup tasks for '{}' timed out after 15s. Proceeding with unregistration anyway.", distro_name);
+        warn!("Parallel cleanup tasks for '{}' timed out after 15s. Proceeding.", distro_name);
     }
     
     debug!("Finished parallel cleanup tasks attempt for '{}'", distro_name);
@@ -137,31 +138,36 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
         }
     }
 
-    // 3. Pre-termination to prevent unregister hangs
-    debug!("Terminating '{}' before unregistration to avoid hangs (10s timeout)...", distro_name);
-    let _ = tokio::time::timeout(
-        Duration::from_secs(10),
-        executor.execute_command(&["--terminate", distro_name])
-    ).await;
+    // 3. WSL Operations (Skip if not in registry to avoid unnecessary errors/hangs)
+    if !exists_in_reg {
+        debug!("Distribution '{}' not found in registry, skipping WSL terminate/unregister.", distro_name);
+    } else {
+        // Pre-termination to prevent unregister hangs
+        debug!("Terminating '{}' before unregistration to avoid hangs (10s timeout)...", distro_name);
+        let _ = tokio::time::timeout(
+            Duration::from_secs(10),
+            executor.execute_command(&["--terminate", distro_name])
+        ).await;
 
-    // 4. Perform wsl --unregister with specific timeout to avoid permanent hanging
-    debug!("Executing WSL command: wsl --unregister {} (20s timeout)...", distro_name);
-    let result = match tokio::time::timeout(
-        Duration::from_secs(20),
-        executor.execute_command(&["--unregister", distro_name])
-    ).await {
-        Ok(res) => res,
-        Err(_) => {
-            let err = format!("WSL unregister timed out for '{}' after 20s", distro_name);
-            warn!("{}", err);
-            // We return success: false to signal failure
-            WslCommandResult::error(String::new(), err)
+        // Perform wsl --unregister with specific timeout to avoid permanent hanging
+        debug!("Executing WSL command: wsl --unregister {} (20s timeout)...", distro_name);
+        let result = match tokio::time::timeout(
+            Duration::from_secs(20),
+            executor.execute_command(&["--unregister", distro_name])
+        ).await {
+            Ok(res) => res,
+            Err(_) => {
+                let err = format!("WSL unregister timed out for '{}' after 20s", distro_name);
+                warn!("{}", err);
+                return WslCommandResult::error(String::new(), err);
+            }
+        };
+        
+        if !result.success {
+            warn!("Failed to unregister WSL distro '{}': {:?}", distro_name, result.error);
+            return result;
         }
-    };
-    
-    if !result.success {
-        warn!("Failed to unregister WSL distro '{}': {:?}", distro_name, result.error);
-        return result;
+        info!("Successfully unregistered WSL distro '{}'", distro_name);
     }
 
     info!("Successfully unregistered WSL distro '{}'", distro_name);
