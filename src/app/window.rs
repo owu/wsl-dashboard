@@ -1,21 +1,22 @@
-#[cfg(target_os = "windows")]
-use tracing::{info, error};
 use crate::AppWindow;
+#[cfg(target_os = "windows")]
+use tracing::{error, info};
 
 #[cfg(target_os = "windows")]
 use windows::Win32::Foundation::{BOOL, HWND, LPARAM, RECT};
 #[cfg(target_os = "windows")]
-use windows::Win32::UI::WindowsAndMessaging::{
-    EnumWindows, GetWindowRect, GetWindowThreadProcessId, 
-    SetWindowPos, GetWindow, GW_OWNER, SWP_NOSIZE, SWP_NOZORDER, HWND_TOP,
-    GetWindowLongW, SetWindowLongW, GWL_EXSTYLE, WS_EX_TOOLWINDOW, WS_EX_APPWINDOW,
-    ShowWindow, SW_HIDE, SW_SHOW, SWP_FRAMECHANGED, SWP_NOMOVE, GetWindowTextW,
-    GetClassNameW, SetForegroundWindow, SW_RESTORE, SetWindowTextW, SetLayeredWindowAttributes,
-    LWA_ALPHA
+use windows::Win32::Graphics::Gdi::{
+    GetMonitorInfoW, MONITOR_DEFAULTTOPRIMARY, MONITORINFO, MonitorFromWindow,
 };
 use windows::Win32::UI::WindowsAndMessaging::WS_EX_LAYERED;
 #[cfg(target_os = "windows")]
-use windows::Win32::Graphics::Gdi::{MonitorFromWindow, GetMonitorInfoW, MONITORINFO, MONITOR_DEFAULTTOPRIMARY};
+use windows::Win32::UI::WindowsAndMessaging::{
+    EnumWindows, GW_OWNER, GWL_EXSTYLE, GetClassNameW, GetWindow, GetWindowLongW, GetWindowRect,
+    GetWindowTextW, GetWindowThreadProcessId, HWND_TOP, IsIconic, LWA_ALPHA, SW_HIDE, SW_RESTORE,
+    SW_SHOW, SWP_FRAMECHANGED, SWP_NOMOVE, SWP_NOSIZE, SWP_NOZORDER, SetForegroundWindow,
+    SetLayeredWindowAttributes, SetWindowLongW, SetWindowPos, SetWindowTextW, ShowWindow,
+    WS_EX_APPWINDOW, WS_EX_TOOLWINDOW,
+};
 
 #[cfg(target_os = "windows")]
 struct EnumWindowData {
@@ -228,6 +229,13 @@ pub fn show_and_center(app: &AppWindow, silent: bool) {
             for _ in 0..60 {
                 if let Some(hwnd) = find_main_window() {
                     unsafe {
+                        // If the window is minimized (iconic), restore it first so GetWindowRect returns real dimensions
+                        if IsIconic(hwnd).as_bool() {
+                            let _ = ShowWindow(hwnd, SW_RESTORE);
+                            // Give Windows a moment to process the restore
+                            std::thread::sleep(std::time::Duration::from_millis(50));
+                        }
+
                         let mut rect = RECT::default();
                         if GetWindowRect(hwnd, &mut rect).is_ok() {
                             let w = rect.right - rect.left;
