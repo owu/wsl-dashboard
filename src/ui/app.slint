@@ -349,6 +349,7 @@ export component AppWindow inherits Window {
             Rectangle {
                 sidebar := Sidebar {
                     x: AppI18n.is-rtl ? parent.width - self.width : 0;
+                    z: 1;
                     height: 100%;
                     collapsed <=> root.sidebar_collapsed;
                     selected_tab: root.selected_tab;
@@ -654,8 +655,8 @@ export component AppWindow inherits Window {
         }
     }
 
-        // --- Layers/Modals ---
-        ModalManager {
+    // --- Layers/Modals ---
+    ModalManager {
         is_installing: root.is_installing;
         show_delete: root.show_delete_confirmation;
         delete_target_name: root.distro_to_delete;
