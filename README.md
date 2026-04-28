@@ -9,11 +9,12 @@ A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) in
 ---
 
 <p align="left">
-  <a href="https://www.rust-lang.org"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
-  <a href="https://slint.dev"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>
-  <a href="https://tokio.rs"><img src="https://img.shields.io/badge/Async-Tokio-000000.svg" alt="Tokio" /></a>
-  <a href="https://github.com/microsoft/windows-rs"><img src="https://img.shields.io/badge/OS-Windows-0078D6.svg" alt="Windows" /></a>
+  <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
+  <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>
+  <a href="https://tokio.rs" target="_blank"><img src="https://img.shields.io/badge/Async-Tokio-000000.svg" alt="Tokio" /></a>
+  <a href="https://github.com/microsoft/windows-rs" target="_blank"><img src="https://img.shields.io/badge/OS-Windows-0078D6.svg" alt="Windows" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-blue.svg" alt="License" /></a>
+  <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
 I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | [हिन्दी](./manual/README_hi.md) | [Español](./manual/README_es.md) | [Français](./manual/README_fr.md) | [العربية](./manual/README_ar.md) | [বাংলা](./manual/README_bn.md) | [Português](./manual/README_pt.md) | [Русский](./manual/README_ru.md) | [اردو](./manual/README_ur.md) | [Bahasa Indonesia](./manual/README_id.md) | [Deutsch](./manual/README_de.md) | [日本語](./manual/README_ja.md) | [Türkçe](./manual/README_tr.md) | [한국어](./manual/README_ko.md) | [Italiano](./manual/README_it.md) | [Nederlands](./manual/README_nl.md) | [Svenska](./manual/README_sv.md) | [Čeština](./manual/README_cs.md) | [Ελληνικά](./manual/README_el.md) | [Magyar](./manual/README_hu.md) | [עברית](./manual/README_he.md) | [Norsk](./manual/README_no.md) | [Dansk](./manual/README_da.md) | [Suomi](./manual/README_fi.md) | [Slovenčina](./manual/README_sk.md) | [Slovenščina](./manual/README_sl.md) | [Íslenska](./manual/README_is.md)
