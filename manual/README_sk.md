@@ -8,6 +8,16 @@ Moderný, vysoko výkonný a ľahký ovládací panel na správu inštancií WSL
 
 ---
 
+```diff
+Oznámenie:
+
+- Tento softvér sa ne distribuuje prostredníctvom Microsoft Store.
+- Akákoľvek aplikácia uvedená tam pod rovnakým názvom je neoprávnená a môže být falošná.
+- Prosím, nestahujte ju, aby ste sa vyhli potenciálnym podvodom.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

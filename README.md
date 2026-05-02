@@ -8,6 +8,16 @@ A modern, high-performance, and lightweight WSL (Windows Subsystem for Linux) in
 
 ---
 
+```diff
+Notice:​
+
+- This software is not distributed through the Microsoft Store.
+- Any application listed there under the same name is unauthorized and may be counterfeit.
+- Please do not download it to avoid potential scams.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

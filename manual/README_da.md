@@ -8,6 +8,16 @@ Et moderne, højtydende og let kontrolpanel til styring af WSL-instanser (Window
 
 ---
 
+```diff
+Bemærk:
+
+- Denne software distribueres ikke via Microsoft Store.
+- Enhver applikation, der er anført der med samme navn, er uautoriseret og kan være forfalsket.
+- Download den venligst ikke for at undgå potentiel svindel.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

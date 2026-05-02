@@ -8,6 +8,16 @@ Ein modernes, leistungsstarkes und leichtgewichtiges Dashboard zur Verwaltung vo
 
 ---
 
+```diff
+Hinweis:
+
+- Diese Software wird nicht über den Microsoft Store vertrieben.
+- Jede dort unter demselben Namen aufgeführte Anwendung ist nicht autorisiert und kann gefälscht sein.
+- Bitte laden Sie es nicht herunter, um Betrug zu vermeiden.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

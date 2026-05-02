@@ -8,6 +8,16 @@ Una dashboard moderna, performante e leggera per la gestione delle istanze WSL (
 
 ---
 
+```diff
+Avviso:
+
+- Questo software non è distribuito tramite Microsoft Store.
+- Qualsiasi applicazione elencata lì con lo stesso nome non è autorizzata e potrebbe essere contraffatta.
+- Si prega di non scaricarla per evitare potenziali truffe.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

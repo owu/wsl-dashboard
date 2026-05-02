@@ -8,6 +8,16 @@ Moderni, suorituskykyinen ja kevyt hallintapaneeli WSL (Windows Subsystem for Li
 
 ---
 
+```diff
+Huomautus:
+
+- Tätä ohjelmistoa ei jaella Microsoft Store -palvelun kautta.
+- Mikä tahansa sovellus, joka on lueteltu siellä samalla nimellä, on luvaton ja voi olla väärennös.
+- Ole hyvä äläkä lataa sitä välttääksesi mahdollisen huijauksen.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

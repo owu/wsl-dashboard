@@ -8,6 +8,16 @@ Um painel de gestão de instâncias WSL (Windows Subsystem for Linux) moderno, d
 
 ---
 
+```diff
+Aviso:
+
+- Este software não é distribuído através do Microsoft Store.
+- Qualquer aplicativo listado lá sob o mesmo nome não é autorizado e pode ser falsificado.
+- Por favor, não o baixe para evitar possíveis fraudes.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

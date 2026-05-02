@@ -8,6 +8,16 @@ WSL (Windows Subsystem for Linux) इंस्टेंस प्रबंधन
 
 ---
 
+```diff
+ध्यान दें:
+
+- इस सॉफ़्टवेयर को Microsoft Store के माध्यम से वितरित नहीं किया जाता।
+- वहाँ समान नाम के तहत सूचीबद्ध कोई भी एप्लिकेशन अनधिकृत है और जाली हो सकता है।
+- कृपया इसे डाउनलोड न करें।
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

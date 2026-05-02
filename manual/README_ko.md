@@ -8,6 +8,16 @@
 
 ---
 
+```diff
+알림:
+
+- 이 소프트웨어는 Microsoft Store를 통해 배포되지 않습니다.
+- 같은 이름으로 거기에 나열된 모든 애플리케이션은 무단이며 위조되었을 수 있습니다.
+- 사기를 피하려면 다운로드하지 마세요.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

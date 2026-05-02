@@ -8,6 +8,16 @@ En modern, högpresterande och lättviktig kontrollpanel för hantering av WSL-i
 
 ---
 
+```diff
+Avisering:
+
+- Denna programvara distribueras inte via Microsoft Store.
+- Alla program som listas där under samma namn är obehöriga och kan vara förfalskade.
+- Vänligen ladda inte ner den för att undvika potentiella bedrägerier.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

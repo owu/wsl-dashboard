@@ -8,6 +8,16 @@
 
 ---
 
+```diff
+הודעה:
+
+- תוכנה זו אינה מופצת דרך Microsoft Store.
+- כל יישום המפורט שם באותו שם אינו מורשה ועלול להיות מזויף.
+- אנא אל תורידו אותו כדי להימנע מהונאה פוטנציאלית.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

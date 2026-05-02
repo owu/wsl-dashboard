@@ -8,6 +8,16 @@ Egy modern, nagy teljesítményű és könnyű vezérlőpult a WSL (Windows Subs
 
 ---
 
+```diff
+Figyelmeztetés:
+
+- Ez a szoftver nem terjesztjük a Microsoft Store-on keresztül.
+- Az ott ugyanolyan néven felsorolt bármely alkalmazás engedély nélküli és hamis lehet.
+- Kérjük, ne töltse le a csalás elkerülése érdekében.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

@@ -8,6 +8,16 @@
 
 ---
 
+```diff
+注意:
+
+- 本軟體未通過 Microsoft Store 分發。
+- 在此上架的同名應用均為未經授權的盜版軟體。
+- 請勿下載，以免上當受騙。
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

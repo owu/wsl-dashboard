@@ -8,6 +8,16 @@ Sodobna, visoko zmogljiva in lahka nadzorna plošča za upravljanje instanc WSL 
 
 ---
 
+```diff
+Obvestilo:
+
+- Ta programska oprema se ne distribuira prek Microsoft Store.
+- Katera koli aplikacija, navedena tam pod istim imenom, je nepooblaščena in je lahko ponarejena.
+- Prosimo, je ne prenašajte, da se izognete potencialni prevari.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

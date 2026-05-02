@@ -8,6 +8,16 @@ WSL (Windows Subsystem for Linux) örneklerini yönetmek için modern, yüksek p
 
 ---
 
+```diff
+Bilgi:
+
+- Bu yazılım Microsoft Store üzerinden dağıtılmamaktadır.
+- Aynı ad altında orada listelenen tüm uygulamalar yetkisizdir ve sahte olabilir.
+- Dolandırıcılıktan kaçınmak için lütfen indirmeyin.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

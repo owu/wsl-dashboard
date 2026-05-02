@@ -8,6 +8,16 @@ Een modern, krachtig en lichtgewicht dashboard voor het beheer van WSL-instances
 
 ---
 
+```diff
+Kennisgeving:
+
+- Deze software wordt niet gedistribueerd via de Microsoft Store.
+- Elke applicatie die daar vermeld staat onder dezelfde naam is niet geautoriseerd en kan namaak zijn.
+- Gelieve het niet te downloaden om oplichting te voorkomen.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

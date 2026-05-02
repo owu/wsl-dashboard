@@ -8,6 +8,16 @@ Un tableau de bord moderne, performant et léger pour la gestion des instances W
 
 ---
 
+```diff
+Avertissement:
+
+- Ce logiciel n'est pas distribué via le Microsoft Store.
+- Toute application listée là-bas sous le même nom n'est pas autorisée et peut être une contrefaçon.
+- Veuillez ne pas le télécharger pour éviter les arnaques potentielles.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>

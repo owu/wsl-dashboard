@@ -8,6 +8,16 @@ Nútímalegt, afkastamikið og létt stjórnborð til að sýsla með WSL (Windo
 
 ---
 
+```diff
+Athugið:
+
+- Þessi hugbúnaður er ekki dreift í gegnum Microsoft Store.
+- Hvaða forrit sem skráð er þar undir sama nafni er óheimilt og gæti verið falskt.
+- Vinsamlegast ekki hlaða því niður til að forðast möguleg svindl.
+```
+
+---
+
 <p align="left">
   <a href="https://www.rust-lang.org" target="_blank"><img src="https://img.shields.io/badge/rust-v1.92+-orange.svg" alt="Rust" /></a>
   <a href="https://slint.dev" target="_blank"><img src="https://img.shields.io/badge/UI-Slint-blue.svg" alt="Slint" /></a>
