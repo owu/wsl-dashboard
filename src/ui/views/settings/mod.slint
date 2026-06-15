@@ -3,16 +3,16 @@
 
 import { Theme, AppI18n, SettingsStrings, LayoutConstants } from "../../theme.slint";
 import { CustomScrollbar } from "../../components/scrollbar.slint";
+import { LanguageData } from "../../components/language_data.slint";
 import { 
     CustomCheckBox, 
     CustomButton 
 } from "../../components/form_widgets.slint";
-import { 
-    GeneralSettingsSection, 
-    AdvancedSettingsSection, 
-    InterfaceSettingsSection 
+import {
+    GeneralSettingsSection,
+    AdvancedSettingsSection,
+    InterfaceSettingsSection
 } from "sections.slint";
-
 component SettingsTab inherits Rectangle {
     in property <string> text;
     in property <bool> active: false;
@@ -68,31 +68,20 @@ export component SettingsView inherits Rectangle {
     in-out property <bool> sidebar_toggle: true;
     in-out property <bool> sidebar_usb: true;
     in-out property <bool> sidebar_network: true;
+    in-out property <bool> sidebar_donate: true;
     in-out property <bool> sidebar_about: true;
     in-out property <bool> sparse_vhd: false;
     in-out property <bool> colorful_icons: false;
+    in-out property <bool> mail_icon_always: true;
+    in-out property <bool> hide_pin_icon: false;
     in property <SettingsStrings> strings;
+    in property <[string]> language_options;
+    in-out property <int> selected_language_index;
 
     property <int> active_tab: 0;
+    in-out property <bool> show_language_dialog: false;
 
     // Options Models
-    private property <[string]> language-options: [
-        AppI18n.t("settings.languages.auto", [AppI18n.version]), AppI18n.t("settings.languages.en", [AppI18n.version]),
-        AppI18n.t("settings.languages.zh_cn", [AppI18n.version]), AppI18n.t("settings.languages.zh_tw", [AppI18n.version]),
-        AppI18n.t("settings.languages.hi", [AppI18n.version]), AppI18n.t("settings.languages.es", [AppI18n.version]),
-        AppI18n.t("settings.languages.fr", [AppI18n.version]), AppI18n.t("settings.languages.ar", [AppI18n.version]),
-        AppI18n.t("settings.languages.bn", [AppI18n.version]), AppI18n.t("settings.languages.pt", [AppI18n.version]),
-        AppI18n.t("settings.languages.ru", [AppI18n.version]), AppI18n.t("settings.languages.ur", [AppI18n.version]),
-        AppI18n.t("settings.languages.id", [AppI18n.version]), AppI18n.t("settings.languages.de", [AppI18n.version]),
-        AppI18n.t("settings.languages.ja", [AppI18n.version]), AppI18n.t("settings.languages.tr", [AppI18n.version]),
-        AppI18n.t("settings.languages.ko", [AppI18n.version]), AppI18n.t("settings.languages.it", [AppI18n.version]),
-        AppI18n.t("settings.languages.nl", [AppI18n.version]), AppI18n.t("settings.languages.sv", [AppI18n.version]),
-        AppI18n.t("settings.languages.cs", [AppI18n.version]), AppI18n.t("settings.languages.el", [AppI18n.version]),
-        AppI18n.t("settings.languages.hu", [AppI18n.version]), AppI18n.t("settings.languages.he", [AppI18n.version]),
-        AppI18n.t("settings.languages.no", [AppI18n.version]), AppI18n.t("settings.languages.da", [AppI18n.version]),
-        AppI18n.t("settings.languages.fi", [AppI18n.version]), AppI18n.t("settings.languages.sk", [AppI18n.version]),
-        AppI18n.t("settings.languages.sl", [AppI18n.version]), AppI18n.t("settings.languages.is", [AppI18n.version])
-    ];
     private property <[string]> log-level-options: [
         AppI18n.t("settings.log_levels.error", [AppI18n.version]), AppI18n.t("settings.log_levels.warn", [AppI18n.version]),
         AppI18n.t("settings.log_levels.info", [AppI18n.version]), AppI18n.t("settings.log_levels.debug", [AppI18n.version]),
@@ -109,14 +98,13 @@ export component SettingsView inherits Rectangle {
     ];
 
     // Selected Indices
-    property <int> selected-language-index: get-language-index(ui_language);
     property <int> selected-log-level-index: get-log-level-index(log_level);
     property <int> selected-check-update-index: get-check-update-index(check_update_interval);
     property <int> selected-log-days-index: get-log-days-index(log_days);
 
     // Sync back indices to properties
-    changed selected-language-index => {
-        ui_language = index-to-lang(selected-language-index);
+    changed selected_language_index => {
+        ui_language = LanguageData.lang-codes[selected_language_index];
     }
     changed selected-log-level-index => {
         log_level = selected-log-level-index + 1;
@@ -131,72 +119,6 @@ export component SettingsView inherits Rectangle {
         if (selected-log-days-index == 0) { log_days = 7; }
         else if (selected-log-days-index == 1) { log_days = 15; }
         else if (selected-log-days-index == 2) { log_days = 30; }
-    }
-
-    pure function get-language-index(lang: string) -> int {
-        if (lang == "en") { return 1; }
-        if (lang == "zh-CN") { return 2; }
-        if (lang == "zh-TW") { return 3; }
-        if (lang == "hi") { return 4; }
-        if (lang == "es") { return 5; }
-        if (lang == "fr") { return 6; }
-        if (lang == "ar") { return 7; }
-        if (lang == "bn") { return 8; }
-        if (lang == "pt") { return 9; }
-        if (lang == "ru") { return 10; }
-        if (lang == "ur") { return 11; }
-        if (lang == "id") { return 12; }
-        if (lang == "de") { return 13; }
-        if (lang == "ja") { return 14; }
-        if (lang == "tr") { return 15; }
-        if (lang == "ko") { return 16; }
-        if (lang == "it") { return 17; }
-        if (lang == "nl") { return 18; }
-        if (lang == "sv") { return 19; }
-        if (lang == "cs") { return 20; }
-        if (lang == "el") { return 21; }
-        if (lang == "hu") { return 22; }
-        if (lang == "he") { return 23; }
-        if (lang == "no") { return 24; }
-        if (lang == "da") { return 25; }
-        if (lang == "fi") { return 26; }
-        if (lang == "sk") { return 27; }
-        if (lang == "sl") { return 28; }
-        if (lang == "is") { return 29; }
-        return 0; // auto
-    }
-
-    pure function index-to-lang(idx: int) -> string {
-        if (idx == 1) { return "en"; }
-        if (idx == 2) { return "zh-CN"; }
-        if (idx == 3) { return "zh-TW"; }
-        if (idx == 4) { return "hi"; }
-        if (idx == 5) { return "es"; }
-        if (idx == 6) { return "fr"; }
-        if (idx == 7) { return "ar"; }
-        if (idx == 8) { return "bn"; }
-        if (idx == 9) { return "pt"; }
-        if (idx == 10) { return "ru"; }
-        if (idx == 11) { return "ur"; }
-        if (idx == 12) { return "id"; }
-        if (idx == 13) { return "de"; }
-        if (idx == 14) { return "ja"; }
-        if (idx == 15) { return "tr"; }
-        if (idx == 16) { return "ko"; }
-        if (idx == 17) { return "it"; }
-        if (idx == 18) { return "nl"; }
-        if (idx == 19) { return "sv"; }
-        if (idx == 20) { return "cs"; }
-        if (idx == 21) { return "el"; }
-        if (idx == 22) { return "hu"; }
-        if (idx == 23) { return "he"; }
-        if (idx == 24) { return "no"; }
-        if (idx == 25) { return "da"; }
-        if (idx == 26) { return "fi"; }
-        if (idx == 27) { return "sk"; }
-        if (idx == 28) { return "sl"; }
-        if (idx == 29) { return "is"; }
-        return "auto";
     }
 
     pure function get-log-level-index(level: int) -> int {
@@ -223,6 +145,10 @@ export component SettingsView inherits Rectangle {
     callback select-logs-folder();
     callback open-wsl-settings();
     callback stop-wsl();
+    callback language_selected(string);
+    language_selected(lang_code) => {
+        ui_language = lang_code;
+    }
 
     VerticalLayout {
         padding: 0px;
@@ -267,10 +193,11 @@ export component SettingsView inherits Rectangle {
                         padding-left: AppI18n.is-rtl ? 16px : 4px; padding-right: AppI18n.is-rtl ? 4px : 16px; padding-top: 4px; padding-bottom: 4px;
                         GeneralSettingsSection {
                             strings: root.strings;
-                            selected_language_index <=> root.selected-language-index;
+                            selected_language_index <=> root.selected_language_index;
                             selected_check_update_index <=> root.selected-check-update-index;
-                            language_options: root.language-options;
+                            language_options: root.language_options;
                             check_update_options: root.check-update-options;
+                            show_language_dialog <=> root.show_language_dialog;
                             tray_autostart <=> root.tray_autostart;
                             tray_start_minimized <=> root.tray_start_minimized;
                             tray_close_to_tray <=> root.tray_close_to_tray;
@@ -324,9 +251,12 @@ export component SettingsView inherits Rectangle {
                             sidebar_toggle <=> root.sidebar_toggle;
                             sidebar_usb <=> root.sidebar_usb;
                             sidebar_network <=> root.sidebar_network;
+                            sidebar_donate <=> root.sidebar_donate;
                             sidebar_about <=> root.sidebar_about;
                             system_color <=> root.system_color;
                             colorful_icons <=> root.colorful_icons;
+                            mail_icon_always <=> root.mail_icon_always;
+                            hide_pin_icon <=> root.hide_pin_icon;
                         }
                     }
                 }

@@ -3,7 +3,7 @@
 
 use tokio::task;
 use tokio::process::Command;
-use tracing::{info, warn, error, debug};
+use tracing::{info, warn, error, trace};
 use std::time::Duration;
 use crate::wsl::executor::WslCommandExecutor;
 use crate::wsl::models::WslCommandResult;
@@ -94,16 +94,16 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
     let cm = config_manager.clone();
     let dn1 = distro_name.to_string();
 
-    debug!("Starting parallel cleanup tasks for '{}' with 15s timeout...", distro_name);
+    trace!("Starting parallel cleanup tasks for '{}' with 15s timeout...", distro_name);
     let cleanup_future = async {
         tokio::join!(
             // a. Remove from instances.toml
             async {
-                debug!("Removing instance config for '{}'...", distro_name);
+                trace!("Removing instance config for '{}'...", distro_name);
                 let res = task::spawn_blocking(move || {
                     cm.remove_instance_config(&dn1).map_err(|e| e.to_string())
                 }).await;
-                debug!("Instance config removal for '{}' complete", distro_name);
+                trace!("Instance config removal for '{}' complete", distro_name);
                 res
             },
 
@@ -117,7 +117,7 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
         warn!("Parallel cleanup tasks for '{}' timed out after 15s. Proceeding.", distro_name);
     }
     
-    debug!("Finished parallel cleanup tasks attempt for '{}'", distro_name);
+    trace!("Finished parallel cleanup tasks attempt for '{}'", distro_name);
         let (config_res,) = cleanup_result.unwrap_or((Ok(Ok(())),));
 
         match config_res {
@@ -128,17 +128,17 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
 
     // 3. WSL Operations (Skip if not in registry to avoid unnecessary errors/hangs)
     if !exists_in_reg {
-        debug!("Distribution '{}' not found in registry, skipping WSL terminate/unregister.", distro_name);
+        trace!("Distribution '{}' not found in registry, skipping WSL terminate/unregister.", distro_name);
     } else {
         // Pre-termination to prevent unregister hangs
-        debug!("Terminating '{}' before unregistration to avoid hangs (10s timeout)...", distro_name);
+        trace!("Terminating '{}' before unregistration to avoid hangs (10s timeout)...", distro_name);
         let _ = tokio::time::timeout(
             Duration::from_secs(10),
             executor.execute_command(&["--terminate", distro_name])
         ).await;
 
         // Perform wsl --unregister with specific timeout to avoid permanent hanging
-        debug!("Executing WSL command: wsl --unregister {} (20s timeout)...", distro_name);
+        trace!("Executing WSL command: wsl --unregister {} (20s timeout)...", distro_name);
         let result = match tokio::time::timeout(
             Duration::from_secs(20),
             executor.execute_command(&["--unregister", distro_name])
@@ -167,7 +167,7 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
         let bg_sem = executor.background_semaphore().clone();
         tokio::spawn(async move {
             let _permit = bg_sem.acquire().await;
-            debug!("Launcher cleanup permit acquired for '{}'", pfn);
+            trace!("Launcher cleanup permit acquired for '{}'", pfn);
             let uninstall_script = format!(r#"
                 $pfn = "{}"
                 # Faster search by splitting PFN and using Name wildcard
@@ -226,7 +226,40 @@ pub async fn delete_distro(executor: &WslCommandExecutor, config_manager: &Confi
     WslCommandResult::success(format!("Distro '{}' deleted and launcher cleanup initiated", distro_name), None)
 }
 
-pub async fn move_distro(executor: &WslCommandExecutor, distro_name: &str, new_path: &str) -> WslCommandResult<String> {
-    info!("Operation: Move WSL distribution - {} to {}", distro_name, new_path);
-    executor.execute_command(&["--manage", distro_name, "--move", new_path]).await
+pub async fn move_distro(_executor: &WslCommandExecutor, distro_name: &str, new_path: &str) -> WslCommandResult<String> {
+    info!("Operation: Move WSL distribution (elevated) - {} to {}", distro_name, new_path);
+
+    // Always use elevated execution to avoid E_ACCESSDENIED on WSL 2.7.8.0+
+    let cmd = format!("wsl --manage \"{}\" --move \"{}\"", distro_name, new_path);
+
+    let res = tokio::task::spawn_blocking(move || {
+        crate::utils::system::run_invisible_elevated_command(&cmd)
+    }).await.unwrap_or_else(|e| Err(e.to_string()));
+
+    if let Err(e) = res {
+        error!("Elevated move failed: {}", e);
+        return WslCommandResult::error(String::new(), e);
+    }
+
+    // Verify the move actually succeeded by checking registry
+    match super::info::get_distro_install_location(_executor, distro_name).await {
+        result if result.success => {
+            if let Some(ref location) = result.data {
+                let loc_norm = location.replace('\\', "/").trim_end_matches('/').to_string();
+                let new_norm = new_path.replace('\\', "/").trim_end_matches('/').to_string();
+                
+                if loc_norm.eq_ignore_ascii_case(&new_norm) || loc_norm.contains(&new_norm) {
+                    info!("Move verified: distro '{}' now at '{}'", distro_name, location);
+                    return WslCommandResult::success("Move successful".to_string(), None);
+                }
+            }
+            error!("Move verification failed: distro '{}' not at expected path '{}'", distro_name, new_path);
+            WslCommandResult::error(String::new(), format!("Move verification failed: distro location did not change to '{}'", new_path))
+        }
+        _ => {
+            warn!("Could not verify move: failed to read distro location from registry");
+            // Elevated command succeeded but can't verify - assume success
+            WslCommandResult::success("Move completed (unverified)".to_string(), None)
+        }
+    }
 }

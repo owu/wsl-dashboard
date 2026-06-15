@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use tokio::time::{Duration, Instant};
-use tracing::{info, warn, debug};
+use tracing::{info, warn, trace};
 use crate::wsl::models::{WslCommandResult, WslStatus};
 use super::WslDashboard;
 use super::operation_guard::DistroOpGuard;
@@ -78,7 +78,7 @@ impl WslDashboard {
             let _ = self.refresh_distros().await;
             if let Some(distro) = self.get_distro(name).await {
                 if matches!(distro.status, WslStatus::Stopped) {
-                    debug!("Distro '{}' confirmed Stopped after {}ms", name, start_wait.elapsed().as_millis());
+                    trace!("Distro '{}' confirmed Stopped after {}ms", name, start_wait.elapsed().as_millis());
                     is_stopped = true;
                     break;
                 }
@@ -132,7 +132,7 @@ impl WslDashboard {
                 let old_len = distros.len();
                 distros.retain(|d| d.name != name);
                 if distros.len() < old_len {
-                    debug!("Manually removed '{}' from local cache, notifying UI", name);
+                    trace!("Manually removed '{}' from local cache, notifying UI", name);
                     self.state_changed.notify_one();
                 }
             }

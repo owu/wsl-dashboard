@@ -56,7 +56,10 @@ fn get_distro_details_by_guid(parent_hkey: HKEY, guid: &str) -> Option<WslRegInf
         }
         
         let name = read_reg_string(sub_hkey, "DistributionName").unwrap_or_default();
-        let base_path = read_reg_string(sub_hkey, "BasePath").unwrap_or_default();
+        let mut base_path = read_reg_string(sub_hkey, "BasePath").unwrap_or_default();
+        if base_path.starts_with(r"\\?\") {
+            base_path = base_path[4..].to_string();
+        }
         let pfn = read_reg_string(sub_hkey, "PackageFamilyName").unwrap_or_default();
         let version = read_reg_dword(sub_hkey, "Version").unwrap_or(1);
         

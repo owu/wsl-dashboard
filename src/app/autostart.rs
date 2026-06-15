@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 
-use tracing::{info, warn, debug};
+use tracing::{info, warn, trace};
 
 
 
@@ -48,7 +48,7 @@ pub async fn set_dashboard_autostart(enable: bool, start_minimized: bool) -> Res
         // 1. Check if it's already set to the same value to avoid redundant writes
         if let Some(current_val) = crate::utils::registry::read_reg_string_ext(windows::Win32::System::Registry::HKEY_CURRENT_USER, run_subkey, value_name) {
             if current_val == command {
-                debug!("Dashboard autostart is already correctly set in registry, skipping write.");
+                trace!("Dashboard autostart is already correctly set in registry, skipping write.");
                 return Ok(());
             }
         }
@@ -173,7 +173,7 @@ pub async fn repair_task_scheduler_path() {
     // Check if the current exe path is already in the script
     // Simple containment check for the path string
     if content.contains(&format!("$exePath = \"{}\"", exe_str)) {
-        debug!("Scheduled task script is up-to-date, no repair needed.");
+        trace!("Scheduled task script is up-to-date, no repair needed.");
         return;
     }
 

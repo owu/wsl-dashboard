@@ -6,6 +6,7 @@ import { ExportDialog } from "dialogs/export_dialog.slint";
 import { CloneDialog } from "dialogs/clone_dialog.slint";
 import { MessageDialog } from "dialogs/message_dialog.slint";
 import { CheckUpdateDialog } from "dialogs/check_update_dialog.slint";
+import { CheckExpiredDialog } from "dialogs/check_expired_dialog.slint";
 import {
     StoreInstallWarnDialog,
 } from "dialogs/store_install_warn_dialog.slint";
@@ -18,14 +19,20 @@ import { MoveDialog } from "dialogs/move_dialog.slint";
 import { WslConfigDialog } from "dialogs/wsl_config_dialog.slint";
 import { NetworkAddRuleDialog } from "dialogs/network_add_rule_dialog.slint";
 import { CompressDialog } from "dialogs/compress_dialog.slint";
+import { WslCompatDialog } from "dialogs/wsl_compat_dialog.slint";
+import { LanguageSelectDialog } from "dialogs/language_select_dialog.slint";
+import { PopupNoticeDialog } from "dialogs/popup_notice.slint";
+import { PopupImageDialog } from "dialogs/popup_image.slint";
+import { MessageMailDialog } from "dialogs/message_mail.slint";
 
-export { 
-    ConfirmationDialog, 
-    ExportDialog, 
-    CloneDialog, 
+export {
+    ConfirmationDialog,
+    ExportDialog,
+    CloneDialog,
     MoveDialog,
-    MessageDialog, 
-    CheckUpdateDialog, 
+    MessageDialog,
+    CheckUpdateDialog,
+    CheckExpiredDialog,
     StoreInstallWarnDialog,
     InformationDialog,
     SettingsDialog,
@@ -34,5 +41,10 @@ export {
     VSCodeStartupDialog,
     WslConfigDialog,
     NetworkAddRuleDialog,
-    CompressDialog
+    CompressDialog,
+    WslCompatDialog,
+    LanguageSelectDialog,
+    PopupNoticeDialog,
+    PopupImageDialog,
+    MessageMailDialog
 }

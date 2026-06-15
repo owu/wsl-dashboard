@@ -27,7 +27,7 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | Ελληνικά | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | Ελληνικά | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Απαιτήσεις Συστήματος](#-απαιτήσεις-συστήματος)
 - [📦 Οδηγός Εγκατάστασης](#-οδηγός-εγκατάστασης)
 - [🛠️ Τεχνολογίες & Απόδοση](#️-τεχνολογίες--απόδοση)
+- [🤝 Υποστήριξη Κοινότητας](#-υποστήριξη-κοινότητας)
+- [❤️ Υποστήριξη αυτού του έργου](#️-υποστήριξη-αυτού-του-έργου)
 - [⭐️ Έργο αγάπης](#️-έργο-αγάπης)
 - [📄 Άδεια Χρήσης](#-άδεια-χρήσης)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 Υποστηριζόμενες Γλώσσες
 
-Αγγλικά, Απλοποιημένα Κινέζικα, Παραδοσιακά Κινέζικα, Χίντι, Ισπανικά, Γαλλικά, Αραβικά, Μπενγκάλι, Πορτογαλικά, Ρωσικά, Ουρντού, Ινδονησιακά, Γερμανικά, Ιαπωνικά, Τουρκικά, Κορεάτικα, Ιταλικά, Ολλανδικά, Σουηδικά, Τσεχικά, Ελληνικά, Ουγγρικά, Εβραϊκά, Νορβηγικά, Δανικά, Φινλανδικά, Σλοβακικά, Σλοβενικά, Ισλανδικά.
+Αγγλικά, Απλοποιημένα Κινέζικα, Παραδοσιακά Κινέζικα, Χίντι, Ισπανικά, Γαλλικά, Αραβικά, Μπενγκάλι, Πορτογαλικά, Ρωσικά, Ουρντού, Ινδονησιακά, Γερμανικά, Ιαπωνικά, Τουρκικά, Κορεάτικα, Ιταλικά, Ολλανδικά, Σουηδικά, Τσεχικά, Ελληνικά, Ουγγρικά, Εβραϊκά, Νορβηγικά, Δανικά, Φινλανδικά, Σλοβακικά, Σλοβενικά, Ισλανδικά, Βιετναμέζικα, Τελούγκου, Ιαβανέζικα, Ταϊλανδέζικα, Ταμίλ, Φιλιππινέζικα, Παντζάμπι, Μαλαϊκά, Πολωνικά, Ουκρανικά, Περσικά, Κανάντα, Μαράθι, Χάουσα, Βιρμανέζικα, Ουζμπεκικά, Αζερμπαϊτζανικά, Σεμπουάνο, Μαγιαλάμ, Σίντι, Αμχαρικά.
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Αγγλικά" alt="Αγγλικά" />
@@ -79,6 +81,27 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/sk.svg" width="32" title="Σλοβακικά" alt="Σλοβακικά" />
   <img src="../assets/flags/si.svg" width="32" title="Σλοβενικά" alt="Σλοβενικά" />
   <img src="../assets/flags/is.svg" width="32" title="Ισλανδικά" alt="Ισλανδικά" />
+  <img src="../assets/flags/vn.svg" width="32" title="Βιετναμέζικα" alt="Βιετναμέζικα" />
+  <img src="../assets/flags/in.svg" width="32" title="Τελούγκου" alt="Τελούγκου" />
+  <img src="../assets/flags/id.svg" width="32" title="Ιαβανέζικα" alt="Ιαβανέζικα" />
+  <img src="../assets/flags/th.svg" width="32" title="Ταϊλανδέζικα" alt="Ταϊλανδέζικα" />
+  <img src="../assets/flags/in.svg" width="32" title="Ταμίλ" alt="Ταμίλ" />
+  <img src="../assets/flags/ph.svg" width="32" title="Φιλιππινέζικα" alt="Φιλιππινέζικα" />
+  <img src="../assets/flags/pk.svg" width="32" title="Παντζάμπι" alt="Παντζάμπι" />
+  <img src="../assets/flags/my.svg" width="32" title="Μαλαϊκά" alt="Μαλαϊκά" />
+  <img src="../assets/flags/pl.svg" width="32" title="Πολωνικά" alt="Πολωνικά" />
+  <img src="../assets/flags/ua.svg" width="32" title="Ουκρανικά" alt="Ουκρανικά" />
+  <img src="../assets/flags/ir.svg" width="32" title="Περσικά" alt="Περσικά" />
+  <img src="../assets/flags/in.svg" width="32" title="Κανάντα" alt="Κανάντα" />
+  <img src="../assets/flags/in.svg" width="32" title="Μαράθι" alt="Μαράθι" />
+  <img src="../assets/flags/ng.svg" width="32" title="Χάουσα" alt="Χάουσα" />
+  <img src="../assets/flags/mm.svg" width="32" title="Βιρμανέζικα" alt="Βιρμανέζικα" />
+  <img src="../assets/flags/uz.svg" width="32" title="Ουζμπεκικά" alt="Ουζμπεκικά" />
+  <img src="../assets/flags/az.svg" width="32" title="Αζερμπαϊτζανικά" alt="Αζερμπαϊτζανικά" />
+  <img src="../assets/flags/ph.svg" width="32" title="Σεμπουάνο" alt="Σεμπουάνο" />
+  <img src="../assets/flags/in.svg" width="32" title="Μαγιαλάμ" alt="Μαγιαλάμ" />
+  <img src="../assets/flags/pk.svg" width="32" title="Σίντι" alt="Σίντι" />
+  <img src="../assets/flags/et.svg" width="32" title="Αμχαρικά" alt="Αμχαρικά" />
 </p>
 
 
@@ -90,7 +113,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Πλήρης Έλεγχος Περιβαλλόντων**: Εκκίνηση, διακοπή, τερματισμός και απεγκατάσταση με ένα κλικ. Παρακολούθηση κατάστασης σε πραγματικό χρόνο και λεπτομερείς πληροφορίες για τη χρήση δίσκου και τις τοποθεσίες αρχείων.
 - **Διαχείριση Διανομών**: Ορισμός ως προεπιλογή, μεταφορά (μετακίνηση VHDX σε άλλους δίσκους) και εξαγωγή/κλωνοποίηση σε αρχεία `.tar` ή `.tar.gz`.
 - **Γρήγορη Ενοποίηση**: Άμεση εκκίνηση σε Terminal, VS Code ή File Explorer με προσαρμόσιμους φακέλους εργασίας και υποστήριξη startup scripts.
-- **Έξυπνη Εγκατάσταση**: Εγκατάσταση από Microsoft Store, GitHub ή τοπικά αρχεία (RootFS/VHDX). Περιλαμβάνει ενσωματωμένο βοηθό λήψης RootFS.
+- **Εγκατάσταση Διανομής**: Εγκαταστήστε διανομές Linux μέσω Microsoft Store, GitHub, τοπικών αρχείων (RootFS/VHDX) ή διαδικτυακών καθρεπτών (με αυτόματο τεστ ταχύτητας για επιλογή του γρηγορότερου καθρέπτη και ενσωματωμένο βοηθό λήψης RootFS).
 - **Ασφάλεια**: Κλειδώματα Mutex για ασφαλείς ταυτόχρονες λειτουργίες μεταφοράς/αντιγράφων ασφαλείας και αυτόματος καθαρισμός Appx κατά την αφαίρεση.
 - **Ελάχιστο Αποτύπωμα Μνήμης**: Εξαιρετικά βελτιστοποιημένο για αποδοτικότητα. Η εκκίνηση στο system tray χρησιμοποιεί μόνο **~10MB** RAM. Η χρήση σε προβολή παραθύρου ποικίλλει ανάλογα με τη γλώσσα: **~18MB** για τυπικές γλώσσες και **~38MB** για γλώσσες με μεγάλα σύνολα χαρακτήρων (Κινέζικα, Ιαπωνικά, Κορεάτικα).
 - **Προηγμένα δίκτυα**: Απρόσκοπτη διαχείριση προώθησης θυρών (με αυτόματη δημιουργία κανόνων τείχους προστασίας) και καθολική διαμόρφωση διακομιστή μεσολάβησης HTTP για ενοποιημένη συνδεσιμότητα.
@@ -144,17 +167,20 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### Σχετικά
+### Σχετικά & Δωρεά
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Επίδειξη Λειτουργίας
 
-Παρακάτω ακολουθεί μια επίδειξη του WSL Dashboard σε λειτουργία:
-
-![WSL Dashboard Demo](../assets/screenshot/demo.gif)
+[Βοηθήστε μας να βελτιωθούμε! Δείτε το εισαγωγικό μας βίντεο και μοιραστείτε τις σκέψεις σας.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +241,44 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 
 
+## 🤝 Υποστήριξη Κοινότητας
+
+Ένα μεγάλο ευχαριστώ στις ακόλουθες κοινότητες για την υποστήριξή τους:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Για την ισχυρή και ασφαλή γλώσσα προγραμματισμού
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Για το σύγχρονο UI framework
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Για το καταπληκτικό Windows Subsystem for Linux
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Για το αποδοτικό asynchronous runtime
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Για τις συνεχείς βελτιώσεις της πλατφόρμας
+- [Reddit](https://www.reddit.com) - Για παγκόσμιες συζητήσεις και υποστήριξη κοινότητας
+- [Hacker News](https://news.ycombinator.com) - Για παγκόσμιες συζητήσεις και υποστήριξη κοινότητας
+- [Linux.do](https://linux.do) - Για τη δημοφιλή κοινότητα επαγγελματιών πληροφορικής
+- [V2EX](https://www.v2ex.com) - Για συζητήσεις στην κινεζική τεχνολογική κοινότητα
+
+Οι συνεισφορές και τα σχόλιά σας κάνουν αυτό το έργο δυνατό！
+
+
+## ❤️ Υποστήριξη αυτού του έργου
+
+- Αυτό το έργο είναι υπό άδεια GPL-3.0 και είναι δωρεάν για όλους τους χρήστες.
+- Από την ανάπτυξη λειτουργιών και τις καθημερινές δοκιμές μέχρι τη διόρθωση σφαλμάτων, όλη η εργασία γίνεται στον ελεύθερο χρόνο. Ο δρόμος του ανοιχτού κώδικα δεν είναι εύκολος μόνος — η αναγνώριση και η υποστήριξή σας δίνουν στο έργο την εμπιστοσύνη να συνεχίσει.
+- Αν αυτό το εργαλείο σας βοήθησε πραγματικά, σκεφτείτε να βοηθήσετε. Όλες οι δωρεές πηγαίνουν στα έξοψα διακομιστή, τις ενημερώσεις εκδόσεων και τις βελτιώσεις λειτουργιών, διατηρώντας το έργο συνεχώς ενημερωμένο και σταθερά προοδευτικό.
+- Κάθε μικρή καλοσύνη είναι μια ακτίνα αστρικού φωτός. Ευχαριστούμε και πάλι για την κατανόηση και τη γενναιοδωρία σας！
+
+Επισκεφτείτε τη σελίδα δωρεάς μας：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Έργο αγάπης
 
 Εάν βρήκατε αυτό το έργο χρήσιμο, θα σας ήμουν ευγνώμων εάν μπορούσατε να αφήσετε ένα αστέρι στο GitHub. Η υποστήριξή σας το βοηθά να προσεγγίσει ένα ευρύτερο κοινό και εκτιμάται βαθύτατα. Αυτή η ενθάρρυνση είναι που με ωθεί να συνεχίσω να δημιουργώ.
+
 
 ## 📄 Άδεια Χρήσης
 
 Αυτό το έργο διατίθεται υπό την άδεια GPL-3.0 – δείτε το αρχείο [LICENSE](../LICENSE) για λεπτομέρειες.
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
 

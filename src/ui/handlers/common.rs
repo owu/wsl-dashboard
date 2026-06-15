@@ -57,6 +57,11 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
             if tab == 6 {
                 super::about::trigger_fetch(ah.clone(), as_ptr.clone());
             }
+
+            // Tab 4 is "Donate" — fetch donate payment methods once on first visit
+            if tab == 4 {
+                super::donate::trigger_fetch(ah.clone(), as_ptr.clone());
+            }
         }
     });
 

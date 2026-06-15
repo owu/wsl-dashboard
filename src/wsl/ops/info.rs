@@ -2,13 +2,20 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use tokio::task;
-use tracing::{info, debug, error};
+use tracing::{info, trace, error};
 use crate::wsl::executor::WslCommandExecutor;
 use crate::wsl::models::{WslCommandResult, WslDistro, WslInformation, WslStatus};
 
 pub async fn list_distros(executor: &WslCommandExecutor) -> WslCommandResult<Vec<WslDistro>> {
     let result = executor.execute_command(&["-l", "-v"]).await;
     if !result.success {
+        let distros = crate::wsl::parser::parse_distros_list(&result.output);
+        if distros.is_empty() {
+            let version_check = executor.execute_command(&["--version"]).await;
+            if version_check.success {
+                return WslCommandResult::success(result.output, Some(distros));
+            }
+        }
         return WslCommandResult::error(result.output, result.error.unwrap_or_default());
     }
 
@@ -33,7 +40,7 @@ pub async fn detect_fastest_source(_executor: &WslCommandExecutor) -> bool {
                 response.status() == 200
             }
             Err(e) => {
-                debug!("GitHub probe failed: {}", e);
+                trace!("GitHub probe failed: {}", e);
                 false
             }
         }

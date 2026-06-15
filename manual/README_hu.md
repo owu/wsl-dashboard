@@ -27,7 +27,7 @@ Figyelmeztetés:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | Magyar | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | Magyar | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Rendszerkövetelmények](#-rendszerkövetelmények)
 - [📦 Telepítési útmutató](#-telepítési-útmutató)
 - [🛠️ Technológiai háttér és teljesítmény](#️-technológiai-háttér-és-teljesítmény)
+- [🤝 Közösségi támogatás](#-közösségi-támogatás)
+- [❤️ Támogassa ezt a projektet](#️-támogassa-ezt-a-projektet)
 - [⭐️ Szerelemprojekt](#️-szerelemprojekt)
 - [📄 Licenc](#-licenc)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 Támogatott nyelvek
 
-Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, arab, bengáli, portugál, orosz, urdu, indonéz, német, japán, török, koreai, olasz, holland, svéd, cseh, görög, magyar, héber, norvég, dán, finn, szlovák, szlovén, izlandi.
+Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, arab, bengáli, portugál, orosz, urdu, indonéz, német, japán, török, koreai, olasz, holland, svéd, cseh, görög, magyar, héber, norvég, dán, finn, szlovák, szlovén, izlandi, vietnámi, telugu, jávai, thai, tamil, filippínó, pandzsábi, maláj, lengyel, ukrán, perzsa, kannada, maráthi, hausza, burmai, üzbég, azerbajdzsáni, cebuano, malayálam, szindhi, amhara.
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Angol" alt="Angol" />
@@ -79,6 +81,27 @@ Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, ar
   <img src="../assets/flags/sk.svg" width="32" title="Szlovák" alt="Szlovák" />
   <img src="../assets/flags/si.svg" width="32" title="Szlovén" alt="Szlovén" />
   <img src="../assets/flags/is.svg" width="32" title="Izlandi" alt="Izlandi" />
+  <img src="../assets/flags/vn.svg" width="32" title="Vietnámi" alt="Vietnámi" />
+  <img src="../assets/flags/in.svg" width="32" title="Telugu" alt="Telugu" />
+  <img src="../assets/flags/id.svg" width="32" title="Jávai" alt="Jávai" />
+  <img src="../assets/flags/th.svg" width="32" title="Thai" alt="Thai" />
+  <img src="../assets/flags/in.svg" width="32" title="Tamil" alt="Tamil" />
+  <img src="../assets/flags/ph.svg" width="32" title="Filippínó" alt="Filippínó" />
+  <img src="../assets/flags/pk.svg" width="32" title="Pandzsábi" alt="Pandzsábi" />
+  <img src="../assets/flags/my.svg" width="32" title="Maláj" alt="Maláj" />
+  <img src="../assets/flags/pl.svg" width="32" title="Lengyel" alt="Lengyel" />
+  <img src="../assets/flags/ua.svg" width="32" title="Ukrán" alt="Ukrán" />
+  <img src="../assets/flags/ir.svg" width="32" title="Perzsa" alt="Perzsa" />
+  <img src="../assets/flags/in.svg" width="32" title="Kannada" alt="Kannada" />
+  <img src="../assets/flags/in.svg" width="32" title="Maráthi" alt="Maráthi" />
+  <img src="../assets/flags/ng.svg" width="32" title="Hausza" alt="Hausza" />
+  <img src="../assets/flags/mm.svg" width="32" title="Burmai" alt="Burmai" />
+  <img src="../assets/flags/uz.svg" width="32" title="Üzbég" alt="Üzbég" />
+  <img src="../assets/flags/az.svg" width="32" title="Azerbajdzsáni" alt="Azerbajdzsáni" />
+  <img src="../assets/flags/ph.svg" width="32" title="Cebuano" alt="Cebuano" />
+  <img src="../assets/flags/in.svg" width="32" title="Malayálam" alt="Malayálam" />
+  <img src="../assets/flags/pk.svg" width="32" title="Szindhi" alt="Szindhi" />
+  <img src="../assets/flags/et.svg" width="32" title="Amhara" alt="Amhara" />
 </p>
 
 
@@ -90,7 +113,7 @@ Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, ar
 - **Átfogó példánykezelés**: Indítás, leállítás, kényszerített leállítás és regisztráció törlése egyetlen kattintással. Valós idejű állapotfigyelés, részletes adatok a lemezhasználatról és a fájlok helyéről.
 - **Disztribúció-kezelés**: Alapértelmezetté tétel, migrálás (VHDX mozgatása más meghajtókra), valamint exportálás/klónozás `.tar` vagy `.tar.gz` archívumokba.
 - **Gyors integráció**: Azonnali indítás Terminálba, VS Code-ba vagy Fájlkezelőbe, testreszabható munkakönyvtárakkal és indítási parancsfájl-kezeléssel.
-- **Okos telepítés**: Telepítés Microsoft Store-ból, GitHub-ról vagy helyi fájlokból (RootFS/VHDX). Beépített RootFS letöltési segéd.
+- **Disztribúció telepítés**: Linux disztribúciók telepítése Microsoft Store, GitHub, helyi fájlok (RootFS/VHDX) vagy online tükrök segítségével (automatikus sebességteszttel a leggyorsabb tükör kiválasztásához és beépített RootFS letöltési segéddel).
 - **Biztonság**: Mutex zárolás a biztonságos egyidejű migrálási/mentési műveletekhez, és automatikus Appx tisztítás eltávolításkor.
 - **Rendkívül alacsony memóriaigény**: Hatékonyságra optimalizálva. A tálcán futó (csendes) mód csupán **~10 MB** RAM-ot használ. Az ablakos mód használata a betűtípusok összetettségétől függően változik: **~18 MB** a standard nyelveknél és **~38 MB** a nagy karakterkészletű nyelveknél (kínai, japán, koreai).
 - **Fejlett hálózatkezelés**: A porttovábbítás zökkenőmentes kezelése (automatikus tűzfalszabály-létrehozással) és globális HTTP-proxy konfiguráció az egységes kapcsolat érdekében.
@@ -144,17 +167,20 @@ A naplófájlok a konfigurált könyvtárba íródnak, és csatolhatók hiba jel
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### Névjegy
+### Névjegy & Adomány
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Működési bemutató
 
-Az alábbiakban megtekintheti a WSL Dashboard működését:
-
-![WSL Dashboard Demo](../assets/screenshot/demo.gif)
+[Segítsen nekünk fejlődni! Nézze meg bemutatkozó videónkat, és ossza meg véleményét.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +241,44 @@ Győződjön meg arról, hogy a Rust eszközkészlet (Rust 1.92+ vagy újabb) te
 
 
 
+## 🤝 Közösségi támogatás
+
+Nagy köszönet a következő közösségeknek a támogatásukért:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Az erős és biztonságos programozási nyelvért
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - A modern UI keretrendszerért
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - A csodálatos Windows Subsystem for Linux-ért
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - A hatékony aszinkron futtatókörnyezetért
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - A folyamatos platformfejlesztésekért
+- [Reddit](https://www.reddit.com) - A globális közösségi beszélgetésekért és támogatásért
+- [Hacker News](https://news.ycombinator.com) - A globális közösségi beszélgetésekért és támogatásért
+- [Linux.do](https://linux.do) - A népszerű IT szakembereknek szóló közösségért
+- [V2EX](https://www.v2ex.com) - A kínai technológiai közösségi beszélgetésekért
+
+Az Ön hozzájárulásai és visszajelzései teszik lehetővé ezt a projektet！
+
+
+## ❤️ Támogassa ezt a projektet
+
+- Ez a projekt GPL-3.0 nyílt forráskódú licenc alatt áll, és minden felhasználó számára ingyenes.
+- A funkciófejlesztéstől és a napi teszteléstől a hibajavításokig minden munka szabadidőben készül. A nyílt forráskód útja nem könnyű egyedül — az Ön elismerése és támogatása adja a projektnek a bizalmat a folytatáshoz.
+- Ha ez az eszköz valóban segített Önnek, fontolja meg a támogatást. Minden adomány a szerverköltségekre, verziófrissítésekre és funkciófejlesztésekre fordítódik, biztosítva a projekt folyamatos frissítését és stabil előrehaladását.
+- Minden apró kedvesség egy sugár a csillagfényből. Köszönjük még egyszer a megértését és nagylelkűségét！
+
+Látogasd meg az adományozási oldalunkat：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Szerelemprojekt
 
 Ha hasznosnak találta ezt a projektet, hálás lennék, ha csillagot adna rá GitHubon. Az Ön támogatása segít abban, hogy a projekt szélesebb közönséghez eljusson, és ezt mélyen értékelem. Ez a bátorítás motivál arra, hogy folytassam az építkezést.
+
 
 ## 📄 Licenc
 
 Ez a projekt a GPL-3.0 licenc alatt áll – részletekért lásd a [LICENSE](../LICENSE) fájlt.
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
 

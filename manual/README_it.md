@@ -27,7 +27,7 @@ Avviso:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | Italiano | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | Italiano | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Requisiti di Sistema](#-requisiti-di-sistema)
 - [📦 Guida all'Installazione](#-guida-allinstallazione)
 - [🛠️ Stack Tecnologico e Performance](#️-stack-tecnologico-e-performance)
+- [🤝 Supporto della Comunità](#-supporto-della-comunità)
+- [❤️ Sostenere questo progetto](#️-sostenere-questo-progetto)
 - [⭐️ Lavoro fatto con amore](#️-lavoro-fatto-con-amore)
 - [📄 Licenza](#-licenza)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 Lingue Supportate
 
-Inglese, Cinese (Semplificato), Cinese (Tradizionale), Hindi, Spagnolo, Francese, Arabo, Bengalese, Portoghese, Russo, Urdu, Indonesiano, Tedesco, Giapponese, Turco, Coreano, Italiano, Olandese, Svedese, Ceco, Greco, Ungherese, Ebraico, Norvegese, Danese, Finlandese, Slovacco, Sloveno, Islandese
+Inglese, Cinese (Semplificato), Cinese (Tradizionale), Hindi, Spagnolo, Francese, Arabo, Bengalese, Portoghese, Russo, Urdu, Indonesiano, Tedesco, Giapponese, Turco, Coreano, Italiano, Olandese, Svedese, Ceco, Greco, Ungherese, Ebraico, Norvegese, Danese, Finlandese, Slovacco, Sloveno, Islandese, Vietnamita, Telugu, Giavanese, Thai, Tamil, Filipino, Punjabi, Malese, Polacco, Ucraino, Persiano, Kannada, Marathi, Hausa, Birmano, Uzbeko, Azero, Cebuano, Malayalam, Sindhi, Amarico
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Inglese" alt="Inglese" />
@@ -79,6 +81,27 @@ Inglese, Cinese (Semplificato), Cinese (Tradizionale), Hindi, Spagnolo, Francese
   <img src="../assets/flags/sk.svg" width="32" title="Slovacco" alt="Slovacco" />
   <img src="../assets/flags/si.svg" width="32" title="Sloveno" alt="Sloveno" />
   <img src="../assets/flags/is.svg" width="32" title="Islandese" alt="Islandese" />
+  <img src="../assets/flags/vn.svg" width="32" title="Vietnamita" alt="Vietnamita" />
+  <img src="../assets/flags/in.svg" width="32" title="Telugu" alt="Telugu" />
+  <img src="../assets/flags/id.svg" width="32" title="Giavanese" alt="Giavanese" />
+  <img src="../assets/flags/th.svg" width="32" title="Thai" alt="Thai" />
+  <img src="../assets/flags/in.svg" width="32" title="Tamil" alt="Tamil" />
+  <img src="../assets/flags/ph.svg" width="32" title="Filipino" alt="Filipino" />
+  <img src="../assets/flags/pk.svg" width="32" title="Punjabi" alt="Punjabi" />
+  <img src="../assets/flags/my.svg" width="32" title="Malese" alt="Malese" />
+  <img src="../assets/flags/pl.svg" width="32" title="Polacco" alt="Polacco" />
+  <img src="../assets/flags/ua.svg" width="32" title="Ucraino" alt="Ucraino" />
+  <img src="../assets/flags/ir.svg" width="32" title="Persiano" alt="Persiano" />
+  <img src="../assets/flags/in.svg" width="32" title="Kannada" alt="Kannada" />
+  <img src="../assets/flags/in.svg" width="32" title="Marathi" alt="Marathi" />
+  <img src="../assets/flags/ng.svg" width="32" title="Hausa" alt="Hausa" />
+  <img src="../assets/flags/mm.svg" width="32" title="Birmano" alt="Birmano" />
+  <img src="../assets/flags/uz.svg" width="32" title="Uzeko" alt="Uzeko" />
+  <img src="../assets/flags/az.svg" width="32" title="Azero" alt="Azero" />
+  <img src="../assets/flags/ph.svg" width="32" title="Cebuano" alt="Cebuano" />
+  <img src="../assets/flags/in.svg" width="32" title="Malayalam" alt="Malayalam" />
+  <img src="../assets/flags/pk.svg" width="32" title="Sindhi" alt="Sindhi" />
+  <img src="../assets/flags/et.svg" width="32" title="Amarico" alt="Amarico" />
 </p>
 
 
@@ -90,7 +113,7 @@ Inglese, Cinese (Semplificato), Cinese (Tradizionale), Hindi, Spagnolo, Francese
 - **Controllo Completo Istanze**: Avvio, stop, terminazione e rimozione in un clic. Monitoraggio dello stato in tempo reale e approfondimenti su utilizzo del disco e posizione dei file.
 - **Gestione Distribuzioni**: Imposta come predefinita, migrazione (sposta il VHDX su altre unità) ed esportazione/clonazione in formato `.tar` o `.tar.gz`.
 - **Integrazione Rapida**: Lancio istantaneo di Terminale, VS Code o Esplora File con directory di lavoro personalizzabili e hook per script di avvio.
-- **Installazione Intelligente**: Installa dal Microsoft Store, GitHub o file locali (RootFS/VHDX). Assistente al download RootFS integrato.
+- **Installazione Distribuzione**: Installa distribuzioni Linux tramite Microsoft Store, GitHub, file locali (RootFS/VHDX) o mirror online (con test di velocità automatico per scegliere il mirror più veloce e assistente al download RootFS integrato).
 - **Sicurezza Globale**: Blocchi mutex per operazioni di migrazione/backup simultanee sicure e pulizia automatica di Appx alla rimozione.
 - **Impronta di Memoria Bassissima**: Estremamente ottimizzato. L'avvio silenzioso (tray) utilizza solo **~10MB** di RAM. L'uso in modalità finestra varia in base alla complessità dei caratteri: **~18MB** per lingue standard e **~38MB** per lingue con set di caratteri estesi (Cinese, Giapponese, Coreano).
 - **Rete avanzata**: Gestione fluida dell'inoltro delle porte (con creazione automatica delle regole del firewall) e configurazione proxy HTTP globale per una connettività unificata.
@@ -144,17 +167,20 @@ I file di log vengono scritti nella directory configurata e possono essere alleg
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### Informazioni
+### Informazioni & Donazioni
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Demo di Funzionamento
 
-Di seguito è riportata una dimostrazione di WSL Dashboard in azione:
-
-![Demo WSL Dashboard](../assets/screenshot/demo.gif)
+[Aiutaci a migliorare! Guarda il nostro video introduttivo e condividi le tue opinioni.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +241,44 @@ Assicurati di avere installato la toolchain Rust (Rust 1.92+ o successivo).
 
 
 
+## 🤝 Supporto della Comunità
+
+Un grande grazie alle seguenti comunità per il loro supporto:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Per il potente e sicuro linguaggio di programmazione
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Per il moderno framework UI
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Per l'incredibile Windows Subsystem for Linux
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Per l'efficiente runtime asincrono
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Per i continui miglioramenti della piattaforma
+- [Reddit](https://www.reddit.com) - Per le discussioni e il supporto della comunità globale
+- [Hacker News](https://news.ycombinator.com) - Per le discussioni e il supporto della comunità globale
+- [Linux.do](https://linux.do) - Per la popolare comunità per professionisti IT
+- [V2EX](https://www.v2ex.com) - Per le discussioni della comunità tecnologica cinese
+
+I vostri contributi e feedback rendono possibile questo progetto!
+
+
+## ❤️ Sostenere questo progetto
+
+- Questo progetto è sotto licenza GPL-3.0 ed è gratuito per tutti gli utenti.
+- Dallo sviluppo delle funzionalità e test quotidiani alla correzione dei bug, tutto il lavoro viene svolto nel tempo libero. La strada dell'open source non è facile da percorrere da soli — il vostro riconoscimento e sostegno danno al progetto la fiducia di continuare.
+- Se questo strumento vi ha davvero aiutato, considerate di dare una mano. Tutte le donazioni vanno ai costi del server, agli aggiornamenti delle versioni e al miglioramento delle funzionalità, mantenendo il progetto costantemente aggiornato e in progresso costante.
+- Ogni piccolo atto di gentilezza è un raggio di luce stellare. Grazie ancora per la vostra comprensione e generosità！
+
+Visita la nostra pagina delle donazioni：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Lavoro fatto con amore
 
 Se hai trovato utile questo progetto, ti sarei grato se potessi lasciare una stella su GitHub. Il tuo supporto aiuta a raggiungere un pubblico più ampio ed è profondamente apprezzato. È questo incoraggiamento che mi motiva a continuare a costruire.
+
 
 ## 📄 Licenza
 
 Questo progetto è rilasciato sotto licenza GPL-3.0 – consulta il file [LICENSE](../LICENSE) per i dettagli.
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
 

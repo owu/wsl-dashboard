@@ -27,7 +27,7 @@ Athugið:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | Íslenska
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | Íslenska | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Kerfiskröfur](#-kerfiskröfur)
 - [📦 Uppsetningarleiðbeiningar](#-uppsetningarleiðbeiningar)
 - [🛠️ Tæknistafla og afköst](#️-tæknistafla-og-afköst)
+- [🤝 Samfélagsstuðningur](#-samfélagsstuðningur)
+- [❤️ Styðja þetta verkefni](#️-styðja-þetta-verkefni)
 - [⭐️ Gert af ást](#️-gert-af-ást)
 - [📄 Leyfi](#-leyfi)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 Tungumálastuðningur
 
-Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska, arabíska, bengalska, portúgalska, rússneska, úrdú, indónesíska, þýska, japanska, tyrkneska, kóreska, ítalska, hollenska, sænska, tékkneska, gríska, ungverska, hebreska, norska, danska, finnska, slóvakíska, slóvenska, íslenska.
+Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska, arabíska, bengalska, portúgalska, rússneska, úrdú, indónesíska, þýska, japanska, tyrkneska, kóreska, ítalska, hollenska, sænska, tékkneska, gríska, ungverska, hebreska, norska, danska, finnska, slóvakíska, slóvenska, íslenska, víetnamska, telúgú, javanska, taílenska, tamílska, filippínska, pundžabí, malajiska, pólska, úkraínska, persneska, kannada, marathí, haúsa, barmneska, úsbekska, aserbædsjanska, cebúanó, malajalam, sindhí, amharíska.
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Enska" alt="Enska" />
@@ -79,6 +81,27 @@ Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska
   <img src="../assets/flags/sk.svg" width="32" title="Slóvakíska" alt="Slóvakíska" />
   <img src="../assets/flags/si.svg" width="32" title="Slóvenska" alt="Slóvenska" />
   <img src="../assets/flags/is.svg" width="32" title="Íslenska" alt="Íslenska" />
+  <img src="../assets/flags/vn.svg" width="32" title="Víetnamska" alt="Víetnamska" />
+  <img src="../assets/flags/in.svg" width="32" title="Telúgú" alt="Telúgú" />
+  <img src="../assets/flags/id.svg" width="32" title="Javanska" alt="Javanska" />
+  <img src="../assets/flags/th.svg" width="32" title="Taílenska" alt="Taílenska" />
+  <img src="../assets/flags/in.svg" width="32" title="Tamílska" alt="Tamílska" />
+  <img src="../assets/flags/ph.svg" width="32" title="Filippínska" alt="Filippínska" />
+  <img src="../assets/flags/pk.svg" width="32" title="Pundžabí" alt="Pundžabí" />
+  <img src="../assets/flags/my.svg" width="32" title="Malajiska" alt="Malajiska" />
+  <img src="../assets/flags/pl.svg" width="32" title="Pólska" alt="Pólska" />
+  <img src="../assets/flags/ua.svg" width="32" title="Úkraínska" alt="Úkraínska" />
+  <img src="../assets/flags/ir.svg" width="32" title="Persneska" alt="Persneska" />
+  <img src="../assets/flags/in.svg" width="32" title="Kannada" alt="Kannada" />
+  <img src="../assets/flags/in.svg" width="32" title="Marathí" alt="Marathí" />
+  <img src="../assets/flags/ng.svg" width="32" title="Haúsa" alt="Haúsa" />
+  <img src="../assets/flags/mm.svg" width="32" title="Barmneska" alt="Barmneska" />
+  <img src="../assets/flags/uz.svg" width="32" title="Úsbekska" alt="Úsbekska" />
+  <img src="../assets/flags/az.svg" width="32" title="Aserbædsjanska" alt="Aserbædsjanska" />
+  <img src="../assets/flags/ph.svg" width="32" title="Cebúanó" alt="Cebúanó" />
+  <img src="../assets/flags/in.svg" width="32" title="Malajalam" alt="Malajalam" />
+  <img src="../assets/flags/pk.svg" width="32" title="Sindhí" alt="Sindhí" />
+  <img src="../assets/flags/et.svg" width="32" title="Amharíska" alt="Amharíska" />
 </p>
 
 
@@ -90,7 +113,7 @@ Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska
 - **Víðtæk tilvikastýring**: Ræsa, stöðva, loka og afskrá með einum smelli. Rauntímavöktun á stöðu og nákvæmar upplýsingar um disknotkun og staðsetningu skráa.
 - **Umsjón með kerfum**: Setja sem sjálfgefið, flutningur (færa VHDX á aðra drif) og útflutningur/afritun á `.tar` eða `.tar.gz` sniði.
 - **Hröð samþætting**: Ræsa beint í Terminal, VS Code eða skráakönnuð með sérsniðnum vinnuefnum og ræsiforritaskriftum.
-- **Snjöll uppsetning**: Setja upp frá Microsoft Store, GitHub eða staðbundnum skrám (RootFS/VHDX). Innbyggt RootFS niðurhalshjálpartæki fylgir.
+- **Uppsetning dreifingar**: Settu upp Linux dreifingar í gegnum Microsoft Store, GitHub, staðbundnar skrár (RootFS/VHDX) eða netspeglar (með sjálfvirkri hraðaprófun til að velja hraðasta spegilinn og innbyggðu RootFS niðurhalshjálpartæki).
 - **Alþjóðlegt öryggi**: Mutex-lásar fyrir örugga samtímaflutninga/afritun og sjálfvirk Appx-hreinsun við eyðingu.
 - **Mjög lítil minnisnotkun**: Mjög fínstillt fyrir skilvirkni. Hljóðlaus ræsing (í bakka) notar aðeins um **~10MB** vinnsluminni. Notkun í gluggaham fer eftir leturgerðum: **~18MB** fyrir stöðluð tungumál og **~38MB** fyrir tungumál með stóra táknasett (kínverska, japanska, kóreska).
 - **Ítarleg netkerfi**: Óaðfinnanleg stjórnun á áframsendingu gátta (með sjálfvirkri gerð eldveggsreglna) og alþjóðleg uppsetning HTTP-umboðsþjóns fyrir sameinaða tengingu.
@@ -145,16 +168,20 @@ Annálaskrár eru skrifaðar í stillta möppu og má láta þær fylgja með þ
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
 
-### Um forritið 
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
+
+### Um forritið & Greiðsla
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Sýnikennsla
 
-Hér að neðan má sjá WSL Dashboard í verki:
-
-![WSL Dashboard Demo](../assets/screenshot/demo.gif)
+[Hjálpaðu okkur að bæta okkur! Horfðu á kynningarmyndbandið okkar og deildu skoðunum þínum.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +242,44 @@ Gakktu úr skugga um að þú hafir Rust tækjapakkann (Rust 1.92+ eða nýrri) 
 
 
 
+## 🤝 Samfélagsstuðningur
+
+Stór þakkir eftirfarandi samfélögum fyrir stuðning þeirra:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Fyrir öfluga og örugga forritunarmálið
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Fyrir nútímalega viðmótsgrindina
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Fyrir frábæra Windows Subsystem for Linux
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Fyrir skilvirka ósamræmda keyrsluumhverfið
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Fyrir stöðugar endurbætur á kerfinu
+- [Reddit](https://www.reddit.com) - Fyrir alþjóðlegar samfélagsumræður og stuðning
+- [Hacker News](https://news.ycombinator.com) - Fyrir alþjóðlegar samfélagsumræður og stuðning
+- [Linux.do](https://linux.do) - Fyrir vinsælt samfélag IT sérfræðinga
+- [V2EX](https://www.v2ex.com) - Fyrir umræður í kínverska tæknisamfélaginu
+
+Þín framlög og endurgjörð gera þetta verkefni mögulegt！
+
+
+## ❤️ Styðja þetta verkefni
+
+- Þetta verkefni er undir GPL-3.0 leyfi og er ókeypis fyrir alla notendur.
+- Frá eiginleikaþróun og daglegum prófunum til villuleiðréttinga — öll vinna er unnin í frítíma. Leið opins hugbúnaðar er ekki auðvelt að ganga ein. Viðurkenning þín og stuðningur gefur verkefninu sjálfstraust til að halda áfram.
+- Ef þetta tól hefur raunverulega hjálpað þér, íhugaðu að leggja hönd á plóg. Allar gjafir fara í þjónnuskostnað, útgáfuuppfærslur og eiginleikabætur, sem heldur verkefninu stöðugt uppfærðu og stöðugt framfarandi.
+- Hver lítil góðvild er geisli stjörnuljósi. Takk aftur fyrir skilning þinn og rausnarsemi！
+
+Heimsæktu framlags síðuna okkar：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Gert af ást
 
 Ef þér finnst þetta verkefni gagnlegt væri ég þakklátur ef þú gætir gefið því stjörnu á GitHub. Stuðningur þinn hjálpar því að ná til breiðari hóps og er mikils metinn. Það er þessi hvatning sem dregur mig áfram í þróuninni.
+
 
 ## 📄 Leyfi
 
 Þetta verkefni er gefið út undir GPL-3.0 leyfinu – sjá [LICENSE](../LICENSE) skrána fyrir nánari upplýsingar.
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
 

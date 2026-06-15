@@ -2,8 +2,9 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 import { CustomScrollbar } from "../components/scrollbar.slint";
-import { Theme, Distro, AppI18n } from "../theme.slint";
+import { Theme, Distro, AppI18n, LayoutConstants } from "../theme.slint";
 import { DistroCard } from "../components/distro_card.slint";
+import { DistroNotFoundView } from "../components/distro_not_found_view.slint";
 
 // Isolated component to hold the Repeater and prevent unnecessary rebuilds
 component DistroList inherits VerticalLayout {
@@ -95,7 +96,11 @@ component DistroList inherits VerticalLayout {
 
 export component MainView inherits VerticalLayout {
     in property <[Distro]> distros;
-    // Callbacks to bubble up to AppWindow
+    in property <bool> wsl_loading: false;
+    in property <string> distro_not_found: "";
+    in property <string> wsl_guide_url: "";
+
+    callback open_url(string);
     callback start_distro(string);
     callback stop_distro(string);
     callback restart_distro(string);
@@ -115,81 +120,114 @@ export component MainView inherits VerticalLayout {
     in-out property <string> distro_to_delete;
     in-out property <bool> show_delete_confirmation;
     private property <string> expanded_distro: "";
+    private property <bool> has_error: distro_not_found != "" && distros.length == 0;
     vertical-stretch: 1;
     padding-top: 8px;
     spacing: 12px;
     Rectangle {
         vertical-stretch: 1;
         clip: true;
-        flick := Flickable {
-            viewport-height: distro_list.preferred-height;
-            width: parent.width;
-            height: 100%;
-            distro_list := DistroList {
-                distros: root.distros;
-                expanded_distro <=> root.expanded_distro;
-                start_distro(n) => {
-                    root.start_distro(n);
-                }
-                stop_distro(n) => {
-                    root.stop_distro(n);
-                }
-                restart_distro(n) => {
-                    root.restart_distro(n);
-                }
-                terminal_distro(n) => {
-                    root.terminal_distro(n);
-                }
-                folder_distro(n) => {
-                    root.folder_distro(n);
-                }
-                vscode_distro(n) => {
-                    root.vscode_distro(n);
-                }
-                open_export_dialog(n) => {
-                    root.open_export_dialog(n);
-                }
-                open_clone_dialog(n) => {
-                    root.open_clone_dialog(n);
-                }
-                open_move_dialog(n) => {
-                    root.open_move_dialog(n);
-                }
-                edit_bashrc_distro(n) => {
-                    root.edit_bashrc_distro(n);
-                }
-                information_clicked(n) => {
-                    root.information_clicked(n);
-                }
-                delete_clicked(n) => {
-                    root.delete_clicked(n);
-                    root.distro_to_delete = n;
-                    root.show_delete_confirmation = true;
-                }
-                settings_clicked(n) => {
-                    root.settings_clicked(n);
-                }
-                configs_clicked(n) => {
-                    root.configs_clicked(n);
-                }
-                compress_clicked(n) => {
-                    root.compress_clicked(n);
+
+        if (root.has_error): Rectangle {
+            DistroNotFoundView {
+                guide_url: root.wsl_guide_url;
+                open_url(url) => {
+                    root.open_url(url);
                 }
             }
         }
 
-        CustomScrollbar {
-            opacity: (flick.viewport-height > flick.height) ? 1 : 0;
-            visible: flick.viewport-height > flick.height;
-            x: AppI18n.is-rtl ? 2px : parent.width - 8px;
-            y: 0;
-            width: 8px;
-            height: 100%;
-            maximum: flick.viewport-height - flick.height;
-            page_size: flick.height;
-            value: -flick.viewport-y;
-            scroll_to(v) => {
-                flick.viewport-y = -v;
+        if (!root.has_error): Rectangle {
+            flick := Flickable {
+                viewport-height: distro_list.preferred-height;
+                width: parent.width;
+                height: 100%;
+                distro_list := DistroList {
+                    distros: root.distros;
+                    expanded_distro <=> root.expanded_distro;
+                    start_distro(n) => {
+                        root.start_distro(n);
+                    }
+                    stop_distro(n) => {
+                        root.stop_distro(n);
+                    }
+                    restart_distro(n) => {
+                        root.restart_distro(n);
+                    }
+                    terminal_distro(n) => {
+                        root.terminal_distro(n);
+                    }
+                    folder_distro(n) => {
+                        root.folder_distro(n);
+                    }
+                    vscode_distro(n) => {
+                        root.vscode_distro(n);
+                    }
+                    open_export_dialog(n) => {
+                        root.open_export_dialog(n);
+                    }
+                    open_clone_dialog(n) => {
+                        root.open_clone_dialog(n);
+                    }
+                    open_move_dialog(n) => {
+                        root.open_move_dialog(n);
+                    }
+                    edit_bashrc_distro(n) => {
+                        root.edit_bashrc_distro(n);
+                    }
+                    information_clicked(n) => {
+                        root.information_clicked(n);
+                    }
+                    delete_clicked(n) => {
+                        root.delete_clicked(n);
+                        root.distro_to_delete = n;
+                        root.show_delete_confirmation = true;
+                    }
+                    settings_clicked(n) => {
+                        root.settings_clicked(n);
+                    }
+                    configs_clicked(n) => {
+                        root.configs_clicked(n);
+                    }
+                    compress_clicked(n) => {
+                        root.compress_clicked(n);
+                    }
+                }
+            }
+
+            CustomScrollbar {
+                opacity: (flick.viewport-height > flick.height) ? 1 : 0;
+                visible: flick.viewport-height > flick.height;
+                x: AppI18n.is-rtl ? 2px : parent.width - 8px;
+                y: 0;
+                width: 8px;
+                height: 100%;
+                maximum: flick.viewport-height - flick.height;
+                page_size: flick.height;
+                value: -flick.viewport-y;
+                scroll_to(v) => {
+                    flick.viewport-y = -v;
+                }
+            }
+        }
+
+        if (root.wsl_loading && distros.length == 0 && distro_not_found == ""): Rectangle {
+            VerticalLayout {
+                alignment: center;
+                spacing: 12px;
+                Text {
+                    text: "...";
+                    font-size: 24px * LayoutConstants.font-scale;
+                    color: Theme.accent;
+                    horizontal-alignment: center;
+                }
+                Text {
+                    text: AppI18n.t("main.loading", [AppI18n.version]);
+                    color: Theme.text_secondary;
+                    font-family: Theme.default_font;
+                    font-size: 14px * LayoutConstants.font-scale;
+                    horizontal-alignment: center;
+                }
             }
         }
     }

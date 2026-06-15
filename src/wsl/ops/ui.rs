@@ -93,7 +93,7 @@ fn open_with_wt(name: &str, cd_path: &str, proxy_exports: &Option<Vec<(String, S
     let mut command = std::process::Command::new("wt");
     let mut args = vec![
         "--title".to_string(), format!("WSL: {}", name),
-        "wsl".to_string(), "-d".to_string(), name.to_string(),
+        "wsl.exe".to_string(), "-d".to_string(), name.to_string(),
     ];
 
     if !cd_path.is_empty() {
@@ -141,9 +141,9 @@ fn open_with_cmd(name: &str, cd_path: &str, proxy_exports: &Option<Vec<(String, 
             export_cmds.push_str(&format!("export {}={}; ", k, v));
         }
         let bash_cmd = format!("{}exec bash -l", export_cmds);
-        command.args(&["/c", "start", &format!("WSL: {}", name), "wsl", "-d", name, "--cd", cd_path, "--", "bash", "-c", &bash_cmd]);
+        command.args(&["/c", "start", &format!("WSL: {}", name), "wsl.exe", "-d", name, "--cd", cd_path, "--", "bash", "-c", &bash_cmd]);
     } else {
-        command.args(&["/c", "start", &format!("WSL: {}", name), "wsl", "-d", name, "--cd", cd_path]);
+        command.args(&["/c", "start", &format!("WSL: {}", name), "wsl.exe", "-d", name, "--cd", cd_path]);
     }
 
     #[cfg(windows)]

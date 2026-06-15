@@ -1,0 +1,28 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import { AppI18n } from "../theme.slint";
+
+// Shared language data: language options list + language code mapping table
+// Referenced by SettingsView, ModalManager, AppWindow, etc.
+export global LanguageData {
+    // Language code mapping table (index 0~50 corresponding language codes)
+    // Important: do not modify existing language indices, only append new ones
+    in property <[string]> lang-codes: [
+        "auto", "en", "zh-CN", "zh-TW", "hi", "es", "fr", "ar", "bn", "pt",   // 0-9
+        "ru", "ur", "id", "de", "ja", "tr", "ko", "it", "nl", "sv",            // 10-19
+        "cs", "el", "hu", "he", "no", "da", "fi", "sk", "sl", "is",            // 20-29
+        "vi", "te", "jv", "th", "ta", "fil", "pa", "ms", "pl", "uk",           // 30-39
+        "fa", "kn", "mr", "ha", "my", "uz", "az", "ceb", "ml", "sd", "am"      // 40-50
+    ];
+
+    // Language options list (internationalized names, indices correspond 1:1 with lang-codes)
+    // Set by Rust via AppI18n to avoid Slint compiler stack overflow
+    in-out property <[string]> options: AppI18n.language-options;
+
+    // Language code to index mapping (implemented by Rust via AppI18n to avoid Slint compiler stack overflow)
+    pure callback get_language_index(string) -> int;
+    get_language_index(lang) => {
+        AppI18n.get-language-index(lang)
+    }
+}

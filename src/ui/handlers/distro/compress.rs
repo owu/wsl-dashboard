@@ -18,9 +18,9 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let name = distro_name.to_string();
         
         tokio::spawn(async move {
-            let executor = {
+            let (executor, debug_cleanup) = {
                 let state = as_ptr.lock().await;
-                state.wsl_dashboard.executor().clone()
+                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone())
             };
             
             // Get VHDX info
@@ -31,6 +31,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
             let mut sufficient = false;
             let mut backup_path = "".to_string();
             let mut script_url = "".to_string();
+            let mut source_url = "".to_string();
             let mut is_wsl2 = true;
             let mut is_sparse = false;
 
@@ -54,28 +55,51 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
                     if base_path.as_os_str().len() >= 3 {
                         let path_str = base_path.to_string_lossy();
-                        let drive = &path_str[..3];
-                        let free_bytes = crate::utils::system::get_disk_free_space(drive);
-                        free_space = format!("{:.2} GB", free_bytes as f64 / (1024.0 * 1024.0 * 1024.0));
-                        
-                        let vhdx_bytes = if vhdx_size.contains("GB") {
-                            (vhdx_size.split_whitespace().next().unwrap_or("0").parse::<f64>().unwrap_or(0.0) * 1024.0 * 1024.0 * 1024.0) as u64
-                        } else if vhdx_size.contains("MB") {
-                            (vhdx_size.split_whitespace().next().unwrap_or("0").parse::<f64>().unwrap_or(0.0) * 1024.0 * 1024.0) as u64
+                        let clean_path = if path_str.starts_with(r"\\?\") {
+                            &path_str[4..]
                         } else {
-                            0
+                            &path_str
                         };
-                        sufficient = free_bytes > (vhdx_bytes + 2 * 1024 * 1024 * 1024);
+
+                        if clean_path.len() >= 3 {
+                            let drive = &clean_path[..3];
+                            let free_bytes = crate::utils::system::get_disk_free_space(drive);
+                            free_space = format!("{:.2} GB", free_bytes as f64 / (1024.0 * 1024.0 * 1024.0));
+                            
+                            let vhdx_bytes = if vhdx_size.contains("GB") {
+                                (vhdx_size.split_whitespace().next().unwrap_or("0").parse::<f64>().unwrap_or(0.0) * 1024.0 * 1024.0 * 1024.0) as u64
+                            } else if vhdx_size.contains("MB") {
+                                (vhdx_size.split_whitespace().next().unwrap_or("0").parse::<f64>().unwrap_or(0.0) * 1024.0 * 1024.0) as u64
+                            } else {
+                                0
+                            };
+                            sufficient = free_bytes > (vhdx_bytes + 2 * 1024 * 1024 * 1024);
+                        }
                     }
                     
-                    backup_path = if base_path.is_dir() {
+                    let mut b_path = if base_path.is_dir() {
                         base_path.join(format!("{}.tar", name)).to_string_lossy().to_string()
                     } else {
                         format!("{}.tar", base_path.display())
                     };
+                    if b_path.starts_with(r"\\?\") {
+                        b_path = b_path[4..].to_string();
+                    }
+                    backup_path = b_path;
 
-                    let distro_helper = crate::api::common::wslui_helper_distro();
-                    script_url = distro_helper.compress_script.url;
+                    // Use local debug cleanup script if configured; skip network API call
+                    if debug_cleanup.is_empty() {
+                        let distro_helper = crate::api::common::wslui_helper_distro();
+                        script_url = distro_helper.compress_script.url;
+                        source_url = distro_helper.compress_source.url;
+                    } else {
+                        tracing::info!(
+                            "[Debug] distro.cleanup-script is set to '{}', skipping wslui_helper_distro() API call",
+                            debug_cleanup
+                        );
+                        // script_url remains empty; the actual local path is in debug_cleanup
+                        // and will be picked up in on_confirm_compress
+                    }
                 }
             }
             
@@ -87,6 +111,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                     app.set_compress_space_sufficient(sufficient);
                     app.set_compress_backup_path(backup_path.into());
                     app.set_compress_script_url(script_url.into());
+                    app.set_compress_source_url(source_url.into());
                     app.set_compress_is_wsl2(is_wsl2);
                     app.set_compress_is_sparse(is_sparse);
                     app.set_compress_enable_sparse(is_sparse); // Default to true if already sparse
@@ -119,11 +144,25 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let ah_task = app_handle.clone();
         tokio::spawn(async move {
             let _guard = crate::ui::data::BusyGuard::new();
-            let executor = {
+            let (executor, debug_cleanup) = {
                 let state = as_ptr.lock().await;
                 state.wsl_dashboard.mark_distro_stopped(&name).await;
-                state.wsl_dashboard.executor().clone()
+                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone())
             };
+
+            if !debug_cleanup.is_empty() {
+                let path = std::path::Path::new(&debug_cleanup);
+                if !path.exists() || !debug_cleanup.ends_with(".sh") {
+                    let ah_inner = ah_task.clone();
+                    let _ = slint::invoke_from_event_loop(move || {
+                        if let Some(app) = ah_inner.upgrade() {
+                            let msg = i18n::t("debug.cleanup_script_invalid");
+                            app.set_task_status_text(msg.into());
+                        }
+                    });
+                    return;
+                }
+            }
             
             let ah_prog = ah_task.clone();
             let name_prog = name.clone();
@@ -139,7 +178,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 });
             };
 
-            let result = compress::compress_vhdx(&executor, &name, cleanup, backup, enable_sparse, &url, progress_callback).await;
+            let result = compress::compress_vhdx(&executor, &name, cleanup, backup, enable_sparse, &url, &debug_cleanup, progress_callback).await;
 
             
             let name_inner = name.clone();

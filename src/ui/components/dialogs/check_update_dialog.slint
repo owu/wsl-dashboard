@@ -6,7 +6,6 @@ import { CustomButton } from "../form_widgets.slint";
 
 export component CheckUpdateDialog inherits Rectangle {
     in property <string> message_content: "";
-    in property <bool> is_expire: false;
     in property <bool> show_cancel: true;
     callback download;
     callback close;
@@ -32,7 +31,7 @@ export component CheckUpdateDialog inherits Rectangle {
                 Text {
                     x: AppI18n.is-rtl ? 32px : 0;
                     width: parent.width - 32px;
-                    text: root.is_expire ? AppI18n.t("dialog.expire_title", [AppI18n.version]) : AppI18n.t("dialog.update_check_title", [AppI18n.version]);
+                    text: AppI18n.t("dialog.update_check_title", [AppI18n.version]);
                     font-size: 18px * LayoutConstants.font-scale;
                     font-family: Theme.default_font;
                     font-weight: 500;

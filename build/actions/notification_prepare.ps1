@@ -21,12 +21,12 @@ if (-not (Test-Path $ApiPath)) {
 }
 
 # 2. Fetch assets from CDN
-$BuildJsonUrl = "https://cdn2.wslui.com/releases/download/$Tag/build.json"
-Write-Host "[INFO] Fetching assets from: $BuildJsonUrl"
+$AssetsJsonUrl = "https://cdn2.wslui.com/releases/download/$Tag/assets.json"
+Write-Host "[INFO] Fetching assets from: $AssetsJsonUrl"
 
 try {
-    $Response = Invoke-RestMethod -Uri $BuildJsonUrl -Method Get -ErrorAction Stop
-    Write-Host "[OK] Received response from build.json"
+    $Response = Invoke-RestMethod -Uri $AssetsJsonUrl -Method Get -ErrorAction Stop
+    Write-Host "[OK] Received response from assets.json"
     
     if ($Response.err -ne 0) {
         Write-Error "[ERROR] API returned error: $($Response.msg)"

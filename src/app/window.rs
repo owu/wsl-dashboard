@@ -14,7 +14,7 @@ use windows::Win32::UI::WindowsAndMessaging::{
     GetWindowLongW, SetWindowLongW, GWL_EXSTYLE, WS_EX_TOOLWINDOW, WS_EX_APPWINDOW,
     ShowWindow, SW_HIDE, SW_SHOW, SWP_FRAMECHANGED, SWP_NOMOVE, GetWindowTextW,
     GetClassNameW, SetForegroundWindow, SW_RESTORE, SetWindowTextW, SetLayeredWindowAttributes,
-    LWA_ALPHA
+    LWA_ALPHA, HWND_TOPMOST, HWND_NOTOPMOST
 };
 use windows::Win32::UI::WindowsAndMessaging::WS_EX_LAYERED;
 #[cfg(target_os = "windows")]
@@ -131,6 +131,28 @@ fn hide_window_completely(hwnd: HWND) {
 }
 
 #[cfg(target_os = "windows")]
+pub fn set_always_on_top(top: bool) {
+    info!("set_always_on_top(top={})", top);
+    if let Some(hwnd) = find_main_window() {
+        unsafe {
+            let insert_after = if top { HWND_TOPMOST } else { HWND_NOTOPMOST };
+            let _ = SetWindowPos(
+                hwnd,
+                insert_after,
+                0, 0, 0, 0,
+                SWP_NOMOVE | SWP_NOSIZE,
+            );
+        }
+        info!("Window always-on-top set to {}", top);
+    } else {
+        error!("set_always_on_top: main window not found");
+    }
+}
+
+#[cfg(not(target_os = "windows"))]
+pub fn set_always_on_top(_top: bool) {}
+
+#[cfg(target_os = "windows")]
 pub fn set_skip_taskbar(_app: &crate::AppWindow, skip: bool) {
     info!("set_skip_taskbar(skip={})", skip);
     std::thread::spawn(move || {
@@ -226,6 +248,9 @@ pub fn show_and_center(app: &AppWindow, silent: bool) {
         app.window().set_minimized(false);
         let _ = app.show();
 
+        // Capture properties needed by the background thread
+        let is_pinned = app.get_is_pinned();
+
         // 2. CONSOLIDATED REVEAL FLOW: ONE thread to handle positioning, styling, and activation
         std::thread::spawn(move || {
             // We give it plenty of retries to ensure Slint has fully initialized the window
@@ -270,6 +295,12 @@ pub fn show_and_center(app: &AppWindow, silent: bool) {
 
                                     // F. Reveal: Transition opacity back to 255
                                     set_window_opacity_by_hwnd(hwnd, 255);
+
+                                    // G. Restore always-on-top if pinned
+                                    if is_pinned {
+                                        let _ = SetWindowPos(hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+                                        info!("Window pin state restored: always-on-top");
+                                    }
 
                                     info!("Window successfully centered and robustly activated.");
                                     return;

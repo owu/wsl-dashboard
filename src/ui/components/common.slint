@@ -33,6 +33,7 @@ export component SidebarItem inherits Rectangle {
                                  icon_type == "lime" ? Theme.icon_color_lime :
                                  icon_type == "orange" ? Theme.icon_color_orange :
                                  icon_type == "rose" ? Theme.icon_color_rose :
+                                 icon_type == "heart" ? Theme.icon_color_heart :
                                  icon_type == "violet" ? Theme.icon_color_violet :
                                  icon_type == "emerald" ? Theme.icon_color_emerald :
                                  icon_type == "amber" ? Theme.icon_color_amber :
@@ -168,6 +169,7 @@ export component ThemedIcon inherits Text {
            icon_type == "lime" ? Theme.icon_color_lime :
            icon_type == "orange" ? Theme.icon_color_orange :
            icon_type == "rose" ? Theme.icon_color_rose :
+           icon_type == "heart" ? Theme.icon_color_heart :
            icon_type == "violet" ? Theme.icon_color_violet :
            icon_type == "emerald" ? Theme.icon_color_emerald :
            icon_type == "amber" ? Theme.icon_color_amber :
@@ -205,6 +207,7 @@ export component ActionIcon inherits Rectangle {
                                    icon_type == "lime" ? Theme.icon_color_lime :
                                    icon_type == "orange" ? Theme.icon_color_orange :
                                    icon_type == "rose" ? Theme.icon_color_rose :
+                                   icon_type == "heart" ? Theme.icon_color_heart :
                                    icon_type == "violet" ? Theme.icon_color_violet :
                                    icon_type == "emerald" ? Theme.icon_color_emerald :
                                    icon_type == "amber" ? Theme.icon_color_amber :
@@ -233,7 +236,7 @@ export component ActionIcon inherits Rectangle {
         
         // Dynamic Positioning - Reverted to static history behavior
         x: (parent.width - self.width) / 2;
-        y: -30px;
+        y: -10px;
         width: tt_text.width + 12px;
         height: tt_text.height + 6px;
         tt_text := Text {

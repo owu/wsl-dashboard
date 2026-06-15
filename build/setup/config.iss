@@ -43,10 +43,8 @@ UninstallDisplayName={#AppName}
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-; Custom wizard image: large image on the left (welcome/finish page), recommended size 164x314 BMP
-WizardImageFile=..\..\assets\setup\wizard_image.bmp
-; Custom wizard small image: small icon at top-right of inner pages, recommended size 55x58 BMP
-WizardSmallImageFile=..\..\assets\setup\wizard_small.bmp
+; Custom wizard image: large image on the left (welcome/finish page), recommended size 164x314
+WizardImageFile=..\..\assets\setup\wizard_image.png
 ; Allow overwriting existing installation
 DirExistsWarning=no
 
@@ -80,6 +78,27 @@ Name: "slovak"; MessagesFile: "languages\Slovak.isl"
 Name: "slovenian"; MessagesFile: "languages\Slovenian.isl"
 Name: "hebrew"; MessagesFile: "languages\Hebrew.isl"
 Name: "icelandic"; MessagesFile: "languages\Icelandic.isl"
+Name: "vietnamese"; MessagesFile: "languages\Vietnamese.isl"
+Name: "telugu"; MessagesFile: "languages\Telugu.isl"
+Name: "javanese"; MessagesFile: "languages\Javanese.isl"
+Name: "thai"; MessagesFile: "languages\Thai.isl"
+Name: "tamil"; MessagesFile: "languages\Tamil.isl"
+Name: "filipino"; MessagesFile: "languages\Filipino.isl"
+Name: "punjabi"; MessagesFile: "languages\Punjabi.isl"
+Name: "malay"; MessagesFile: "languages\Malay.isl"
+Name: "polish"; MessagesFile: "languages\Polish.isl"
+Name: "ukrainian"; MessagesFile: "languages\Ukrainian.isl"
+Name: "persian"; MessagesFile: "languages\Persian.isl"
+Name: "kannada"; MessagesFile: "languages\Kannada.isl"
+Name: "marathi"; MessagesFile: "languages\Marathi.isl"
+Name: "hausa"; MessagesFile: "languages\Hausa.isl"
+Name: "burmese"; MessagesFile: "languages\Burmese.isl"
+Name: "uzbek"; MessagesFile: "languages\Uzbek.isl"
+Name: "azerbaijani"; MessagesFile: "languages\Azerbaijani.isl"
+Name: "cebuano"; MessagesFile: "languages\Cebuano.isl"
+Name: "malayalam"; MessagesFile: "languages\Malayalam.isl"
+Name: "sindhi"; MessagesFile: "languages\Sindhi.isl"
+Name: "amharic"; MessagesFile: "languages\Amharic.isl"
 
 [Messages]
 SetupWindowTitle={#AppName} v{#AppVersion}
@@ -138,15 +157,45 @@ function DeleteMenu(hMenu: LongWord; uPosition: UINT; uFlags: UINT): Boolean;
   external 'DeleteMenu@user32.dll stdcall';
 function GetMenuItemCount(hMenu: LongWord): Integer;
   external 'GetMenuItemCount@user32.dll stdcall';
+function SendMessage(hWnd: HWND; Msg: UINT; wParam: LongInt; lParam: LongInt): LongInt;
+  external 'SendMessageW@user32.dll stdcall';
+
+const
+  PRIVACY_POLICY_URL = APP_URL + '/privacy/';
+  TERMS_OF_SERVICE_URL = APP_URL + '/terms/';
 
 var
   ShouldCleanup: Boolean;
   CleanupCheckBox: TNewCheckBox;
   SchedulerNote1, SchedulerNote2, SchedulerNote3: TNewStaticText;
+  AgreementCheckBox: TNewCheckBox;
+  AgreementPrefixLabel, AgreementMiddleLabel, PrivacyPolicyLabel, TermsLabel: TLabel;
 
 procedure CleanupLabelClick(Sender: TObject);
 begin
   CleanupCheckBox.Checked := not CleanupCheckBox.Checked;
+end;
+
+// Toggle agreement checkbox when prefix text is clicked
+procedure AgreementPrefixClick(Sender: TObject);
+begin
+  AgreementCheckBox.Checked := not AgreementCheckBox.Checked;
+end;
+
+// Open privacy policy link in default browser
+procedure PrivacyPolicyClick(Sender: TObject);
+var
+  ErrorCode: Integer;
+begin
+  ShellExec('open', PRIVACY_POLICY_URL, '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
+end;
+
+// Open terms of service link in default browser
+procedure TermsClick(Sender: TObject);
+var
+  ErrorCode: Integer;
+begin
+  ShellExec('open', TERMS_OF_SERVICE_URL, '', '', SW_SHOWNORMAL, ewNoWait, ErrorCode);
 end;
 
 // Open official website in default browser when URL label is clicked
@@ -202,6 +251,58 @@ begin
   SchedulerNote3.Width := WizardForm.SelectTasksPage.Width - SchedulerNote3.Left - ScaleX(20);
   SchedulerNote3.WordWrap := True;
   SchedulerNote3.Font.Color := clGray;
+
+  // Reduce ReadyMemo height to make room for agreement checkbox
+  WizardForm.ReadyMemo.Height := WizardForm.ReadyMemo.Height - ScaleY(30);
+
+  // Create agreement checkbox on Ready to Install page
+  AgreementCheckBox := TNewCheckBox.Create(WizardForm);
+  AgreementCheckBox.Parent := WizardForm.ReadyPage;
+  AgreementCheckBox.Left := WizardForm.ReadyMemo.Left;
+  AgreementCheckBox.Top := WizardForm.ReadyMemo.Top + WizardForm.ReadyMemo.Height + ScaleY(16);
+  AgreementCheckBox.Width := ScaleX(20);
+  AgreementCheckBox.Height := ScaleY(20);
+  AgreementCheckBox.Caption := '';
+  AgreementCheckBox.Checked := False;
+
+  // Create agreement text label with inline links
+  // Prefix text: "I have read and agree to the"
+  AgreementPrefixLabel := TLabel.Create(WizardForm);
+  AgreementPrefixLabel.Parent := WizardForm.ReadyPage;
+  AgreementPrefixLabel.Left := AgreementCheckBox.Left + ScaleX(16);
+  AgreementPrefixLabel.Top := AgreementCheckBox.Top + ScaleY(2);
+  AgreementPrefixLabel.Caption := CustomMessage('AgreementPrefix') + ' ';
+  AgreementPrefixLabel.Cursor := crHand;
+  AgreementPrefixLabel.OnClick := @AgreementPrefixClick;
+
+  // Privacy Policy link
+  PrivacyPolicyLabel := TLabel.Create(WizardForm);
+  PrivacyPolicyLabel.Parent := WizardForm.ReadyPage;
+  PrivacyPolicyLabel.Left := AgreementPrefixLabel.Left + AgreementPrefixLabel.Width;
+  PrivacyPolicyLabel.Top := AgreementPrefixLabel.Top;
+  PrivacyPolicyLabel.Caption := CustomMessage('PrivacyPolicy');
+  PrivacyPolicyLabel.Font.Color := $C06020;
+  PrivacyPolicyLabel.Font.Style := [fsUnderline];
+  PrivacyPolicyLabel.Cursor := crHand;
+  PrivacyPolicyLabel.OnClick := @PrivacyPolicyClick;
+
+  // Middle text: "and"
+  AgreementMiddleLabel := TLabel.Create(WizardForm);
+  AgreementMiddleLabel.Parent := WizardForm.ReadyPage;
+  AgreementMiddleLabel.Left := PrivacyPolicyLabel.Left + PrivacyPolicyLabel.Width;
+  AgreementMiddleLabel.Top := AgreementPrefixLabel.Top;
+  AgreementMiddleLabel.Caption := ' ' + CustomMessage('AgreementMiddle') + ' ';
+
+  // Terms of Service link
+  TermsLabel := TLabel.Create(WizardForm);
+  TermsLabel.Parent := WizardForm.ReadyPage;
+  TermsLabel.Left := AgreementMiddleLabel.Left + AgreementMiddleLabel.Width;
+  TermsLabel.Top := AgreementPrefixLabel.Top;
+  TermsLabel.Caption := CustomMessage('TermsOfService');
+  TermsLabel.Font.Color := $C06020;
+  TermsLabel.Font.Style := [fsUnderline];
+  TermsLabel.Cursor := crHand;
+  TermsLabel.OnClick := @TermsClick;
 end;
 
 // Remove redundant items from system menu
@@ -231,10 +332,77 @@ begin
 end;
 
 procedure CurPageChanged(CurPageID: Integer);
+var
+  ItemHeight: Integer;
+  TaskItemCount: Integer;
+  NoteTop: Integer;
 begin
+  if CurPageID = wpSelectTasks then
+  begin
+    // Dynamically position SchedulerNote labels below the tasks list items
+    // LB_GETITEMHEIGHT = $01A1, wParam=0 returns default item height
+    ItemHeight := SendMessage(WizardForm.TasksList.Handle, $01A1, 0, 0);
+    TaskItemCount := WizardForm.TasksList.Items.Count;
+    NoteTop := WizardForm.TasksList.Top + TaskItemCount * ItemHeight + ScaleY(4);
+
+    SchedulerNote1.Top := NoteTop;
+    SchedulerNote2.Top := SchedulerNote1.Top + ScaleY(18);
+    SchedulerNote3.Top := SchedulerNote2.Top + ScaleY(18);
+  end;
+
   if CurPageID = wpWelcome then
   begin
     CleanSystemMenu();
+  end;
+end;
+
+// Directory safety check: auto-append "\WSL Dashboard" if the last segment is not the app name
+function NextButtonClick(CurPageID: Integer): Boolean;
+var
+  SelectedDir: String;
+  LastSegment: String;
+  I: Integer;
+  LastSep: Integer;
+begin
+  Result := True; // Allow proceeding by default
+
+  if CurPageID = wpSelectDir then
+  begin
+    SelectedDir := WizardForm.DirEdit.Text;
+
+    // Remove trailing backslash if present
+    if (Length(SelectedDir) > 0) and (SelectedDir[Length(SelectedDir)] = '\') then
+      SetLength(SelectedDir, Length(SelectedDir) - 1);
+
+    // Find the last backslash position
+    LastSep := 0;
+    for I := 1 to Length(SelectedDir) do
+    begin
+      if SelectedDir[I] = '\' then
+        LastSep := I;
+    end;
+
+    if LastSep > 0 then
+      LastSegment := Copy(SelectedDir, LastSep + 1, MaxInt)
+    else
+      LastSegment := SelectedDir;
+
+    // If the last directory segment is not "WSL Dashboard", append it
+    if CompareText(LastSegment, '{#AppName}') <> 0 then
+    begin
+      SelectedDir := SelectedDir + '\{#AppName}';
+      WizardForm.DirEdit.Text := SelectedDir;
+    end;
+  end;
+
+  // Agreement checkbox validation on Ready to Install page
+  if CurPageID = wpReady then
+  begin
+    if not AgreementCheckBox.Checked then
+    begin
+      MsgBox(CustomMessage('AgreementRequired'), mbError, MB_OK);
+      Result := False;
+    end;
   end;
 end;
 

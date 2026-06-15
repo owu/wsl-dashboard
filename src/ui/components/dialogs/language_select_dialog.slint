@@ -1,0 +1,178 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import {
+    Theme,
+    AppI18n,
+    LayoutConstants,
+} from "../../theme.slint";
+import { CustomScrollbar } from "../scrollbar.slint";
+
+// Language item component
+component LanguageItem inherits Rectangle {
+    in property <string> text;
+    in property <bool> selected: false;
+    in property <bool> valid: true;
+    callback clicked;
+
+    height: 36px;
+    opacity: root.valid ? 1.0 : 0.0;
+    background: selected ? Theme.accent : (touch.has-hover ? Theme.hover_bg : Theme.input_bg);
+    border-width: 1px;
+    border-color: selected ? Theme.accent : Theme.input_border;
+    border-radius: 6px;
+    animate background { duration: 150ms; }
+
+    Text {
+        text: root.text;
+        color: selected ? white : Theme.text_primary;
+        font-family: Theme.default_font;
+        font-size: 13px * LayoutConstants.font-scale;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+        overflow: elide;
+    }
+
+    touch := TouchArea {
+        enabled: root.valid;
+        clicked => {
+            root.clicked();
+        }
+    }
+}
+
+export component LanguageSelectDialog inherits Rectangle {
+    in property <string> title;
+    in property <[string]> languages;
+    in property <int> current_index;
+
+    callback close();
+    callback selected(int);
+
+    private property <int> columns: 3;
+    private property <length> item_height: 36px;
+    private property <length> item_spacing: 8px;
+    // ceiling division: (length + columns - 1) / columns
+    private property <int> rows: (languages.length + columns - 1) / columns;
+    private property <length> content_height: rows * (item_height + item_spacing) - item_spacing;
+    // Fixed dialog height, content area ≈ 5 rows visible
+    // 300 - 24*2(top/bottom padding) - 24(header) - 1(divider) - 8*2(spacing) = 211px
+    private property <length> dialog_height: 300px;
+    private property <length> content_area_height: 215px;
+
+    // Background mask - click to close
+    background: #00000080;
+    TouchArea {
+        clicked => {
+            root.close();
+        }
+    }
+
+    // Dialog Box (centered)
+    Rectangle {
+        width: 500px;
+        height: root.dialog_height;
+        x: (parent.width - self.width) / 2;
+        y: (parent.height - self.height) / 2;
+        background: Theme.card_bg;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: Theme.border_color;
+        TouchArea { }
+
+        VerticalLayout {
+            padding: 24px;
+            spacing: 8px;
+
+            // Header
+            Rectangle {
+                vertical-stretch: 0;
+                height: 24px;
+                Text {
+                    x: AppI18n.is-rtl ? 32px : 0;
+                    width: parent.width - 32px;
+                    text: root.title;
+                    font-size: 18px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    font-weight: 500;
+                    color: Theme.text_primary;
+                    horizontal-alignment: AppI18n.is-rtl ? right : left;
+                    vertical-alignment: center;
+                }
+
+                TouchArea {
+                    x: AppI18n.is-rtl ? 0 : parent.width - self.width;
+                    width: 24px;
+                    height: 24px;
+                    clicked => {
+                        root.close();
+                    }
+                    Rectangle {
+                        background: parent.has-hover ? Theme.hover_bg : transparent;
+                        border-radius: 4px;
+                        Text {
+                            text: "\u{E8BB}";
+                            font-family: Theme.icon_font;
+                            font-size: 14px;
+                            color: Theme.text_primary;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                        }
+                    }
+                }
+            }
+
+            // Divider
+            Rectangle {
+                height: 1px;
+                background: Theme.border_color;
+            }
+
+            // Content
+            Rectangle {
+                height: min(root.content_area_height, flick.viewport-height);
+                clip: true;
+
+                flick := Flickable {
+                    viewport-height: content_height;
+                    width: 100%;
+                    height: 100%;
+
+                    VerticalLayout {
+                        spacing: root.item_spacing;
+                        padding-left: AppI18n.is-rtl ? 12px : 0px;
+                        padding-right: AppI18n.is-rtl ? 0px : 12px;
+                        for row_idx in rows: HorizontalLayout {
+                            spacing: root.item_spacing;
+                            for col_idx in columns: LanguageItem {
+                                property <int> flat-index: row_idx * root.columns + col_idx;
+                                valid: flat-index < root.languages.length;
+                                text: flat-index < root.languages.length ? root.languages[flat-index] : "";
+                                selected: flat-index == root.current_index;
+                                clicked => {
+                                    if (flat-index < root.languages.length) {
+                                        root.selected(flat-index);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Scrollbar (absolute positioning, same as SettingsDialog)
+                if (flick.viewport-height > flick.height): CustomScrollbar {
+                    x: AppI18n.is-rtl ? 0px : parent.width - 8px;
+                    y: 0;
+                    width: 8px;
+                    height: 100%;
+                    maximum: flick.viewport-height - flick.height;
+                    page_size: flick.height;
+                    value: -flick.viewport-y;
+                    scroll_to(v) => {
+                        flick.viewport-y = -v;
+                    }
+                }
+            }
+        }
+    }
+}

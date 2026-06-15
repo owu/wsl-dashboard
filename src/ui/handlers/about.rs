@@ -2,16 +2,12 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use std::sync::Arc;
-use std::sync::atomic::{AtomicBool, Ordering};
 use std::io::Read;
 use tokio::sync::Mutex;
 use tracing::{debug, warn};
 use crate::{AppWindow, AppState};
 use crate::api::models::OfficialGroup;
 use slint::ComponentHandle;
-
-// Ensure the helper about info request is triggered only once during the application's lifecycle
-static FETCHED: AtomicBool = AtomicBool::new(false);
 
 pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, _app_state: Arc<Mutex<AppState>>) {
     let ah = app_handle.clone();
@@ -29,12 +25,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, _app_state: Ar
 
 // Called when the user opens the About page for the first time (from the select_tab hook in common.rs)
 pub fn trigger_fetch(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<AppState>>) {
-    // AtomicBool ensures it triggers only once, preventing duplicate requests even with rapid switching to the About page
-    if FETCHED.swap(true, Ordering::SeqCst) {
-        debug!("about: helper about info already fetched, skipping");
-        return;
-    }
-    debug!("about: First visit to About page, triggering helper about info fetch");
+    debug!("about: triggering helper about info fetch");
 
     tokio::spawn(async move {
         // Read user configuration (language + timezone)

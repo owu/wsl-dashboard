@@ -114,6 +114,69 @@ pub fn normalize_language_code(lang: &str) -> String {
     if lower == "sl" || lower.starts_with("sl-") {
         return "sl".to_string();
     }
+    if lower == "vi" || lower.starts_with("vi-") {
+        return "vi".to_string();
+    }
+    if lower == "te" || lower.starts_with("te-") {
+        return "te".to_string();
+    }
+    if lower == "jv" || lower.starts_with("jv-") {
+        return "jv".to_string();
+    }
+    if lower == "th" || lower.starts_with("th-") {
+        return "th".to_string();
+    }
+    if lower == "ta" || lower.starts_with("ta-") {
+        return "ta".to_string();
+    }
+    if lower == "fil" || lower.starts_with("fil-") || lower == "tl" || lower.starts_with("tl-") {
+        return "fil".to_string();
+    }
+    if lower == "pa" || lower.starts_with("pa-") {
+        return "pa".to_string();
+    }
+    if lower == "ms" || lower.starts_with("ms-") {
+        return "ms".to_string();
+    }
+    if lower == "pl" || lower.starts_with("pl-") {
+        return "pl".to_string();
+    }
+    if lower == "uk" || lower.starts_with("uk-") {
+        return "uk".to_string();
+    }
+    if lower == "fa" || lower.starts_with("fa-") {
+        return "fa".to_string();
+    }
+    if lower == "kn" || lower.starts_with("kn-") {
+        return "kn".to_string();
+    }
+    if lower == "mr" || lower.starts_with("mr-") {
+        return "mr".to_string();
+    }
+    if lower == "ha" || lower.starts_with("ha-") {
+        return "ha".to_string();
+    }
+    if lower == "my" || lower.starts_with("my-") {
+        return "my".to_string();
+    }
+    if lower == "uz" || lower.starts_with("uz-") {
+        return "uz".to_string();
+    }
+    if lower == "az" || lower.starts_with("az-") {
+        return "az".to_string();
+    }
+    if lower == "ceb" || lower.starts_with("ceb-") {
+        return "ceb".to_string();
+    }
+    if lower == "ml" || lower.starts_with("ml-") {
+        return "ml".to_string();
+    }
+    if lower == "sd" || lower.starts_with("sd-") {
+        return "sd".to_string();
+    }
+    if lower == "am" || lower.starts_with("am-") {
+        return "am".to_string();
+    }
     
     // Default fallback
     "en".to_string()
@@ -124,7 +187,8 @@ pub fn is_rtl(lang: &str) -> bool {
     lower == "ar" || lower.starts_with("ar-") || 
     lower == "he" || lower.starts_with("he-") || 
     lower == "fa" || lower.starts_with("fa-") || 
-    lower == "ur" || lower.starts_with("ur-")
+    lower == "ur" || lower.starts_with("ur-") ||
+    lower == "sd" || lower.starts_with("sd-")  // Sindhi (RTL)
 }
 
 #[allow(dead_code)]

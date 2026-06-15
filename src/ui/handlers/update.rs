@@ -47,7 +47,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, _app_state: Ar
                                 app.global::<AppInfo>().set_has_update(has_update);
                                 app.global::<AppInfo>().set_latest_version(latest_version.clone().into());
                                 app.global::<AppInfo>().set_latest_release_date(release_date.clone().into());
-                                app.global::<AppInfo>().set_update_download_url(result.download_url.clone().into());
+                                app.global::<AppInfo>().set_update_download_url(format!("{}{}", crate::app::PROJECT_WEBSITE, crate::app::DOWNLOAD_URI).into());
                                 
                                 if has_update {
                                     app.set_show_update_dialog(true);
@@ -85,16 +85,13 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, _app_state: Ar
         let ah = ah_download.clone();
         slint::spawn_local(async move {
             if let Some(app) = ah.upgrade() {
-                let expire_url = app.get_expire_download_url().to_string();
                 let update_url = app.global::<AppInfo>().get_update_download_url().to_string();
-                if app.get_show_expire_dialog() && !expire_url.is_empty() {
-                    info!("Downloading update from expire_download_url: {}", expire_url);
-                    let _ = open::that(expire_url);
-                } else if !update_url.is_empty() {
+                if !update_url.is_empty() {
                     info!("Downloading update from update_download_url: {}", update_url);
                     let _ = open::that(update_url);
                 } else {
-                    let _ = open::that(format!("{}{}", crate::app::PROJECT_REPOSITORY, crate::app::GITHUB_RELEASES));
+                    let url = format!("{}{}", crate::app::PROJECT_WEBSITE, crate::app::DOWNLOAD_URI);
+                    let _ = open::that(url);
                 }
             }
         }).unwrap();

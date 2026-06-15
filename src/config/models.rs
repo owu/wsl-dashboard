@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 // Configuration file version constant
-pub const SETTINGS_VERSION: u32 = 6;
+pub const SETTINGS_VERSION: u32 = 7;
 
 // Application configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -62,6 +62,10 @@ pub struct UserSettings {
     pub log_days: u8,
     #[serde(rename = "colorful-icons", default)]
     pub colorful_icons: bool,
+    #[serde(rename = "mail", default = "default_true")]
+    pub mail: bool,
+    #[serde(rename = "hide-pin", default)]
+    pub hide_pin: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -149,6 +153,8 @@ impl Config {
                 log_level: 4,
                 log_days: 7,
                 colorful_icons: true,
+                mail: true,
+                hide_pin: false,
             },
 
             tray: TraySettings::default(),
@@ -172,6 +178,8 @@ pub struct SidebarConfig {
     pub network: bool,
     #[serde(default = "default_true")]
     pub about: bool,
+    #[serde(default = "default_true")]
+    pub donate: bool,
 }
 
 fn default_true() -> bool {
@@ -186,6 +194,7 @@ impl Default for SidebarConfig {
             usb: true,
             network: true,
             about: true,
+            donate: true,
         }
     }
 }

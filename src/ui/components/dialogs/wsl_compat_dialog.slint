@@ -1,0 +1,137 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import { Theme, AppI18n, LayoutConstants } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
+
+export component WslCompatDialog inherits Rectangle {
+    in property <string> msg1;
+    in property <string> msg2;
+    in property <string> msg3;
+    in property <string> hint_text: "";
+    in property <string> link_text: "";
+    in property <string> issues_url: "";
+    in property <bool> show_confirm: true;
+    callback close;
+    callback link_clicked;
+    width: 480px;
+    height: layout.preferred-height;
+    background: Theme.card_bg;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: Theme.border_color;
+    drop-shadow-blur: 16px;
+    drop-shadow-color: #00000040;
+
+    layout := VerticalLayout {
+        padding: 24px;
+        spacing: 12px;
+        alignment: start;
+
+        // Title + close button
+        Rectangle {
+            height: 24px;
+            Text {
+                x: AppI18n.is-rtl ? 32px : 0;
+                width: parent.width - 32px;
+                text: AppI18n.t("dialog.wsl_compat_title", [AppI18n.version]);
+                font-size: 18px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                font-weight: 500;
+                color: Theme.text_primary;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                vertical-alignment: center;
+            }
+            TouchArea {
+                x: AppI18n.is-rtl ? 0 : parent.width - self.width;
+                width: 24px;
+                height: 24px;
+                clicked => { root.close(); }
+                Rectangle {
+                    background: parent.has-hover ? Theme.hover_bg : transparent;
+                    border-radius: 4px;
+                    Text {
+                        text: "\u{E8BB}";
+                        font-family: Theme.icon_font;
+                        font-size: 14px;
+                        color: Theme.text_primary;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+        }
+
+        // Divider
+        Rectangle { height: 1px; background: Theme.border_color; }
+
+        // Message body + link
+        VerticalLayout {
+            spacing: 14px;
+            Text {
+                text: msg1;
+                font-size: 14px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                color: Theme.text_primary;
+                wrap: word-wrap;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+            }
+            Text {
+                text: msg2;
+                font-size: 14px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                color: Theme.icon_color_danger;
+                wrap: word-wrap;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+            }
+            Text {
+                text: msg3;
+                font-size: 14px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                color: Theme.text_primary;
+                wrap: word-wrap;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+            }
+
+            if root.hint_text != "" || root.link_text != "": HorizontalLayout {
+                spacing: 4px;
+                alignment: AppI18n.is-rtl ? end : start;
+                if root.hint_text != "": Text {
+                    text: root.hint_text;
+                    font-size: 14px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    color: Theme.text_primary;
+                    wrap: no-wrap;
+                    vertical-alignment: center;
+                }
+                if root.link_text != "": TouchArea {
+                    width: link-label.preferred-width;
+                    height: link-label.preferred-height;
+                    mouse-cursor: pointer;
+                    clicked => { root.link_clicked(); }
+                    link-label := Text {
+                        text: root.link_text;
+                        font-size: 14px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        color: parent.has-hover ? Theme.accent.brighter(20%) : Theme.accent;
+                        font-weight: 500;
+                        wrap: no-wrap;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+        }
+
+        // Confirm button
+        if root.show_confirm: HorizontalLayout {
+            alignment: AppI18n.is-rtl ? start : end;
+            CustomButton {
+                text: AppI18n.t("dialog.confirm", [AppI18n.version]);
+                height: 32px;
+                width: 100px;
+                primary: true;
+                clicked => { root.close(); }
+            }
+        }
+    }
+}

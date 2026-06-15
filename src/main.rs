@@ -16,7 +16,6 @@ mod app;
 mod i18n;
 mod network;
 mod api;
-mod service;
 
 // Re-export types so other modules can continue using crate::AppWindow, crate::AppState etc.
 pub use app::state::AppState;
@@ -44,7 +43,25 @@ async fn main() {
         }
     }
 
-    // 2. Bootstrap application environment (Config, i18n, Logging, and Startup Timestamp)
+    // Run the heavy async work on a thread with a larger stack (16MB) to prevent
+    // STATUS_STACK_OVERFLOW from the deeply-nested async future frames.
+    let result = std::thread::Builder::new()
+        .name("main-async".to_string())
+        .stack_size(16 * 1024 * 1024) // 16MB stack
+        .spawn(move || {
+            let rt = tokio::runtime::Builder::new_multi_thread()
+                .enable_all()
+                .build()
+                .expect("Failed to build tokio runtime");
+            rt.block_on(async_main(args));
+        })
+        .expect("Failed to spawn main thread");
+    
+    let _ = result.join();
+}
+
+async fn async_main(args: Vec<String>) {
+    // 2. Bootstrap application environment (Config, i18n, Logging, and Bootstrap Data)
     let ctx = app::launcher::bootstrap(&args).await;
     
     // 3. Handle complex CLI commands that require initialization context (scheduler/clean/initialize)
@@ -65,8 +82,7 @@ async fn main() {
     app::runner::run_app(
         ctx.config_manager, 
         ctx.logging_system, 
-        is_silent_mode, 
-        ctx.startup_ts_atomic
+        is_silent_mode,
     ).await;
     
     // _instance will be dropped here when main exits

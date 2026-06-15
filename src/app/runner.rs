@@ -16,31 +16,47 @@ use crate::ui;
 use crate::i18n;
 
 // Run the main GUI application
-pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSystem, is_silent_mode: bool, startup_timestamp: std::sync::Arc<std::sync::atomic::AtomicI64>) {
+pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSystem, is_silent_mode: bool) {
     let settings = config_manager.get_settings().clone();
     let tray_settings = config_manager.get_tray_settings().clone();
     let system_language = config_manager.get_config().system.system_language.clone();
 
     // 1. Create app state
-    // Note: We manually unwrap the atomic value once as initial value, or refactor AppState::new
-    let initial_ts = startup_timestamp.load(std::sync::atomic::Ordering::SeqCst);
-    let app_state = Arc::new(Mutex::new(AppState::new(config_manager, logging_system, is_silent_mode, initial_ts)));
-    
-    // Store the passed atomic reference into AppState (since AppState::new creates a new atomic internally, we need to sync or store the reference directly)
-    // For simplicity, we modify AppState to share this atomic, or do a sync here
+    let app_state = Arc::new(Mutex::new(AppState::new(config_manager, logging_system, is_silent_mode)));
+
+    // Async fetch bootstrap data and write to AppState
     {
         let state_clone = app_state.clone();
         tokio::spawn(async move {
-            // Loop until atomic value is not 0 (or use a more elegant notification mechanism)
-            // This ensures the atomic inside AppState eventually syncs with the result from main
-            loop {
-                let ts = startup_timestamp.load(std::sync::atomic::Ordering::SeqCst);
-                if ts > 0 {
-                    let lock = state_clone.lock().await;
-                    lock.startup_timestamp.store(ts, std::sync::atomic::Ordering::SeqCst);
-                    break;
-                }
-                tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+            let data = tokio::task::spawn_blocking(|| crate::api::common::wslui_helper_bootstrap()).await.unwrap_or_default();
+            let ts = data.unix_time;
+            
+            state_clone.lock().await.bootstrap_data = Some(data);
+            
+            if ts > 0 {
+                info!("[STARTUP] Bootstrap data fetched, unix_time: {}", ts);
+            } else {
+                info!("[STARTUP] Bootstrap data fetched (unix_time unavailable)");
+            }
+        });
+    }
+
+    // Pre-warm WSL version cache so WslCompatTask gets an instant cache hit.
+    // Without this, in silent mode the background distro monitors may exhaust the
+    // executor semaphore, causing check_wsl_version_support to wait up to 20s before
+    // returning detection_failed — preventing the compat dialog from ever showing.
+    {
+        let state_clone = app_state.clone();
+        tokio::spawn(async move {
+            let executor = {
+                let state = state_clone.lock().await;
+                state.wsl_dashboard.executor().clone()
+            };
+            let meta = crate::wsl::ops::config::check_wsl_version_support(&executor).await;
+            if meta.detection_failed {
+                info!("[STARTUP] WSL version pre-warm: detection failed (will retry in compat_task)");
+            } else {
+                info!("[STARTUP] WSL version pre-warm complete: {}", meta.version_string);
             }
         });
     }
@@ -62,10 +78,19 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
     // Trigger initial evaluation of all i18n properties
     app.global::<AppI18n>().set_version(1);
     
+    // Build language options array in Rust to avoid Slint compiler stack overflow
+    build_language_options(&app);
+    
+    // Register language index callback via AppI18n (LanguageData delegates to it)
+    app.global::<AppI18n>().on_get_language_index(|lang| {
+        get_language_index(&lang.to_string())
+    });
+
     // Set version and URL
     app.global::<AppInfo>().set_version(env!("CARGO_PKG_VERSION").into());
     app.global::<AppInfo>().set_project_repository(PROJECT_REPOSITORY.into());
     app.global::<AppInfo>().set_issues_url(format!("{}{}", PROJECT_REPOSITORY, GITHUB_ISSUES).into());
+    app.global::<AppInfo>().set_donate_url(format!("{}{}", crate::app::PROJECT_WEBSITE, crate::app::DONATE_URI).into());
 
     // 4. Initialize system tray
     if let Err(e) = crate::app::tray::SystemTray::initialize(app.as_weak(), !is_silent_mode) {
@@ -112,8 +137,7 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
     // 8. Refresh initial data (distro list)
     ui::data::refresh_data(app.as_weak(), app_state.clone()).await;
 
-    // 9. Start background tasks (update check, WSL/USB status monitoring)
-    crate::app::startup::spawn_check_task(app.as_weak(), app_state.clone());
+    // 9. Start background tasks (WSL/USB status monitoring)
     crate::app::tasks::spawn_wsl_monitor(app.as_weak(), app_state.clone());
     crate::app::tasks::spawn_usb_monitor(app.as_weak());
     crate::app::tasks::spawn_state_listener(app.as_weak(), app_state.clone());
@@ -121,6 +145,39 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
 
     // 10. Show window and center it
     crate::app::window::show_and_center(&app, is_silent_mode);
+
+    // 11. Start unified timer scheduler (includes startup checks: compat + expiry + update)
+    // Placed after show_and_center, delayed start ensures bootstrap_data is ready
+    {
+        let ah = app.as_weak();
+        let state_clone = app_state.clone();
+        tokio::spawn(async move {
+            // Wait for window to fully display (show_and_center internal thread needs ~1.2 seconds)
+            tokio::time::sleep(std::time::Duration::from_millis(2000)).await;
+            let mut scheduler = crate::app::task_scheduler::TaskScheduler::new(ah);
+
+            // Message Sync Task (runs early, ignores DND)
+            scheduler.register(crate::app::tasks::MessageSyncTask);
+
+            // Popup Sync Task (Priority 4, respects DND)
+            let sync_is_running = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
+            scheduler.register(crate::app::tasks::PopupSyncTask {
+                app_state: state_clone.clone(),
+                is_running: sync_is_running,
+            });
+
+            // WSL version compatibility check (highest priority, immediate, runs in all modes)
+            scheduler.register(crate::app::tasks::WslCompatTask { app_state: state_clone.clone() });
+
+            // Version expiry check (3s delay, runs in all modes)
+            scheduler.register(crate::app::tasks::VersionExpiryTask { app_state: state_clone.clone() });
+
+            // Update check (5s delay, runs in all modes)
+            scheduler.register(crate::app::tasks::UpdateCheckTask { app_state: state_clone });
+
+            scheduler.start();
+        });
+    }
     
     // 11. Run application event loop with keep-alive timer to prevent exit when hidden
     let keep_alive_timer = slint::Timer::default();
@@ -133,4 +190,105 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
 
     // 12. Handle cleanup on exit
     crate::app::tasks::handle_app_exit(&app, &app_state).await;
+}
+
+// Build language options array in Rust to avoid Slint compiler stack overflow
+pub fn build_language_options(app: &AppWindow) {
+    let lang_keys = [
+        "settings.languages.auto", "settings.languages.en",
+        "settings.languages.zh_cn", "settings.languages.zh_tw",
+        "settings.languages.hi", "settings.languages.es",
+        "settings.languages.fr", "settings.languages.ar",
+        "settings.languages.bn", "settings.languages.pt",
+        "settings.languages.ru", "settings.languages.ur",
+        "settings.languages.id", "settings.languages.de",
+        "settings.languages.ja", "settings.languages.tr",
+        "settings.languages.ko", "settings.languages.it",
+        "settings.languages.nl", "settings.languages.sv",
+        "settings.languages.cs", "settings.languages.el",
+        "settings.languages.hu", "settings.languages.he",
+        "settings.languages.no", "settings.languages.da",
+        "settings.languages.fi", "settings.languages.sk",
+        "settings.languages.sl", "settings.languages.is",
+        "settings.languages.vi", "settings.languages.te",
+        "settings.languages.jv", "settings.languages.th",
+        "settings.languages.ta", "settings.languages.fil",
+        "settings.languages.pa", "settings.languages.ms",
+        "settings.languages.pl", "settings.languages.uk",
+        "settings.languages.fa", "settings.languages.kn",
+        "settings.languages.mr", "settings.languages.ha",
+        "settings.languages.my", "settings.languages.uz",
+        "settings.languages.az", "settings.languages.ceb",
+        "settings.languages.ml", "settings.languages.sd",
+        "settings.languages.am",
+    ];
+
+    let options: slint::ModelRc<slint::SharedString> = {
+        let vec_model = slint::VecModel::from(
+            lang_keys.iter()
+                .map(|key| i18n::tr(key, &[]).into())
+                .collect::<Vec<slint::SharedString>>()
+        );
+        std::rc::Rc::new(vec_model).into()
+    };
+
+    app.global::<AppI18n>().set_language_options(options);
+}
+
+// Get language index from language code (Rust implementation to avoid Slint stack overflow)
+fn get_language_index(lang: &str) -> i32 {
+    match lang {
+        "auto" => 0,
+        "en" => 1,
+        "zh-CN" => 2,
+        "zh-TW" => 3,
+        "hi" => 4,
+        "es" => 5,
+        "fr" => 6,
+        "ar" => 7,
+        "bn" => 8,
+        "pt" => 9,
+        "ru" => 10,
+        "ur" => 11,
+        "id" => 12,
+        "de" => 13,
+        "ja" => 14,
+        "tr" => 15,
+        "ko" => 16,
+        "it" => 17,
+        "nl" => 18,
+        "sv" => 19,
+        "cs" => 20,
+        "el" => 21,
+        "hu" => 22,
+        "he" => 23,
+        "no" => 24,
+        "da" => 25,
+        "fi" => 26,
+        "sk" => 27,
+        "sl" => 28,
+        "is" => 29,
+        "vi" => 30,
+        "te" => 31,
+        "jv" => 32,
+        "th" => 33,
+        "ta" => 34,
+        "fil" => 35,
+        "pa" => 36,
+        "ms" => 37,
+        "pl" => 38,
+        "uk" => 39,
+        "fa" => 40,
+        "kn" => 41,
+        "mr" => 42,
+        "ha" => 43,
+        "my" => 44,
+        "uz" => 45,
+        "az" => 46,
+        "ceb" => 47,
+        "ml" => 48,
+        "sd" => 49,
+        "am" => 50,
+        _ => 0,
+    }
 }

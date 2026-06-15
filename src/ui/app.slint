@@ -10,20 +10,24 @@ import {
     RootFSHelpItem,
     UsbDevice,
     PortProxyRuleUI,
+    MessageData,
     AppI18n,
     SettingsStrings,
     AboutStrings,
+    DonateStrings,
 } from "theme.slint";
 import { AppConstants } from "constants.slint";
 import { TitleBar } from "components/title_bar.slint";
 import { Sidebar } from "components/sidebar.slint";
 import { ModalManager } from "components/modal_manager.slint";
+import { LanguageData } from "components/language_data.slint";
 import { MainView } from "views/main_view.slint";
 import { AddInstanceView } from "views/add_view.slint";
 import { UsbView } from "views/usb_view.slint";
 import { NetworkView } from "views/network/mod.slint";
 import { SettingsView } from "views/settings/mod.slint";
 import { AboutView } from "views/about_view.slint";
+import { DonateView } from "views/donate_view.slint";
 import { TaskStatusToast } from "components/task_status_toast.slint";
 
 
@@ -45,6 +49,8 @@ export component AppWindow inherits Window {
     in-out property <bool> tray_start_minimized: false;
     in-out property <bool> tray_close_to_tray: true;
     in property <bool> is_maximized: false;
+    in-out property <bool> is_pinned: false;
+    callback window_pin_toggle();
     in-out property <bool> sidebar_collapsed: false;
     in-out property <string> new_instance_name: "";
     in-out property <string> new_instance_path: "";
@@ -61,13 +67,15 @@ export component AppWindow inherits Window {
     in property <string> terminal_output: "";
     in property <string> name_error: "";
     in property <string> path_error: "";
-    in property <[string]> install_sources: [
-        AppI18n.t("add.sources.rootfs", [AppI18n.version]),
-        AppI18n.t("add.sources.vhdx", [AppI18n.version]),
-        AppI18n.t("add.sources.store", [AppI18n.version])
-    ];
+    in-out property <[string]> install_sources: [];
     in-out property <int> selected_source_idx: 0;
     in-out property <string> install_file_path: "";
+    in property <bool> is_mirror_loading: false;
+    in property <bool> is_store_loading: false;
+    in property <bool> mirror_list_available: false;
+    in property <[string]> mirror_distro_names: [];
+    in-out property <string> selected_mirror_distro: "";
+    in property <string> mirror_source_url: "";
     in-out property <bool> show_delete_confirmation: false;
     in-out property <bool> show_stop_wsl_confirm: false;
     in-out property <string> distro_to_delete: "";
@@ -99,9 +107,6 @@ export component AppWindow inherits Window {
     in-out property <bool> show_update_dialog: false;
     in-out property <bool> show_install_warn_dialog: false;
     in-out property <bool> show_expire_dialog: false;
-    in-out property <string> expire_latest_version: "";
-    in-out property <string> expire_release_date: "";
-    in-out property <string> expire_download_url: "";
     in-out property <bool> show_rootfs_help: false;
     in-out property <bool> show_vscode_startup: false;
     in-out property <string> ui_language: "auto";
@@ -115,6 +120,7 @@ export component AppWindow inherits Window {
     in-out property <bool> sidebar_toggle: true;
     in-out property <bool> sidebar_usb: true;
     in-out property <bool> sidebar_network: true;
+    in-out property <bool> sidebar_donate: true;
     in-out property <bool> sidebar_about: true;
     in-out property <bool> sparse_vhd: false;
     in-out property <bool> system_color <=> Theme.system_color;
@@ -125,11 +131,25 @@ export component AppWindow inherits Window {
     in property <[RootFSHelpItem]> rootfs_help_list: [{ name: "Ubuntu", url: AppConstants.ubuntu_wsl_images }];
     in property <SettingsStrings> settings_strings;
     in property <AboutStrings> about_strings;
+    in property <DonateStrings> donate_strings;
+    in property <bool> donate_methods_ready: false;
+    in property <[image]> donate_method_icons: [];
+    in property <[string]> donate_method_names: [];
+    in property <[int]> donate_method_formats: [];
+    in property <[string]> donate_method_urls: [];
+    in property <[string]> donate_method_exts: [];
+    in property <[image]> donate_method_regions: [];
+    in-out property <bool> show_donate_popup: false;
+    in-out property <bool> donate_popup_loading: false;
+    in-out property <image> donate_popup_image;
+
     in property <image> about_group_pic;
     in property <bool> about_group_pic_ready: false;
     in-out property <bool> show_group_popup: false;
     in-out property <bool> show_information: false;
     in-out property <bool> show_settings: false;
+    in-out property <bool> show_language_dialog: false;
+    property <int> selected_language_index: LanguageData.get_language_index(ui_language);
     in-out property <string> settings_distro_name: "";
     in-out property <string> settings_terminal_dir: "~";
     in-out property <string> settings_vscode_dir: "/home";
@@ -204,11 +224,50 @@ export component AppWindow inherits Window {
     // --- Compress properties ---
     in-out property <bool> show_compress_dialog: false;
     in-out property <string> compress_distro_name: "";
+
+    // WSL Compat Dialog properties
+    in-out property <bool> show_wsl_compat_dialog: false;
+    in-out property <string> wsl_compat_msg1: "";
+    in-out property <string> wsl_compat_msg2: "";
+    in-out property <string> wsl_compat_msg3: "";
+    in-out property <string> wsl_compat_hint: "";
+    in-out property <string> wsl_compat_link: "";
+    in-out property <string> wsl_compat_issues_url: "";
+    in-out property <bool> wsl_compat_show_confirm: true;
+
+    // Popup Notice Dialog properties
+    in-out property <bool> show_popup_notice_dialog: false;
+    in-out property <string> popup_notice_title: "";
+    in-out property <string> popup_notice_msg1: "";
+    in-out property <string> popup_notice_msg2: "";
+    in-out property <string> popup_notice_msg3: "";
+    in-out property <string> popup_notice_hint: "";
+    in-out property <string> popup_notice_link: "";
+    in-out property <string> popup_notice_url: "";
+    in-out property <string> popup_notice_highlight: "";
+    in-out property <int> popup_notice_confirm: 0;
+
+    // Popup Image Dialog properties
+    in-out property <bool> show_popup_image_dialog: false;
+    in-out property <image> popup_image_source;
+    in-out property <string> popup_image_title: "";
+    in-out property <string> popup_image_url: "";
+    in-out property <int> popup_image_width: 400;
+    in-out property <int> popup_image_height: 300;
+
+    // System messages
+    in-out property <[MessageData]> mail_messages: [];
+    in-out property <int> mail_unread_count: 0;
+    in-out property <bool> show_mail_popup: false;
+    in-out property <bool> mail_icon_always: true;
+    in-out property <bool> hide_pin_icon: false;
+
     in-out property <string> compress_vhdx_size: "---";
     in-out property <string> compress_free_space: "---";
     in-out property <bool> compress_space_sufficient: false;
     in-out property <string> compress_backup_path: "";
     in-out property <string> compress_script_url: "";
+    in-out property <string> compress_source_url: "";
     in property <bool> compress_is_wsl2: true;
     in property <bool> compress_is_sparse: false;
     in-out property <bool> compress_enable_sparse: false;
@@ -221,6 +280,11 @@ export component AppWindow inherits Window {
     in property <string> usb_error: "";
     in property <string> usbipd_version: "";
     in property <bool> is_usbipd_outdated: false;
+
+    // --- WSL Error State ---
+    in property <bool> wsl_loading: false;
+    in property <string> distro_not_found: "";
+    in property <string> wsl_guide_url: "";
 
     // --- Callbacks ---
     callback select_tab(int);
@@ -245,6 +309,7 @@ export component AppWindow inherits Window {
     callback clone_distro(string);
     callback open_url(string);
     callback window_close();
+    callback copy_terminal_output(string);
     callback window_minimize();
     callback window_maximize();
     callback window_drag_delta(float, float);
@@ -306,10 +371,38 @@ export component AppWindow inherits Window {
     callback usb_detach(string);
     callback usb_toggle_auto_attach(string);
     callback usb_copy_info(UsbDevice);
+    
+    // Donate callbacks
+    callback donate_qr_clicked(string);
+    callback donate_copy_clicked(string);
 
     // Compress callbacks
     callback open_compress_dialog(string);
     callback confirm_compress(string, bool, bool, bool, string);
+
+    // Language Dialog callbacks
+    callback language_selected(int);
+    language_selected(idx) => {
+        ui_language = LanguageData.lang-codes[idx];
+    }
+
+    // WSL Compat Dialog callbacks
+    callback close_wsl_compat_dialog();
+    callback wsl_compat_link_clicked();
+
+    // Popup Notice Dialog callbacks
+    callback close_popup_notice_dialog();
+    callback popup_notice_link_clicked();
+
+    // Popup Image Dialog callbacks
+    callback close_popup_image_dialog();
+    callback popup_image_clicked();
+
+    // System message callbacks
+    callback mail_message_clicked(string, string);
+    callback mail_mark_all_read();
+    callback mail_close();
+    callback mail_clicked();
 
     // Dynamic Font Selection to optimize memory usage
     // Helper function to map language to font (No recursion here)
@@ -329,24 +422,50 @@ export component AppWindow inherits Window {
         }
         
         // Group 2: Indic Scripts (Medium Impact)
-        if (lang == "hi" || lang == "bn") {
+        if (lang == "hi" || lang == "bn" || 
+            lang == "te" || lang == "ta" ||      // Telugu, Tamil
+            lang == "kn" || lang == "mr" ||      // Kannada, Marathi
+            lang == "ml") {                      // Malayalam
             return "Nirmala UI";
         }
 
-        // Group 3: Default (Western/Cyrillic - Low Memory Impact)
+        // Group 3: Southeast Asian Scripts
+        if (lang == "th") {                      // Thai
+            return "Tahoma";
+        }
+        if (lang == "my") {                      // Burmese
+            return "Myanmar Text";
+        }
+
+        // Group 4: African Scripts
+        if (lang == "am") {                      // Amharic (Ge'ez)
+            return "Ebrima";
+        }
+
+        // Group 5: Default (Western/Cyrillic/Arabic - Low Memory Impact)
         // Segoe UI covers all Latin and Cyrillic scripts efficiently.
         return "Segoe UI";
     }
 
     // Main function with smart fallback logic
     pure function get-font(lang: string) -> string {
+        // Optimization: On Chinese Windows, Windows DirectWrite font fallback
+        // handles CJK characters automatically. No need to specify explicit CJK
+        // fonts → saves ~16MB memory by avoiding CJK glyph atlas allocation.
+        let sys = root.system_language;
+        let sys_is_chinese = (sys == "zh" || sys == "zh-CN" || sys == "zh-TW" ||
+                              sys == "zh-Hans" || sys == "zh-Hant" || sys == "zh-SG" ||
+                              sys == "zh-HK" || sys == "zh-MO");
+        if (sys_is_chinese) {
+            return "Segoe UI";
+        }
+
+        // Non-Chinese Windows: need explicit CJK fonts for compatibility
         if (lang == "auto") {
             if (root.system_language == "auto") {
-
-                // Compatibility of Chinese and Japanese character display on Western language operating systems
                 return "Microsoft YaHei UI";
-            } // Safe fallback
-             return resolve-font(root.system_language);
+            }
+            return resolve-font(root.system_language);
         }
         return resolve-font(lang);
     }
@@ -366,6 +485,13 @@ export component AppWindow inherits Window {
             TitleBar {
                 title: AppI18n.t("common.app_name", [AppI18n.version]);
                 is_maximized: root.is_maximized;
+                is_pinned: root.is_pinned;
+                pin_toggle => {
+                    root.window_pin_toggle();
+                }
+                mail_unread_count: root.mail_unread_count;
+                mail_icon_always: root.mail_icon_always;
+                hide_pin_icon: root.hide_pin_icon;
                 close => {
                     root.window_close();
                 }
@@ -378,6 +504,9 @@ export component AppWindow inherits Window {
                 }
                 drag_delta(dx, dy) => {
                     root.window_drag_delta(dx, dy);
+                }
+                mail_clicked => {
+                    root.mail_clicked();
                 }
             }
 
@@ -393,10 +522,12 @@ export component AppWindow inherits Window {
                     network_text: AppI18n.t("sidebar.network", [AppI18n.version]);
                     settings_text: AppI18n.t("sidebar.settings", [AppI18n.version]);
                     about_text: AppI18n.t("sidebar.about", [AppI18n.version]);
+                    donate_text: AppI18n.t("sidebar.donate", [AppI18n.version]);
                     show_add: root.sidebar_add;
                     show_toggle: root.sidebar_toggle;
                     show_usb: root.sidebar_usb;
                     show_network: root.sidebar_network;
+                    show_donate: root.sidebar_donate;
                     show_about: root.sidebar_about;
                     tab_selected(idx) => {
                         root.select_tab(idx);
@@ -431,6 +562,12 @@ export component AppWindow inherits Window {
                                 distros: root.distros; // Always bind to prevent Repeater churn
                                 distro_to_delete <=> root.distro_to_delete;
                                 show_delete_confirmation <=> root.show_delete_confirmation;
+                                wsl_loading: root.wsl_loading;
+                                distro_not_found: root.distro_not_found;
+                                wsl_guide_url: root.wsl_guide_url;
+                                open_url(url) => {
+                                    root.open_url(url);
+                                }
                                 // ... callbacks omitted for brevity ...
                                 start_distro(n) => {
                                     root.start_distro(n);
@@ -500,8 +637,17 @@ export component AppWindow inherits Window {
                                 install_file_path <=> root.install_file_path;
                                 show_install_warn_dialog <=> root.show_install_warn_dialog;
                                 show_rootfs_help <=> root.show_rootfs_help;
+                                is_mirror_loading: root.is_mirror_loading;
+                                is_store_loading: root.is_store_loading;
+                                mirror_list_available: root.mirror_list_available;
+                                mirror_distro_names: root.mirror_distro_names;
+                                selected_mirror_distro <=> root.selected_mirror_distro;
+                                mirror_source_url: root.mirror_source_url;
                                 source_selected(i) => {
                                     root.source_selected(i);
+                                }
+                                open_mirror_source_url => {
+                                    root.open_url(root.mirror_source_url);
                                 }
                                 select_install_file(i) => {
                                     root.select_install_file(i);
@@ -520,6 +666,9 @@ export component AppWindow inherits Window {
                                 }
                                 show_rootfs_help_clicked => {
                                     root.show_rootfs_help_clicked();
+                                }
+                                copy_terminal_output => {
+                                    root.copy_terminal_output(root.terminal_output);
                                 }
                             }
 
@@ -616,15 +765,55 @@ export component AppWindow inherits Window {
                                 }
                             }
 
+                            DonateView {
+                                visible: true;
+                                opacity: selected_tab == 4 ? 1 : 0;
+                                z: 4;
+                                x: selected_tab == 4 ? 0px : 10000px;
+                                title_text: AppI18n.t("donate.title", [AppI18n.version]);
+                                license_intro_text: AppI18n.t("donate.license_intro", [AppI18n.version]);
+                                maintain_note_text: AppI18n.t("donate.maintain_note", [AppI18n.version]);
+                                donation_purpose_text: AppI18n.t("donate.donation_purpose", [AppI18n.version]);
+                                thanks_ending_text: AppI18n.t("donate.thanks_ending", [AppI18n.version]);
+                                donate_link_label: root.donate_strings.donate_link_label;
+                                donate_url: AppInfo.donate_url;
+                                payment_methods_title: root.donate_strings.payment_methods_title;
+                                methods_ready: root.donate_methods_ready;
+                                method_icons: root.donate_method_icons;
+                                method_names: root.donate_method_names;
+                                method_formats: root.donate_method_formats;
+                                method_urls: root.donate_method_urls;
+                                method_exts: root.donate_method_exts;
+                                method_regions: root.donate_method_regions;
+                                strings: root.donate_strings;
+                                open_url(url) => {
+                                    root.open_url(url);
+                                }
+                                qr_clicked(url) => {
+                                    root.donate_qr_clicked(url);
+                                }
+                                copy_clicked(text) => {
+                                    root.donate_copy_clicked(text);
+                                }
+                            }
+
                             SettingsView {
                                 visible: true;
                                 opacity: selected_tab == 5 ? 1 : 0;
                                 z: 5;
                                 x: selected_tab == 5 ? 0px : 10000px;
                                 strings: root.settings_strings;
+                                show_language_dialog <=> root.show_language_dialog;
+                                language_selected(lang_code) => {
+                                    root.ui_language = lang_code;
+                                }
+                                language_options: LanguageData.options;
+                                selected_language_index: root.selected_language_index;
                                 auto_shutdown <=> root.auto_shutdown;
                                 system_color <=> root.system_color;
                                 colorful_icons <=> root.colorful_icons;
+                                mail_icon_always <=> root.mail_icon_always;
+                                hide_pin_icon <=> root.hide_pin_icon;
                                 ui_language <=> root.ui_language;
                                 distro_location <=> root.distro_location;
                                 logs_location <=> root.logs_location;
@@ -638,6 +827,7 @@ export component AppWindow inherits Window {
                                 sidebar_toggle <=> root.sidebar_toggle;
                                 sidebar_usb <=> root.sidebar_usb;
                                 sidebar_network <=> root.sidebar_network;
+                                sidebar_donate <=> root.sidebar_donate;
                                 sidebar_about <=> root.sidebar_about;
                                 sparse_vhd <=> root.sparse_vhd;
                                 save_general_settings => {
@@ -807,15 +997,20 @@ export component AppWindow inherits Window {
         show_install_warn: root.show_install_warn_dialog;
         confirm_install_warn => {
             root.show_install_warn_dialog = false;
-            root.install_distro(root.selected_source_idx, root.new_instance_name, root.selected_install_distro, root.new_instance_path, root.install_file_path);
+            // For Linux Mirrors (source 3), friendly_name slot carries selected_mirror_distro
+            // so that install_logic.rs / mirror_install.rs can look it up in MIRROR_LIST_CACHE.
+            root.install_distro(
+                root.selected_source_idx,
+                root.new_instance_name,
+                root.selected_source_idx == 3 ? root.selected_mirror_distro : root.selected_install_distro,
+                root.new_instance_path,
+                root.install_file_path
+            );
         }
         cancel_install_warn => {
             root.show_install_warn_dialog = false;
         }
         show_expire: root.show_expire_dialog;
-        expire_latest_version: root.expire_latest_version;
-        expire_release_date: root.expire_release_date;
-        expire_download_url: root.expire_download_url;
         close_expire => {
             root.close_expire_dialog();
         }
@@ -921,6 +1116,7 @@ export component AppWindow inherits Window {
         compress_space_sufficient: root.compress_space_sufficient;
         compress_backup_path: root.compress_backup_path;
         compress_script_url: root.compress_script_url;
+        compress_source_url: root.compress_source_url;
         compress_is_wsl2: root.compress_is_wsl2;
         compress_is_sparse: root.compress_is_sparse;
         compress_enable_sparse <=> root.compress_enable_sparse;
@@ -931,6 +1127,79 @@ export component AppWindow inherits Window {
         }
         cancel_compress => {
             root.show_compress_dialog = false;
+        }
+
+        // Language Select Dialog
+        show_language_dialog <=> root.show_language_dialog;
+        language_current_index: root.selected_language_index;
+        language_options: LanguageData.options;
+        language_selected(idx) => {
+            root.language_selected(idx);
+        }
+
+        // WSL Compat Dialog
+        show_wsl_compat: root.show_wsl_compat_dialog;
+        wsl_compat_msg1: root.wsl_compat_msg1;
+        wsl_compat_msg2: root.wsl_compat_msg2;
+        wsl_compat_msg3: root.wsl_compat_msg3;
+        wsl_compat_hint: root.wsl_compat_hint;
+        wsl_compat_link: root.wsl_compat_link;
+        wsl_compat_issues_url: root.wsl_compat_issues_url;
+        wsl_compat_show_confirm: root.wsl_compat_show_confirm;
+        close_wsl_compat => {
+            root.show_wsl_compat_dialog = false;
+        }
+        wsl_compat_link_clicked => {
+            root.open_url(root.wsl_compat_issues_url);
+            root.show_wsl_compat_dialog = false;
+        }
+
+        // Popup Notice Dialog
+        show_popup_notice: root.show_popup_notice_dialog;
+        popup_notice_title: root.popup_notice_title;
+        popup_notice_msg1: root.popup_notice_msg1;
+        popup_notice_msg2: root.popup_notice_msg2;
+        popup_notice_msg3: root.popup_notice_msg3;
+        popup_notice_hint: root.popup_notice_hint;
+        popup_notice_link: root.popup_notice_link;
+        popup_notice_url: root.popup_notice_url;
+        popup_notice_highlight: root.popup_notice_highlight;
+        popup_notice_confirm: root.popup_notice_confirm;
+        close_popup_notice => {
+            root.show_popup_notice_dialog = false;
+        }
+        popup_notice_link_clicked => {
+            root.open_url(root.popup_notice_url);
+            root.show_popup_notice_dialog = false;
+        }
+
+        // Popup Image Dialog
+        show_popup_image: root.show_popup_image_dialog;
+        popup_image_source: root.popup_image_source;
+        popup_image_title: root.popup_image_title;
+        popup_image_url: root.popup_image_url;
+        popup_image_width: root.popup_image_width;
+        popup_image_height: root.popup_image_height;
+        close_popup_image => {
+            root.show_popup_image_dialog = false;
+        }
+        popup_image_clicked => {
+            root.open_url(root.popup_image_url);
+            root.show_popup_image_dialog = false;
+        }
+
+        // System message popup
+        show_mail_popup: root.show_mail_popup;
+        mail_messages: root.mail_messages;
+        mail_unread_count: root.mail_unread_count;
+        mail_message_clicked(id, url) => {
+            root.mail_message_clicked(id, url);
+        }
+        mail_mark_all_read => {
+            root.mail_mark_all_read();
+        }
+        mail_close => {
+            root.show_mail_popup = false;
         }
     }
 
@@ -962,6 +1231,46 @@ export component AppWindow inherits Window {
                 width: 100%;
                 height: 100%;
                 image-fit: cover;
+            }
+        }
+    }
+
+    // Donate QR code popup layer
+    if root.show_donate_popup : Rectangle {
+        background: #00000080;
+        z: 100;
+        width: 100%;
+        height: 100%;
+        TouchArea {
+            width: 100%;
+            height: 100%;
+            clicked => {
+                root.show_donate_popup = false;
+            }
+        }
+        // Centered square image card
+        Rectangle {
+            width: 225px;
+            height: 225px;
+            x: (parent.width - self.width) / 2;
+            y: (parent.height - self.height) / 2;
+            border-radius: 12px;
+            clip: true;
+            drop-shadow-blur: 20px;
+            drop-shadow-color: #00000040;
+            background: Theme.card_bg;
+            if (root.donate_popup_loading) : Text {
+                text: AppI18n.t("donate.loading", [AppI18n.version]);
+                color: Theme.text_primary;
+                font-family: Theme.default_font;
+                horizontal-alignment: center;
+                vertical-alignment: center;
+            }
+            if (!root.donate_popup_loading) : Image {
+                source: root.donate_popup_image;
+                width: 100%;
+                height: 100%;
+                image-fit: contain;
             }
         }
     }

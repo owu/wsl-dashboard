@@ -50,13 +50,11 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 app.global::<AppI18n>().set_is_rtl(i18n::is_rtl(lang_to_load));
                 app.global::<AppI18n>().set_locale_code(i18n::current_lang().into());
                 app.global::<AppI18n>().set_version(app.global::<AppI18n>().get_version() + 1);
+                // Rebuild language options after language change
+                crate::app::runner::build_language_options(&app);
                 crate::ui::data::refresh_localized_strings(&app);
                 
-                let font_family = if crate::app::is_chinese_lang(lang_to_load) {
-                    crate::app::FONT_ZH
-                } else {
-                    crate::app::FONT_EN_FALLBACK
-                };
+                let font_family = crate::app::constants::get_font_for(lang_to_load, &system_lang);
                 app.global::<Theme>().set_default_font(font_family.into());
 
                 if old_lang != ui_language {
@@ -175,9 +173,12 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 let sidebar_toggle = app.get_sidebar_toggle();
                 let sidebar_usb = app.get_sidebar_usb();
                 let sidebar_network = app.get_sidebar_network();
+                let sidebar_donate = app.get_sidebar_donate();
                 let sidebar_about = app.get_sidebar_about();
                 let colorful_icons = app.get_colorful_icons();
                 let system_color = app.get_system_color();
+                let mail_icon_always = app.get_mail_icon_always();
+                let hide_pin_icon = app.get_hide_pin_icon();
 
                 let mut state = as_ptr.lock().await;
 
@@ -208,13 +209,22 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 let mut settings = state.config_manager.get_settings().clone();
                 settings.colorful_icons = colorful_icons;
                 settings.system_color = system_color;
+                settings.mail = mail_icon_always;
+                settings.hide_pin = hide_pin_icon;
                 let _ = state.config_manager.update_settings(settings);
+
+                // If hiding pin icon while window is pinned, auto-unpin
+                if hide_pin_icon && app.get_is_pinned() {
+                    app.set_is_pinned(false);
+                    crate::app::window::set_always_on_top(false);
+                }
 
                 let sidebar_config = crate::config::SidebarConfig {
                     add: sidebar_add,
                     toggle: sidebar_toggle,
                     usb: sidebar_usb,
                     network: sidebar_network,
+                    donate: sidebar_donate,
                     about: sidebar_about,
                 };
 

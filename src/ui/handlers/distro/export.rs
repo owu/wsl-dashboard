@@ -130,18 +130,23 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                     let distro_source_inner = distro_source.to_string();
                     let target_path_inner = target_path.to_string();
 
-                    let _ = slint::spawn_local(async move {
+                    tokio::spawn(async move {
                         let _guard = crate::ui::data::BusyGuard::new();
                         {
                             let state = as_ptr.lock().await;
                             state.wsl_dashboard.mark_distro_stopped(&distro_source_inner).await;
                         }
                         let stop_signal = Arc::new(std::sync::atomic::AtomicBool::new(false));
-                        if let Some(app) = ah_clone.upgrade() {
-                            let initial_msg = i18n::tr("operation.exporting_msg", &[distro_source_inner.clone(), "0 MB".to_string()]);
-                            app.set_task_status_text(initial_msg.into());
-                            app.set_task_status_visible(true);
-                        }
+                        
+                        let ah_status = ah_clone.clone();
+                        let msg_inner = distro_source_inner.clone();
+                        let _ = slint::invoke_from_event_loop(move || {
+                            if let Some(app) = ah_status.upgrade() {
+                                let initial_msg = i18n::tr("operation.exporting_msg", &[msg_inner, "0 MB".to_string()]);
+                                app.set_task_status_text(initial_msg.into());
+                                app.set_task_status_visible(true);
+                            }
+                        });
                         
                         let extension = if use_compress_inner { "tar.gz" } else { "tar" };
                         let mut filename = format!("{}.{}", distro_source_inner, extension);
@@ -195,18 +200,23 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
                         stop_signal.store(true, std::sync::atomic::Ordering::Relaxed);
 
-                        if let Some(app) = ah_clone.upgrade() {
-                            app.set_task_status_visible(false);
-                            app.set_is_exporting(false);
-                            
-                            if result.success {
-                                app.set_current_message(i18n::tr("dialog.export_success", &[distro_source_inner.clone(), export_file_str.clone()]).into());
-                            } else {
-                                let err = result.error.unwrap_or_else(|| i18n::t("dialog.error"));
-                                app.set_current_message(i18n::tr("dialog.export_failed", &[err]).into());
+                        let ah_final = ah_clone.clone();
+                        let distro_final = distro_source_inner.clone();
+                        let file_final = export_file_str.clone();
+                        let _ = slint::invoke_from_event_loop(move || {
+                            if let Some(app) = ah_final.upgrade() {
+                                app.set_task_status_visible(false);
+                                app.set_is_exporting(false);
+                                
+                                if result.success {
+                                    app.set_current_message(i18n::tr("dialog.export_success", &[distro_final, file_final]).into());
+                                } else {
+                                    let err = result.error.unwrap_or_else(|| i18n::t("dialog.error"));
+                                    app.set_current_message(i18n::tr("dialog.export_failed", &[err]).into());
+                                }
+                                app.set_show_message_dialog(true);
                             }
-                            app.set_show_message_dialog(true);
-                        }
+                        });
                     });
                 }
             });

@@ -20,8 +20,9 @@ export component GeneralSettingsSection inherits VerticalLayout {
     in-out property <int> selected_check_update_index;
     in property <[string]> language_options;
     in property <[string]> check_update_options;
-    
-    
+
+    in-out property <bool> show_language_dialog: false;
+
     in-out property <bool> tray_autostart;
     in-out property <bool> tray_start_minimized;
     in-out property <bool> tray_close_to_tray;
@@ -48,10 +49,50 @@ export component GeneralSettingsSection inherits VerticalLayout {
                         horizontal-alignment: AppI18n.is-rtl ? right : left;
                     }
 
-                    CustomComboBox {
-                        model: root.language_options;
-                        current-index <=> root.selected_language_index;
+                    Rectangle {
                         height: 32px;
+                        background: Theme.input_bg;
+                        border-width: 1px;
+                        border-color: Theme.input_border;
+                        border-radius: 4px;
+
+                        HorizontalLayout {
+                            padding-left: 15px;
+                            padding-right: 15px;
+                            alignment: space-between;
+
+                            // RTL: arrow on left, text on right
+                            if (AppI18n.is-rtl): Text {
+                                text: "▼";
+                                color: Theme.text_secondary;
+                                vertical-alignment: center;
+                                font-size: 10px * LayoutConstants.font-scale;
+                            }
+                            Text {
+                                text: root.language_options[root.selected_language_index];
+                                color: Theme.text_primary;
+                                font-family: Theme.default_font;
+                                font-size: 13px * LayoutConstants.font-scale;
+                                vertical-alignment: center;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                horizontal-stretch: 1;
+                                overflow: elide;
+                                min-width: 0;
+                            }
+                            // LTR: text on left, arrow on right
+                            if (!AppI18n.is-rtl): Text {
+                                text: "▼";
+                                color: Theme.text_secondary;
+                                vertical-alignment: center;
+                                font-size: 10px * LayoutConstants.font-scale;
+                            }
+                        }
+
+                        TouchArea {
+                            clicked => {
+                                root.show_language_dialog = true;
+                            }
+                        }
                     }
                 }
 
@@ -193,10 +234,13 @@ export component InterfaceSettingsSection inherits VerticalLayout {
     in-out property <bool> sidebar_toggle: true;
     in-out property <bool> sidebar_usb: true;
     in-out property <bool> sidebar_network: true;
+    in-out property <bool> sidebar_donate: true;
     in-out property <bool> sidebar_about: true;
     in-out property <bool> system_color;
     in-out property <bool> colorful_icons;
-    
+    in-out property <bool> mail_icon_always;
+    in-out property <bool> hide_pin_icon;
+
     spacing: 16px;
 
     VerticalLayout {
@@ -218,9 +262,9 @@ export component InterfaceSettingsSection inherits VerticalLayout {
             }
             Row {
                 CustomCheckBox { text: AppI18n.t("sidebar.network", [AppI18n.version]); checked <=> root.sidebar_network; }
+                CustomCheckBox { text: AppI18n.t("sidebar.donate", [AppI18n.version]); checked <=> root.sidebar_donate; }
                 CustomCheckBox { text: AppI18n.t("sidebar.settings", [AppI18n.version]); checked: true; enabled: false; }
                 CustomCheckBox { text: AppI18n.t("sidebar.about", [AppI18n.version]); checked <=> root.sidebar_about; }
-                Rectangle { horizontal-stretch: 1; }
             }
         }
     }
@@ -234,6 +278,8 @@ export component InterfaceSettingsSection inherits VerticalLayout {
             spacing: 12px;
             CustomCheckBox { checked <=> root.system_color; text: root.strings.system_color; }
             CustomCheckBox { checked <=> root.colorful_icons; text: root.strings.colorful_icons; }
+            CustomCheckBox { checked <=> root.mail_icon_always; text: root.strings.mail_icon_always; }
+            CustomCheckBox { checked <=> root.hide_pin_icon; text: root.strings.hide_pin_icon; }
         }
     }
 }

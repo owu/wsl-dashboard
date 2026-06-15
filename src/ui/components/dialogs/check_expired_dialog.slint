@@ -1,0 +1,91 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import { Theme, AppI18n, LayoutConstants } from "../../theme.slint";
+import { CustomButton } from "../form_widgets.slint";
+
+export component CheckExpiredDialog inherits Rectangle {
+    callback close;
+    background: #00000080;
+    TouchArea { }
+
+    Rectangle {
+        width: 400px;
+        height: 180px;
+        background: Theme.card_bg;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: Theme.border_color;
+        drop-shadow-blur: 16px;
+        drop-shadow-color: #00000040;
+        VerticalLayout {
+            padding: 24px;
+            spacing: 8px;
+
+            Rectangle {
+                height: 24px;
+                Text {
+                    x: AppI18n.is-rtl ? 32px : 0;
+                    width: parent.width - 32px;
+                    text: AppI18n.t("dialog.info", [AppI18n.version]);
+                    font-size: 18px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    font-weight: 500;
+                    color: Theme.text_primary;
+                    horizontal-alignment: AppI18n.is-rtl ? right : left;
+                    vertical-alignment: center;
+                }
+                TouchArea {
+                    x: AppI18n.is-rtl ? 0 : parent.width - self.width;
+                    width: 24px;
+                    height: 24px;
+                    clicked => { root.close(); }
+                    Rectangle {
+                        background: parent.has-hover ? Theme.hover_bg : transparent;
+                        border-radius: 4px;
+                        Text {
+                            text: "\u{E8BB}";
+                            font-family: Theme.icon_font;
+                            font-size: 14px;
+                            color: Theme.text_primary;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                        }
+                    }
+                }
+            }
+
+            Rectangle {
+                height: 1px;
+                background: Theme.border_color;
+            }
+
+            Text {
+                text: AppI18n.t("dialog.expire_msg", []);
+                font-size: 14px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                color: Theme.text_primary;
+                wrap: word-wrap;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+            }
+
+            Rectangle {
+                vertical-stretch: 1;
+            }
+
+            HorizontalLayout {
+                alignment: AppI18n.is-rtl ? start : end;
+
+                CustomButton {
+                    text: AppI18n.t("dialog.confirm", [AppI18n.version]);
+                    height: 32px;
+                    width: 80px;
+                    primary: true;
+                    clicked => {
+                        root.close();
+                    }
+                }
+            }
+        }
+    }
+}

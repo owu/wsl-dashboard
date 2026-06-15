@@ -8,6 +8,7 @@ import {
     MoveDialog,
     MessageDialog,
     CheckUpdateDialog,
+    CheckExpiredDialog,
     StoreInstallWarnDialog,
     InformationDialog,
     SettingsDialog,
@@ -16,10 +17,15 @@ import {
     WslConfigDialog,
     NetworkAddRuleDialog,
     CompressDialog,
-} from "dialogs.slint";
+    WslCompatDialog,
+    LanguageSelectDialog,
+    PopupNoticeDialog,
+    PopupImageDialog,
+    MessageMailDialog,
+ } from "dialogs.slint";
 import { ProxyHelpDialog } from "./dialogs/proxy_help_dialog.slint";
 import { CheckProxyDialog } from "./dialogs/check_proxy_dialog.slint";
-import { AppInfo, Information, RootFSHelpItem, AppI18n, Theme } from "../theme.slint";
+import { AppInfo, Information, RootFSHelpItem, MessageData, AppI18n, Theme } from "../theme.slint";
 
 export component ModalManager inherits Rectangle {
     // Controls
@@ -32,9 +38,6 @@ export component ModalManager inherits Rectangle {
     in property <bool> show_update: false;
     in property <bool> show_install_warn: false;
     in property <bool> show_expire: false;
-    in property <string> expire_latest_version: "";
-    in property <string> expire_release_date: "";
-    in property <string> expire_download_url: "";
     in property <bool> show_information: false;
     in-out property <bool> show_settings: false;
     in property <bool> show_rootfs_help: false;
@@ -46,6 +49,46 @@ export component ModalManager inherits Rectangle {
     in-out property <bool> show_compress: false;
     in property <bool> show_stop_wsl_confirm: false;
     in property <bool> is_installing: false;
+
+    // Language Select Dialog
+    in-out property <bool> show_language_dialog: false;
+    in-out property <int> language_current_index: 0;
+    in property <[string]> language_options;
+
+    // WSL Compat Dialog
+    in property <bool> show_wsl_compat: false;
+    in property <string> wsl_compat_msg1: "";
+    in property <string> wsl_compat_msg2: "";
+    in property <string> wsl_compat_msg3: "";
+    in property <string> wsl_compat_hint: "";
+    in property <string> wsl_compat_link: "";
+    in property <string> wsl_compat_issues_url: "";
+    in property <bool> wsl_compat_show_confirm: true;
+
+    // Popup Notice Dialog
+    in property <bool> show_popup_notice: false;
+    in property <string> popup_notice_title: "";
+    in property <string> popup_notice_msg1: "";
+    in property <string> popup_notice_msg2: "";
+    in property <string> popup_notice_msg3: "";
+    in property <string> popup_notice_hint: "";
+    in property <string> popup_notice_link: "";
+    in property <string> popup_notice_url: "";
+    in property <string> popup_notice_highlight: "";
+    in property <int> popup_notice_confirm: 0;
+
+    // Popup Image Dialog
+    in property <bool> show_popup_image: false;
+    in property <image> popup_image_source;
+    in property <string> popup_image_title: "";
+    in property <string> popup_image_url: "";
+    in property <int> popup_image_width: 400;
+    in property <int> popup_image_height: 300;
+
+    // Popup Mail Dialog
+    in property <bool> show_mail_popup: false;
+    in property <[MessageData]> mail_messages: [];
+    in property <int> mail_unread_count: 0;
 
     // Data
     in property <string> delete_target_name: "";
@@ -126,6 +169,7 @@ export component ModalManager inherits Rectangle {
     in property <bool> compress_space_sufficient: false;
     in property <string> compress_backup_path: "";
     in property <string> compress_script_url: "";
+    in property <string> compress_source_url: "";
     in property <bool> compress_is_wsl2: true;
     in property <bool> compress_is_sparse: false;
     in-out property <bool> compress_enable_sparse: false;
@@ -171,6 +215,16 @@ export component ModalManager inherits Rectangle {
     callback cancel_compress();
     callback confirm_stop_wsl();
     callback cancel_stop_wsl();
+    callback language_selected(int);
+    callback close_wsl_compat();
+    callback wsl_compat_link_clicked();
+    callback close_popup_notice();
+    callback popup_notice_link_clicked();
+    callback close_popup_image();
+    callback popup_image_clicked();
+    callback mail_message_clicked(string, string);
+    callback mail_mark_all_read();
+    callback mail_close();
 
     if (show_delete): ConfirmationDialog {
         width: 100%;
@@ -292,7 +346,6 @@ export component ModalManager inherits Rectangle {
         width: 100%;
         height: 100%;
         message_content: AppI18n.t("dialog.update_msg", [AppInfo.latest_version, AppInfo.latest_release_date, AppI18n.version]);
-        is_expire: false;
         show_cancel: true;
         download => {
             root.download_update();
@@ -311,15 +364,9 @@ export component ModalManager inherits Rectangle {
             root.cancel_install_warn();
         }
     }
-    if (show_expire): CheckUpdateDialog {
+    if (show_expire): CheckExpiredDialog {
         width: 100%;
         height: 100%;
-        message_content: self.is_expire ? AppI18n.t("dialog.expire_msg", [root.expire_latest_version, root.expire_release_date, AppI18n.version]) : AppI18n.t("dialog.expire_msg", [AppI18n.version]);
-        is_expire: true;
-        show_cancel: true;
-        download => {
-            root.download_update();
-        }
         close => {
             root.close_expire();
         }
@@ -477,16 +524,108 @@ export component ModalManager inherits Rectangle {
         space_sufficient: root.compress_space_sufficient;
         backup_path: root.compress_backup_path;
         script_url: root.compress_script_url;
+        source_url: root.compress_source_url;
         cleanup <=> root.compress_cleanup;
         backup <=> root.compress_backup;
         is_wsl2: root.compress_is_wsl2;
         is_sparse: root.compress_is_sparse;
         enable_sparse <=> root.compress_enable_sparse;
+        open_url(url) => {
+            root.open_url(url);
+        }
         confirm(n, c, b, s, u) => {
             root.confirm_compress(n, c, b, s, u);
         }
         cancel => {
             root.cancel_compress();
+        }
+    }
+
+    if (show_language_dialog): LanguageSelectDialog {
+        width: 100%;
+        height: 100%;
+        title: AppI18n.t("settings.language", [AppI18n.version]);
+        languages: root.language_options;
+        current_index: root.language_current_index;
+        close => {
+            root.show_language_dialog = false;
+        }
+        selected(idx) => {
+            root.language_selected(idx);
+            root.show_language_dialog = false;
+        }
+    }
+
+    if (show_wsl_compat): Rectangle {
+        width: 100%;
+        height: 100%;
+        background: #00000080;
+        TouchArea { }
+        WslCompatDialog {
+            msg1: root.wsl_compat_msg1;
+            msg2: root.wsl_compat_msg2;
+            msg3: root.wsl_compat_msg3;
+            hint_text: root.wsl_compat_hint;
+            link_text: root.wsl_compat_link;
+            issues_url: root.wsl_compat_issues_url;
+            show_confirm: root.wsl_compat_show_confirm;
+            close => { root.close_wsl_compat(); }
+            link_clicked => { root.wsl_compat_link_clicked(); }
+        }
+    }
+
+    // Popup Notice Dialog
+    if (show_popup_notice): Rectangle {
+        width: 100%;
+        height: 100%;
+        background: #00000080;
+        TouchArea { }
+        PopupNoticeDialog {
+            title: root.popup_notice_title;
+            msg1: root.popup_notice_msg1;
+            msg2: root.popup_notice_msg2;
+            msg3: root.popup_notice_msg3;
+            hint_text: root.popup_notice_hint;
+            link_text: root.popup_notice_link;
+            url: root.popup_notice_url;
+            highlight: root.popup_notice_highlight;
+            confirm: root.popup_notice_confirm;
+            close => { root.close_popup_notice(); }
+            link_clicked => { root.popup_notice_link_clicked(); }
+        }
+    }
+
+    // Popup Image Dialog
+    if (show_popup_image): Rectangle {
+        width: 100%;
+        height: 100%;
+        background: #00000080;
+        TouchArea { }
+        PopupImageDialog {
+            image_source: root.popup_image_source;
+            title: root.popup_image_title;
+            url: root.popup_image_url;
+            dialog_width: root.popup_image_width;
+            dialog_height: root.popup_image_height;
+            close => { root.close_popup_image(); }
+            image_clicked => { root.popup_image_clicked(); }
+        }
+    }
+
+    // Popup Mail Dialog
+    if (show_mail_popup): Rectangle {
+        width: 100%;
+        height: 100%;
+        background: #00000080;
+        TouchArea { }
+        MessageMailDialog {
+            x: (parent.width - self.width) / 2;
+            y: (parent.height - self.height) / 2;
+            messages: root.mail_messages;
+            unread_count: root.mail_unread_count;
+            message_clicked(id, url) => { root.mail_message_clicked(id, url); }
+            mark_all_read => { root.mail_mark_all_read(); }
+            close => { root.mail_close(); }
         }
     }
 }

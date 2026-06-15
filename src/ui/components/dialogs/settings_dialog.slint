@@ -142,20 +142,26 @@ export component SettingsDialog inherits Rectangle {
                                     horizontal-alignment: AppI18n.is-rtl ? right : left;
                                 }
 
-                                if (root.startup_script_url != ""): TouchArea {
-                                    width: 16px;
-                                    height: 16px;
-                                    mouse-cursor: pointer;
-                                    clicked => {
-                                        root.open-url(root.startup_script_url);
-                                    }
+                                if (root.startup_script_url != ""): Rectangle {
+                                    width: 18px;
+                                    height: 18px;
+                                    y: (parent.height - self.height) / 2;
+                                    background: ta-startup.has-hover ? #0078D420 : transparent;
+                                    border-radius: 9px;
                                     Text {
-                                        text: "\u{E897}";
-                                        font-family: Theme.icon_font;
+                                        text: "?";
                                         font-size: 12px;
-                                        color: parent.has-hover ? Theme.accent : Theme.text_secondary;
+                                        font-weight: 500;
+                                        font-family: Theme.default_font;
+                                        color: #0078D4;
                                         vertical-alignment: center;
                                         horizontal-alignment: center;
+                                    }
+                                    ta-startup := TouchArea {
+                                        mouse-cursor: pointer;
+                                        clicked => {
+                                            root.open-url(root.startup_script_url);
+                                        }
                                     }
                                 }
                             }

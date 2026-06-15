@@ -28,7 +28,7 @@ Write-Host "Detected version: $version" -ForegroundColor Cyan
 Push-Location "$PSScriptRoot/../.."
 
 # Clean cache
-cargo clean
+# cargo clean
 
 Write-Host "Compiling..." -ForegroundColor Yellow
 cargo build --release

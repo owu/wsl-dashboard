@@ -62,4 +62,14 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>) {
             ));
         }
     });
+
+    let ah = app_handle.clone();
+    app.on_window_pin_toggle(move || {
+        if let Some(app) = ah.upgrade() {
+            let pinned = !app.get_is_pinned();
+            app.set_is_pinned(pinned);
+            crate::app::window::set_always_on_top(pinned);
+            info!("Window pin toggled: is_pinned={}", pinned);
+        }
+    });
 }

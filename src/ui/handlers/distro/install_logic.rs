@@ -130,21 +130,17 @@ pub async fn perform_install(
     if name_exists {
         let new_suggested_name = sanitize_instance_name(&generate_random_suffix(&final_name));
         let ah_err = ah.clone();
-        let mut distro_location = String::new();
-        if let Some(app) = ah_err.upgrade() {
-             let app_typed: AppWindow = app;
-            distro_location = app_typed.get_distro_location().to_string();
-        }
-        
-        let new_path = std::path::Path::new(&distro_location)
-            .join(&new_suggested_name)
-            .to_string_lossy()
-            .to_string();
 
         let final_name_clone = final_name.clone();
         let _ = slint::invoke_from_event_loop(move || {
             if let Some(app) = ah_err.upgrade() {
                 let app_typed: AppWindow = app;
+                let distro_location = app_typed.get_distro_location().to_string();
+                let new_path = std::path::Path::new(&distro_location)
+                    .join(&new_suggested_name)
+                    .to_string_lossy()
+                    .to_string();
+                
                 app_typed.set_new_instance_name(new_suggested_name.into());
                 app_typed.set_new_instance_path(new_path.into());
                 app_typed.set_name_error(i18n::tr("dialog.install_name_exists", &[final_name_clone]).into());
@@ -625,6 +621,38 @@ pub async fn perform_install(
                         app_typed.set_terminal_output(tb_clone.into());
                     }
                 });
+            }
+        },
+        3 => { // Linux Mirrors
+            match super::mirror_install::install_from_mirror(
+                ah.clone(),
+                Arc::new(executor.clone()),
+                Arc::new(config_manager.clone()),
+                internal_id.clone(),
+                final_name.clone(),
+                install_path.clone(),
+            ).await {
+                Ok(final_buf) => {
+                    success = true;
+                    let ah_cb = ah.clone();
+                    let _ = slint::invoke_from_event_loop(move || {
+                        if let Some(app) = ah_cb.upgrade() {
+                            let app_typed: AppWindow = app;
+                            app_typed.set_terminal_output(slint::SharedString::from(final_buf));
+                        }
+                    });
+                }
+                Err((e, final_buf)) => {
+                    success = false;
+                    error_msg = e;
+                    let ah_cb = ah.clone();
+                    let _ = slint::invoke_from_event_loop(move || {
+                        if let Some(app) = ah_cb.upgrade() {
+                            let app_typed: AppWindow = app;
+                            app_typed.set_terminal_output(slint::SharedString::from(final_buf));
+                        }
+                    });
+                }
             }
         },
         _ => {

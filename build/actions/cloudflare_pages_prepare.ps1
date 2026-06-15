@@ -71,7 +71,7 @@ foreach ($f in $fileInfos) {
 }
 
 # 4. Generate JSON string
-Write-Host "`n[INFO] Formatting build.json..."
+Write-Host "`n[INFO] Formatting assets.json..."
 $jsonContent = @"
 {
     "err": 0,
@@ -93,9 +93,9 @@ $jsonContent += "`n    ]`n}"
 
 # 5. Write file (UTF-8 without BOM)
 $Utf8NoBom = [System.Text.UTF8Encoding]::new($false)
-[System.IO.File]::WriteAllText("$OutputDir/build.json", $jsonContent, $Utf8NoBom)
+[System.IO.File]::WriteAllText("$OutputDir/assets.json", $jsonContent, $Utf8NoBom)
 
-Write-Host "[SUCCESS] build.json generated with $($dataList.Count) file entries."
+Write-Host "[SUCCESS] assets.json generated with $($dataList.Count) file entries."
 Write-Host "--------------------------------------------------`n"
 
 exit 0

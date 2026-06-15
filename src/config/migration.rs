@@ -76,6 +76,13 @@ pub fn migrate_config(config: &mut Config) {
         config.sidebar.toggle = true;
     }
 
+    // v6 -> v7 logic
+    if old_version < 7 {
+        info!("Upgrading to v7: adding [settings] mail (default true),hide-pin (default false)");
+        config.settings.mail = true;
+        config.settings.hide_pin = false;
+    }
+
     config.application.setting_version = SETTINGS_VERSION as u8;
     info!("Configuration migration complete, current version: v{}", SETTINGS_VERSION);
 }

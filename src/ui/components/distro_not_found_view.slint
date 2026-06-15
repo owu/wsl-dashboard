@@ -1,0 +1,69 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import { Theme, AppI18n, LayoutConstants } from "../theme.slint";
+
+export component DistroNotFoundView inherits VerticalLayout {
+    in property <string> guide_url: "";
+
+    callback open_url(string);
+
+    alignment: center;
+    spacing: 16px;
+
+    Text {
+        text: "\u{EA39}";
+        font-family: Theme.icon_font;
+        font-size: 48px;
+        color: Theme.icon_color_danger;
+        horizontal-alignment: center;
+    }
+
+    Text {
+        text: AppI18n.t("main.distro_not_found", [AppI18n.version]);
+        color: Theme.text_secondary;
+        font-family: Theme.default_font;
+        font-size: 14px * LayoutConstants.font-scale;
+        horizontal-alignment: center;
+        wrap: word-wrap;
+    }
+
+    Rectangle {
+        height: 32px;
+        if (root.guide_url != ""): HorizontalLayout {
+            alignment: center;
+            Rectangle {
+                height: 32px;
+                min-width: 180px;
+                background: link_touch.has-hover ? Theme.hover_bg : Theme.card_bg;
+                border-radius: 4px;
+                border-width: 1px;
+                border-color: Theme.accent;
+                link_touch := TouchArea {
+                    mouse-cursor: pointer;
+                    clicked => { root.open_url(root.guide_url); }
+                }
+                HorizontalLayout {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    spacing: 6px;
+                    alignment: center;
+                    Text {
+                        text: "\u{E774}";
+                        font-family: Theme.icon_font;
+                        font-size: 14px;
+                        color: Theme.accent;
+                        vertical-alignment: center;
+                    }
+                    Text {
+                        text: AppI18n.t("main.guide_link", [AppI18n.version]);
+                        color: Theme.accent;
+                        font-family: Theme.default_font;
+                        font-size: 13px * LayoutConstants.font-scale;
+                        vertical-alignment: center;
+                    }
+                }
+            }
+        }
+    }
+}

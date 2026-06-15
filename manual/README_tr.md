@@ -27,7 +27,7 @@ Bilgi:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | Türkçe | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | Türkçe | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,14 +40,16 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Sistem Gereksinimleri](#-sistem-gereksinimleri)
 - [📦 Kurulum Kılavuzu](#-kurulum-kılavuzu)
 - [🛠️ Teknoloji Yığını ve Performans](#️-teknoloji-yığını-ve-performans)
+- [🤝 Topluluk Desteği](#-topluluk-desteği)
+- [❤️ Bu projeyi destekle](#️-bu-projeyi-destekle)
 - [⭐️ Emek ve sevgi işi](#️-emek-ve-sevgi-işi)
-  - [📄 Lisans](#-lisans)
+- [📄 Lisans](#-lisans)
 
 ---
 
 ## 🌍 Dil Desteği
 
-İngilizce, Çince, Çince, Hintçe, İspanyolca, Fransızca, Arabic, Bengalce, Portekizce, Rusça, Urdu, Endonezce, Almanca, Japonca, Türkçe, Korean, İtalyanca, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic
+İngilizce, Çince, Çince, Hintçe, İspanyolca, Fransızca, Arabic, Bengalce, Portekizce, Rusça, Urdu, Endonezce, Almanca, Japonca, Türkçe, Korean, İtalyanca, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic, Vietnamca, Teluguca, Cava Dili, Tayca, Tamilce, Filipince, Pencapça, Malayca, Lehçe, Ukraynaca, Farsça, Kannada Dili, Marathi Dili, Hausa Dili, Burma Dili, Özbekçe, Azerice, Cebuanca, Malayalamca, Sindhi Dili, Amharca
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="İngilizce" alt="İngilizce" />
@@ -79,6 +81,27 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/sk.svg" width="32" title="Slovakça" alt="Slovakça" />
   <img src="../assets/flags/si.svg" width="32" title="Slovence" alt="Slovence" />
   <img src="../assets/flags/is.svg" width="32" title="İzlandaca" alt="İzlandaca" />
+  <img src="../assets/flags/vn.svg" width="32" title="Vietnamca" alt="Vietnamca" />
+  <img src="../assets/flags/in.svg" width="32" title="Teluguca" alt="Teluguca" />
+  <img src="../assets/flags/id.svg" width="32" title="Cava Dili" alt="Cava Dili" />
+  <img src="../assets/flags/th.svg" width="32" title="Tayca" alt="Tayca" />
+  <img src="../assets/flags/in.svg" width="32" title="Tamilce" alt="Tamilce" />
+  <img src="../assets/flags/ph.svg" width="32" title="Filipince" alt="Filipince" />
+  <img src="../assets/flags/pk.svg" width="32" title="Pencapça" alt="Pencapça" />
+  <img src="../assets/flags/my.svg" width="32" title="Malayca" alt="Malayca" />
+  <img src="../assets/flags/pl.svg" width="32" title="Lehçe" alt="Lehçe" />
+  <img src="../assets/flags/ua.svg" width="32" title="Ukraynaca" alt="Ukraynaca" />
+  <img src="../assets/flags/ir.svg" width="32" title="Farsça" alt="Farsça" />
+  <img src="../assets/flags/in.svg" width="32" title="Kannada Dili" alt="Kannada Dili" />
+  <img src="../assets/flags/in.svg" width="32" title="Marathi Dili" alt="Marathi Dili" />
+  <img src="../assets/flags/ng.svg" width="32" title="Hausa Dili" alt="Hausa Dili" />
+  <img src="../assets/flags/mm.svg" width="32" title="Burma Dili" alt="Burma Dili" />
+  <img src="../assets/flags/uz.svg" width="32" title="Özbekçe" alt="Özbekçe" />
+  <img src="../assets/flags/az.svg" width="32" title="Azerice" alt="Azerice" />
+  <img src="../assets/flags/ph.svg" width="32" title="Cebuanca" alt="Cebuanca" />
+  <img src="../assets/flags/in.svg" width="32" title="Malayalamca" alt="Malayalamca" />
+  <img src="../assets/flags/pk.svg" width="32" title="Sindhi Dili" alt="Sindhi Dili" />
+  <img src="../assets/flags/et.svg" width="32" title="Amharca" alt="Amharca" />
 </p>
 
 
@@ -90,7 +113,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Kapsamlı Örnek Kontrolü**: Tek tıkla başlatma, durdurma, sonlandırma ve kaydını silme. Gerçek zamanlı durum izleme, disk kullanımı ve dosya konumu hakkında detaylı bilgiler.
 - **Dağıtım Yönetimi**: Varsayılan olarak ayarla, taşıma (VHDX'i diğer sürücülere taşıma) ve `.tar` veya `.tar.gz` formatında dışa aktarma/kopyalama.
 - **Hızlı Entegrasyon**: Özelleştirilebilir çalışma dizinleri ve başlangıç betiği kancaları ile Terminal, VS Code veya Dosya Gezgini'ni anında başlatın.
-- **Akıllı Kurulum**: Microsoft Store, GitHub veya yerel dosyalardan (RootFS/VHDX) yükleyin. Yerleşik RootFS indirme yardımcısı dahildir.
+- **Dağıtım Kurulumu**: Microsoft Store, GitHub, yerel dosyalar (RootFS/VHDX) veya çevrimiçi depolar aracılığıyla Linux dağıtımlarını yükleyin (en hızlı depoyu seçen otomatik hız testi ve yerleşik RootFS indirme yardımcısı ile).
 - **Küresel Güvenlik**: Güvenli eşzamanlı taşıma/yedekleme işlemleri için mutex kilitleri ve kaldırma sırasında otomatik Appx temizliği.
 - **Süper Düşük Bellek Kullanımı**: Verimlilik için yüksek düzeyde optimize edilmiştir. Sessiz başlangıç (tepsi) yalnızca **~10MB** RAM kullanır. Pencere modu kullanımı yazı tipi karmaşıklığına göre değişir: Standart diller için **~18MB** ve büyük karakter setli diller (Çince, Japonca, Korece) için **~38MB**.
 - **Gelişmiş Ağ**: Kesintisiz bağlantı noktası yönlendirme yönetimi (otomatik güvenlik duvarı kuralı oluşturma ile) ve birleşik bağlantı için küresel HTTP proxy yapılandırması.
@@ -144,17 +167,20 @@ Günlük dosyaları yapılandırılan günlük dizinine yazılır ve sorunları 
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### Hakkında 
+### Hakkında & Bağış
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Çalışma Gösterimi
 
-Aşağıda WSL Dashboard'un çalışırken bir gösterimi yer almaktadır:
-
-![WSL Dashboard Gösterimi](../assets/screenshot/demo.gif)
+[Geliştirmemize yardımcı olun! Tanıtım videomuzu izleyin ve düşüncelerinizi paylaşın.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +241,43 @@ Rust araç zincirinin (Rust 1.92+ veya daha yeni) kurulu olduğundan emin olun.
 
 
 
+## 🤝 Topluluk Desteği
+
+Destekleri için aşağıdaki topluluklara çok teşekkür ederiz:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Güçlü ve güvenli programlama dili için
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Modern UI çerçevesi için
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Harika Windows Subsystem for Linux için
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Verimli asenkron çalışma zamanı için
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Sürekli platform iyileştirmeleri için
+- [Reddit](https://www.reddit.com) - Küresel topluluk tartışmaları ve desteği için
+- [Hacker News](https://news.ycombinator.com) - Küresel topluluk tartışmaları ve desteği için
+- [Linux.do](https://linux.do) - BT profesyonelleri için popüler topluluk
+- [V2EX](https://www.v2ex.com) - Çin teknoloji topluluk tartışmaları için
+
+Katkılarınız ve geri bildirimleriniz bu projeyi mümkün kılıyor！
+
+
+## ❤️ Bu projeyi destekle
+
+- Bu proje GPL-3.0 açık kaynak lisansı altında olup tüm kullanıcılar için ücretsizdir.
+- Geliştirme, günlük testler ve hata düzeltmeleri dahil tüm çalışmalar boş zamanlarda yapılmaktadır. Açık kaynak yolunda yalnız yürümek kolay değildir — takdiriniz ve desteğiniz, projeye devam etme güveni verir.
+- Bu araç size gerçekten yardımcı olduysa, lütfen destek olmayı düşünün. Tüm bağışlar sunucu maliyetleri, sürüm güncellemeleri ve özellik iyileştirmelerine harcanarak projenin sürekli güncellenmesini ve istikrarlı ilerlemesini sağlar.
+- Her küçük iyilik bir yıldız ışığıdır. Anlayışınız ve cömertliğiniz için tekrar teşekkürler！
+
+Bağış sayfamızı ziyaret edin：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Emek ve sevgi işi
 
 Eğer bu projeyi faydalı bulduysanız, GitHub'da bir yıldız bırakırsanız minnettar olurum. Desteğiniz projenin daha geniş bir kitleye ulaşmasına yardımcı olur ve derinden takdir edilir. Beni yeni özellikler eklemeye motive eden şey bu teşviktir.
+
 
 ## 📄 Lisans
 
 Bu proje GPL-3.0 altında lisanslanmıştır – detaylar için [LICENSE](../LICENSE) dosyasına bakın.
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
-

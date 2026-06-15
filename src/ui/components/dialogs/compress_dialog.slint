@@ -16,9 +16,11 @@ export component CompressDialog inherits Rectangle {
     in property <bool> space_sufficient: false;
     in property <string> backup_path: "";
     in property <string> script_url: "";
+    in property <string> source_url: "";
     
     callback confirm(string, bool, bool, bool, string);
     callback cancel();
+    callback open_url(string);
 
     // Background mask
     background: #00000080;
@@ -109,9 +111,37 @@ export component CompressDialog inherits Rectangle {
                 }
 
                 // 2. Cleanup Checkbox
-                CustomCheckBox {
-                    text: AppI18n.t("dialog.compress_cleanup", [AppI18n.version]);
-                    checked <=> root.cleanup;
+                HorizontalLayout {
+                    spacing: 6px;
+                    alignment: start;
+                    CustomCheckBox {
+                        horizontal-stretch: 1;
+                        text: AppI18n.t("dialog.compress_cleanup", [AppI18n.version]);
+                        checked <=> root.cleanup;
+                    }
+                    // Blue question mark - visible after async load
+                    if (root.source_url != ""): Rectangle {
+                        width: 18px;
+                        height: 18px;
+                        y: (parent.height - self.height) / 2;
+                        background: qmark-area.has-hover ? #0078D420 : transparent;
+                        border-radius: 9px;
+                        Text {
+                            text: "?";
+                            font-size: 12px;
+                            font-weight: 500;
+                            font-family: Theme.default_font;
+                            color: #0078D4;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                        }
+                        qmark-area := TouchArea {
+                            mouse-cursor: pointer;
+                            clicked => {
+                                root.open_url(root.source_url);
+                            }
+                        }
+                    }
                 }
 
                 // 3. Backup and Mutually Exclusive Info Box
@@ -162,6 +192,7 @@ export component CompressDialog inherits Rectangle {
                                 }
                                 
                                 HorizontalLayout {
+                                    alignment: start;
                                     spacing: 4px;
                                     Text {
                                         text: AppI18n.t("dialog.compress_free_space", [AppI18n.version]) + ": " + root.free_space;
@@ -171,8 +202,8 @@ export component CompressDialog inherits Rectangle {
                                         overflow: elide;
                                     }
                                     if (!root.space_sufficient): Text {
-                                        text: "(\u{E783} " + AppI18n.t("dialog.compress_space_insufficient", [AppI18n.version]) + ")";
-                                        font-family: "Segoe Fluent Icons";
+                                        text: "( " + AppI18n.t("dialog.compress_space_insufficient", [AppI18n.version]) + " )";
+                                        font-family: Theme.default_font;
                                         font-size: 11px * LayoutConstants.font-scale;
                                         color: #E81123;
                                         vertical-alignment: center;

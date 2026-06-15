@@ -27,7 +27,7 @@ Upozornění:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | Čeština | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | Čeština | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 Systémové požadavky](#-systémové-požadavky)
 - [📦 Instalační příručka](#-instalační-příručka)
 - [🛠️ Technologický zásobník a výkon](#️-technologický-zásobník-a-výkon)
+- [🤝 Podpora komunity](#-podpora-komunity)
+- [❤️ Podpořit tento projekt](#️-podpořit-tento-projekt)
 - [⭐️ Dílo z lásky](#️-dílo-z-lásky)
 - [📄 Licence](#-licence)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 Podporované jazyky
 
-Angličtina, zjednodušená čínština, tradiční čínština, hindština, španělština, francouzština, arabština, bengálština, portugalština, ruština, urdština, indonéština, němčina, japonština, turečtina, korejština, italština, nizozemština, švédština, čeština, řečtina, maďarština, hebrejština, norština, dánština, finština, slovenština, slovinština, islandština.
+Angličtina, zjednodušená čínština, tradiční čínština, hindština, španělština, francouzština, arabština, bengálština, portugalština, ruština, urdština, indonéština, němčina, japonština, turečtina, korejština, italština, nizozemština, švédština, čeština, řečtina, maďarština, hebrejština, norština, dánština, finština, slovenština, slovinština, islandština, vietnamština, telugština, javánština, thajština, tamilština, filipínština, pandžábština, malajština, polština, ukrajinština, perština, kannadština, maráthština, hauština, barmština, uzbečtina, ázerbájdžánština, cebuánština, malayálamština, sindhština, amharština.
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Angličtina" alt="Angličtina" />
@@ -79,6 +81,27 @@ Angličtina, zjednodušená čínština, tradiční čínština, hindština, šp
   <img src="../assets/flags/sk.svg" width="32" title="Slovenština" alt="Slovenština" />
   <img src="../assets/flags/si.svg" width="32" title="Slovinština" alt="Slovinština" />
   <img src="../assets/flags/is.svg" width="32" title="Islandština" alt="Islandština" />
+  <img src="../assets/flags/vn.svg" width="32" title="Vietnamština" alt="Vietnamština" />
+  <img src="../assets/flags/in.svg" width="32" title="Telugština" alt="Telugština" />
+  <img src="../assets/flags/id.svg" width="32" title="Javánština" alt="Javánština" />
+  <img src="../assets/flags/th.svg" width="32" title="Thajština" alt="Thajština" />
+  <img src="../assets/flags/in.svg" width="32" title="Tamilština" alt="Tamilština" />
+  <img src="../assets/flags/ph.svg" width="32" title="Filipínština" alt="Filipínština" />
+  <img src="../assets/flags/in.svg" width="32" title="Paňdžábština" alt="Paňdžábština" />
+  <img src="../assets/flags/my.svg" width="32" title="Malajština" alt="Malajština" />
+  <img src="../assets/flags/pl.svg" width="32" title="Polština" alt="Polština" />
+  <img src="../assets/flags/ua.svg" width="32" title="Ukrajinština" alt="Ukrajinština" />
+  <img src="../assets/flags/ir.svg" width="32" title="Perština" alt="Perština" />
+  <img src="../assets/flags/in.svg" width="32" title="Kannadština" alt="Kannadština" />
+  <img src="../assets/flags/in.svg" width="32" title="Maráthština" alt="Maráthština" />
+  <img src="../assets/flags/ng.svg" width="32" title="Hauština" alt="Hauština" />
+  <img src="../assets/flags/mm.svg" width="32" title="Barmština" alt="Barmština" />
+  <img src="../assets/flags/uz.svg" width="32" title="Uzbečtina" alt="Uzbečtina" />
+  <img src="../assets/flags/az.svg" width="32" title="Ázerbájdžánština" alt="Ázerbájdžánština" />
+  <img src="../assets/flags/ph.svg" width="32" title="Cebuánština" alt="Cebuánština" />
+  <img src="../assets/flags/in.svg" width="32" title="Malajálamština" alt="Malajálamština" />
+  <img src="../assets/flags/pk.svg" width="32" title="Sindhština" alt="Sindhština" />
+  <img src="../assets/flags/et.svg" width="32" title="Amharština" alt="Amharština" />
 </p>
 
 
@@ -90,7 +113,7 @@ Angličtina, zjednodušená čínština, tradiční čínština, hindština, šp
 - **Komplexní správa instancí**: Spuštění, zastavení, ukončení a zrušení registrace jedním kliknutím. Sledování stavu v reálném čase a podrobné informace o zaplnění disku a umístění souborů.
 - **Správa distribucí**: Nastavení jako výchozí, migrace (přesun VHDX na jiné disky) a export/klonování do archivů `.tar` nebo `.tar.gz`.
 - **Rychlá integrace**: Okamžité spouštění Terminálu, VS Code nebo Průzkumníka souborů s přizpůsobitelnými pracovními adresáři a háčky pro spouštěcí skripty.
-- **Chytrá instalace**: Instalace z Microsoft Store, GitHubu nebo lokálních souborů (RootFS/VHDX). Obsahuje vestavěného pomocníka pro stahování RootFS.
+- **Instalace distribuce**: Instalujte Linux distribuce přes Microsoft Store, GitHub, lokální soubory (RootFS/VHDX) nebo online zrcadla (s automatickým testem rychlosti pro výběr nejrychlejšího zrcadla a vestavěným pomocníkem pro stahování RootFS).
 - **Bezpečnost**: Zámky mutex pro bezpečné souběžné migrační a zálohovací operace a automatické čištění Appx při odebírání.
 - **Extrémně nízké nároky na paměť**: Vysoce optimalizováno pro efektivitu. Tichý start (v liště) využívá pouze **~10 MB** RAM. Využití v režimu okna se liší podle složitosti písma: **~18 MB** pro standardní jazyky a **~38 MB** pro jazyky s rozsáhlými znakovými sadami (čínština, japonština, korejština).
 - **Pokročilé sítě**: Bezproblémová správa přesměrování portů (s automatickým vytvářením pravidel brány firewall) a globální konfigurace HTTP proxy pro sjednocené připojení.
@@ -144,17 +167,20 @@ Soubory protokolů se zapisují do nakonfigurovaného adresáře a lze je přilo
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### O aplikaci
+### O aplikaci & Darovat
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Ukázka provozu
 
-Níže je ukázka WSL Dashboard v akci:
-
-![Ukázka WSL Dashboard](../assets/screenshot/demo.gif)
+[Pomozte nám se zlepšit! Podívejte se na naše úvodní video a podělte se o své názory.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -214,32 +240,43 @@ Ujistěte se, že máte nainstalovanou sadu nástrojů Rust (Rust 1.92+ nebo nov
 
 
 
+## 🤝 Podpora komunity
+
+Velké díky následujícím komunitám za jejich podporu:
+
+- [Rust Programming Language](https://www.rust-lang.org) - Za výkonný a bezpečný programovací jazyk
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Za moderní UI framework
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Za úžasný Windows Subsystem for Linux
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Za efektivní asynchronní běhové prostředí
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Za neustálá vylepšení platformy
+- [Reddit](https://www.reddit.com) - Za globální komunitní diskuse a podporu
+- [Hacker News](https://news.ycombinator.com) - Za globální komunitní diskuse a podporu
+- [Linux.do](https://linux.do) - Za oblíbenou komunitu pro IT profesionály
+- [V2EX](https://www.v2ex.com) - Za diskuse v čínské technologické komunitě
+
+Vaše příspěvky a zpětná vazba dělají tento projekt možným！
+
+
+## ❤️ Podpořit tento projekt
+
+- Tento projekt je licencován pod GPL-3.0 a je zdarma pro všechny uživatele.
+- Od vývoje funkcí a denního testování po opravy chyb — veškerá práce je vykonávána ve volném čase. Cesta open source není snadná, když jdete sami. Vaše uznání a podpora dávají projektu sebevědomí pokračovat.
+- Pokud vám tento nástroj skutečně pomohl, zvažte přispění. Všechny dary jdou na náklady na server, aktualizace verzí a vylepšení funkcí, což udržuje projekt neustále aktualizovaný a stabilně postupující.
+- Každý malý skutek laskavosti je paprsek hvězdného světla. Děkujeme ještě jednou za vaše pochopení a štědrost！
+
+Navštivte naši stránku pro darování：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Dílo z lásky
 
 Pokud vám tento projekt připadá užitečný, byl bych vděčný, kdybyste mu mohli nechat hvězdičku na GitHubu. Vaše podpora mu pomáhá oslovit širší publikum a hluboce si jí vážím. Právě toto povzbuzení mě motivuje k dalšímu budování.
+
 
 ## 📄 Licence
 
 Tento projekt je licencován pod GPL-3.0 – podrobnosti naleznete v souboru [LICENSE](../LICENSE).
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!

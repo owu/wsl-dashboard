@@ -4,7 +4,7 @@
 use std::process::Stdio;
 use tokio::io::AsyncReadExt;
 // use tokio::task; // Removed
-use tracing::{debug, error, info, warn};
+use tracing::{trace, error, info, warn};
 
 use crate::wsl::models::WslCommandResult;
 
@@ -48,9 +48,10 @@ impl WslCommandExecutor {
         
         // Identify if the command is a write operation (state changing)
         let write_ops = [
-            "--import", "--export", "--unregister", "--install", 
+            "--import", "--export", "--unregister", "--install",
             "--set-version", "--set-default-version", "--set-default", "-s",
-            "--shutdown", "--terminate", "-t", "--mount", "--unmount", "--update"
+            "--shutdown", "--terminate", "-t", "--mount", "--unmount", "--update",
+            "--manage",  // covers --set-sparse, --move
         ];
         
         // Use case-insensitive check for write operations
@@ -63,11 +64,7 @@ impl WslCommandExecutor {
         if is_write_op {
             info!("Executing WSL command: {}", command_str);
         } else {
-            debug!("Executing WSL command: {}", command_str);
-        }
-        
-        if is_write_op {
-            debug!("Starting async WSL command: {}", command_str);
+            trace!("Executing WSL command: {}", command_str);
         }
 
         let future = async {
@@ -85,9 +82,9 @@ impl WslCommandExecutor {
             // Ensure process is killed if the future is dropped (timeout/cancellation)
             cmd.kill_on_drop(true);
 
-            debug!("Spawning wsl process for: {}", command_str);
+            trace!("Spawning wsl process for: {}", command_str);
             let mut child = cmd.spawn().map_err(|e| format!("Failed to spawn wsl process: {}", e))?;
-            debug!("Wsl process spawned (pid: {:?})", child.id());
+            trace!("Wsl process spawned (pid: {:?})", child.id());
             
             let mut stdout = child.stdout.take().ok_or_else(|| "Failed to capture stdout".to_string())?;
             let mut stderr = child.stderr.take().ok_or_else(|| "Failed to capture stderr".to_string())?;
@@ -98,7 +95,7 @@ impl WslCommandExecutor {
             const MAX_OUTPUT_SIZE: usize = 1024 * 1024; // 1MB limit - more than enough for text output
 
             let read_stdout = async {
-                debug!("Reading stdout for: {}", command_str);
+                trace!("Reading stdout for: {}", command_str);
                 let mut buf = [0u8; 8192];
                 loop {
                     let n = stdout.read(&mut buf).await.map_err(|e| format!("Stdout read error: {}", e))?;
@@ -109,12 +106,12 @@ impl WslCommandExecutor {
                     }
                     stdout_data.extend_from_slice(&buf[..n]);
                 }
-                debug!("Stdout reading complete for: {}", command_str);
+                trace!("Stdout reading complete for: {}", command_str);
                 Ok::<(), String>(())
             };
 
             let read_stderr = async {
-                debug!("Reading stderr for: {}", command_str);
+                trace!("Reading stderr for: {}", command_str);
                 let mut buf = [0u8; 8192];
                 loop {
                     let n = stderr.read(&mut buf).await.map_err(|e| format!("Stderr read error: {}", e))?;
@@ -125,16 +122,16 @@ impl WslCommandExecutor {
                     }
                     stderr_data.extend_from_slice(&buf[..n]);
                 }
-                debug!("Stderr reading complete for: {}", command_str);
+                trace!("Stderr reading complete for: {}", command_str);
                 Ok::<(), String>(())
             };
 
-            debug!("Waiting for output streams and process exit for: {}", command_str);
+            trace!("Waiting for output streams and process exit for: {}", command_str);
             let (res_out, res_err) = tokio::join!(read_stdout, read_stderr);
             
             // Wait for process to exit
             let status = child.wait().await.map_err(|e| format!("Failed to wait for child: {}", e))?;
-            debug!("Wsl process exited with status: {} for: {}", status, command_str);
+            trace!("Wsl process exited with status: {} for: {}", status, command_str);
             
             if let Err(e) = res_out { error!("Stdout error: {}", e); }
             if let Err(e) = res_err { error!("Stderr error: {}", e); }
@@ -162,7 +159,7 @@ impl WslCommandExecutor {
 
         // Acquire semaphore permit with its own timeout to avoid deadlock if slots are stuck
         let permit_timeout = std::time::Duration::from_secs(20);
-        debug!("Acquiring WSL semaphore permit (Available: {}/16) for: {}", self.semaphore.available_permits(), command_str);
+        trace!("Acquiring WSL semaphore permit (Available: {}/16) for: {}", self.semaphore.available_permits(), command_str);
         let _permit = match tokio::time::timeout(permit_timeout, self.semaphore.acquire()).await {
             Ok(Ok(p)) => p,
             Ok(Err(_)) => {
@@ -176,7 +173,7 @@ impl WslCommandExecutor {
                 return WslCommandResult::error(String::new(), err);
             }
         };
-        debug!("WSL semaphore permit acquired for: {}", command_str);
+        trace!("WSL semaphore permit acquired for: {}", command_str);
 
         let result = match tokio::time::timeout(timeout_duration, future).await {
             Ok(Ok((stdout_bytes, stderr_bytes, status))) => {
@@ -198,9 +195,9 @@ impl WslCommandExecutor {
                     }
                     info!("WSL command exit status: {}", status);
                 } else {
-                    debug!("WSL command stdout: {}", truncate_log(&stdout, 1000));
-                    debug!("WSL command stderr: {}", truncate_log(&stderr, 1000));
-                    debug!("WSL command exit status: {}", status);
+                    trace!("WSL command stdout: {}", truncate_log(&stdout, 1000));
+                    trace!("WSL command stderr: {}", truncate_log(&stderr, 1000));
+                    trace!("WSL command exit status: {}", status);
                 }
 
                 if status.success() {
@@ -287,7 +284,7 @@ impl WslCommandExecutor {
                     result = stdout.read(&mut out_buf), if !stdout_done => {
                         match result {
                             Ok(0) => {
-                                debug!("Streaming STDOUT reached EOF for: {}", command_str);
+                                trace!("Streaming STDOUT reached EOF for: {}", command_str);
                                 stdout_done = true;
                             }
                             Ok(n) => {
@@ -306,7 +303,7 @@ impl WslCommandExecutor {
                     result = stderr.read(&mut err_buf), if !stderr_done => {
                         match result {
                             Ok(0) => {
-                                debug!("Streaming STDERR reached EOF for: {}", command_str);
+                                trace!("Streaming STDERR reached EOF for: {}", command_str);
                                 stderr_done = true;
                             }
                             Ok(n) => {
@@ -337,7 +334,7 @@ impl WslCommandExecutor {
         
         // Also respect semaphore for consistency
         let permit_timeout = std::time::Duration::from_secs(10);
-        debug!("Acquiring WSL semaphore permit (Available: {}/16) for streaming command: {}", self.semaphore.available_permits(), command_str);
+        trace!("Acquiring WSL semaphore permit (Available: {}/16) for streaming command: {}", self.semaphore.available_permits(), command_str);
         let _permit = match tokio::time::timeout(permit_timeout, self.semaphore.acquire()).await {
             Ok(Ok(p)) => p,
             Ok(Err(_)) => {
@@ -351,7 +348,7 @@ impl WslCommandExecutor {
                 return WslCommandResult::error(String::new(), err);
             }
         };
-        debug!("WSL semaphore permit acquired for streaming command: {}", command_str);
+        trace!("WSL semaphore permit acquired for streaming command: {}", command_str);
 
         match tokio::time::timeout(timeout_duration, future).await {
             Ok(Ok((full_output, status))) => {

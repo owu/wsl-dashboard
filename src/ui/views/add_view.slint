@@ -34,15 +34,25 @@ export component AddInstanceView inherits VerticalLayout {
     in property <string> distro_location;
     in-out property <bool> show_rootfs_help: false;
 
+    // Linux Mirrors properties
+    in property <bool> is_mirror_loading: false;
+    in property <bool> is_store_loading: false;
+    in property <bool> mirror_list_available: false;
+    in property <[string]> mirror_distro_names: [];
+    in-out property <string> selected_mirror_distro: "";
+    in property <string> mirror_source_url: "";
+
 
     // Callbacks
     callback source_selected(int);
+    callback open_mirror_source_url();
     callback select_install_file(int);
     callback check_install_path(string);
     callback select_folder();
     callback install_distro(int, string, string, string, string);
     callback distro_selected(string);
     callback show_rootfs_help_clicked();
+    callback copy_terminal_output();
 
 
     // Helper function: path concatenation
@@ -76,6 +86,7 @@ export component AddInstanceView inherits VerticalLayout {
                     root.new_instance_name = "";
                     root.new_instance_path = root.distro_location;
                     root.selected_install_distro = "";
+                    root.selected_mirror_distro = "";
                     root.source_selected(root.selected_source_idx);
                 }
             }
@@ -98,14 +109,120 @@ export component AddInstanceView inherits VerticalLayout {
                 model: root.installable_distro_names;
                 current-index: 0; // Simplified for now since CustomComboBox uses index
                 height: 32px;
-                enabled: !root.is_installing;
+                enabled: !root.is_installing && !root.is_store_loading;
                 selected(idx) => {
                     root.selected_install_distro = root.installable_distro_names[idx];
                     root.distro_selected(root.selected_install_distro);
                 }
             }
         }
-        if (root.selected_source_idx != 2): VerticalLayout {
+        
+        // Linux Mirrors Dynamic rendering
+        if (root.selected_source_idx == 3): VerticalLayout {
+            z: 80;
+            spacing: 0px;
+            HorizontalLayout {
+                spacing: 4px;
+                alignment: AppI18n.is-rtl ? end : start;
+                height: 18px;
+                
+                // LTR: text first, then link
+                if (!AppI18n.is-rtl): Text {
+                    text: AppI18n.t("add.select_distro", [AppI18n.version]);
+                    font-size: 13px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    color: Theme.text_secondary;
+                    vertical-alignment: center;
+                }
+                if (!AppI18n.is-rtl): HorizontalLayout {
+                    spacing: 0px;
+                    Text {
+                        text: "( " + AppI18n.t("add.speed_optimized", [AppI18n.version]) + "  ·  ";
+                        font-size: 12px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        color: Theme.text_secondary;
+                        vertical-alignment: center;
+                    }
+                    TouchArea {
+                        mouse-cursor: root.mirror_source_url != "" ? pointer : default;
+                        width: txt-link-ltr.preferred-width;
+                        clicked => {
+                            if (root.mirror_source_url != "") {
+                                root.open_mirror_source_url();
+                            }
+                        }
+                        txt-link-ltr := Text {
+                            text: AppI18n.t("add.mirror_help", [AppI18n.version]);
+                            font-size: 12px * LayoutConstants.font-scale;
+                            font-family: Theme.default_font;
+                            color: root.mirror_source_url != "" ? Theme.accent : Theme.text_secondary;
+                            vertical-alignment: center;
+                        }
+                    }
+                    Text {
+                        text: " )";
+                        font-size: 12px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        color: Theme.text_secondary;
+                        vertical-alignment: center;
+                    }
+                }
+
+                if (AppI18n.is-rtl): HorizontalLayout {
+                    spacing: 0px;
+                    Text {
+                        text: " )";
+                        font-size: 12px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        color: Theme.text_secondary;
+                        vertical-alignment: center;
+                    }
+                    TouchArea {
+                        mouse-cursor: root.mirror_source_url != "" ? pointer : default;
+                        width: txt-link-rtl.preferred-width;
+                        clicked => {
+                            if (root.mirror_source_url != "") {
+                                root.open_mirror_source_url();
+                            }
+                        }
+                        txt-link-rtl := Text {
+                            text: AppI18n.t("add.mirror_help", [AppI18n.version]);
+                            font-size: 12px * LayoutConstants.font-scale;
+                            font-family: Theme.default_font;
+                            color: root.mirror_source_url != "" ? Theme.accent : Theme.text_secondary;
+                            vertical-alignment: center;
+                        }
+                    }
+                    Text {
+                        text: "( " + AppI18n.t("add.speed_optimized", [AppI18n.version]) + "  ·  ";
+                        font-size: 12px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        color: Theme.text_secondary;
+                        vertical-alignment: center;
+                    }
+                }
+                if (AppI18n.is-rtl): Text {
+                    text: AppI18n.t("add.select_distro", [AppI18n.version]);
+                    font-size: 13px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    color: Theme.text_secondary;
+                    vertical-alignment: center;
+                }
+            }
+
+            CustomComboBox {
+                model: root.mirror_distro_names;
+                current-index: 0;
+                height: 32px;
+                enabled: !root.is_installing && !root.is_mirror_loading;
+                selected(idx) => {
+                    root.selected_mirror_distro = root.mirror_distro_names[idx];
+                    root.distro_selected(root.selected_mirror_distro);
+                }
+            }
+        }
+
+        if (root.selected_source_idx != 2 && root.selected_source_idx != 3): VerticalLayout {
             spacing: 0px;
             HorizontalLayout {
                 spacing: 4px;
@@ -122,17 +239,20 @@ export component AddInstanceView inherits VerticalLayout {
                 
                 // RTL: Icon then Text
                 if (AppI18n.is-rtl): Rectangle {
-                    width: 16px;
-                    height: 16px;
+                    width: 18px;
+                    height: 18px;
+                    y: (parent.height - self.height) / 2;
+                    background: ta-help-rtl.has-hover ? #0078D420 : transparent;
+                    border-radius: 9px;
                     Text {
-                        text: "\u{e897}";
-                        font-family: Theme.icon_font;
+                        text: "?";
                         font-size: 12px;
-                        color: ta-help-rtl.has-hover ? Theme.accent : Theme.icon_color_info;
+                        font-weight: 500;
+                        font-family: Theme.default_font;
+                        color: #0078D4;
                         vertical-alignment: center;
                         horizontal-alignment: center;
                     }
-
                     ta-help-rtl := TouchArea {
                         mouse-cursor: pointer;
                         clicked => {
@@ -148,17 +268,20 @@ export component AddInstanceView inherits VerticalLayout {
                     height: 18px;
                 }
                 if (root.selected_source_idx == 0 && !AppI18n.is-rtl): Rectangle {
-                    width: 16px;
+                    width: 18px;
                     height: 18px;
+                    y: (parent.height - self.height) / 2;
+                    background: ta-help.has-hover ? #0078D420 : transparent;
+                    border-radius: 9px;
                     Text {
-                        text: "\u{e897}";
-                        font-family: Theme.icon_font;
+                        text: "?";
                         font-size: 12px;
-                        color: ta-help.has-hover ? Theme.accent : Theme.icon_color_info;
+                        font-weight: 500;
+                        font-family: Theme.default_font;
+                        color: #0078D4;
                         vertical-alignment: center;
                         horizontal-alignment: center;
                     }
-
                     ta-help := TouchArea {
                         mouse-cursor: pointer;
                         clicked => {
@@ -317,11 +440,11 @@ export component AddInstanceView inherits VerticalLayout {
 
         CustomButton {
             text: root.is_installing ? AppI18n.t("add.installing", [AppI18n.version]) : AppI18n.t("add.create", [AppI18n.version]);
-            enabled: !root.is_installing && root.new_instance_name != "" && path_error == "" && (root.selected_source_idx == 2 ? root.selected_install_distro != "" : root.install_file_path != "");
+            enabled: !root.is_installing && root.new_instance_name != "" && path_error == "" && (root.selected_source_idx == 2 ? root.selected_install_distro != "" : (root.selected_source_idx == 3 ? root.selected_mirror_distro != "" : root.install_file_path != ""));
             primary: true;
             height: 36px;
             clicked => {
-                if (root.selected_source_idx == 2) {
+                if (root.selected_source_idx == 2 || root.selected_source_idx == 3) {
                     root.show_install_warn_dialog = true;
                 } else {
                     root.install_distro(root.selected_source_idx, root.new_instance_name, root.selected_install_distro, root.new_instance_path, root.install_file_path);
@@ -344,6 +467,13 @@ export component AddInstanceView inherits VerticalLayout {
                 border-radius: 4px;
                 border-width: 1px;
                 border-color: Theme.border_color;
+                TouchArea {
+                    pointer-event(event) => {
+                        if (event.button == PointerEventButton.right && event.kind == PointerEventKind.down) {
+                            root.copy_terminal_output();
+                        }
+                    }
+                }
                 Flickable {
                     VerticalLayout {
                         padding: 8px;

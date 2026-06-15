@@ -3,7 +3,7 @@
 
 use serde::{Deserialize, Serialize};
 use std::process::Command;
-use tracing::{info, debug};
+use tracing::{info, trace};
 
 #[cfg(windows)]
 use std::os::windows::process::CommandExt;
@@ -55,7 +55,7 @@ impl UsbManager {
             cmd.creation_flags(CREATE_NO_WINDOW);
         }
         
-        debug!("Executing command: usbipd --version");
+        trace!("Executing command: usbipd --version");
         // Use a fixed internal error key instead of localized OS error messages
         let output = cmd.output().map_err(|_| "cmd_not_found".to_string())?;
 
@@ -88,7 +88,7 @@ impl UsbManager {
             cmd.creation_flags(CREATE_NO_WINDOW);
         }
 
-        debug!("Executing command: usbipd state");
+        trace!("Executing command: usbipd state");
 
         let output = cmd.output().map_err(|_| "cmd_not_found".to_string())?;
         let stdout = String::from_utf8_lossy(&output.stdout).trim().to_string();
@@ -100,7 +100,7 @@ impl UsbManager {
             if json_part.starts_with('{') {
                 match serde_json::from_str::<UsbStateResponse>(json_part) {
                     Ok(res) => {
-                        info!("Successfully parsed USB state JSON ({} devices)", res.devices.len());
+                        trace!("Successfully parsed USB state JSON ({} devices)", res.devices.len());
                         return Ok(res.devices);
                     }
                     Err(e) => {
@@ -110,7 +110,7 @@ impl UsbManager {
             } else if json_part.starts_with('[') {
                 match serde_json::from_str::<Vec<UsbDeviceModel>>(json_part) {
                     Ok(devices) => {
-                        info!("Successfully parsed USB list JSON ({} devices)", devices.len());
+                        trace!("Successfully parsed USB list JSON ({} devices)", devices.len());
                         return Ok(devices);
                     }
                     Err(e) => {
@@ -192,7 +192,7 @@ impl UsbManager {
         {
             cmd.creation_flags(CREATE_NO_WINDOW);
         }
-        debug!("Executing command: usbipd detach --busid {}", bus_id);
+        trace!("Executing command: usbipd detach --busid {}", bus_id);
         let output = cmd.output()
             .map_err(|e| format!("Failed to execute detach: {}", e))?;
 

@@ -1,0 +1,434 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+import {
+    Theme,
+    AppI18n,
+    DonateStrings,
+    LayoutConstants,
+} from "../theme.slint";
+import { ThemedIcon } from "../components/common.slint";
+
+export component DonateView inherits VerticalLayout {
+    in property <string> title_text;
+    in property <string> license_intro_text;
+    in property <string> maintain_note_text;
+    in property <string> donation_purpose_text;
+    in property <string> thanks_ending_text;
+    in property <string> donate_link_label;
+    in property <string> donate_url;
+    in property <string> payment_methods_title;
+    in property <bool> methods_ready;
+    in property <[image]> method_icons;
+    in property <[string]> method_names;
+    in property <[int]> method_formats;
+    in property <[string]> method_urls;
+    in property <[string]> method_exts;
+    in property <[image]> method_regions;
+    in property <DonateStrings> strings;
+    padding-top: 0px;
+    padding-bottom: 8px;
+    callback open_url(string);
+    callback qr_clicked(string);
+    callback copy_clicked(string);
+
+    vertical-stretch: 1;
+
+    Rectangle {
+        vertical-stretch: 1;
+        clip: true;
+
+        flick := Flickable {
+            viewport-height: card.preferred-height;
+            width: parent.width;
+            height: 100%;
+
+            card := Rectangle {
+                width: flick.width;
+                background: Theme.card_bg;
+                border-radius: 8px;
+                border-width: 0px;
+                VerticalLayout {
+                    spacing: 12px;
+                    padding-left: AppI18n.is-rtl ? 24px : 12px;
+                    padding-right: AppI18n.is-rtl ? 12px : 24px;
+                    padding-top: 12px;
+                    padding-bottom: 8px;
+
+                    Text {
+                        text: root.title_text;
+                        font-size: 14px * LayoutConstants.font-scale;
+                        font-family: Theme.default_font;
+                        font-weight: 500;
+                        color: Theme.text_primary;
+                        horizontal-alignment: AppI18n.is-rtl ? right : left;
+                    }
+
+                    Rectangle {
+                        height: 1px;
+                        background: Theme.border_color;
+                    }
+
+                    VerticalLayout {
+                        spacing: 20px;
+                        HorizontalLayout {
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e8f8}";
+                                    icon_type: "emerald";
+                                    font-size: 15px;
+                                }
+                            }
+                            Text {
+                                text: root.license_intro_text;
+                                font-size: 14px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                wrap: word-wrap;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                            }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e8f8}";
+                                    icon_type: "emerald";
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+
+                        HorizontalLayout {
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e74b}";
+                                    icon_type: "cobalt";
+                                    font-size: 15px;
+                                }
+                            }
+                            Text {
+                                text: root.maintain_note_text;
+                                font-size: 14px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                wrap: word-wrap;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                            }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e74b}";
+                                    icon_type: "cobalt";
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+
+                        HorizontalLayout {
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{f133}";
+                                    icon_type: "orange";
+                                    font-size: 15px;
+                                }
+                            }
+                            Text {
+                                text: root.donation_purpose_text;
+                                font-size: 14px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                wrap: word-wrap;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                            }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{f133}";
+                                    icon_type: "orange";
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+
+                        HorizontalLayout {
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{eb52}";
+                                    icon_type: "heart";
+                                    font-size: 15px;
+                                }
+                            }
+                            Text {
+                                text: root.thanks_ending_text;
+                                font-size: 14px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                wrap: word-wrap;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                            }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{eb52}";
+                                    icon_type: "heart";
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+
+                    Rectangle {
+                        height: 1px;
+                        background: Theme.border_color;
+                    }
+
+                    // --- Donation link area ---
+                    VerticalLayout {
+                        spacing: 18px;
+
+                        HorizontalLayout {
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e71b}";  // link icon
+                                    icon_type: "heart";
+                                    font-size: 15px;
+                                }
+                            }
+                            HorizontalLayout {
+                                spacing: 6px;
+                                alignment: AppI18n.is-rtl ? end : start;
+                                Text {
+                                    text: root.donate_link_label + " :";
+                                    font-size: 13px * LayoutConstants.font-scale;
+                                    font-family: Theme.default_font;
+                                    font-weight: 500;
+                                    color: Theme.text_primary;
+                                }
+                                Text {
+                                    text: root.donate_url;
+                                    font-size: 13px * LayoutConstants.font-scale;
+                                    font-family: Theme.default_font;
+                                    color: Theme.accent;
+                                    TouchArea {
+                                        mouse-cursor: pointer;
+                                        clicked => {
+                                            root.open_url(root.donate_url);
+                                        }
+                                    }
+                                }
+                            }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e71b}";
+                                    icon_type: "heart";
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+
+                    // --- Skeleton screen (loading placeholder) ---
+                    if (!root.methods_ready): VerticalLayout {
+                        spacing: 12px;
+
+                        // Title row skeleton - fixed height, matches real title row to prevent layout shift
+                        HorizontalLayout {
+                            height: 24px;
+                            spacing: 12px;
+                            alignment: AppI18n.is-rtl ? end : start;
+                            VerticalLayout {
+                                alignment: center;
+                                Rectangle {
+                                    width: 20px;
+                                    height: 15px;
+                                    border-radius: 4px;
+                                    background: Theme.dark_mode ? #3A3A3A : #E8E8E8;
+                                }
+                            }
+                            VerticalLayout {
+                                alignment: center;
+                                Rectangle {
+                                    width: 120px;
+                                    height: 13px;
+                                    border-radius: 4px;
+                                    background: Theme.dark_mode ? #3A3A3A : #E8E8E8;
+                                }
+                            }
+                        }
+
+                        // Icon skeleton row (4 placeholder rounded rectangles with pulse animation)
+                        HorizontalLayout {
+                            spacing: 16px;
+                            alignment: AppI18n.is-rtl ? end : start;
+                            padding-top: 4px;
+
+                            property <bool> pulse: false;
+                            Timer {
+                                interval: 500ms;
+                                running: !root.methods_ready;
+                                triggered => { parent.pulse = !parent.pulse; }
+                            }
+
+                            for _n in [0, 1, 2, 3, 4, 5]: Rectangle {
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 8px;
+                                background: Theme.dark_mode ? #3A3A3A : #E8E8E8;
+                                opacity: parent.pulse ? 0.35 : 0.85;
+                                animate opacity { duration: 450ms; easing: ease-in-out; }
+                            }
+                        }
+                    }
+
+                    // --- Donation payment methods area (rendered after successful API response) ---
+                    if (root.methods_ready): VerticalLayout {
+                        spacing: 12px;
+
+                        HorizontalLayout {
+                            height: 24px;
+                            spacing: 12px;
+                            alignment: AppI18n.is-rtl ? end : start;
+                            if (!AppI18n.is-rtl): VerticalLayout {
+                                alignment: center;
+                                Rectangle {
+                                    width: 20px;
+                                    height: 16px;
+                                    ThemedIcon {
+                                        y: 1px;
+                                        icon_code: "\u{e8a1}";
+                                        icon_type: "cobalt";
+                                        font-size: 15px;
+                                    }
+                                }
+                            }
+                            Text {
+                                text: root.payment_methods_title + " :";
+                                font-size: 13px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                font-weight: 500;
+                                color: Theme.text_primary;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                vertical-alignment: center;
+                            }
+                            if (AppI18n.is-rtl): VerticalLayout {
+                                alignment: center;
+                                Rectangle {
+                                    width: 20px;
+                                    height: 16px;
+                                    ThemedIcon {
+                                        y: 1px;
+                                        icon_code: "\u{e8a1}";
+                                        icon_type: "cobalt";
+                                        font-size: 15px;
+                                    }
+                                }
+                            }
+                        }
+
+                        HorizontalLayout {
+                            spacing: 16px;
+                            alignment: AppI18n.is-rtl ? end : start;
+                            padding-top: 4px;
+
+                            for icon[i] in root.method_icons: Rectangle {
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 8px;
+                                background: touch.has-hover ? Theme.hover_bg : transparent;
+
+                                Image {
+                                    source: icon;
+                                    width: 32px;
+                                    height: 32px;
+                                    x: (parent.width - self.width) / 2;
+                                    y: (parent.height - self.height) / 2;
+                                    image-fit: contain;
+                                }
+
+                                // Region badge overlay (bottom-right corner)
+                                Rectangle {
+                                    width: 16px;
+                                    height: 16px;
+                                    x: parent.width - self.width - 1px;
+                                    y: parent.height - self.height - 1px;
+                                    border-radius: 3px;
+                                    clip: true;
+                                    Image {
+                                        source: root.method_regions[i];
+                                        width: 14px;
+                                        height: 14px;
+                                        x: (parent.width - self.width) / 2;
+                                        y: (parent.height - self.height) / 2;
+                                        image-fit: contain;
+                                    }
+                                }
+
+                                // Tooltip layer
+                                Rectangle {
+                                    visible: touch.has-hover;
+                                    opacity: touch.has-hover ? 1 : 0;
+                                    background: Theme.dark_mode ? #2D2D30 : #FFFFFF;
+                                    border-color: Theme.border_color;
+                                    border-width: 1px;
+                                    border-radius: 4px;
+                                    z: 100;
+                                    // Clamp x so the tooltip never goes left of the icon's left edge
+                                    // (i.e. minimum x=0), while still trying to center over the icon
+                                    x: max(0px, (parent.width - self.width) / 2);
+                                    y: -30px;
+                                    width: tt_text.width + 12px;
+                                    height: tt_text.height + 6px;
+                                    drop-shadow-blur: 4px;
+                                    drop-shadow-color: #00000018;
+                                    tt_text := Text {
+                                        text: root.method_names[i] + " - " + (root.method_formats[i] == 1 ? root.strings.scan_qr : (root.method_formats[i] == 2 ? root.strings.visit_link : (root.method_formats[i] == 4 ? root.strings.copy_email : root.strings.copy_wallet)));
+                                        color: Theme.text_primary;
+                                        font-size: 11px * LayoutConstants.font-scale;
+                                        font-family: Theme.default_font;
+                                        horizontal-alignment: center;
+                                        vertical-alignment: center;
+                                    }
+                                }
+
+                                touch := TouchArea {
+                                    mouse-cursor: root.method_formats[i] == 1 ? pointer : (root.method_formats[i] == 2 ? pointer : copy);
+                                    clicked => {
+                                        if (root.method_formats[i] == 1) {
+                                            root.qr_clicked(root.method_urls[i]);
+                                        } else if (root.method_formats[i] == 2) {
+                                            root.open_url(root.method_urls[i]);
+                                        } else if (root.method_formats[i] == 3) {
+                                            root.copy_clicked(root.method_exts[i] != "" ? root.method_exts[i] : root.method_urls[i]);
+                                        } else if (root.method_formats[i] == 4) {
+                                            root.copy_clicked(root.method_exts[i] != "" ? root.method_exts[i] : root.method_urls[i]);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

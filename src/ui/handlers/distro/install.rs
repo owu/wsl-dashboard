@@ -4,8 +4,10 @@
 use std::sync::Arc;
 use tokio::sync::Mutex;
 use slint::{ComponentHandle, Model};
+use tracing::{debug, info, warn};
 use crate::{AppWindow, AppState, i18n};
 use crate::ui::data::refresh_installable_distros;
+use crate::utils::system::copy_to_clipboard;
 use super::sanitize_instance_name;
 
 pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<AppState>>) {
@@ -135,20 +137,41 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     app.on_distro_selected(move |val| {
         if let Some(app) = ah.upgrade() {
             let app_typed: AppWindow = app;
+            let source_idx = app_typed.get_selected_source_idx();
+            if source_idx != 2 && source_idx != 3 {
+                return;
+            }
             let installables = app_typed.get_installable_distros();
             let mut internal_id = val.to_string();
             
-            // Try to find the internal ID from the model
+            // For mirror source (idx=3), the display name contains a count suffix like
+            // " (14 mirrors)". Strip it to get the clean base name for instance naming
+            // and cache lookup, while keeping selected_mirror_distro as the full display name.
+            let clean_val: String = if source_idx == 3 {
+                if let Some(pos) = val.rfind(" (") {
+                    val[..pos].to_string()
+                } else {
+                    val.to_string()
+                }
+            } else {
+                val.to_string()
+            };
+
+            // Try to find the internal ID from the model (used for Microsoft Store distros)
             for i in 0..installables.row_count() {
                 if let Some(d) = installables.row_data(i) {
-                    if d.friendly_name == val {
+                    if d.friendly_name.as_str() == clean_val {
                         internal_id = d.name.to_string();
                         break;
                     }
                 }
             }
+            // For mirror source, the clean name IS the internal ID (used for cache lookup)
+            if source_idx == 3 {
+                internal_id = clean_val.clone();
+            }
 
-            let sanitized = sanitize_instance_name(&internal_id);
+            let sanitized = sanitize_instance_name(&clean_val);
             app_typed.set_new_instance_name(sanitized.clone().into());
             app_typed.set_selected_install_distro(internal_id.into()); // Store internal ID
             
@@ -195,6 +218,46 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                      }
                  }
              });
+        } else if idx == 3 {
+             let ah_inner = ah.clone();
+             let as_ptr = as_ptr.clone();
+             let _ = slint::spawn_local(async move {
+                 if let Some(app) = ah_inner.upgrade() {
+                     if app.get_mirror_distro_names().row_count() == 0 {
+                        app.set_task_status_text(i18n::t("operation.fetching_distros").into());
+                        app.set_task_status_visible(true);
+
+                        // Read debug config to determine data source
+                        let debug_online_distros = {
+                            let state = as_ptr.lock().await;
+                            state.debug_config.install.online_distros.clone()
+                        };
+
+                        if !debug_online_distros.is_empty() {
+                            // --- Debug mode: load MirrorListResponse from local JSON file ---
+                            info!(
+                                "[Debug] install.online-distros is set to '{}', using local file instead of network",
+                                debug_online_distros
+                            );
+                            crate::ui::data::load_local_mirror_distros(ah_inner.clone(), debug_online_distros).await;
+                        } else {
+                             // --- Normal mode: fetch from network ---
+                             info!("[Debug] install.online-distros is empty, fetching mirror distros from network");
+                             crate::ui::data::refresh_mirror_distros(ah_inner.clone(), as_ptr).await;
+
+                             if let Some(app) = ah_inner.upgrade() {
+                                 app.set_task_status_visible(false);
+                             }
+                         }
+                      } else {
+                         if let Some(first) = app.get_mirror_distro_names().row_data(0) {
+                             let first_str: slint::SharedString = first;
+                             app.set_selected_mirror_distro(first_str.clone());
+                             app.invoke_distro_selected(first_str);
+                         }
+                      }
+                  }
+             });
         }
     });
 
@@ -208,17 +271,15 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let ah = ah.clone();
         let as_ptr = as_ptr.clone();
         
-        println!("\n[UI Event] on_install_distro: name={}, source={}", name, source_idx);
+        debug!("[UI Event] on_install_distro: name={}, source={}", name, source_idx);
         
         let ah_weak = ah.clone();
         let as_ptr = as_ptr.clone();
         
-        println!("\n[UI Event] on_install_distro: name={}, source={}", name, source_idx);
-        
         let _ = slint::spawn_local(async move {
             let (manager, internal_id) = if let Some(app) = ah_weak.upgrade() {
                 if app.get_is_installing() {
-                    println!("[UI Event] Installation already in progress, ignoring click.");
+                    warn!("[UI Event] Installation already in progress, ignoring click.");
                     return;
                 }
 
@@ -245,5 +306,9 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 });
             }
         });
+    });
+
+    app.on_copy_terminal_output(|text| {
+        let _ = copy_to_clipboard(text.as_str());
     });
 }

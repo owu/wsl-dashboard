@@ -27,7 +27,7 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | Русский | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | Русский | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -39,15 +39,17 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [🎬 Демонстрация работы](#-демонстрация-работы)
 - [💻 Системные требования](#-системные-требования)
 - [📦 Руководство по установке](#-руководство-по-установке)
+- [🛠️ Технологии и производительность](#️-технологии-и-производительность)
+- [🤝 Поддержка сообщества](#-поддержка-сообщества)
+- [❤️ Поддержать этот проект](#️-поддержать-этот-проект)
 - [⭐️ Труд любви](#️-труд-любви)
-  - [🛠️ Технологии и производительность](#️-технологии-и-производительность)
-  - [📄 Лицензия](#-лицензия)
+- [📄 Лицензия](#-лицензия)
 
 ---
 
 ## 🌍 Поддерживаемые языки
 
-Английский, Китайский, Китайский, Хинди, Испанский, Французский, Arabic, Бенгальский, Португальский, Русский, Urdu, Индонезийский, Немецкий, Японский, Турецкий, Korean, Итальянский, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic
+Английский, Китайский, Китайский, Хинди, Испанский, Французский, Arabic, Бенгальский, Португальский, Русский, Urdu, Индонезийский, Немецкий, Японский, Турецкий, Korean, Итальянский, Dutch, Swedish, Czech, Greek, Hungarian, Hebrew, Norwegian, Danish, Finnish, Slovak, Slovenian, Icelandic, Вьетнамский, Телугу, Яванский, Тайский, Тамильский, Филиппинский, Панджаби, Малайский, Польский, Украинский, Персидский, Каннада, Маратхи, Хауса, Бирманский, Узбекский, Азербайджанский, Себуано, Малаялам, Синдхи, Амхарский
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="Английский" alt="Английский" />
@@ -79,6 +81,27 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/sk.svg" width="32" title="Словацкий" alt="Словацкий" />
   <img src="../assets/flags/si.svg" width="32" title="Словенский" alt="Словенский" />
   <img src="../assets/flags/is.svg" width="32" title="Исландский" alt="Исландский" />
+  <img src="../assets/flags/vn.svg" width="32" title="Вьетнамский" alt="Вьетнамский" />
+  <img src="../assets/flags/in.svg" width="32" title="Телугу" alt="Телугу" />
+  <img src="../assets/flags/id.svg" width="32" title="Яванский" alt="Яванский" />
+  <img src="../assets/flags/th.svg" width="32" title="Тайский" alt="Тайский" />
+  <img src="../assets/flags/in.svg" width="32" title="Тамильский" alt="Тамильский" />
+  <img src="../assets/flags/ph.svg" width="32" title="Филиппинский" alt="Филиппинский" />
+  <img src="../assets/flags/pk.svg" width="32" title="Панджаби" alt="Панджаби" />
+  <img src="../assets/flags/my.svg" width="32" title="Малайский" alt="Малайский" />
+  <img src="../assets/flags/pl.svg" width="32" title="Польский" alt="Польский" />
+  <img src="../assets/flags/ua.svg" width="32" title="Украинский" alt="Украинский" />
+  <img src="../assets/flags/ir.svg" width="32" title="Персидский" alt="Персидский" />
+  <img src="../assets/flags/in.svg" width="32" title="Каннада" alt="Каннада" />
+  <img src="../assets/flags/in.svg" width="32" title="Маратхи" alt="Маратхи" />
+  <img src="../assets/flags/ng.svg" width="32" title="Хауса" alt="Хауса" />
+  <img src="../assets/flags/mm.svg" width="32" title="Бирманский" alt="Бирманский" />
+  <img src="../assets/flags/uz.svg" width="32" title="Узбекский" alt="Узбекский" />
+  <img src="../assets/flags/az.svg" width="32" title="Азербайджанский" alt="Азербайджанский" />
+  <img src="../assets/flags/ph.svg" width="32" title="Себуано" alt="Себуано" />
+  <img src="../assets/flags/in.svg" width="32" title="Малаялам" alt="Малаялам" />
+  <img src="../assets/flags/pk.svg" width="32" title="Синдхи" alt="Синдхи" />
+  <img src="../assets/flags/et.svg" width="32" title="Амхарский" alt="Амхарский" />
 </p>
 
 
@@ -90,7 +113,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Полный контроль экземпляров**: Запуск, остановка, завершение и удаление регистрации в один клик. Мониторинг статуса в реальном времени, детальная информация об использовании диска и расположении файлов.
 - **Управление дистрибутивами**: Установка по умолчанию, миграция (перемещение VHDX на другие диски), экспорт и клонирование в форматы `.tar` или `.tar.gz`.
 - **Быстрая интеграция**: Мгновенный запуск Терминала, VS Code или Проводника с настраиваемыми рабочими каталогами и хуками сценариев запуска.
-- **Умная установка**: Установка из Microsoft Store, GitHub или локальных файлов (RootFS/VHDX). Встроенный помощник по загрузке RootFS.
+- **Установка дистрибутива**: Установка дистрибутивов Linux через Microsoft Store, GitHub, локальные файлы (RootFS/VHDX) или онлайн-зеркала (с автоматическим тестированием скорости для выбора самого быстрого зеркала и встроенным помощником загрузки RootFS).
 - **Глобальная безопасность**: Мьютекс-блокировки для безопасных параллельных операций миграции/копирования и автоматическая очистка Appx при удалении.
 - **Ультра-низкое потребление памяти**: Максимальная оптимизация. В режиме ожидания в трее используется всего **~10 МБ** ОЗУ. В оконном режиме потребление зависит от сложности шрифтов: **~18 МБ** для стандартных языков (английский, немецкий и т. д.) и **~38 МБ** для языков с большими наборами символов (китайский, японский, корейский).
 - **Расширенные сети**: Бесшовное управление переадресацией портов (с автоматическим созданием правил брандмауэра) и глобальная настройка HTTP-прокси для унифицированного подключения.
@@ -144,17 +167,20 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### О программе 
+### О программе & Пожертвования
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 Демонстрация работы
 
-Ниже представлена демонстрация WSL Dashboard в действии:
-
-![WSL Dashboard Demo](../assets/screenshot/demo.gif)
+[Помогите нам стать лучше! Посмотрите наше вступительное видео и поделитесь мнением.](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,32 +241,43 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 
 
+## 🤝 Поддержка сообщества
+
+Большое спасибо следующим сообществам за их поддержку:
+
+- [Rust Programming Language](https://www.rust-lang.org) - За мощный и безопасный язык программирования
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - За современный UI-фреймворк
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - За замечательную подсистему Windows для Linux
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - За эффективный асинхронный рантайм
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - За постоянные улучшения платформы
+- [Reddit](https://www.reddit.com) - За глобальные обсуждения и поддержку сообщества
+- [Hacker News](https://news.ycombinator.com) - За глобальные обсуждения и поддержку сообщества
+- [Linux.do](https://linux.do) - За популярное сообщество IT-специалистов
+- [V2EX](https://www.v2ex.com) - За обсуждения в китайском технологическом сообществе
+
+Ваш вклад и обратная связь делают этот проект возможным!
+
+
+## ❤️ Поддержать этот проект
+
+- Этот проект распространяется по лицензии GPL-3.0 и бесплатен для всех пользователей.
+- От разработки функций и ежедневного тестирования до исправления ошибок — вся работа выполняется в свободное время. Путь открытого источника нелегок в одиночку — ваше признание и поддержка дают проекту уверенность в продолжении.
+- Если этот инструмент действительно помог вам, рассмотрите возможность поддержки. Все пожертвования идут на расходы сервера, обновления версий и улучшение функций, обеспечивая постоянное обновление и стабильное развитие проекта.
+- Каждый маленький добрый жест — это луч света звёзд. Ещё раз спасибо за ваше понимание и щедрость！
+
+Посетите нашу страницу пожертвований：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ Труд любви
 
 Если вы нашли этот проект полезным, я был бы признателен, если бы вы оставили звезду на GitHub. Ваша поддержка помогает охватить более широкую аудиторию и очень ценится. Именно это поощрение мотивирует меня продолжать создание.
+
 
 ## 📄 Лицензия
 
 Проект распространяется по лицензии GPL-3.0 – подробности см. в файле [LICENSE](../LICENSE).
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!

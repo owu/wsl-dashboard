@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use ini::Ini;
-use tracing::{info, warn, error};
+use tracing::{info, warn, error, trace};
 use std::sync::Mutex;
 use once_cell::sync::Lazy;
 use crate::wsl::executor::WslCommandExecutor;
@@ -310,13 +310,13 @@ pub fn serialize_wsl_conf(conf: &WslConf, version_meta: &WslVersionMeta) -> Stri
 
 // Read /etc/wsl.conf from a distribution
 pub async fn get_wsl_conf(executor: &WslCommandExecutor, distro_name: &str) -> WslConf {
-    info!("Reading wsl.conf for '{}'", distro_name);
+    trace!("Reading wsl.conf for '{}'", distro_name);
     let result = executor.execute_command(&["-d", distro_name, "-e", "cat", "/etc/wsl.conf"]).await;
 
     if result.success && !result.output.trim().is_empty() {
         parse_wsl_conf(&result.output)
     } else {
-        info!("wsl.conf not found or empty for '{}', using defaults", distro_name);
+        trace!("wsl.conf not found or empty for '{}', using defaults", distro_name);
         WslConf::default()
     }
 }

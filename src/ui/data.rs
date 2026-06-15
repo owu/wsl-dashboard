@@ -117,6 +117,8 @@ pub fn refresh_localized_strings(app: &AppWindow) {
         sparse_vhd: i18n::tr("settings.sparse_vhd", &[]).into(),
         sparse_vhd_desc: i18n::tr("settings.sparse_vhd_desc", &[]).into(),
         colorful_icons: i18n::tr("settings.colorful_icons", &[]).into(),
+        mail_icon_always: i18n::tr("settings.mail_icon_always", &[]).into(),
+        hide_pin_icon: i18n::tr("settings.hide_pin_icon", &[]).into(),
         stop_wsl: i18n::tr("settings.stop_wsl", &[]).into(),
     });
 
@@ -146,7 +148,50 @@ pub fn refresh_localized_strings(app: &AppWindow) {
             };
             i18n::tr("about.copyright", &[year_str]).into()
         },
+        privacy_policy: i18n::tr("about.privacy_policy", &[]).into(),
+        terms_of_service: i18n::tr("about.terms_of_service", &[]).into(),
     });
+
+    app.set_donate_strings(crate::DonateStrings {
+        donate_link_label: i18n::tr("donate.donate_link_label", &[]).into(),
+        payment_methods_title: i18n::tr("donate.payment_methods_title", &[]).into(),
+        copied: i18n::tr("donate.copied", &[]).into(),
+        copy_wallet: i18n::tr("donate.copy_wallet", &[]).into(),
+        copy_email: i18n::tr("donate.copy_email", &[]).into(),
+        scan_qr: i18n::tr("donate.scan_qr", &[]).into(),
+        visit_link: i18n::tr("donate.visit_link", &[]).into(),
+    });
+
+    update_install_sources(app);
+
+    // Rebuild mirror distro names from cache with new language translation.
+    // The names are pre-formatted strings stored in Slint's model, so they won't
+    // update automatically when the language changes — we must rebuild them here.
+    if let Ok(cache) = MIRROR_LIST_CACHE.lock() {
+        if !cache.is_empty() {
+            let names: Vec<slint::SharedString> = cache.iter()
+                .map(|d| {
+                    let count_label = i18n::tr("add.mirror_count", &[d.sources.len().to_string()]);
+                    format!("{} {} ({})", d.name, d.version, count_label).into()
+                })
+                .collect();
+            let model = VecModel::from(names);
+            app.set_mirror_distro_names(slint::ModelRc::from(Rc::new(model)));
+        }
+    }
+}
+
+pub fn update_install_sources(app: &AppWindow) {
+    let sources = vec![
+        i18n::tr("add.sources.rootfs", &[]),
+        i18n::tr("add.sources.vhdx", &[]),
+        i18n::tr("add.sources.store", &[]),
+        i18n::tr("add.sources.mirrors", &[]),
+    ];
+
+    let shared_sources: Vec<slint::SharedString> = sources.into_iter().map(|s| s.into()).collect();
+    let model = VecModel::from(shared_sources);
+    app.set_install_sources(slint::ModelRc::from(Rc::new(model)));
 }
 
 // Generic helper to get localized text for use in Handlers
@@ -159,7 +204,16 @@ pub async fn refresh_data(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mut
     debug!("refresh_data: Starting background data refresh");
     let ah = app_handle.clone();
     let as_ptr = app_state.clone();
-    
+
+    let _ = slint::invoke_from_event_loop({
+        let ah = ah.clone();
+        move || {
+            if let Some(app) = ah.upgrade() {
+                app.set_wsl_loading(true);
+            }
+        }
+    });
+
     // 1. Show cached list immediately (warm start)
     refresh_distros_ui(ah, as_ptr).await;
     
@@ -407,6 +461,20 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
                     let model_rc = ModelRc::from(Rc::new(model));
                     app.set_distros(model_rc);
                 }
+
+                // Update WSL error state based on distro count
+                let distro_count = app.get_distros().row_count();
+                if distro_count == 0 {
+                    app.set_distro_not_found("not_found".into());
+                    app.set_wsl_loading(false);
+                    super::handlers::wsl_guide::trigger_fetch_home_api(app_handle.clone());
+                } else {
+                    if app.get_distro_not_found().to_string() != "" {
+                        app.set_distro_not_found("".into());
+                        app.set_wsl_guide_url("".into());
+                    }
+                    app.set_wsl_loading(false);
+                }
             }
             
             if !is_manual_op && !is_busy() && app.get_task_status_visible() {
@@ -417,8 +485,33 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
 }
 
 
+fn get_distro_sort_rank(name: &str) -> usize {
+    let lower = name.to_lowercase();
+    if lower.contains("ubuntu") { return 1; }
+    if lower.contains("debian") { return 2; }
+    if lower.contains("kali") { return 3; }
+    if lower.contains("arch") { return 4; }
+    if lower.contains("fedora") { return 5; }
+    if lower.contains("opensuse") { return 6; }
+    if lower.contains("suse linux enterprise") || lower.contains("sles") { return 7; }
+    if lower.contains("almalinux") { return 8; }
+    if lower.contains("rocky") { return 9; }
+    if lower.contains("oracle") { return 10; }
+    if lower.contains("alpine") { return 11; }
+    if lower.contains("openeuler") { return 12; }
+    if lower.contains("mint") { return 13; }
+    999
+}
+
 // Refresh UI list of installable distributions
 pub async fn refresh_installable_distros(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<AppState>>) {
+    let ah = app_handle.clone();
+    let _ = slint::invoke_from_event_loop(move || {
+        if let Some(app) = ah.upgrade() {
+            app.set_is_store_loading(true);
+        }
+    });
+
     let result = {
         let app_state = app_state.lock().await;
         app_state.wsl_dashboard.executor().list_available_distros().await
@@ -426,8 +519,16 @@ pub async fn refresh_installable_distros(app_handle: slint::Weak<AppWindow>, app
 
     if result.success {
         let mut available = wsl::parser::parse_available_distros(&result.output);
-        // Sort by distribution name Z-A (Reverse order as requested)
-        available.sort_by(|a, b| b.1.to_lowercase().cmp(&a.1.to_lowercase()));
+        // Sort by predefined distribution order, then by name Z-A
+        available.sort_by(|a, b| {
+            let rank_a = get_distro_sort_rank(&a.1);
+            let rank_b = get_distro_sort_rank(&b.1);
+            if rank_a != rank_b {
+                rank_a.cmp(&rank_b)
+            } else {
+                b.1.to_lowercase().cmp(&a.1.to_lowercase())
+            }
+        });
         
         let current_names: Vec<String> = available.iter().map(|(n, _)| n.clone()).collect();
         let unchanged = {
@@ -470,17 +571,229 @@ pub async fn refresh_installable_distros(app_handle: slint::Weak<AppWindow>, app
             if let Some(app) = app_handle.upgrade() {
                 app.set_installable_distros(model_rc);
                 app.set_installable_distro_names(names_rc);
+                app.set_is_store_loading(false);
                 
                 // If no selection, default to first item and sync UI fields
                 if app.get_selected_install_distro().is_empty() && app.get_installable_distro_names().row_count() > 0 {
                     if let Some(first) = app.get_installable_distro_names().row_data(0) {
                         app.set_selected_install_distro(first.clone());
-                        // Trigger the synchronization logic for Instance Name and Path
-                        app.invoke_distro_selected(first);
+                        // Only trigger synchronization if selected source is Microsoft Store (2)
+                        if app.get_selected_source_idx() == 2 {
+                            app.invoke_distro_selected(first);
+                        }
                     }
                 }
             }
         });
+    } else {
+        let ah = app_handle.clone();
+        let _ = slint::invoke_from_event_loop(move || {
+            if let Some(app) = ah.upgrade() {
+                app.set_is_store_loading(false);
+            }
+        });
+    }
+}
+
+pub static MIRROR_LIST_CACHE: Lazy<std::sync::Mutex<Vec<crate::api::models::DistroInfo>>> = Lazy::new(|| std::sync::Mutex::new(Vec::new()));
+
+pub async fn refresh_mirror_distros(app_handle: slint::Weak<AppWindow>, _app_state: Arc<Mutex<AppState>>) {
+    let ah = app_handle.clone();
+    let _ = slint::invoke_from_event_loop(move || {
+        if let Some(app) = ah.upgrade() {
+            app.set_is_mirror_loading(true);
+            app.set_mirror_list_available(false);
+            let empty_model = VecModel::from(Vec::<slint::SharedString>::new());
+            app.set_mirror_distro_names(ModelRc::from(Rc::new(empty_model)));
+            update_install_sources(&app);
+        }
+    });
+
+    let (response, install_data_opt, err_msg) = tokio::task::spawn_blocking(move || {
+        let install_data = crate::api::common::wslui_helper_install();
+        if let Some(ref online_distros) = install_data.online_distros {
+            let mirror_url = online_distros.url.clone();
+            (crate::api::common::wslui_helper_mirrors(&mirror_url), Some(install_data), None)
+        } else {
+            (crate::api::models::MirrorListResponse::default(), None, Some("Failed to obtain mirror API information".to_string()))
+        }
+    }).await.unwrap_or_else(|_| (crate::api::models::MirrorListResponse::default(), None, Some("Background task failed".to_string())));
+    
+    if let Some(err) = err_msg {
+        let ah = app_handle.clone();
+        let _ = slint::invoke_from_event_loop(move || {
+            if let Some(app) = ah.upgrade() {
+                app.set_is_mirror_loading(false);
+                app.set_mirror_list_available(false);
+                app.set_install_status(err.into());
+                app.set_install_success(false);
+                update_install_sources(&app);
+            }
+        });
+        return;
+    }
+
+    let install_data = install_data_opt.unwrap();
+    
+    // Sort by predefined distribution order, then by name in descending order
+    let mut distros = response.distros;
+    distros.sort_by(|a, b| {
+        let rank_a = get_distro_sort_rank(&a.name);
+        let rank_b = get_distro_sort_rank(&b.name);
+        if rank_a != rank_b {
+            rank_a.cmp(&rank_b)
+        } else {
+            let name_a = format!("{} {}", a.name, a.version);
+            let name_b = format!("{} {}", b.name, b.version);
+            name_b.to_lowercase().cmp(&name_a.to_lowercase())
+        }
+    });
+
+    // Cache it
+    if let Ok(mut cache) = MIRROR_LIST_CACHE.lock() {
+        *cache = distros.clone();
+    }
+
+    let names: Vec<slint::SharedString> = distros.iter()
+        .map(|d| {
+            let count_label = i18n::tr("add.mirror_count", &[d.sources.len().to_string()]);
+            format!("{} {} ({})", d.name, d.version, count_label).into()
+        })
+        .collect();
+    
+    let source_url = install_data.online_source.as_ref().map(|o| o.url.clone()).unwrap_or_default();
+
+    let ah = app_handle.clone();
+    let _ = slint::invoke_from_event_loop(move || {
+        if let Some(app) = ah.upgrade() {
+            let model = VecModel::from(names);
+            app.set_mirror_distro_names(ModelRc::from(Rc::new(model)));
+            app.set_mirror_list_available(true);
+            app.set_is_mirror_loading(false);
+            
+            app.set_mirror_source_url(source_url.into());
+            
+            update_install_sources(&app);
+            
+            if app.get_selected_mirror_distro().is_empty() && app.get_mirror_distro_names().row_count() > 0 {
+                if let Some(first) = app.get_mirror_distro_names().row_data(0) {
+                    let first_str: slint::SharedString = first;
+                    app.set_selected_mirror_distro(first_str.clone());
+                    // Only trigger synchronization if selected source is Linux Mirrors (3)
+                    if app.get_selected_source_idx() == 3 {
+                        app.invoke_distro_selected(first_str);
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+pub async fn load_local_mirror_distros(app_handle: slint::Weak<AppWindow>, json_path_str: String) {
+    let json_path = std::path::Path::new(&json_path_str);
+    if !json_path.exists() {
+        tracing::warn!("[Debug] Local mirror JSON file not found: {}", json_path_str);
+        let msg = i18n::t("debug.mirrors_file_not_found");
+        let _ = slint::invoke_from_event_loop(move || {
+            if let Some(app) = app_handle.upgrade() {
+                app.set_install_status(msg.into());
+                app.set_install_success(false);
+                app.set_task_status_visible(false);
+            }
+        });
+        return;
+    }
+
+    // Also fetch install_data to get mirror_source_url (same as normal network path)
+    let source_url = tokio::task::spawn_blocking(|| {
+        let install_data = crate::api::common::wslui_helper_install();
+        install_data.online_source.map(|o| o.url).unwrap_or_default()
+    }).await.unwrap_or_default();
+
+    match std::fs::read_to_string(json_path) {
+        Ok(json_str) => {
+            match serde_json::from_str::<crate::api::client::ApiResponse<crate::api::models::MirrorListResponse>>(&json_str) {
+                Ok(api_response) => {
+                    let mirror_response = api_response.data;
+                    tracing::info!(
+                        "[Debug] Parsed MirrorListResponse from local file: {} distros",
+                        mirror_response.distros.len()
+                    );
+                    
+                    let mut distros = mirror_response.distros;
+                    distros.sort_by(|a, b| {
+                        let rank_a = get_distro_sort_rank(&a.name);
+                        let rank_b = get_distro_sort_rank(&b.name);
+                        if rank_a != rank_b {
+                            rank_a.cmp(&rank_b)
+                        } else {
+                            let name_a = format!("{} {}", a.name, a.version);
+                            let name_b = format!("{} {}", b.name, b.version);
+                            name_b.to_lowercase().cmp(&name_a.to_lowercase())
+                        }
+                    });
+
+                    if let Ok(mut cache) = MIRROR_LIST_CACHE.lock() {
+                        *cache = distros.clone();
+                    }
+
+                    let names: Vec<slint::SharedString> = distros
+                        .iter()
+                        .map(|d| {
+                            let count_label = i18n::tr("add.mirror_count", &[d.sources.len().to_string()]);
+                            format!("{} {} ({})", d.name, d.version, count_label).into()
+                        })
+                        .collect();
+
+                    let _ = slint::invoke_from_event_loop(move || {
+                        if let Some(app) = app_handle.upgrade() {
+                            let model = VecModel::from(names);
+                            app.set_mirror_distro_names(ModelRc::from(Rc::new(model)));
+                            app.set_mirror_list_available(true);
+                            app.set_is_mirror_loading(false);
+                            app.set_task_status_visible(false);
+                            app.set_mirror_source_url(source_url.into());
+                            update_install_sources(&app);
+
+                            if app.get_selected_mirror_distro().is_empty()
+                                && app.get_mirror_distro_names().row_count() > 0
+                            {
+                                if let Some(first) = app.get_mirror_distro_names().row_data(0) {
+                                    let first_str: slint::SharedString = first;
+                                    app.set_selected_mirror_distro(first_str.clone());
+                                    if app.get_selected_source_idx() == 3 {
+                                        app.invoke_distro_selected(first_str);
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                Err(e) => {
+                    tracing::warn!("[Debug] Failed to parse MirrorListResponse from '{}': {}", json_path_str, e);
+                    let msg = i18n::t("debug.mirrors_parse_failed");
+                    let _ = slint::invoke_from_event_loop(move || {
+                        if let Some(app) = app_handle.upgrade() {
+                            app.set_install_status(msg.into());
+                            app.set_install_success(false);
+                            app.set_task_status_visible(false);
+                        }
+                    });
+                }
+            }
+        }
+        Err(e) => {
+            tracing::warn!("[Debug] Failed to read local mirror JSON '{}': {}", json_path_str, e);
+            let msg = i18n::t("debug.mirrors_file_not_found");
+            let _ = slint::invoke_from_event_loop(move || {
+                if let Some(app) = app_handle.upgrade() {
+                    app.set_install_status(msg.into());
+                    app.set_install_success(false);
+                    app.set_task_status_visible(false);
+                }
+            });
+        }
     }
 }
 
@@ -495,6 +808,8 @@ pub async fn load_settings_to_ui(app: &AppWindow, app_state: &Arc<Mutex<AppState
     app.global::<crate::Theme>().set_system_color(settings.system_color);
     app.set_colorful_icons(settings.colorful_icons);
     app.global::<crate::Theme>().set_colorful_icons(settings.colorful_icons);
+    app.set_mail_icon_always(settings.mail);
+    app.set_hide_pin_icon(settings.hide_pin);
     app.set_sidebar_collapsed(settings.sidebar_collapsed);
     app.set_tray_autostart(tray.autostart);
     app.set_tray_start_minimized(tray.start_minimized);
@@ -507,6 +822,7 @@ pub async fn load_settings_to_ui(app: &AppWindow, app_state: &Arc<Mutex<AppState
     app.set_sidebar_usb(sidebar.usb);
     app.set_sidebar_network(sidebar.network);
     app.set_sidebar_about(sidebar.about);
+    app.set_sidebar_donate(sidebar.donate);
 
     // Set RTL mode based on current resolved language
     let current_lang = i18n::current_lang();
@@ -541,21 +857,15 @@ pub async fn load_settings_to_ui(app: &AppWindow, app_state: &Arc<Mutex<AppState
     
     app.global::<crate::Theme>().set_dark_mode(settings.dark_mode);
     
-    // Set default font based on language to fix Chinese rendering issues
-    let font_family = if crate::app::is_chinese_lang(&settings.ui_language) {
-        crate::app::constants::FONT_ZH
-    } else if settings.ui_language == "auto" {
+    // Set default font based on app language and system locale.
+    // On Chinese Windows, Windows DirectWrite font fallback handles CJK characters
+    // automatically, so we don't need to explicitly specify CJK fonts (saves ~16MB memory).
+    let sys_lang = {
         let state = app_state.lock().await;
-        let sys_lang = state.config_manager.get_config().system.system_language.clone();
-        drop(state);
-        if crate::app::is_chinese_lang(&sys_lang) {
-            crate::app::constants::FONT_ZH
-        } else {
-            crate::app::constants::FONT_EN_FALLBACK
-        }
-    } else {
-        crate::app::constants::FONT_EN_FALLBACK
+        state.config_manager.get_config().system.system_language.clone()
     };
+    let effective_app_lang = if settings.ui_language == "auto" { &sys_lang } else { &settings.ui_language };
+    let font_family = crate::app::constants::get_font_for(effective_app_lang, &sys_lang);
     app.global::<crate::Theme>().set_default_font(font_family.into());
 
     let sparse_vhd = crate::utils::wsl_config::get_sparse_vhd();

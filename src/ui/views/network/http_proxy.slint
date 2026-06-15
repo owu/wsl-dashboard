@@ -71,13 +71,22 @@ export component HttpProxyView inherits Rectangle {
                                     spacing: 8px;
                                     alignment: AppI18n.is-rtl ? end : start;
 
-                                    if (AppI18n.is-rtl): Text {
-                                        text: "\u{E897}";
-                                        font-family: Theme.icon_font;
-                                        font-size: 12px;
-                                        color: Theme.icon_color_info;
-                                        vertical-alignment: center;
-                                        TouchArea {
+                                    if (AppI18n.is-rtl): Rectangle {
+                                        width: 18px;
+                                        height: 18px;
+                                        y: (parent.height - self.height) / 2;
+                                        background: ta-proxy-rtl.has-hover ? #0078D420 : transparent;
+                                        border-radius: 9px;
+                                        Text {
+                                            text: "?";
+                                            font-size: 12px;
+                                            font-weight: 500;
+                                            font-family: Theme.default_font;
+                                            color: #0078D4;
+                                            vertical-alignment: center;
+                                            horizontal-alignment: center;
+                                        }
+                                        ta-proxy-rtl := TouchArea {
                                             mouse-cursor: pointer;
                                             clicked => { root.show_proxy_help(); }
                                         }
@@ -89,13 +98,22 @@ export component HttpProxyView inherits Rectangle {
                                         clicked => { root.proxy_is_enabled = true; }
                                     }
 
-                                    if (!AppI18n.is-rtl): Text {
-                                        text: "\u{E897}";
-                                        font-family: Theme.icon_font;
-                                        font-size: 12px;
-                                        color: Theme.icon_color_info;
-                                        vertical-alignment: center;
-                                        TouchArea {
+                                    if (!AppI18n.is-rtl): Rectangle {
+                                        width: 18px;
+                                        height: 18px;
+                                        y: (parent.height - self.height) / 2;
+                                        background: ta-proxy.has-hover ? #0078D420 : transparent;
+                                        border-radius: 9px;
+                                        Text {
+                                            text: "?";
+                                            font-size: 12px;
+                                            font-weight: 500;
+                                            font-family: Theme.default_font;
+                                            color: #0078D4;
+                                            vertical-alignment: center;
+                                            horizontal-alignment: center;
+                                        }
+                                        ta-proxy := TouchArea {
                                             mouse-cursor: pointer;
                                             clicked => { root.show_proxy_help(); }
                                         }

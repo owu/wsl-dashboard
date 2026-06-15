@@ -11,20 +11,27 @@ pub struct UpdateResult {
     pub latest_version: String,
     pub release_date: String,
     pub current_version: String,
-    pub download_url: String,
     pub error: Option<String>,
 }
 
 pub async fn check_update(current_version_str: &str) -> Result<UpdateResult, String> {
     let current_version_str = current_version_str.to_string();
 
-    // Use wslui_latest_release instead of fetch_base_config
     let release_data = tokio::task::spawn_blocking(move || {
-        crate::api::common::wslui_latest_release()
+        crate::api::common::wslui_latest_version()
     }).await.map_err(|e| format!("Task panicked: {}", e))?;
 
+    let release_data = match release_data {
+        Ok(data) => data,
+        Err(e) => {
+            if e == "RequestTimeOut" {
+                return Err("RequestTimeOut".to_string());
+            }
+            return Err(e);
+        }
+    };
+
     let latest_version_str = release_data.version;
-    let download_url = release_data.download_url;
 
     // Version comparison
     let current_v_clean = current_version_str.trim_start_matches('v');
@@ -42,7 +49,6 @@ pub async fn check_update(current_version_str: &str) -> Result<UpdateResult, Str
         latest_version: latest_version_str,
         release_date: release_data.release_date,
         current_version: current_version_str,
-        download_url,
         error: None,
     })
 }

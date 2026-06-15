@@ -13,11 +13,13 @@ export component Sidebar inherits Rectangle {
     in property <string> network_text: "";
     in property <string> settings_text: "";
     in property <string> about_text: "";
+    in property <string> donate_text: "";
     
     // Visibility toggles
     in property <bool> show_add: true;
     in property <bool> show_usb: true;
     in property <bool> show_network: true;
+    in property <bool> show_donate: true;
     in property <bool> show_about: true;
     in property <bool> show_toggle: true;
     
@@ -123,6 +125,17 @@ export component Sidebar inherits Rectangle {
             height: 8px;
         }
 
+        if (root.show_donate): SidebarItem {
+            icon: "\u{EB51}";
+            icon_type: "heart";
+            text: root.donate_text;
+            selected: selected_tab == 4;
+            collapsed: root.collapsed;
+            clicked => {
+                root.tab_selected(4);
+            }
+        }
+
         // Divider
         Rectangle {
             height: 1px;
@@ -146,7 +159,7 @@ export component Sidebar inherits Rectangle {
         }
 
         if (root.show_about): SidebarItem {
-            icon: "\u{E9ce}";
+            icon: "\u{E9CE}";
             icon_type: "cyan";
             text: root.about_text;
             selected: selected_tab == 6;

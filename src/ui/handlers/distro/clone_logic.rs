@@ -64,7 +64,9 @@ pub async fn perform_clone(
         tokio::time::sleep(std::time::Duration::from_millis(500)).await;
 
         // Step 2: Manual Copy to Temporary File
-        let (_, temp_vhdx_file) = super::resolve_temp_path(as_ptr.clone(), &source_name, "clone_tmp", "vhdx").await;
+        // Use fixed name "ext4.vhdx" so WSL 2.7.8.0's --import --vhd preserves it as ext4.vhdx
+        let (temp_dir, _) = super::resolve_temp_path(as_ptr.clone(), &source_name, "clone_tmp", "vhdx").await;
+        let temp_vhdx_file = temp_dir.join("ext4.vhdx").to_string_lossy().to_string();
         info!("WSL2 Clone: Copying VHDX from '{}' to temp '{}'...", vhdx_path, temp_vhdx_file);
         
         let copy_result: Result<u64, String> = tokio::task::spawn_blocking({

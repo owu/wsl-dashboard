@@ -27,7 +27,7 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | اردو | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md)
+I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | اردو | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
@@ -40,6 +40,8 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - [💻 سسٹم کی ضروریات](#-سسٹم-کی-ضروریات)
 - [📦 انسٹالیشن گائیڈ](#-انسٹالیشن-گائیڈ)
 - [🛠️ ٹیکنالوجی اور کارکردگی](#️-ٹیکنالوجی-اور-کارکردگی)
+- [🤝 کمیونٹی سپورٹ](#-کمیونٹی-سپورٹ)
+- [❤️ اس پروجیکٹ کی حمایت کریں](#️-اس-پروجیکٹ-کی-حمایت-کریں)
 - [⭐️ محبت کی محنت](#️-محبت-کی-محنت)
 - [📄 لائسنس](#-لائسنس)
 
@@ -47,7 +49,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 
 ## 🌍 معاون زبانیں
 
-انگریزی، سادہ چینی، روایتی چینی، ہندی، ہسپانوی، فرانسیسی، عربی، بنگالی، پرتگالی، روسی، اردو، انڈونیشیائی، جرمن، جاپانی، ترکی، کوریائی، اطالوی، ڈچ، سویڈش، چیک، یونانی، ہنگری، عبرانی، نارویجن، ڈینش، فننش، سلوواک، سلووینین، آئس لینڈک۔
+انگریزی، سادہ چینی، روایتی چینی، ہندی، ہسپانوی، فرانسیسی، عربی، بنگالی، پرتگالی، روسی، اردو، انڈونیشیائی، جرمن، جاپانی، ترکی، کوریائی، اطالوی، ڈچ، سویڈش، چیک، یونانی، ہنگری، عبرانی، نارویجن، ڈینش، فننش، سلوواک، سلووینین، آئس لینڈک، ویتنامی، تلوگو، جاوانی، تھائی، تامل، فلپائنی، پنجابی، ملائی، پولش، یوکرینی، فارسی، کنڑا، مراٹھی، ہاؤسا، برمازی، ازبک، آذربائیجانی، سیبوانو، ملایالم، سندھی، امہاری۔
 
 <p align="left">
   <img src="../assets/flags/us.svg" width="32" title="انگریزی" alt="انگریزی" />
@@ -79,6 +81,27 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/sk.svg" width="32" title="سلوواک" alt="سلوواک" />
   <img src="../assets/flags/si.svg" width="32" title="سلووینین" alt="سلووینین" />
   <img src="../assets/flags/is.svg" width="32" title="آئس لینڈی" alt="آئس لینڈی" />
+  <img src="../assets/flags/vn.svg" width="32" title="ویتنامی" alt="ویتنامی" />
+  <img src="../assets/flags/in.svg" width="32" title="تلوگو" alt="تلوگو" />
+  <img src="../assets/flags/id.svg" width="32" title="جاوانی" alt="جاوانی" />
+  <img src="../assets/flags/th.svg" width="32" title="تھائی" alt="تھائی" />
+  <img src="../assets/flags/in.svg" width="32" title="تامل" alt="تامل" />
+  <img src="../assets/flags/ph.svg" width="32" title="فلپائنی" alt="فلپائنی" />
+  <img src="../assets/flags/pk.svg" width="32" title="پنجابی" alt="پنجابی" />
+  <img src="../assets/flags/my.svg" width="32" title="ملائی" alt="ملائی" />
+  <img src="../assets/flags/pl.svg" width="32" title="پولش" alt="پولش" />
+  <img src="../assets/flags/ua.svg" width="32" title="یوکرینی" alt="یوکرینی" />
+  <img src="../assets/flags/ir.svg" width="32" title="فارسی" alt="فارسی" />
+  <img src="../assets/flags/in.svg" width="32" title="کنڑا" alt="کنڑا" />
+  <img src="../assets/flags/in.svg" width="32" title="مراٹھی" alt="مراٹھی" />
+  <img src="../assets/flags/ng.svg" width="32" title="ہاؤسا" alt="ہاؤسا" />
+  <img src="../assets/flags/mm.svg" width="32" title="برمازی" alt="برمازی" />
+  <img src="../assets/flags/uz.svg" width="32" title="ازبک" alt="ازبک" />
+  <img src="../assets/flags/az.svg" width="32" title="آذربائیجانی" alt="آذربائیجانی" />
+  <img src="../assets/flags/ph.svg" width="32" title="سیبوانو" alt="سیبوانو" />
+  <img src="../assets/flags/in.svg" width="32" title="ملایالم" alt="ملایالم" />
+  <img src="../assets/flags/pk.svg" width="32" title="سندھی" alt="سندھی" />
+  <img src="../assets/flags/et.svg" width="32" title="امہاری" alt="امہاری" />
 </p>
 
 
@@ -90,7 +113,7 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **جامع انسٹنس کنٹرول**: ایک کلک سے اسٹارٹ، اسٹاپ، ٹرمینیٹ اور ان رجسٹر کریں۔ ریئل ٹائم اسٹیٹس مانیٹرنگ اور ڈسک کے استعمال اور فائل کے مقامات کے بارے میں تفصیلی معلومات۔
 - **ڈسٹرو مینجمنٹ**: بطور ڈیفالٹ سیٹ کریں، مائیگریشن (VHDX کو دوسری ڈرائیوز میں منتقل کریں)، اور `.tar` یا `.tar.gz` آرکائیوز میں ایکسپورٹ/کلون کریں۔
 - **فوری انٹیگریشن**: حسب ضرورت ورکنگ ڈائرکٹریز اور اسٹارٹ اپ اسکرپٹ ہکس کے ساتھ ٹرمینل، VS Code، یا فائل ایکسپلورر میں فوری لانچ۔
-- **اسمارٹ انسٹالیشن**: مائیکروسافٹ اسٹور، GitHub، یا مقامی فائلوں (RootFS/VHDX) سے انسٹال کریں۔ اس میں بلٹ ان RootFS ڈاؤن لوڈ مددگار شامل ہے۔
+- **ڈسٹرو انسٹالیشن**: مائیکروسافٹ اسٹور، GitHub، مقامی فائلیں (RootFS/VHDX)، یا آن لائن میررز کے ذریعے لینکس ڈسٹری بیوشنز انسٹال کریں (آٹو سپیڈ ٹیسٹ کے ساتھ تیز ترین میرر منتخب کریں اور بلٹ ان RootFS ڈاؤن لوڈ مددگار)۔
 - **عالمی تحفظ**: محفوظ کنکرنٹ مائیگریشن/بیک اپ آپریشنز کے لیے Mutex لاکس اور ہٹانے پر خودکار Appx صفائی۔
 - **انتہائی کم میموری کا استعمال**: کارکردگی کے لیے انتہائی بہتر بنایا گیا ہے۔ سائلنٹ اسٹارٹ اپ (سسٹم ٹرے) صرف **~10MB** RAM استعمال کرتا ہے۔ ونڈوز موڈ کا استعمال فونٹ کی پیچیدگی کے لحاظ سے مختلف ہوتا ہے: معیاری زبانوں کے لیے **~18MB** اور بڑے کریکٹر سیٹ والی زبانوں (چینی، جاپانی، کوریائی وغیرہ) کے لیے **~38MB**۔
 - **اعلی درجے کی نیٹ ورکنگ**: بغیر کسی رکاوٹ کے پورٹ فارورڈنگ کا انتظام (خودکار فائر وال اصول کی تخلیق کے ساتھ) اور متحد رابطے کے لیے عالمی HTTP پراکسی کی تشکیل۔
@@ -144,17 +167,20 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/screenshot/add.png" width="48%" />
   <img src="../assets/screenshot/settings.png" width="48%" />
 </p>
+<p align="center">
+  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
+  <img src="../assets/screenshot/settings-interface.png" width="48%" />
+</p>
 
-### درخواست کے بارے میں
+### درخواست کے بارے میں اور عطیہ
 <p align="center">
   <img src="../assets/screenshot/about.png" width="48%" />
+  <img src="../assets/screenshot/donate.png" width="48%" />
 </p>
 
 ## 🎬 آپریشن ڈیمو
 
-WSL ڈیش بورڈ کے عمل کا ڈیمو نیچے دیا گیا ہے:
-
-![WSL ڈیش بورڈ ڈیمو](../assets/screenshot/demo.gif)
+[ہمیں بہتر بنانے میں مدد کریں! ہمارا تعارفی ویڈیو دیکھیں اور اپنے خیالات شیئر کریں۔](https://github.com/owu/wsl-dashboard/discussions/9)
 
 
 
@@ -215,33 +241,44 @@ WSL ڈیش بورڈ کے عمل کا ڈیمو نیچے دیا گیا ہے:
 
 
 
+## 🤝 کمیونٹی سپورٹ
+
+مندرجہ ذیل کمیونٹیز کی حمایت کے لیے بہت بہت شکریہ:
+
+- [Rust Programming Language](https://www.rust-lang.org) - طاقتور اور محفوظ پروگرامنگ زبان کے لیے
+- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - جدید UI فریم ورک کے لیے
+- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - شاندار Windows Subsystem for Linux کے لیے
+- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - موثر ایسنک رن ٹائم کے لیے
+- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - پلیٹ فارم میں مسلسل بہتری کے لیے
+- [Reddit](https://www.reddit.com) - عالمی کمیونٹی بحث اور تائید کے لیے
+- [Hacker News](https://news.ycombinator.com) - عالمی کمیونٹی بحث اور تائید کے لیے
+- [Linux.do](https://linux.do) - آئی ٹی پیشہ ور افراد کے لیے مقبول کمیونٹی
+- [V2EX](https://www.v2ex.com) - چینی ٹیکنالوجی کمیونٹی بحث کے لیے
+
+آپ کے حصے اور تبصرے اس پروجیکٹ کو ممکن بناتے ہیں！
+
+
+## ❤️ اس پروجیکٹ کی حمایت کریں
+
+- یہ پروجیکٹ GPL-3.0 اوپن سورس لائسنس کے تحت ہے اور تمام صارفین کے لیے مفت ہے۔
+- فنکشنل ڈویلپمنٹ، روزانہ ٹیسٹنگ سے لے کر بگ فکس تک، تمام کام فارغ وقت میں کیا جاتا ہے۔ اوپن سورس کا راستہ اکیلے چلنا آسان نہیں — آپ کی تسلیم اور سپورٹ پروجیکٹ کو آگے بڑھنے کا حوصلہ دیتی ہے۔
+- اگر اس ٹول نے واقعی آپ کی مدد کی ہے، تو براہ کرم ساتھ دیں۔ تمام عطیات سرور اخراجات، ورژن اپڈیٹس اور فیچر بہتری پر خرچ کیے جاتے ہیں، جو پروجیکٹ کو مسلسل اپڈیٹ اور مستحکم ترقی بنائے رکھتے ہیں۔
+- ہر چھوٹی نیکی ستاروں کی روشنی کی ایک کرن ہے۔ آپ کی سمجھ اور سخاوت کا دوبارہ شکریہ！
+
+ہمارے عطیہ صفحے پر جائیں：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+
+
 ## ⭐️ محبت کی محنت
 
 اگر آپ کو یہ پروجیکٹ کارآمد معلوم ہوا ہے، تو میں مشکور ہوں گا اگر آپ GitHub پر اسٹار چھوڑ سکیں۔ آپ کی تائید اسے وسیع تر سامعین تک پہنچانے میں مدد دیتی ہے اور اس کی تہہ دل سے تعریف کی جاتی ہے۔ یہی حوصلہ افزائی مجھے تعمیر جاری رکھنے کی ترغیب دیتی ہے۔
+
 
 ## 📄 لائسنس
 
 یہ پروجیکٹ GPL-3.0 کے تحت لائسنس یافتہ ہے – تفصیلات کے لیے [LICENSE](../LICENSE) فائل دیکھیں۔
 
+
 ---
 
 Built with ❤️ for the WSL Community.
-
----
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
 

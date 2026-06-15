@@ -4,7 +4,6 @@
 pub mod constants;
 pub mod state;
 pub mod window;
-pub mod startup;
 pub mod updater;
 pub mod autostart;
 pub mod tray;
@@ -13,6 +12,8 @@ pub mod tasks;
 pub mod uninstall;
 pub mod initialize;
 pub mod scheduler;
+pub mod task_scheduler;
+pub mod popup;
 pub mod runner;
 pub mod cli;
 pub mod launcher;

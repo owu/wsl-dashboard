@@ -40,13 +40,13 @@ export component AboutView inherits VerticalLayout {
                 border-radius: 8px;
                 border-width: 0px;
                 VerticalLayout {
-                    spacing: 12px;
+                    spacing: 8px;
                     padding-left: AppI18n.is-rtl ? 24px : 12px;
                     padding-right: AppI18n.is-rtl ? 12px : 24px;
-                    padding-top: 12px;
-                    padding-bottom: 8px;
+                    padding-top: 8px;
+                    padding-bottom: 6px;
                     VerticalLayout {
-                        spacing: 15px;
+                        spacing: 10px;
                         Text {
                             text: root.strings.title;
                             font-size: 14px * LayoutConstants.font-scale;
@@ -62,7 +62,7 @@ export component AboutView inherits VerticalLayout {
                             font-family: Theme.default_font;
                             color: Theme.text_secondary;
                             wrap: word-wrap;
-                            min-height: max(40px, self.preferred-height);
+                            min-height: max(30px, self.preferred-height);
                             horizontal-alignment: AppI18n.is-rtl ? right : left;
                         }
                     }
@@ -73,7 +73,7 @@ export component AboutView inherits VerticalLayout {
                     }
 
                     VerticalLayout {
-                        spacing: 20px;
+                        spacing: 14px;
                         HorizontalLayout {
                             spacing: 12px;
                             if (!AppI18n.is-rtl): Rectangle {
@@ -86,7 +86,7 @@ export component AboutView inherits VerticalLayout {
                                 }
                             }
                             VerticalLayout {
-                                spacing: 6px;
+                                spacing: 4px;
                                 HorizontalLayout {
                                     spacing: 4px;
                                     alignment: AppI18n.is-rtl ? end : start;
@@ -129,7 +129,7 @@ export component AboutView inherits VerticalLayout {
                                 }
 
                                 HorizontalLayout {
-                                    spacing: 6px;
+                                    spacing: 4px;
                                     alignment: AppI18n.is-rtl ? end : start;
 
                                     if (AppI18n.is-rtl && AppInfo.checking_update): Text {
@@ -208,7 +208,7 @@ export component AboutView inherits VerticalLayout {
                                 }
                             }
                             HorizontalLayout {
-                                spacing: 6px;
+                                spacing: 4px;
                                 alignment: AppI18n.is-rtl ? end : start;
                                 Text {
                                     text: root.strings.website + ":";
@@ -250,7 +250,7 @@ export component AboutView inherits VerticalLayout {
 
                         // Project Links Grid
                         GridLayout {
-                            spacing-vertical: 12px;
+                            spacing-vertical: 8px;
                             spacing-horizontal: 24px;
                             
                             // Row 1
@@ -454,7 +454,7 @@ export component AboutView inherits VerticalLayout {
                                 }
                             }
                             HorizontalLayout {
-                                spacing: 6px;
+                                spacing: 4px;
                                 alignment: AppI18n.is-rtl ? end : start;
                                 Text {
                                     text: root.strings.repository + ":";
@@ -544,7 +544,7 @@ export component AboutView inherits VerticalLayout {
                             }
                         }
                         VerticalLayout {
-                            spacing: 6px;
+                            spacing: 4px;
 
                             Text {
                                 text: root.strings.love;
@@ -583,8 +583,8 @@ export component AboutView inherits VerticalLayout {
                     }
 
                     VerticalLayout {
-                        spacing: 3px;
-                        padding-top: 2px;
+                        spacing: 2px;
+                        padding-top: 0px;
                         padding-bottom: 2px;
 
                         Text {
@@ -620,6 +620,50 @@ export component AboutView inherits VerticalLayout {
                                     mouse-cursor: pointer;
                                     clicked => {
                                         root.open_url(AppInfo.license_url);
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "|";
+                                font-size: 12px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                vertical-alignment: center;
+                            }
+
+                            Text {
+                                text: root.strings.privacy_policy;
+                                font-size: 12px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.accent;
+                                vertical-alignment: center;
+                                TouchArea {
+                                    mouse-cursor: pointer;
+                                    clicked => {
+                                        root.open_url(AppInfo.project_website + "/privacy/");
+                                    }
+                                }
+                            }
+
+                            Text {
+                                text: "|";
+                                font-size: 12px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                vertical-alignment: center;
+                            }
+
+                            Text {
+                                text: root.strings.terms_of_service;
+                                font-size: 12px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.accent;
+                                vertical-alignment: center;
+                                TouchArea {
+                                    mouse-cursor: pointer;
+                                    clicked => {
+                                        root.open_url(AppInfo.project_website + "/terms/");
                                     }
                                 }
                             }

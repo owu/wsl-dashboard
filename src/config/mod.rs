@@ -8,8 +8,10 @@ use tracing::{info, error};
 mod migration;
 pub mod instances;
 pub mod models;
+pub mod debug;
 
 pub use models::*;
+pub use debug::DebugConfig;
 
 // Configuration manager, responsible for loading, saving, and managing application configuration
 #[derive(Clone)]
@@ -322,6 +324,13 @@ impl ConfigManager {
         Self::save_config(&self.config_path, &mut self.config)?;
         info!("USB configuration saved successfully");
         Ok(())
+    }
+
+    // --- Debug Config ---
+
+    // Load `~/.wsldashboard/debug.toml` (best-effort, never panics).
+    pub fn load_debug_config() -> DebugConfig {
+        DebugConfig::load()
     }
 
     pub fn toggle_usb_auto_attach(&mut self, bus_id: &str, vid_pid: &str, distro: &str) -> Result<bool, Box<dyn std::error::Error + Send + Sync>> {

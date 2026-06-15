@@ -10,7 +10,12 @@ use crate::wsl::models::WslCommandResult;
 
 // Check if enough free disk space is available for compression (at least VHDX size + 2GB buffer)
 pub fn check_disk_space(vhdx_path: &str) -> WslCommandResult<bool> {
-    if let Some(parent) = Path::new(vhdx_path).parent() {
+    let clean_path = if vhdx_path.starts_with(r"\\?\") {
+        &vhdx_path[4..]
+    } else {
+        vhdx_path
+    };
+    if let Some(parent) = Path::new(clean_path).parent() {
         let drive = parent.to_string_lossy();
         if drive.len() >= 3 {
             let root = &drive[..3];
@@ -60,7 +65,18 @@ pub async fn fstrim_rootfs(executor: &WslCommandExecutor, distro_name: &str) -> 
 }
 
 // Clean up temporary files and package caches inside Linux
-pub async fn cleanup_temp_files(executor: &WslCommandExecutor, distro_name: &str, script_url: &str) -> WslCommandResult<String> {
+pub async fn cleanup_temp_files(executor: &WslCommandExecutor, distro_name: &str, script_url: &str, local_script_path: &str) -> WslCommandResult<String> {
+    if !local_script_path.is_empty() {
+        info!("Executing local cleanup script from: {}", local_script_path);
+        let wsl_cmd = format!("sh \"$(wslpath -u '{}')\"", local_script_path.replace("'", "'\\''"));
+        let result = executor.execute_command(&["-d", distro_name, "-u", "root", "-e", "sh", "-c", &wsl_cmd]).await;
+        
+        if !result.success {
+            warn!("Local cleanup script failed: {:?}", result.error);
+        }
+        return result;
+    }
+
     if script_url.is_empty() {
         info!("Compress script URL is empty, skipping cleanup for distro: {}", distro_name);
         return WslCommandResult::success("cleanup skipped (no script URL)".to_string(), None);
@@ -192,6 +208,7 @@ pub async fn compress_vhdx<F>(
     backup_first: bool, 
     enable_sparse_flag: bool,
     compress_script_url: &str,
+    local_cleanup_script: &str,
     progress_callback: F
 ) -> WslCommandResult<String> 
 where F: Fn(&str) {
@@ -231,7 +248,7 @@ where F: Fn(&str) {
 
     if cleanup_first {
         progress_callback("task.compress_cleaning");
-        let _ = cleanup_temp_files(executor, distro_name, compress_script_url).await;
+        let _ = cleanup_temp_files(executor, distro_name, compress_script_url, local_cleanup_script).await;
     }
 
     progress_callback("task.compress_fstrim");

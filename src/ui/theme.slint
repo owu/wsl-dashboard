@@ -63,6 +63,15 @@ export struct PortProxyRuleUI {
     is_active: bool,
 }
 
+export struct MessageData {
+    id: string,
+    title: string,
+    url: string,
+    msg_type: string,
+    is_read: bool,
+    create_time_text: string,
+}
+
 export struct SettingsStrings {
     language: string,
     auto_update: string,
@@ -85,6 +94,8 @@ export struct SettingsStrings {
     sparse_vhd: string,
     sparse_vhd_desc: string,
     colorful_icons: string,
+    mail_icon_always: string,
+    hide_pin_icon: string,
     stop_wsl: string,
 }
 
@@ -106,7 +117,20 @@ export struct AboutStrings {
     github: string,
     license: string,
     copyright: string,
+    privacy_policy: string,
+    terms_of_service: string,
 }
+
+export struct DonateStrings {
+    donate_link_label: string,
+    payment_methods_title: string,
+    copied: string,
+    copy_wallet: string,
+    copy_email: string,
+    scan_qr: string,
+    visit_link: string,
+}
+
 
 export global Theme {
     in property <bool> dark_mode: false;
@@ -133,6 +157,7 @@ export global Theme {
     out property <color> input_border: dark_mode ? #3E3E42 : #D9D9D9;
 
     // Icon style
+    out property <color> icon_color_pin: dark_mode ? #60a5fa : #0067C0;
     in property <bool> colorful_icons: true;
     out property <color> icon_color_navigation: colorful_icons ? (dark_mode ? #38bdf8 : #0284c7) : text_secondary;
     out property <color> icon_color_action: colorful_icons ? (dark_mode ? #94a3b8 : #475569) : text_secondary;
@@ -149,6 +174,7 @@ export global Theme {
     out property <color> icon_color_lime: colorful_icons ? (dark_mode ? #a3e635 : #65a30d) : text_secondary;
     out property <color> icon_color_orange: colorful_icons ? (dark_mode ? #fb923c : #f97316) : text_secondary;
     out property <color> icon_color_rose: colorful_icons ? (dark_mode ? #fb7185 : #e11d48) : text_secondary;
+    out property <color> icon_color_heart: colorful_icons ? #C72335 : text_secondary;
     out property <color> icon_color_violet: colorful_icons ? (dark_mode ? #a78bfa : #7c3aed) : text_secondary;
     out property <color> icon_color_emerald: colorful_icons ? (dark_mode ? #34d399 : #059669) : text_secondary;
     out property <color> icon_color_amber: colorful_icons ? (dark_mode ? #fbbf24 : #d97706) : text_secondary;
@@ -180,6 +206,7 @@ export global AppInfo {
     in property <string> announcements_url: project_repository + "/discussions";
     in property <string> talk_url: "";
     in property <string> documents_url: "";
+    in property <string> donate_url: "";
 }
 
 export global AppI18n {
@@ -187,6 +214,10 @@ export global AppI18n {
     in-out property <bool> is-rtl: false;
     in-out property <string> locale-code: "en";
     pure callback t(string, [string]) -> string;
+
+    // Language options (set from Rust, consumed by LanguageData global)
+    in-out property <[string]> language-options;
+    pure callback get-language-index(string) -> int;
 }
 
 export global LayoutConstants {
@@ -194,9 +225,17 @@ export global LayoutConstants {
     out property <length> padding-end: AppI18n.is-rtl ? 10px : 0;
     out property <LayoutAlignment> row-alignment: AppI18n.is-rtl ? LayoutAlignment.end : LayoutAlignment.start;
     // Enhanced font scaling for complex scripts:
-    // - Arabic (ar), Urdu (ur), Persian (fa), Hebrew (he): RTL, highly complex connecting scripts -> 1.35x
-    // - Hindi (hi), Bengali (bn): LTR, complex conjuncts/matras -> 1.20x
+    // - Arabic (ar), Urdu (ur), Persian (fa), Hebrew (he), Sindhi (sd): RTL, highly complex connecting scripts -> 1.35x
+    // - Hindi (hi), Bengali (bn), Telugu (te), Tamil (ta), Kannada (kn), Marathi (mr), Malayalam (ml): LTR, complex conjuncts/matras -> 1.20x
+    // - Thai (th), Burmese (my), Amharic (am): complex scripts -> 1.20x
     // - Others (en, zh, ja, ko, etc.): 1.0x
     out property <float> font-scale: 
-        (AppI18n.locale-code == "ar" || AppI18n.locale-code == "ur" || AppI18n.locale-code == "fa" || AppI18n.locale-code == "he") ? 1.35 : (AppI18n.locale-code == "hi" || AppI18n.locale-code == "bn") ? 1.20 : 1.0;
+        (AppI18n.locale-code == "ar" || AppI18n.locale-code == "ur" || 
+         AppI18n.locale-code == "fa" || AppI18n.locale-code == "he" ||
+         AppI18n.locale-code == "sd") ? 1.35 : 
+        (AppI18n.locale-code == "hi" || AppI18n.locale-code == "bn" ||
+         AppI18n.locale-code == "te" || AppI18n.locale-code == "ta" ||
+         AppI18n.locale-code == "kn" || AppI18n.locale-code == "mr" ||
+         AppI18n.locale-code == "ml" || AppI18n.locale-code == "my" ||
+         AppI18n.locale-code == "am" || AppI18n.locale-code == "th") ? 1.20 : 1.0;
 }

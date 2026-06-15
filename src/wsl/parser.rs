@@ -2,11 +2,11 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use crate::wsl::models::{WslDistro, WslStatus, WslVersion};
-use tracing::debug;
+use tracing::trace;
 
 // Parse output of wsl -l -v command to extract WSL subsystem list
 pub fn parse_distros_list(output: &str) -> Vec<WslDistro> {
-    debug!("Parsing WSL distributions list from output (length: {})", output.len());
+    trace!("Parsing WSL distributions list from output (length: {})", output.len());
     let mut distros = Vec::new();
     let lines = output.lines();
 

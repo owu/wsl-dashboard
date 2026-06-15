@@ -6,7 +6,7 @@ use std::sync::atomic::Ordering;
 use std::collections::HashMap;
 use tokio::sync::{Mutex, Notify};
 use tokio::time::Duration;
-use tracing::debug;
+use tracing::trace;
 
 use crate::wsl::command::WslCommandExecutor;
 use crate::wsl::models::{WslDistro, WslCommandResult, WslStatus};
@@ -28,6 +28,8 @@ pub struct WslDashboard {
     heavy_op_lock: Arc<Mutex<()>>,
     // Active operations per distro (DistroName -> OpName)
     active_ops: Arc<Mutex<HashMap<String, String>>>,
+    // Whether the last wsl -l -v command succeeded
+    last_command_ok: Arc<std::sync::atomic::AtomicBool>,
 }
 
 impl WslDashboard {
@@ -40,6 +42,7 @@ impl WslDashboard {
             manual_operation: Arc::new(std::sync::atomic::AtomicI32::new(0)),
             heavy_op_lock: Arc::new(Mutex::new(())),
             active_ops: Arc::new(Mutex::new(HashMap::new())),
+            last_command_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
         }
     }
 
@@ -64,6 +67,10 @@ impl WslDashboard {
         self.manual_operation.load(Ordering::SeqCst) > 0
     }
 
+    pub fn last_command_ok(&self) -> bool {
+        self.last_command_ok.load(Ordering::SeqCst)
+    }
+
     pub fn set_manual_operation(&self, value: bool) {
         if value {
             self.increment_manual_operation();
@@ -82,7 +89,7 @@ impl WslDashboard {
             // Just finished the last manual operation
             let self_clone = self.clone();
             tokio::spawn(async move {
-                debug!("All manual operations complete, performing final sync...");
+                trace!("All manual operations complete, performing final sync...");
                 let _ = self_clone.refresh_distros().await;
             });
         }
@@ -106,6 +113,7 @@ impl WslDashboard {
         // }
 
         let result = self.executor.list_distros().await;
+        self.last_command_ok.store(result.success, Ordering::SeqCst);
         if result.success {
             if let Some(distros) = result.data.clone() {
                 let mut distros_lock = self.distros.lock().await;
@@ -125,7 +133,7 @@ impl WslDashboard {
                 }
                 
                 if has_changes {
-                    tracing::debug!("WSL distribution list changed, notifying UI update");
+                    trace!("WSL distribution list changed, notifying UI update");
                     self.state_changed.notify_one();
                 }
             }
@@ -170,13 +178,13 @@ impl WslDashboard {
     pub async fn register_operation(&self, distro_name: String, op_name: String) {
         let mut ops = self.active_ops.lock().await;
         ops.insert(distro_name.clone(), op_name.clone());
-        debug!("Operation registered for '{}': {}", distro_name, op_name);
+        trace!("Operation registered for '{}': {}", distro_name, op_name);
     }
 
     pub async fn unregister_operation(&self, distro_name: &str) {
         let mut ops = self.active_ops.lock().await;
         if let Some(op) = ops.remove(distro_name) {
-            debug!("Operation unregistered for '{}': {}", distro_name, op);
+            trace!("Operation unregistered for '{}': {}", distro_name, op);
         }
     }
 
@@ -196,7 +204,7 @@ impl WslDashboard {
             }
         }
         if changed {
-            tracing::debug!("Artificially marked distro '{}' as Stopped", name);
+            tracing::trace!("Artificially marked distro '{}' as Stopped", name);
             self.state_changed.notify_one();
         }
     }
@@ -211,7 +219,7 @@ impl WslDashboard {
             }
         }
         if changed {
-            tracing::debug!("Artificially marked all distros as Stopped");
+            tracing::trace!("Artificially marked all distros as Stopped");
             self.state_changed.notify_one();
         }
     }

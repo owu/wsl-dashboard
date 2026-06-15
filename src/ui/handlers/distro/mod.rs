@@ -20,14 +20,32 @@ pub mod move_logic;
 pub mod settings_logic;
 pub mod config_logic;
 pub mod compress;
+pub mod mirror_install;
 
 pub fn sanitize_instance_name(name: &str) -> String {
-    let mut sanitized: String = name.chars()
-        .filter(|c| c.is_ascii_alphanumeric() || *c == '-' || *c == '_' || *c == '.')
-        .collect();
+    let mut sanitized = String::new();
+    let mut last_was_hyphen = false;
+    for c in name.chars() {
+        if c.is_ascii_alphanumeric() || c == '.' {
+            sanitized.push(c);
+            last_was_hyphen = false;
+        } else if c == '-' || c == '_' || c.is_whitespace() {
+            if !last_was_hyphen && !sanitized.is_empty() {
+                sanitized.push('-');
+                last_was_hyphen = true;
+            }
+        }
+    }
+    
+    while sanitized.ends_with('-') || sanitized.ends_with('.') {
+        sanitized.pop();
+    }
     
     if sanitized.len() > 25 {
         sanitized.truncate(25);
+        while sanitized.ends_with('-') || sanitized.ends_with('.') {
+            sanitized.pop();
+        }
     }
     sanitized
 }

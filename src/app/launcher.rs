@@ -4,15 +4,12 @@
 use crate::config::{ConfigManager, UserSettings};
 use crate::utils::logging::{init_logging, LoggingSystem};
 use crate::i18n;
-use std::sync::Arc;
-use std::sync::atomic::AtomicI64;
 use tracing::info;
 
 pub struct AppContext {
     pub config_manager: ConfigManager,
     pub settings: UserSettings,
     pub logging_system: LoggingSystem,
-    pub startup_ts_atomic: Arc<AtomicI64>,
 }
 
 pub async fn bootstrap(args: &[String]) -> AppContext {
@@ -51,22 +48,9 @@ pub async fn bootstrap(args: &[String]) -> AppContext {
     
     info!("[STARTUP] Mode: {}", startup_mode);
 
-    // 3.2 Startup timestamp fetching
-    let tz_for_time = if timezone.is_empty() { "UTC".to_string() } else { timezone.clone() };
-    let startup_ts_atomic = Arc::new(AtomicI64::new(0));
-    
-    let ts_atomic_inner = startup_ts_atomic.clone();
-    let _timestamp_task = tokio::task::spawn_blocking(move || {
-        let ts = crate::service::time_service::get_standard_time(&tz_for_time);
-        ts_atomic_inner.store(ts, std::sync::atomic::Ordering::SeqCst);
-        info!("[STARTUP] Async standard timestamp updated: {}", ts);
-        ts
-    });
-
     AppContext {
         config_manager,
         settings,
         logging_system,
-        startup_ts_atomic,
     }
 }
