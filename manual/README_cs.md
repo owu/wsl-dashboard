@@ -9,11 +9,11 @@ Moderní, vysoce výkonný, lehký a na paměť nenáročný panel pro správu i
 ---
 
 ```diff
-Upozornění:
+Oznámení:
 
-- Tento software není distribuován prostřednictvím Microsoft Store.
-- Jakákoli aplikace uvedená tam pod stejným názvem je neoprávněná a může být padělaná.
-- Prosím, nestahujte ji, abyste se vyhnuli potenciálním podvodům.
+- WSL Dashboard není distribuován prostřednictvím Microsoft Store.
+- Jakákoli aplikace uvedená tam pod názvem "WSL Dashboard" je neautorizovaná a může být padělaná.
+- Prosím, nestahujte ji, abyste se vyhnuli případným podvodům.
 ```
 
 ---

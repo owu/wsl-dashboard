@@ -11,9 +11,9 @@ Un panel de gestión de instancias WSL (Subsistema de Windows para Linux) modern
 ```diff
 Aviso:
 
-- Este software no se distribuye a través de Microsoft Store.
-- Cualquier aplicación listada allí con el mismo nombre no está autorizada y puede ser falsificada.
-- Por favor, no lo descargues para evitar posibles estafas.
+- WSL Dashboard no se distribuye a través de Microsoft Store.
+- Cualquier aplicación listada allí bajo el nombre "WSL Dashboard" es no autorizada y puede ser falsificada.
+- Por favor no lo descargue para evitar posibles estafas.
 ```
 
 ---

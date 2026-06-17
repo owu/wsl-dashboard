@@ -9,11 +9,11 @@ Dashboard manajemen instans WSL (Windows Subsystem for Linux) modern, berkinerja
 ---
 
 ```diff
-Wigati:
+Kabar:
 
-- Piranti lunak iki ora disuwurake liwat Microsoft Store.
-- Aplikasi kanthi jeneng sing padha ing kana yaiku piranti lunak bajakan sing ora sah.
-- Aja ndownload, supaya ora ketipu.
+- WSL Dashboard ora disebarake liwat Microsoft Store.
+- Aplikasi apa wae sing ana ing kana kanthi jeneng "WSL Dashboard" ora sah lan bisa dadi palsu.
+- Mangga aja di-download kanggo ngindhari penipuan sing bisa kedadeyan.
 ```
 
 ---

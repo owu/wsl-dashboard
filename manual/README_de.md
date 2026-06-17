@@ -11,9 +11,9 @@ Ein modernes, leistungsstarkes, leichtes und speichersparendes Dashboard zur Ver
 ```diff
 Hinweis:
 
-- Diese Software wird nicht über den Microsoft Store vertrieben.
-- Jede dort unter demselben Namen aufgeführte Anwendung ist nicht autorisiert und kann gefälscht sein.
-- Bitte laden Sie es nicht herunter, um Betrug zu vermeiden.
+- WSL Dashboard wird nicht über den Microsoft Store vertrieben.
+- Alle Anwendungen, die dort unter dem Namen "WSL Dashboard" aufgeführt sind, sind nicht autorisiert und möglicherweise gefälscht.
+- Bitte laden Sie es nicht herunter, um mögliche Betrügereien zu vermeiden.
 ```
 
 ---

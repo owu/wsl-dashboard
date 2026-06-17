@@ -11,9 +11,9 @@ Una dashboard moderna, ad alte prestazioni, leggera e con basso consumo di memor
 ```diff
 Avviso:
 
-- Questo software non è distribuito tramite Microsoft Store.
-- Qualsiasi applicazione elencata lì con lo stesso nome non è autorizzata e potrebbe essere contraffatta.
-- Si prega di non scaricarla per evitare potenziali truffe.
+- WSL Dashboard non è distribuito tramite Microsoft Store.
+- Qualsiasi applicazione elencata lì con il nome "WSL Dashboard" non è autorizzata e potrebbe essere contraffatta.
+- Si prega di non scaricarlo per evitare potenziali truffe.
 ```
 
 ---

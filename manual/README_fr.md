@@ -11,8 +11,8 @@ Un tableau de bord de gestion d'instances WSL (Windows Subsystem for Linux) mode
 ```diff
 Avertissement:
 
-- Ce logiciel n'est pas distribué via le Microsoft Store.
-- Toute application listée là-bas sous le même nom n'est pas autorisée et peut être une contrefaçon.
+- WSL Dashboard n'est pas distribué via le Microsoft Store.
+- Toute application listée là-bas sous le nom "WSL Dashboard" n'est pas autorisée et peut être une contrefaçon.
 - Veuillez ne pas le télécharger pour éviter les arnaques potentielles.
 ```
 

@@ -9,11 +9,11 @@ Nútímalegt, afkastamikið, létt og minnissparandi mælaborð fyrir WSL (Windo
 ---
 
 ```diff
-Athugið:
+Tilkynning:
 
-- Þessi hugbúnaður er ekki dreift í gegnum Microsoft Store.
-- Hvaða forrit sem skráð er þar undir sama nafni er óheimilt og gæti verið falskt.
-- Vinsamlegast ekki hlaða því niður til að forðast möguleg svindl.
+- WSL Dashboard er ekki dreift í gegnum Microsoft Store.
+- Allar forrit sem eru skráðar þar undir nafninu "WSL Dashboard" eru óheimilar og geta verið falsaðar.
+- Vinsamlegast ekki hala því niður til að forðast hugsanleg svindl.
 ```
 
 ---

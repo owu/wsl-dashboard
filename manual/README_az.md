@@ -9,11 +9,11 @@ Müasir, yüksək performanslı, yüngül və aşağı yaddaş istehlakı ilə W
 ---
 
 ```diff
-Qeyd:
+Elan:
 
-- Bu proqram Microsoft Store vasitəsilə paylanmır.
-- Burada eyni adlı tətbiqlər qeyri-qanuni pirat proqramlardır.
-- Aldanmaqdan qorunmaq üçün lütfən yükləməyin.
+- WSL Dashboard Microsoft Store vasitəsilə paylanmır.
+- Orada "WSL Dashboard" adı altında sadalanan hər hansı proqram icazəsizdir və saxta ola bilər.
+- Zəhmət olmasa, mümkün fırıldaqçılıqlardan qaçmaq üçün onu yükləməyin.
 ```
 
 ---

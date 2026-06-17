@@ -9,11 +9,11 @@ En modern, högpresterande, lättviktig och minnessnål kontrollpanel för WSL-i
 ---
 
 ```diff
-Avisering:
+Meddelande:
 
-- Denna programvara distribueras inte via Microsoft Store.
-- Alla program som listas där under samma namn är obehöriga och kan vara förfalskade.
-- Vänligen ladda inte ner den för att undvika potentiella bedrägerier.
+- WSL Dashboard distribueras inte via Microsoft Store.
+- Alla applikationer som listas där under namnet "WSL Dashboard" är oauktoriserade och kan vara förfalskade.
+- Vänligen ladda inte ner det för att undvika potentiella bedrägerier.
 ```
 
 ---

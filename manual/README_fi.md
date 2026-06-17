@@ -9,11 +9,11 @@ Moderni, suorituskykyinen, kevyt ja vähän muistia vievä WSL-instanssien (Wind
 ---
 
 ```diff
-Huomautus:
+Ilmoitus:
 
-- Tätä ohjelmistoa ei jaella Microsoft Store -palvelun kautta.
-- Mikä tahansa sovellus, joka on lueteltu siellä samalla nimellä, on luvaton ja voi olla väärennös.
-- Ole hyvä äläkä lataa sitä välttääksesi mahdollisen huijauksen.
+- WSL Dashboard:a ei jaeta Microsoft Storen kautta.
+- Mikä tahansa sovellus, joka on listattu siellä nimellä "WSL Dashboard", on luvaton ja saattaa olla väärennös.
+- Älä lataa sitä välttääksesi mahdolliset huijaukset.
 ```
 
 ---

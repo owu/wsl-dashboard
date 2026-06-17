@@ -9,11 +9,11 @@ Zamonaviy, yuqori samarali, yengil va past xotira iste'moli bilan WSL (Windows S
 ---
 
 ```diff
-Diqqat:
+E'lon:
 
-- Bu dastur Microsoft Store orqali tarqatilmaydi.
-- Bu yerda bir xil nomdagi dasturlar noqonuniy pirat dasturlardir.
-- Aldanishdan himoyalanish uchun iltimos yuklamang.
+- WSL Dashboard Microsoft Store orqali tarqatilmaydi.
+- U yerda "WSL Dashboard" nomi bilan roʻyxatga olingan har qanday dastur ruxsatsiz va soxta boʻlishi mumkin.
+- Iltimos, mumkin boʻlgan firibgarliklardan qochish uchun uni yuklab olmang.
 ```
 
 ---

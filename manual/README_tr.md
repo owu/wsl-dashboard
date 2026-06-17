@@ -9,11 +9,11 @@ Modern, yüksek performanslı, hafif ve düşük bellekli bir WSL (Linux için W
 ---
 
 ```diff
-Bilgi:
+Uyarı:
 
-- Bu yazılım Microsoft Store üzerinden dağıtılmamaktadır.
-- Aynı ad altında orada listelenen tüm uygulamalar yetkisizdir ve sahte olabilir.
-- Dolandırıcılıktan kaçınmak için lütfen indirmeyin.
+- WSL Dashboard Microsoft Store üzerinden dağıtılmaz.
+- Orada "WSL Dashboard" adı altında listelenen herhangi bir uygulama yetkisizdir ve sahte olabilir.
+- Olası dolandırıcılıklardan kaçınmak için lütfen indirmeyin.
 ```
 
 ---

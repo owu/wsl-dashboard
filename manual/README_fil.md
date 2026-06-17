@@ -8,12 +8,12 @@ Isang moderno, high-performance, magaan at mababang memory na dashboard para sa 
 
 ---
 
-```diff`
-Paalala:
+```diff
+Paunawa:
 
-- Ang software na ito ay hindi ipinamamahagi sa pamamagitan ng Microsoft Store.
-- Anumang app na may parehong pangalan na nakalista doon ay hindi awtorisado na pirated software.
-- Mangyaring huwag i-download upang maiwasan ang panloloko.
+- Ang WSL Dashboard ay hindi ipinamamahagi sa pamamagitan ng Microsoft Store.
+- Ang anumang application na nakalista doon sa pangalang "WSL Dashboard" ay hindi awtorisado at maaaring peke.
+- Mangyaring huwag itong i-download upang maiwasan ang mga posibleng pandaraya.
 ```
 
 ---

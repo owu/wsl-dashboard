@@ -11,9 +11,9 @@ Et moderne, høyytelses, lettvekts og minneeffektivt kontrollpanel for administr
 ```diff
 Merknad:
 
-- Denne programvaren distribueres ikke via Microsoft Store.
-- Enhver applikasjon som er oppført der med samme navn er uautorisert og kan være forfalsket.
-- Vennligst ikke last den ned for å unngå potensiell svindel.
+- WSL Dashboard distribueres ikke gjennom Microsoft Store.
+- Enhver applikasjon oppført der under navnet "WSL Dashboard" er uautorisert og kan være forfalsket.
+- Vennligst ikke last det ned for å unngå potensielle svindler.
 ```
 
 ---

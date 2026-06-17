@@ -11,9 +11,9 @@ Sodobna, visoko zmogljiva, lahka in pomnilniško varčna nadzorna plošča za up
 ```diff
 Obvestilo:
 
-- Ta programska oprema se ne distribuira prek Microsoft Store.
-- Katera koli aplikacija, navedena tam pod istim imenom, je nepooblaščena in je lahko ponarejena.
-- Prosimo, je ne prenašajte, da se izognete potencialni prevari.
+- WSL Dashboard se ne distribuira prek Microsoft Store.
+- Vsaka aplikacija, navedena tam pod imenom "WSL Dashboard", ni pooblaščena in je lahko ponarejena.
+- Prosimo, da je ne prenesete, da se izognete morebitnim prevaram.
 ```
 
 ---

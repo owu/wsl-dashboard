@@ -11,9 +11,9 @@ Dasbor manajemen instans WSL (Windows Subsystem for Linux) yang modern, berkiner
 ```diff
 Pemberitahuan:
 
-- Perangkat lunak ini tidak didistribusikan melalui Microsoft Store.
-- Setiap aplikasi yang terdaftar di sana dengan nama yang sama tidak sah dan mungkin palsu.
-- Harap jangan unduh untuk menghindari penipuan.
+- WSL Dashboard tidak didistribusikan melalui Microsoft Store.
+- Aplikasi apa pun yang terdaftar di sana dengan nama "WSL Dashboard" tidak sah dan mungkin palsu.
+- Harap jangan mengunduhnya untuk menghindari penipuan yang mungkin terjadi.
 ```
 
 ---

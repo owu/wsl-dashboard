@@ -11,9 +11,9 @@ Usa ka moderno, high-performance, gaan ug ubos ang memory usage nga dashboard sa
 ```diff
 Pahibalo:
 
-- Ang software wala giapod-apod pinaagi sa Microsoft Store.
-- Ang mga aplikasyon nga adunay susama nga ngalan didto mga dili awtorisado nga pirated software.
-- Ayaw i-download aron dili ka mabiktima.
+- Ang WSL Dashboard wala gipanghatag pinaagi sa Microsoft Store.
+- Bisan unsang aplikasyon nga gilista didto uban sa ngalan nga "WSL Dashboard" wala giuyonan ug mahimong peke.
+- Palihug ayaw kini i-download aron malikayan ang posibleng mga pagpanglimbong.
 ```
 
 ---

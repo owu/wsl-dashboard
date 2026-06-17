@@ -9,11 +9,11 @@ Modern, nagy teljesítményű, könnyű és alacsony memóriájú WSL (Windows S
 ---
 
 ```diff
-Figyelmeztetés:
+Értesítés:
 
-- Ez a szoftver nem terjesztjük a Microsoft Store-on keresztül.
-- Az ott ugyanolyan néven felsorolt bármely alkalmazás engedély nélküli és hamis lehet.
-- Kérjük, ne töltse le a csalás elkerülése érdekében.
+- A WSL Dashboard nem a Microsoft Store-on keresztül terjesztik.
+- A "WSL Dashboard" néven felsorolt alkalmazások nem engedélyezettek és hamisítványok lehetnek.
+- Kérjük, ne töltse le, hogy elkerülje a lehetséges csalásokat.
 ```
 
 ---

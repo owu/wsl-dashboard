@@ -9,11 +9,11 @@ Nowoczesny, wydajny, lekki i oszczędny pulpit zarządzania instancjami WSL (Win
 ---
 
 ```diff
-Uwaga:
+Ogłoszenie:
 
-- To oprogramowanie nie jest dystrybuowane za pośrednictwem Microsoft Store.
-- Wszelkie aplikacje o tej samej nazwie tam zamieszczone są nieautoryzowanym pirackim oprogramowaniem.
-- Prosimy nie pobierać, aby uniknąć oszustwa.
+- WSL Dashboard nie jest dystrybuowany za pośrednictwem Microsoft Store.
+- Wszelkie aplikacje wymienione tam pod nazwą "WSL Dashboard" są nieautoryzowane i mogą być fałszywe.
+- Proszę go nie pobierać, aby uniknąć potencjalnych oszustw.
 ```
 
 ---

@@ -9,11 +9,11 @@ Một bảng điều khiển quản lý phiên bản WSL (Windows Subsystem for 
 ---
 
 ```diff
-Lưu ý:
+Thông báo:
 
-- Phần mềm này không được phân phối qua Microsoft Store.
-- Bất kỳ ứng dụng nào cùng tên được đăng trên đó đều là phần mềm lậu không được ủy quyền.
-- Vui lòng không tải xuống để tránh bị lừa đảo.
+- WSL Dashboard không được phân phối thông qua Microsoft Store.
+- Bất kỳ ứng dụng nào được liệt kê ở đó với tên "WSL Dashboard" đều không được ủy quyền và có thể là giả mạo.
+- Vui lòng không tải xuống để tránh các trò lừa đảo tiềm ẩn.
 ```
 
 ---

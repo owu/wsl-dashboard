@@ -11,9 +11,9 @@ Dashboard sarrafa mawuyayin WSL (Windows Subsystem for Linux) na zamani, mai ing
 ```diff
 Sanarwa:
 
-- An ba rarraba wannan software ta Microsoft Store.
-- Aplikoci da ke da sunan iri ɗaya a can shirye-shirye ne na ɓoye ba tare da izini ba.
-- Kada sauke, don kada a ɓatar da ku.
+- WSL Dashboard ba a rattaba shi ta Microsoft Store ba.
+- Kowace manhaja da ke rajista a can sunan "WSL Dashboard" ba ta dace ba kuma na iya zama ƙarya.
+- Da fatan za a kada ku sauke shi don guje wata yiwuwar fashi.
 ```
 
 ---

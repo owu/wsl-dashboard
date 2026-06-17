@@ -9,11 +9,11 @@ Papan pemuka pengurusan instans WSL (Windows Subsystem for Linux) yang moden, be
 ---
 
 ```diff
-Perhatian:
+Pemberitahuan:
 
-- Perisian ini tidak diedarkan melalui Microsoft Store.
-- Sebarang aplikasi dengan nama yang sama yang disenaraikan di sana adalah perisian cetak rompak yang tidak dibenarkan.
-- Sila jangan muat turun untuk mengelakkan penipuan.
+- WSL Dashboard tidak diedarkan melalui Microsoft Store.
+- Sebarang aplikasi yang disenaraikan di sana dengan nama "WSL Dashboard" adalah tidak dibenarkan dan mungkin palsu.
+- Sila jangan memuat turunnya untuk mengelakkan penipuan yang mungkin berlaku.
 ```
 
 ---

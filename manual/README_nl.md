@@ -9,11 +9,11 @@ Een modern, krachtig, lichtgewicht en geheugenzuinig dashboard voor het beheren 
 ---
 
 ```diff
-Kennisgeving:
+Mededeling:
 
-- Deze software wordt niet gedistribueerd via de Microsoft Store.
-- Elke applicatie die daar vermeld staat onder dezelfde naam is niet geautoriseerd en kan namaak zijn.
-- Gelieve het niet te downloaden om oplichting te voorkomen.
+- WSL Dashboard wordt niet verspreid via de Microsoft Store.
+- Elke applicatie die daar onder de naam "WSL Dashboard" wordt vermeld, is niet geautoriseerd en kan vals zijn.
+- Gelieve het niet te downloaden om mogelijke oplichting te voorkomen.
 ```
 
 ---

@@ -11,9 +11,9 @@ Um painel moderno, de alto desempenho, leve e com baixo consumo de memória para
 ```diff
 Aviso:
 
-- Este software não é distribuído através do Microsoft Store.
-- Qualquer aplicativo listado lá sob o mesmo nome não é autorizado e pode ser falsificado.
-- Por favor, não o baixe para evitar possíveis fraudes.
+- WSL Dashboard não é distribuído através da Microsoft Store.
+- Qualquer aplicativo listado lá sob o nome "WSL Dashboard" é não autorizado e pode ser falsificado.
+- Por favor, não baixe para evitar possíveis golpes.
 ```
 
 ---

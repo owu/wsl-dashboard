@@ -11,8 +11,8 @@
 ```diff
 注意:
 
-- 本軟體未通過 Microsoft Store 分發。
-- 在此上架的同名應用均為未經授權的盜版軟體。
+- WSL Dashboard 未通過 Microsoft Store 分發。
+- 在此上架的名為 "WSL Dashboard" 的應用均為未經授權的盜版軟體。
 - 請勿下載，以免上當受騙。
 ```
 

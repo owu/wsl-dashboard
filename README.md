@@ -11,8 +11,8 @@ A modern, high-performance, lightweight, and low-memory WSL (Windows Subsystem f
 ```diff
 Notice:​
 
-- This software is not distributed through the Microsoft Store.
-- Any application listed there under the same name is unauthorized and may be counterfeit.
+- WSL Dashboard is not distributed through the Microsoft Store.
+- Any application listed there under the name "WSL Dashboard"​ is unauthorized and may be counterfeit.
 - Please do not download it to avoid potential scams.
 ```
 
