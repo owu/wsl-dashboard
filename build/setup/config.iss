@@ -34,7 +34,7 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 ; Request admin privileges to install for all users (default installation to C:\Program Files)
 PrivilegesRequired=admin
-PrivilegesRequiredOverridesAllowed=dialog
+PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\..\build\releases
 OutputBaseFilename=WSLDashboard.{#AppVersion}.Setup.x64
 SetupIconFile=..\..\assets\logo\logo.ico
@@ -170,6 +170,21 @@ var
   SchedulerNote1, SchedulerNote2, SchedulerNote3: TNewStaticText;
   AgreementCheckBox: TNewCheckBox;
   AgreementPrefixLabel, AgreementMiddleLabel, PrivacyPolicyLabel, TermsLabel: TLabel;
+
+function IsSilentMode(): Boolean;
+var
+  I: Integer;
+begin
+  Result := False;
+  for I := 1 to ParamCount do
+  begin
+    if (CompareText(ParamStr(I), '/SILENT') = 0) or (CompareText(ParamStr(I), '/VERYSILENT') = 0) then
+    begin
+      Result := True;
+      Exit;
+    end;
+  end;
+end;
 
 procedure CleanupLabelClick(Sender: TObject);
 begin
@@ -396,7 +411,8 @@ begin
   end;
 
   // Agreement checkbox validation on Ready to Install page
-  if CurPageID = wpReady then
+  // Skip in silent mode (/SILENT, /VERYSILENT) since UI pages are not shown
+  if (CurPageID = wpReady) and (not IsSilentMode()) then
   begin
     if not AgreementCheckBox.Checked then
     begin
@@ -481,6 +497,49 @@ begin
   end;
 end;
 
+// Check if the application is currently running
+function IsAppRunning(): Boolean;
+var
+  ResultCode: Integer;
+begin
+  Result := Exec('cmd.exe', '/c tasklist /FI "IMAGENAME eq {#AppExeName}" | find /I "{#AppExeName}"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) and (ResultCode = 0);
+end;
+
+// Terminate the running process (polling loop, wait up to MaxWaitMs milliseconds)
+function KillAppProcess(): Boolean;
+var
+  ResultCode: Integer;
+  Waited: Integer;
+  MaxWaitMs: Integer;
+  CheckIntervalMs: Integer;
+begin
+  Result := False;
+  MaxWaitMs := 5000;       // Maximum wait time: 5 seconds
+  CheckIntervalMs := 250;  // Check every 250 milliseconds
+
+  // /F = Force termination, /IM = Match by image name
+  if not Exec('cmd.exe', '/c taskkill /F /IM {#AppExeName}', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    Exit;
+
+  // Poll to check if process has exited
+  Waited := 0;
+  while Waited < MaxWaitMs do
+  begin
+    Sleep(CheckIntervalMs);
+    Waited := Waited + CheckIntervalMs;
+
+    // Process has exited, return immediately
+    if not IsAppRunning() then
+    begin
+      Result := True;
+      Exit;
+    end;
+  end;
+
+  // Check again after timeout
+  Result := not IsAppRunning();
+end;
+
 // Uninstall logic: take over all entry points to ensure only one custom popup appears
 function InitializeUninstall(): Boolean;
 var
@@ -490,7 +549,25 @@ var
   ResultCode: Integer;
   ExecParams: String;
 begin
-  Result := False; 
+  Result := False;
+
+  // Check if application is running, auto-terminate if found
+  if IsAppRunning() then
+  begin
+    if not KillAppProcess() then
+    begin
+      MsgBox(CustomMessage('FailedToCloseApp'), mbError, MB_OK);
+      Result := False;
+      Exit;
+    end;
+    // Wait for process to fully exit, then check again
+    if IsAppRunning() then
+    begin
+      MsgBox(CustomMessage('FailedToCloseApp'), mbError, MB_OK);
+      Result := False;
+      Exit;
+    end;
+  end;
 
   // If this is a silent uninstall pass-through process initiated by us, directly read parameters and allow
   if HasCmdLineParam('/PASSTHROUGH') then
@@ -499,7 +576,15 @@ begin
     Result := True;
     Exit;
   end;
-  
+
+  // Silent uninstall (winget / silent mode): skip custom dialog, proceed without cleanup
+  if IsSilentMode() then
+  begin
+    ShouldCleanup := False;
+    Result := True;
+    Exit;
+  end;
+
   // Create custom window
   UninstallForm := TForm.Create(nil);
   // Adjust to a smaller size
@@ -624,4 +709,22 @@ end;
 function InitializeSetup(): Boolean;
 begin
   Result := True;
+
+  // Check if application is running, auto-terminate if found
+  if IsAppRunning() then
+  begin
+    if not KillAppProcess() then
+    begin
+      MsgBox(CustomMessage('FailedToCloseApp'), mbError, MB_OK);
+      Result := False;
+      Exit;
+    end;
+    // Wait for process to fully exit, then check again
+    if IsAppRunning() then
+    begin
+      MsgBox(CustomMessage('FailedToCloseApp'), mbError, MB_OK);
+      Result := False;
+      Exit;
+    end;
+  end;
 end;

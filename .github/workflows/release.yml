@@ -34,6 +34,20 @@ jobs:
         with:
           toolchain: stable-x86_64-pc-windows-msvc
 
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          $ISCC = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (Test-Path $ISCC) {
+            Write-Host "Inno Setup already installed: $ISCC"
+          } else {
+            Write-Host "Downloading Inno Setup 6.7.3..."
+            Invoke-WebRequest -Uri "https://github.com/jrsoftware/issrc/releases/download/is-6_7_3/innosetup-6.7.3.exe" -OutFile "$env:TEMP\innosetup.exe"
+            Write-Host "Installing Inno Setup..."
+            & "$env:TEMP\innosetup.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-
+            Start-Sleep -Seconds 5
+          }
+
       - name: Build Release
         run: cargo build --release
 

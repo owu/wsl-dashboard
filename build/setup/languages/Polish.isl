@@ -380,3 +380,4 @@ AgreementMiddle=i
 PrivacyPolicy=Polityka prywatności
 TermsOfService=Warunki świadczenia usług
 AgreementRequired=Proszę przeczytać i zaakceptować Politykę prywatności oraz Warunki świadczenia usług przed kontynuowaniem.
+FailedToCloseApp=Nie można zamknąć {#AppName}. Proszę zamknąć ręcznie i spróbować ponownie.

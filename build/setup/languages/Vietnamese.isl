@@ -380,3 +380,4 @@ AgreementMiddle=và
 PrivacyPolicy=Chính sách bảo mật
 TermsOfService=Điều khoản dịch vụ
 AgreementRequired=Vui lòng đọc và đồng ý với Chính sách bảo mật và Điều khoản dịch vụ trước khi tiếp tục.
+FailedToCloseApp=Không thể đóng {#AppName}. Vui lòng đóng thủ công và thử lại.

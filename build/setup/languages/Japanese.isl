@@ -302,4 +302,5 @@ AgreementPrefix=読み、同意しました
 AgreementMiddle=と
 PrivacyPolicy=プライバシーポリシー
 TermsOfService=利用規約
+FailedToCloseApp={#AppName} を閉じることができませんでした。手動で閉じてから再試行してください。
 AgreementRequired=続行する前に、プライバシーポリシーと利用規約をお読みいただき、同意してください。

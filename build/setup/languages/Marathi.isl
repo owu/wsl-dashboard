@@ -380,3 +380,4 @@ AgreementMiddle=आणि
 PrivacyPolicy=गोपनीयता धोरण
 TermsOfService=सेवा अटी
 AgreementRequired=सुरू ठेवण्यापूर्वी कृपया गोपनीयता धोरण आणि सेवा अटी वाचा आणि मान्य करा.
+FailedToCloseApp={#AppName} बंद करण्यात अयशस्वी. कृपया ते मॅन्युअली बंद करा आणि पुन्हा प्रयत्न करा.

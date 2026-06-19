@@ -380,3 +380,4 @@ AgreementMiddle=at
 PrivacyPolicy=Privacy Policy
 TermsOfService=Terms of Service
 AgreementRequired=Mangyaring basahin at sumang-ayon sa Privacy Policy at Terms of Service bago magpatuloy.
+FailedToCloseApp=Hindi maisara ang {#AppName}. Mangyaring isara nang manu-mano at subukan muli.

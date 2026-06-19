@@ -303,3 +303,4 @@ AgreementMiddle=dan
 PrivacyPolicy=Kebijakan Privasi
 TermsOfService=Ketentuan Layanan
 AgreementRequired=Silakan baca dan setujui Kebijakan Privasi dan Ketentuan Layanan sebelum melanjutkan.
+FailedToCloseApp=Gagal menutup {#AppName}. Silakan tutup secara manual dan coba lagi.

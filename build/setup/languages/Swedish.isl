@@ -303,3 +303,4 @@ AgreementMiddle=och
 PrivacyPolicy=integritetspolicy
 TermsOfService=användarvillkor
 AgreementRequired=Vänligen läs och godkänn integritetspolicy och användarvillkor innan du fortsätter.
+FailedToCloseApp=Kunde inte stänga {#AppName}. Stäng det manuellt och försök igen.

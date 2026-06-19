@@ -35,15 +35,16 @@ pub fn get_active_listen_ports() -> Result<HashSet<(String, u16)>, String> {
         let line = line.trim();
         if line.is_empty() { continue; }
 
-        if line.starts_with("Address") && line.contains("Port") {
+        // Detect separator line (e.g., "--------------- ----------  --------------- ----------")
+        // This works regardless of the language of the headers
+        if line.chars().all(|c| c == '-' || c == ' ') && line.contains('-') {
             in_data_section = true;
             continue;
         }
 
         if in_data_section {
-            if line.starts_with("---") { continue; }
-            
             // Expected line: "0.0.0.0         3306        172.30.12.166   3306"
+            // Parse the first two whitespace-separated parts as address and port
             let parts: Vec<&str> = line.split_whitespace().collect();
             if parts.len() >= 2 {
                 let addr = parts[0].to_string();

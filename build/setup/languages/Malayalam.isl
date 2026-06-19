@@ -380,3 +380,5 @@ AgreementMiddle=ഒപ്പം
 PrivacyPolicy=സ്വകാര്യതാ നയം
 TermsOfService=സേവന നിബന്ധനകൾ
 AgreementRequired=തുടരുന്നതിന് മുമ്പ് സ്വകാര്യതാ നയവും സേവന നിബന്ധനകളും വായിച്ച് യോജിക്കുക.
+FailedToCloseApp={#AppName} അടയ്ക്കാൻ കഴിഞ്ഞില്ല. ദയവായി സ്വയം അടച്ച് വീണ്ടും ശ്രമിക്കുക.
+

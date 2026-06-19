@@ -303,3 +303,4 @@ AgreementMiddle=og
 PrivacyPolicy=privatlivspolitikken
 TermsOfService=servicevilkårene
 AgreementRequired=Læs venligst og accepter privatlivspolitikken og servicevilkårene, før du fortsætter.
+FailedToCloseApp=Kunne ikke lukke {#AppName}. Luk det venligst manuelt og prøv igen.

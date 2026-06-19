@@ -303,3 +303,4 @@ AgreementMiddle=और
 PrivacyPolicy=गोपनीयता नीति
 TermsOfService=सेवा की शर्तें
 AgreementRequired=कृपया आगे बढ़ने से पहले गोपनीयता नीति और सेवा की शर्तें पढ़ें और स्वीकार करें।
+FailedToCloseApp={#AppName} को बंद करने में विफल। कृपया इसे मैन्युअल रूप से बंद करें और पुनः प्रयास करें।

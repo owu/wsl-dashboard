@@ -303,3 +303,4 @@ AgreementMiddle=in
 PrivacyPolicy=Politiko zasebnosti
 TermsOfService=Pogoji uporabe
 AgreementRequired=Pred nadaljevanjem preberite in sprejmite Politiko zasebnosti in Pogoje uporabe.
+FailedToCloseApp={#AppName} ni mogoče zapreti. Prosimo, zaprite ročno in poskusite znova.

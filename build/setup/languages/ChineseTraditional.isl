@@ -303,3 +303,4 @@ AgreementMiddle=和
 PrivacyPolicy=隱私政策
 TermsOfService=服務條款
 AgreementRequired=請閱讀並同意《隱私政策》和《服務條款》後再繼續安裝。
+FailedToCloseApp=無法關閉 {#AppName}。請手動關閉程式後重試。

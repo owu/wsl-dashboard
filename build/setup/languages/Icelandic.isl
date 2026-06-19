@@ -303,3 +303,4 @@ AgreementMiddle=og
 PrivacyPolicy=persónuverndarstefnu
 TermsOfService=þjónustuskilmála
 AgreementRequired=vinsamlegast lestu og samþykktu persónuverndarstefnu og þjónustuskilmála áður en þú heldur áfram.
+FailedToCloseApp=Ekki tókst að loka {#AppName}. Vinsamlegast lokaðu því handvirkt og reyndu aftur.

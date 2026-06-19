@@ -40,13 +40,13 @@ export component AboutView inherits VerticalLayout {
                 border-radius: 8px;
                 border-width: 0px;
                 VerticalLayout {
-                    spacing: 8px;
+                    spacing: 12px;
                     padding-left: AppI18n.is-rtl ? 24px : 12px;
                     padding-right: AppI18n.is-rtl ? 12px : 24px;
                     padding-top: 8px;
                     padding-bottom: 6px;
                     VerticalLayout {
-                        spacing: 10px;
+                        spacing: 14px;
                         Text {
                             text: root.strings.title;
                             font-size: 14px * LayoutConstants.font-scale;
@@ -73,7 +73,7 @@ export component AboutView inherits VerticalLayout {
                     }
 
                     VerticalLayout {
-                        spacing: 14px;
+                        spacing: 18px;
                         HorizontalLayout {
                             spacing: 12px;
                             if (!AppI18n.is-rtl): Rectangle {
@@ -250,7 +250,7 @@ export component AboutView inherits VerticalLayout {
 
                         // Project Links Grid
                         GridLayout {
-                            spacing-vertical: 8px;
+                            spacing-vertical: 12px;
                             spacing-horizontal: 24px;
                             
                             // Row 1
@@ -583,7 +583,7 @@ export component AboutView inherits VerticalLayout {
                     }
 
                     VerticalLayout {
-                        spacing: 2px;
+                        spacing: 4px;
                         padding-top: 0px;
                         padding-bottom: 2px;
 

@@ -384,3 +384,4 @@ AgreementMiddle=和
 PrivacyPolicy=隐私政策
 TermsOfService=服务条款
 AgreementRequired=请阅读并同意《隐私政策》和《服务条款》后再继续安装。
+FailedToCloseApp=无法关闭 {#AppName}。请手动关闭程序后重试。

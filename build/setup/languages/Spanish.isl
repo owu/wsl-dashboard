@@ -303,3 +303,4 @@ AgreementMiddle=y los
 PrivacyPolicy=Política de Privacidad
 TermsOfService=Términos de Servicio
 AgreementRequired=Por favor, lea y acepte la Política de Privacidad y los Términos de Servicio antes de continuar.
+FailedToCloseApp=No se pudo cerrar {#AppName}. Por favor, ciérrelo manualmente e intente de nuevo.

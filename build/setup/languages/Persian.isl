@@ -372,3 +372,4 @@ AgreementMiddle=and
 PrivacyPolicy=Privacy Policy
 TermsOfService=Terms of Service
 AgreementRequired=Please read and agree to the Privacy Policy and Terms of Service before continuing.
+FailedToCloseApp=Failed to close {#AppName}. Please close it manually and try again.

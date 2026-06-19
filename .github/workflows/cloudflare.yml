@@ -1,9 +1,7 @@
 name: Cloudflare Deploy
-run-name: Cloudflare:${{ github.event.release.tag_name || github.event.inputs.tag_name || github.ref_name }}
+run-name: Cloudflare:${{ github.event.inputs.tag_name || github.ref_name }}
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
       tag_name:

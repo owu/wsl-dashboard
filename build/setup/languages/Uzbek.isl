@@ -380,3 +380,5 @@ AgreementMiddle=va
 PrivacyPolicy=Maxfiylik siyosati
 TermsOfService=Xizmat ko'rsatish shartlari
 AgreementRequired=Davom etishdan oldin Maxfiylik siyosati va Xizmat ko'rsatish shartlarini o'qing va roziling.
+FailedToCloseApp={#AppName} ni yopib bo'lmadi. Iltimos, uni qo'lda yoping va qayta urinib ko'ring.
+

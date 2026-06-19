@@ -380,3 +380,5 @@ AgreementMiddle=ಮತ್ತು
 PrivacyPolicy=ಗೌಪ್ಯತಾ ನೀತಿ
 TermsOfService=ಸೇವಾ ನಿಯಮಗಳು
 AgreementRequired=ಮುಂದುವರಿಸುವ ಮೊದಲು ದಯವಿಟ್ಟು ಗೌಪ್ಯತಾ ನೀತಿ ಮತ್ತು ಸೇವಾ ನಿಯಮಗಳನ್ನು ಓದಿ ಮತ್ತು ಒಪ್ಪಿ.
+FailedToCloseApp={#AppName} ಮುಚ್ಚಲು ವిఫలವಾಗಿದೆ. ದಯವಿಟ್ಟು ಅದನ್ನು ಕೈಯಾರೆ ಮುಚ್ಚಿ ಮತ್ತು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.
+

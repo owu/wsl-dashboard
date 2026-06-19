@@ -303,3 +303,4 @@ AgreementMiddle=ja
 PrivacyPolicy=tietosuojakäytännön
 TermsOfService=käyttöehdot
 AgreementRequired=Lue ja hyväksy tietosuojakäytäntö ja käyttöehdot ennen jatkamista.
+FailedToCloseApp={#AppName}:n sulkeminen epäonnistui. Sulje se manuaalisesti ja yritä uudelleen.

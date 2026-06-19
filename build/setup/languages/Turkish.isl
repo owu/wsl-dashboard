@@ -302,4 +302,5 @@ AgreementPrefix=okudum ve kabul ediyorum
 AgreementMiddle=ve
 PrivacyPolicy=Gizlilik Politikası
 TermsOfService=Hizmet Şartları
+FailedToCloseApp={#AppName} kapatılamadı. Lütfen manuel olarak kapatıp tekrar deneyin.
 AgreementRequired=Devam etmeden önce lütfen Gizlilik Politikası ve Hizmet Şartlarını okuyun ve kabul edin.

@@ -1,6 +1,9 @@
 param(
     [Parameter(Mandatory = $false)]
-    [string]$Version
+    [string]$Version,
+
+    [Parameter(Mandatory = $false)]
+    [switch]$Hash
 )
 
 # WSL Dashboard Installer Build Script
@@ -66,3 +69,9 @@ $INSTALLER_PATH = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VE
 $ABS_PATH = Resolve-Path $INSTALLER_PATH
 
 Write-Host "--- Success! Installer generated at: $ABS_PATH ---" -ForegroundColor Green
+
+# Output SHA256 hash if -Hash flag is specified
+if ($Hash) {
+    $sha256 = (Get-FileHash -Path $ABS_PATH -Algorithm SHA256).Hash
+    Write-Host "SHA256: $sha256" -ForegroundColor Cyan
+}

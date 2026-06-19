@@ -302,4 +302,5 @@ AgreementPrefix=Ich habe gelesen und stimme der
 AgreementMiddle=und den
 PrivacyPolicy=Datenschutzrichtlinie
 TermsOfService=Nutzungsbedingungen
+FailedToCloseApp={#AppName} konnte nicht geschlossen werden. Bitte schließen Sie es manuell und versuchen Sie es erneut.
 AgreementRequired=Bitte lesen und akzeptieren Sie die Datenschutzrichtlinie und die Nutzungsbedingungen, bevor Sie fortfahren.

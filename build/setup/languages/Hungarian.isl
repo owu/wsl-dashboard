@@ -303,3 +303,4 @@ AgreementMiddle=és a
 PrivacyPolicy=Adatvédelmi szabályzatot
 TermsOfService=Felhasználási feltételeket
 AgreementRequired=Kérjük, olvassa el és fogadja el az Adatvédelmi szabályzatot és a Felhasználási feltételeket, mielőtt folytatja.
+FailedToCloseApp=Nem sikerült bezárni a(z) {#AppName} programot. Kérjük, zárja be manuálisan, és próbálja újra.

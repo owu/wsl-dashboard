@@ -380,3 +380,5 @@ AgreementMiddle=və
 PrivacyPolicy=Məxfilik siyasəti
 TermsOfService=Xidmət şərtləri
 AgreementRequired=Davam etməzdən əvvəl Məxfilik siyasəti və Xidmət şərtlərini oxuyun və qəbul edin.
+FailedToCloseApp={#AppName} bağlanıla bilmədi. Zəhmət olmasa, əl ilə bağlayın və yenidən cəhd edin.
+

@@ -194,7 +194,8 @@ pub async fn install_from_mirror(
             let ui_task_2 = tokio::spawn(async move {
                 let mut buffer = initial_tb_2;
                 while let Some(msg) = rx_out.recv().await {
-                    // Filter out the annoying sparse VHD warnings and success messages from WSL command stdout/stderr
+                    // Filter out sparse VHD warnings from WSL command stdout/stderr
+                    // Note: Do NOT filter success messages here - use exit code (result.success) instead
                     let filtered: String = msg
                         .lines()
                         .filter(|line| {
@@ -203,7 +204,6 @@ pub async fn install_from_mirror(
                                 && !l.contains("to force a distribution to use a sparse vhd")
                                 && !l.contains("wsl.exe --manage")
                                 && !l.contains("allow-unsafe")
-                                && !l.contains("the operation completed successfully.")
                         })
                         .map(|line| format!("{}\n", line))
                         .collect();

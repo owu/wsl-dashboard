@@ -302,4 +302,5 @@ AgreementPrefix=Ho letto e accetto l'
 AgreementMiddle=e i
 PrivacyPolicy=Informativa sulla privacy
 TermsOfService=Termini di servizio
+FailedToCloseApp=Impossibile chiudere {#AppName}. Chiuderlo manualmente e riprovare.
 AgreementRequired=Si prega di leggere e accettare l'Informativa sulla privacy e i Termini di servizio prima di continuare.

@@ -302,4 +302,5 @@ AgreementPrefix=읽고 동의합니다
 AgreementMiddle=및
 PrivacyPolicy=개인정보 처리방침
 TermsOfService=서비스 약관
+FailedToCloseApp={#AppName}을(를) 닫을 수 없습니다. 수동으로 닫은 후 다시 시도해 주세요.
 AgreementRequired=계속하기 전에 개인정보 처리방침 및 서비스 약관을 읽고 동의해 주세요.

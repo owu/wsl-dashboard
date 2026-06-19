@@ -380,3 +380,5 @@ AgreementMiddle=ug
 PrivacyPolicy=Privacy Policy
 TermsOfService=Terms of Service
 AgreementRequired=Palihog basaha ug uyoni ang Privacy Policy ug Terms of Service sa wala pa magpadayon.
+FailedToCloseApp=Dili masira ang {#AppName}. Palihog sir-i kini pinaagi sa kamot ug sulayi pag-usab.
+

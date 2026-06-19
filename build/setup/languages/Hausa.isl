@@ -380,3 +380,5 @@ AgreementMiddle=kuma
 PrivacyPolicy=Manufar Sirri
 TermsOfService=Sharuɗɗan Sabis
 AgreementRequired=Da fatan za a karanta kuma a yarda da Manufar Sirri da Sharuɗɗan Sabis kafin ci gaba.
+FailedToCloseApp=An kasa rufe {#AppName}. Da fatan za a rufe shi da kanka kuma a sake gwadawa.
+

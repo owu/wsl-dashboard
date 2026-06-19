@@ -303,3 +303,4 @@ AgreementMiddle=a
 PrivacyPolicy=Zásady ochrany osobních údajů
 TermsOfService=Podmínky služby
 AgreementRequired=Před pokračováním si prosím přečtěte a souhlaste se Zásadami ochrany osobních údajů a Podmínkami služby.
+FailedToCloseApp=Nelze zavřít {#AppName}. Zavřete jej prosím ručně a zkuste to znovu.

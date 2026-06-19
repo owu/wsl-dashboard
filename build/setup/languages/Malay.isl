@@ -380,3 +380,4 @@ AgreementMiddle=dan
 PrivacyPolicy=Dasar Privasi
 TermsOfService=Terma Perkhidmatan
 AgreementRequired=Sila baca dan bersetuju dengan Dasar Privasi dan Terma Perkhidmatan sebelum meneruskan.
+FailedToCloseApp=Gagal menutup {#AppName}. Sila tutup secara manual dan cuba lagi.

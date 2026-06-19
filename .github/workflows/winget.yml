@@ -1,0 +1,65 @@
+name: WinGet Submit
+run-name: WinGet:${{ github.event.inputs.tag_name || github.ref_name }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag name to submit (leave empty to use selected tag/branch)'
+        required: false
+        default: ''
+      version:
+        description: 'Version to submit (e.g. 0.9.1, overrides tag parsing)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  submit-to-winget:
+    name: Submit to winget-pkgs
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get Version
+        id: get_version
+        shell: pwsh
+        run: |
+          $inputVersion = "${{ github.event.inputs.version }}"
+
+          if (-not [string]::IsNullOrWhiteSpace($inputVersion)) {
+            # Explicit version provided, use it directly
+            $version = $inputVersion
+            Write-Host "Using explicitly provided version: $version"
+          } else {
+            # Parse version from tag
+            $tag = "${{ github.event.inputs.tag_name }}"
+            if ([string]::IsNullOrWhiteSpace($tag)) {
+              $tag = "${{ github.ref_name }}"
+              Write-Host "No tag_name provided, falling back to ref_name: $tag"
+            }
+
+            if ($tag -notlike "v*") {
+               Write-Error "Invalid tag name: $tag. Must start with 'v'."
+               exit 1
+            }
+
+            $version = $tag -replace "^v", ""
+            echo "TAG=$tag" >> $env:GITHUB_OUTPUT
+            Write-Host "Tag: $tag"
+          }
+
+          echo "VERSION=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Version: $version"
+
+      - name: Submit WinGet package
+        uses: vedantmgoyal9/winget-releaser@v2
+        with:
+          identifier: Owu.WSLDashboard
+          version: ${{ steps.get_version.outputs.VERSION }}
+          installers-regex: 'WSLDashboard.*\.Setup\.x64\.exe$'
+          token: ${{ secrets.WINGET_GITHUB_TOKEN }}

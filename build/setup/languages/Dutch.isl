@@ -302,4 +302,5 @@ AgreementPrefix=Ik heb gelezen en ga akkoord met het
 AgreementMiddle=en de
 PrivacyPolicy=privacybeleid
 TermsOfService=servicevoorwaarden
+FailedToCloseApp=Kan {#AppName} niet sluiten. Sluit het handmatig en probeer het opnieuw.
 AgreementRequired=Lees en accepteer het privacybeleid en de servicevoorwaarden voordat u verdergaat.

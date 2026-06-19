@@ -380,3 +380,4 @@ AgreementMiddle=lan
 PrivacyPolicy=Kebijakan Privasi
 TermsOfService=Syarat Layanan
 AgreementRequired=Mangga waca lan setuju karo Kebijakan Privasi lan Syarat Layanan sadurunge nerusake.
+FailedToCloseApp=Gagal nutup {#AppName}. Mangga nutup kanthi manual lan coba maneh.

@@ -1,9 +1,7 @@
 name: Notification Deploy
-run-name: Notification:${{ github.event.release.tag_name || github.event.inputs.tag_name || github.ref_name }}
+run-name: Notification:${{ github.event.inputs.tag_name || github.ref_name }}
 
 on:
-  release:
-    types: [published]
   workflow_dispatch:
     inputs:
       tag_name:

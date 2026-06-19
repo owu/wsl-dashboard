@@ -380,3 +380,4 @@ AgreementMiddle=እና
 PrivacyPolicy=የግል ፖሊሲ
 TermsOfService=የአገልግሎት ውሎች
 AgreementRequired=ከመቀጠልዎ በፊት እባክዎን የግል ፖሊሲ እና የአገልግሎት ውሎችን ያንብቡና ይስማሙ።
+FailedToCloseApp={#AppName}ን መዝጋት አልተቻለም። እባክዎን በእጅ ይዝጉት እና እንደገና ይሞክሩ።
