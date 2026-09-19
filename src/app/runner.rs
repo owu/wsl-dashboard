@@ -61,6 +61,14 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
         });
     }
     
+    // Select the Skia software renderer backend (avoids GPU/OpenGL dependency issues in WSL)
+    if let Err(e) = slint::BackendSelector::new()
+        .renderer_name("skia-software".into())
+        .select()
+    {
+        error!("Failed to select skia software renderer: {e}");
+    }
+    
     // 2. Create Slint window
     let app = AppWindow::new().expect("Failed to create app");
     app.set_system_language(system_language.into());

@@ -92,10 +92,10 @@ export component SettingsDialog inherits Rectangle {
 
             // Content Container with Scrolling
             Rectangle {
-                height: min(220px, flick.viewport-height);
+                height: min(220px, flick.content-height);
                 clip: true;
                 flick := Flickable {
-                    viewport-height: content-layout.preferred-height;
+                    content-height: content-layout.preferred-height;
                     width: 100%;
                     height: 100%;
                     content-layout := VerticalLayout {
@@ -243,16 +243,16 @@ export component SettingsDialog inherits Rectangle {
                 }
 
                 // Scrollbar
-                if (flick.viewport-height > flick.height): CustomScrollbar {
+                if (flick.content-height > flick.height): CustomScrollbar {
                     x: AppI18n.is-rtl ? 0px : parent.width - 8px;
                     y: 0;
                     width: 8px;
                     height: 100%;
-                    maximum: flick.viewport-height - flick.height;
+                    maximum: flick.content-height - flick.height;
                     page_size: flick.height;
-                    value: -flick.viewport-y;
+                    value: -flick.content-y;
                     scroll_to(v) => {
-                        flick.viewport-y = -v;
+                        flick.content-y = -v;
                     }
                 }
             }

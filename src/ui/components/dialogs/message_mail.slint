@@ -267,7 +267,7 @@ export component MessageMailDialog inherits Rectangle {
             clip: true;
 
             flick := Flickable {
-                viewport-height: root.messages.length * root.item_height;
+                content-height: root.messages.length * root.item_height;
                 width: 100%;
                 height: 100%;
 
@@ -399,14 +399,14 @@ export component MessageMailDialog inherits Rectangle {
             }
 
             // Custom scrollbar
-            if flick.viewport-height > flick.height: scrollbar := CustomScrollbar {
+            if flick.content-height > flick.height: scrollbar := CustomScrollbar {
                 x: AppI18n.is-rtl ? 2px : parent.width - self.width - 2px;
                 width: 6px;
                 height: parent.height;
-                maximum: flick.viewport-height - flick.height;
+                maximum: flick.content-height - flick.height;
                 page_size: flick.height;
-                value: -flick.viewport-y;
-                scroll_to(v) => { flick.viewport-y = -v; }
+                value: -flick.content-y;
+                scroll_to(v) => { flick.content-y = -v; }
             }
         }
     }

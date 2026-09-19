@@ -1,7 +1,7 @@
 [package]
 name = "wsldashboard"
 # version: 0.10.0-alpha.1 , 0.10.0-beta.1 , 0.10.0-rc.1
-version = "0.11.0"
+version = "0.12.0-alpha.1"
 edition = "2024"
 rust-version = "1.92"
 description = "A modern, high-performance, lightweight, and low-memory WSL (Windows Subsystem for Linux) instance management dashboard."
@@ -18,7 +18,7 @@ name = "wsldashboard"
 path = "src/main.rs"
 
 [dependencies]
-slint = { version = "1.17.1", features = ["backend-winit", "renderer-skia"] }
+slint = { version = "1.18.0", features = ["backend-winit", "renderer-skia"] }
 tokio = { version = "1.52.3", features = ["rt-multi-thread", "macros", "sync", "time", "process", "io-util", "fs", "net"] }
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter", "fmt", "registry"] }
@@ -54,7 +54,7 @@ md5 = "0.8.1"
 dhat-heap = ["dhat"]
 
 [build-dependencies]
-slint-build = "1.17.1"
+slint-build = "1.18.0"
 embed-resource = "3.0.11"
 image = "0.25.10"
 toml = "1.1"

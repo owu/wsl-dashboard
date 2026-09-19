@@ -128,7 +128,7 @@ export component CustomComboBox inherits Rectangle {
                 y: 1px;
                 width: parent.width - 2px;
                 height: parent.height - 2px;
-                viewport-height: root.model.length * 32px;
+                content-height: root.model.length * 32px;
                 interactive: true;
                 VerticalLayout {
                     padding: 0;
@@ -161,16 +161,16 @@ export component CustomComboBox inherits Rectangle {
             }
 
             // Scrollbar - connected to flick
-            if (flick.viewport-height > self.height - 2px): CustomScrollbar {
+            if (flick.content-height > self.height - 2px): CustomScrollbar {
                 x: AppI18n.is-rtl ? 2px : parent.width - 8px;
                 y: 1px;
                 width: 6px;
                 height: parent.height - 2px;
-                maximum: flick.viewport-height - flick.height;
+                maximum: flick.content-height - flick.height;
                 page_size: flick.height;
-                value: -flick.viewport-y;
+                value: -flick.content-y;
                 scroll_to(v) => {
-                    flick.viewport-y = -v;
+                    flick.content-y = -v;
                 }
             }
         }

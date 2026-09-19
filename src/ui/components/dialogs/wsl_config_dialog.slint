@@ -281,7 +281,7 @@ export component WslConfigDialog inherits Rectangle {
                     width: 100%;
                     height: 100%;
                     flick := Flickable {
-                        viewport-height: content-layout.preferred-height;
+                        content-height: content-layout.preferred-height;
                         width: 100%;
                         height: 100%;
                         content-layout := VerticalLayout {
@@ -545,16 +545,16 @@ export component WslConfigDialog inherits Rectangle {
                     }
 
                     // Scrollbar
-                    if (flick.viewport-height > flick.height): CustomScrollbar {
+                    if (flick.content-height > flick.height): CustomScrollbar {
                         x: AppI18n.is-rtl ? 0px : parent.width - 8px;
                         y: 0;
                         width: 8px;
                         height: 100%;
-                        maximum: flick.viewport-height - flick.height;
+                        maximum: flick.content-height - flick.height;
                         page_size: flick.height;
-                        value: -flick.viewport-y;
+                        value: -flick.content-y;
                         scroll_to(v) => {
-                            flick.viewport-y = -v;
+                            flick.content-y = -v;
                         }
                     }
                 }
@@ -567,7 +567,7 @@ export component WslConfigDialog inherits Rectangle {
                     background: Theme.dark_mode ? #1e1e1e : #f5f5f5;
                     border-radius: 4px;
                     preview-flick := Flickable {
-                        viewport-height: preview-text.preferred-height + 24px;
+                        content-height: preview-text.preferred-height + 24px;
                         width: 100%;
                         height: 100%;
                         preview-text := Text {
@@ -582,16 +582,16 @@ export component WslConfigDialog inherits Rectangle {
                         }
                     }
 
-                    if (preview-flick.viewport-height > preview-flick.height): CustomScrollbar {
+                    if (preview-flick.content-height > preview-flick.height): CustomScrollbar {
                         x: AppI18n.is-rtl ? 0px : parent.width - 8px;
                         y: 0;
                         width: 8px;
                         height: 100%;
-                        maximum: preview-flick.viewport-height - preview-flick.height;
+                        maximum: preview-flick.content-height - preview-flick.height;
                         page_size: preview-flick.height;
-                        value: -preview-flick.viewport-y;
+                        value: -preview-flick.content-y;
                         scroll_to(v) => {
-                            preview-flick.viewport-y = -v;
+                            preview-flick.content-y = -v;
                         }
                     }
                 }

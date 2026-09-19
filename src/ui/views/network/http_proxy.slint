@@ -35,7 +35,7 @@ export component HttpProxyView inherits Rectangle {
             clip: true;
 
             Flickable {
-                viewport-height: proxy_content.preferred-height;
+                content-height: proxy_content.preferred-height;
                 proxy_content := VerticalLayout {
                     padding-left: AppI18n.is-rtl ? 16px : 4px;
                     padding-right: AppI18n.is-rtl ? 4px : 16px;

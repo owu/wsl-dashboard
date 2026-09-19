@@ -34,7 +34,7 @@ export component PortForwardingView inherits Rectangle {
             clip: true;
 
             flick := Flickable {
-                viewport-height: container.preferred-height;
+                content-height: container.preferred-height;
                 width: parent.width;
                 height: 100%;
 
@@ -114,17 +114,17 @@ export component PortForwardingView inherits Rectangle {
             }
 
             CustomScrollbar {
-                opacity: (flick.viewport-height > flick.height) ? 1 : 0;
-                visible: flick.viewport-height > flick.height;
+                opacity: (flick.content-height > flick.height) ? 1 : 0;
+                visible: flick.content-height > flick.height;
                 x: AppI18n.is-rtl ? 2px : parent.width - 8px;
                 y: 0;
                 width: 8px;
                 height: 100%;
-                maximum: flick.viewport-height - flick.height;
+                maximum: flick.content-height - flick.height;
                 page_size: flick.height;
-                value: -flick.viewport-y;
+                value: -flick.content-y;
                 scroll_to(v) => {
-                    flick.viewport-y = -v;
+                    flick.content-y = -v;
                 }
             }
         }

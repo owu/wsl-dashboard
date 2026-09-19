@@ -192,7 +192,7 @@ export component SettingsView inherits Rectangle {
             if (root.active_tab == 0): Rectangle {
                 clip: true;
                 flickable-general := Flickable {
-                    viewport-height: general-layout.preferred-height; width: parent.width; height: 100%;
+                    content-height: general-layout.preferred-height; width: parent.width; height: 100%;
                     general-layout := VerticalLayout {
                         padding-left: AppI18n.is-rtl ? 16px : 4px; padding-right: AppI18n.is-rtl ? 4px : 16px; padding-top: 4px; padding-bottom: 4px;
                         GeneralSettingsSection {
@@ -208,17 +208,17 @@ export component SettingsView inherits Rectangle {
                         }
                     }
                 }
-                if (flickable-general.viewport-height > flickable-general.height): CustomScrollbar {
+                if (flickable-general.content-height > flickable-general.height): CustomScrollbar {
                     x: AppI18n.is-rtl ? 4px : parent.width - 10px; y: 0; width: 8px; height: 100%;
-                    maximum: flickable-general.viewport-height - flickable-general.height; page_size: flickable-general.height;
-                    value: -flickable-general.viewport-y; scroll_to(v) => { flickable-general.viewport-y = -v; }
+                    maximum: flickable-general.content-height - flickable-general.height; page_size: flickable-general.height;
+                    value: -flickable-general.content-y; scroll_to(v) => { flickable-general.content-y = -v; }
                 }
             }
             
             if (root.active_tab == 1): Rectangle {
                 clip: true;
                 flickable-advanced := Flickable {
-                    viewport-height: advanced-layout.preferred-height; width: parent.width; height: 100%;
+                    content-height: advanced-layout.preferred-height; width: parent.width; height: 100%;
                     advanced-layout := VerticalLayout {
                         padding-left: AppI18n.is-rtl ? 16px : 4px; padding-right: AppI18n.is-rtl ? 4px : 16px; padding-top: 4px; padding-bottom: 4px;
                         AdvancedSettingsSection {
@@ -237,17 +237,17 @@ export component SettingsView inherits Rectangle {
                         }
                     }
                 }
-                if (flickable-advanced.viewport-height > flickable-advanced.height): CustomScrollbar {
+                if (flickable-advanced.content-height > flickable-advanced.height): CustomScrollbar {
                     x: AppI18n.is-rtl ? 4px : parent.width - 10px; y: 0; width: 8px; height: 100%;
-                    maximum: flickable-advanced.viewport-height - flickable-advanced.height; page_size: flickable-advanced.height;
-                    value: -flickable-advanced.viewport-y; scroll_to(v) => { flickable-advanced.viewport-y = -v; }
+                    maximum: flickable-advanced.content-height - flickable-advanced.height; page_size: flickable-advanced.height;
+                    value: -flickable-advanced.content-y; scroll_to(v) => { flickable-advanced.content-y = -v; }
                 }
             }
             
             if (root.active_tab == 2): Rectangle {
                 clip: true;
                 flickable-interface := Flickable {
-                    viewport-height: interface-layout.preferred-height; width: parent.width; height: 100%;
+                    content-height: interface-layout.preferred-height; width: parent.width; height: 100%;
                     interface-layout := VerticalLayout {
                         padding-left: AppI18n.is-rtl ? 16px : 4px; padding-right: AppI18n.is-rtl ? 4px : 16px; padding-top: 4px; padding-bottom: 4px;
                         InterfaceSettingsSection {
@@ -268,10 +268,10 @@ export component SettingsView inherits Rectangle {
                         }
                     }
                 }
-                if (flickable-interface.viewport-height > flickable-interface.height): CustomScrollbar {
+                if (flickable-interface.content-height > flickable-interface.height): CustomScrollbar {
                     x: AppI18n.is-rtl ? 4px : parent.width - 10px; y: 0; width: 8px; height: 100%;
-                    maximum: flickable-interface.viewport-height - flickable-interface.height; page_size: flickable-interface.height;
-                    value: -flickable-interface.viewport-y; scroll_to(v) => { flickable-interface.viewport-y = -v; }
+                    maximum: flickable-interface.content-height - flickable-interface.height; page_size: flickable-interface.height;
+                    value: -flickable-interface.content-y; scroll_to(v) => { flickable-interface.content-y = -v; }
                 }
             }
         }
