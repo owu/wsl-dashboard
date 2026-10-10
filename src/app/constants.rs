@@ -51,9 +51,6 @@ pub const PROJECT_DOCS: &str = "https://docs.wslui.com";
 #[allow(dead_code)]
 pub const API1_URL: &str = "https://api1.wslui.com";
 
-#[allow(dead_code)]
-pub const API2_URL: &str = "https://api2.wslui.com";
-
 // Compatibility of Chinese and Japanese character display on Western language operating systems
 // Font constants
 #[allow(dead_code)]

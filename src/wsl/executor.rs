@@ -42,6 +42,17 @@ impl WslCommandExecutor {
 
     // Execute WSL commands asynchronously
     pub async fn execute_command(&self, args: &[&str]) -> WslCommandResult<String> {
+        self.execute_command_with_timeout(args, None).await
+    }
+
+    // Execute a WSL command with an optional override for the read-operation timeout.
+    // `read_timeout` only applies to read ops (non-write, non-heavy);
+    // write ops (45s) and heavy ops (30m) keep their own fixed timeouts.
+    pub async fn execute_command_with_timeout(
+        &self,
+        args: &[&str],
+        read_timeout: Option<std::time::Duration>,
+    ) -> WslCommandResult<String> {
         // Convert args to owned string vector for use in closure
         let args_owned: Vec<String> = args.iter().map(|&s| s.to_string()).collect();
         let command_str = format!("wsl {}", args_owned.join(" "));
@@ -150,7 +161,7 @@ impl WslCommandExecutor {
         } else if is_write_op {
             std::time::Duration::from_secs(45)   // 45 seconds for normal write operations
         } else {
-            std::time::Duration::from_secs(10)   // 10 seconds for read operations
+            read_timeout.unwrap_or(std::time::Duration::from_secs(10)) // 10s default for read operations
         };
 
         if is_heavy_op {
@@ -375,9 +386,31 @@ impl WslCommandExecutor {
         if path == "~" {
             return true;
         }
+        // `-e` executes the binary directly without a shell, so `~` is never
+        // expanded and "~/xxx" would be checked as a literal relative path.
+        // Resolve it against the distro user's home directory first.
+        let resolved = if let Some(rest) = path.strip_prefix("~/") {
+            match self.resolve_home_dir(distro_name).await {
+                Some(home) => format!("{}/{}", home.trim_end_matches('/'), rest),
+                None => return false,
+            }
+        } else {
+            path.to_string()
+        };
         // wsl -d distro -e test -d path
-        let result = self.execute_command(&["-d", distro_name, "-e", "test", "-d", path]).await;
+        let result = self.execute_command(&["-d", distro_name, "-e", "test", "-d", &resolved]).await;
         result.success
+    }
+
+    // Get the home directory of the distro's default user (same user that
+    // `wsl --cd ~` resolves against when launching the terminal).
+    async fn resolve_home_dir(&self, distro_name: &str) -> Option<String> {
+        let result = self.execute_command(&["-d", distro_name, "-e", "sh", "-c", "printf %s \"$HOME\""]).await;
+        if !result.success {
+            return None;
+        }
+        let home = result.output.trim().to_string();
+        if home.is_empty() { None } else { Some(home) }
     }
 
     pub async fn check_file_executable(&self, distro_name: &str, path: &str) -> (bool, bool) {

@@ -266,7 +266,7 @@ Không cần cài đặt, ứng dụng là chương trình di động một tệ
      > Script xây dựng yêu cầu toolchain `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

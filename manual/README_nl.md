@@ -266,7 +266,7 @@ Zorg ervoor dat de Rust-toolchain (Rust 1.92 of nieuwer) is geïnstalleerd.
      > Het build-script vereist de `x86_64-pc-windows-msvc` toolchain.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

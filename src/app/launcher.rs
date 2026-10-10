@@ -14,7 +14,7 @@ pub struct AppContext {
 
 pub async fn bootstrap(args: &[String]) -> AppContext {
     // 1. Initialize configuration manager first
-    let config_manager = ConfigManager::new().await;
+    let mut config_manager = ConfigManager::new().await;
     let settings = config_manager.get_settings().clone();
 
     // 2. Load i18n based on settings
@@ -31,7 +31,20 @@ pub async fn bootstrap(args: &[String]) -> AppContext {
     let timezone = config_manager.get_config().system.timezone.clone();
     let logging_system = init_logging(&initial_logs_location, log_level, &timezone);
 
-    // 3.1 Log startup mode
+    // 3.1 Generate/persist device-id AFTER logging is initialized,
+    //     otherwise ConfigManager logs would be silently dropped.
+    config_manager.ensure_device_id().await;
+
+    // 3.2 Fill global API request metadata after device-id is ensured,
+    //        so all subsequent wslui API requests carry version/language/device-id headers.
+    let cfg = config_manager.get_config();
+    crate::api::client::set_request_meta(crate::api::client::RequestMeta {
+        app_version: cfg.application.app_version.clone(),
+        system_language: cfg.system.system_language.clone(),
+        device_id: cfg.application.device_id.clone(),
+    });
+
+    // 3.3 Log startup mode
     let modes = [
         ("/scheduler", vec!["/scheduler"]),
         ("/silent", vec!["/silent"]),

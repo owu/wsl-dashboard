@@ -134,6 +134,7 @@ export component ModalManager inherits Rectangle {
     in property <string> settings_target_name: "";
     in-out property <string> settings_terminal_dir: "~";
     in-out property <string> settings_vscode_dir: "/home";
+    in-out property <string> settings_distro_notes: "";
     in-out property <bool> settings_is_default: false;
     in-out property <bool> settings_lock_default: false;
     in-out property <bool> settings_autostart: false;
@@ -141,6 +142,7 @@ export component ModalManager inherits Rectangle {
     in property <string> settings_startup_script_url: "";
     in property <string> settings_terminal_dir_error: "";
     in property <string> settings_vscode_dir_error: "";
+    in property <string> settings_distro_notes_error: "";
     in property <string> settings_startup_script_error: "";
     in property <string> settings_default_error: "";
     in property <bool> settings_is_task_exists: true;
@@ -227,7 +229,7 @@ export component ModalManager inherits Rectangle {
     callback cancel_install_warn();
     callback close_expire();
     callback close_information();
-    callback confirm_settings(string, string, string, bool, bool, string, bool);
+    callback confirm_settings(string, string, string, string, bool, bool, string, bool);
     callback close_settings();
     callback close_rootfs_help();
     callback close_vscode_startup();
@@ -515,6 +517,7 @@ export component ModalManager inherits Rectangle {
         distro_name: settings_target_name;
         terminal_dir <=> settings_terminal_dir;
         vscode_dir <=> settings_vscode_dir;
+        distro_notes <=> settings_distro_notes;
         is_default <=> settings_is_default;
         lock_default: settings_lock_default;
         autostart <=> settings_autostart;
@@ -522,6 +525,7 @@ export component ModalManager inherits Rectangle {
         startup_script_url: settings_startup_script_url;
         terminal_dir_error: settings_terminal_dir_error;
         vscode_dir_error: settings_vscode_dir_error;
+        distro_notes_error: settings_distro_notes_error;
         startup_script_error: settings_startup_script_error;
         default_error: settings_default_error;
         is_task_exists: settings_is_task_exists;
@@ -530,7 +534,7 @@ export component ModalManager inherits Rectangle {
             root.open_url(url);
         }
         save => {
-            root.confirm_settings(root.settings_target_name, root.settings_terminal_dir, root.settings_vscode_dir, root.settings_is_default, root.settings_autostart, root.settings_startup_script, root.settings_terminal_proxy);
+            root.confirm_settings(root.settings_target_name, root.settings_terminal_dir, root.settings_vscode_dir, root.settings_distro_notes, root.settings_is_default, root.settings_autostart, root.settings_startup_script, root.settings_terminal_proxy);
         }
         close => {
             root.close_settings();

@@ -266,7 +266,7 @@ For more information, visit the [WinGet community repository](https://github.com
      > اسکریپت بیلد به toolchain `x86_64-pc-windows-msvc` نیاز دارد.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

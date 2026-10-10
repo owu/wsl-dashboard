@@ -266,7 +266,7 @@ Rust ツールチェーン (Rust 1.92+ 以降) がインストールされてい
      > ビルドスクリプトには `x86_64-pc-windows-msvc` ツールチェーンが必要です。
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

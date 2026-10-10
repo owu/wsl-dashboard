@@ -18,9 +18,9 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let name = distro_name.to_string();
         
         tokio::spawn(async move {
-            let (executor, debug_cleanup) = {
+            let (executor, debug_cleanup, backup_dir) = {
                 let state = as_ptr.lock().await;
-                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone())
+                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone(), state.config_manager.get_settings().backup_location.clone())
             };
             
             // Get VHDX info
@@ -77,10 +77,15 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                         }
                     }
                     
-                    let mut b_path = if base_path.is_dir() {
-                        base_path.join(format!("{}.tar", name)).to_string_lossy().to_string()
+                    let mut b_path = if backup_dir.trim().is_empty() {
+                        if base_path.is_dir() {
+                            base_path.join(format!("{}.tar", name)).to_string_lossy().to_string()
+                        } else {
+                            format!("{}.tar", base_path.display())
+                        }
                     } else {
-                        format!("{}.tar", base_path.display())
+                        let _ = std::fs::create_dir_all(&backup_dir);
+                        Path::new(&backup_dir).join(format!("{}.tar", name)).to_string_lossy().to_string()
                     };
                     if b_path.starts_with(r"\\?\") {
                         b_path = b_path[4..].to_string();
@@ -144,10 +149,10 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let ah_task = app_handle.clone();
         tokio::spawn(async move {
             let _guard = crate::ui::data::BusyGuard::new();
-            let (executor, debug_cleanup) = {
+            let (executor, debug_cleanup, backup_dir) = {
                 let state = as_ptr.lock().await;
                 state.wsl_dashboard.mark_distro_stopped(&name).await;
-                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone())
+                (state.wsl_dashboard.executor().clone(), state.debug_config.distro.cleanup_script.clone(), state.config_manager.get_settings().backup_location.clone())
             };
 
             if !debug_cleanup.is_empty() {
@@ -178,7 +183,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 });
             };
 
-            let result = compress::compress_vhdx(&executor, &name, cleanup, backup, enable_sparse, &url, &debug_cleanup, progress_callback).await;
+            let result = compress::compress_vhdx(&executor, &name, cleanup, backup, enable_sparse, &url, &debug_cleanup, &backup_dir, progress_callback).await;
 
             
             let name_inner = name.clone();

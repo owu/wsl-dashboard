@@ -266,7 +266,7 @@ Rust ٽول چين (Rust 1.92+ يا نئين ورزن) انسٽال آهي تي 
      > بلڊ اسڪرپٽ کي `x86_64-pc-windows-msvc` ٽول چين جي ضرورت آهي۔
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

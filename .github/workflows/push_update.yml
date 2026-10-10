@@ -1,0 +1,63 @@
+name: 4. Push Update
+run-name: Push Update
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  push-update:
+    name: Push Update
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate target repository secret
+        shell: bash
+        env:
+          PUSH_UPDATE_REPO: ${{ secrets.PUSH_UPDATE_REPO }}
+        run: |
+          if [ -z "$PUSH_UPDATE_REPO" ]; then
+            echo "::error::Repository secret 'PUSH_UPDATE_REPO' is not set. Please configure it in repository Settings -> Secrets and variables -> Actions -> Repository secrets."
+            exit 1
+          fi
+          echo "Target repository: $PUSH_UPDATE_REPO"
+
+      - name: Checkout wsl-dashboard
+        uses: actions/checkout@v4
+
+      - name: Prepare Update Files
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          .\build\actions\push_update.ps1 -OutputDir "update_files" -Token $env:GITHUB_TOKEN
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.PUSH_UPDATE_REPO }}
+          ssh-key: ${{ secrets.PUSH_UPDATE_REPO_DEPLOY_KEY }}
+          path: target_repo
+
+      - name: Copy files to repository root
+        shell: bash
+        run: |
+          mkdir -p target_repo/common/v1/releases
+          cp update_files/common/v1/releases/latest target_repo/common/v1/releases/latest
+          cp update_files/common/v1/releases/version target_repo/common/v1/releases/version
+
+      - name: Commit and push
+        shell: bash
+        run: |
+          cd target_repo
+          git config user.name "github-actions[bot]"
+          git config user.email "owu[bot]@users.noreply.github.com"
+          git add common/v1/releases/latest common/v1/releases/version
+          if git diff --cached --quiet; then
+            echo "No changes detected, skipping commit and push."
+          else
+            git commit -m "Push Update"
+            git push origin HEAD
+          fi

@@ -266,7 +266,7 @@ Rust 툴체인(Rust 1.92 이상)이 설치되어 있는지 확인하세요.
      > 빌드 스크립트는 `x86_64-pc-windows-msvc` 툴체인이 필요합니다.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

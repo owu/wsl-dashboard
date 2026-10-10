@@ -13,12 +13,18 @@ pub async fn perform_save_settings(
     name: String,
     terminal_dir: String,
     vscode_dir: String,
+    distro_notes: String,
     is_default: bool,
     autostart: bool,
     startup_script: String,
     terminal_proxy: bool,
 ) {
     info!("Operation: Save settings - {}", name);
+
+    // Normalize user input: strip accidental leading/trailing whitespace so
+    // both the existence check and the persisted value use the same path.
+    let terminal_dir = terminal_dir.trim().to_string();
+    let vscode_dir = vscode_dir.trim().to_string();
 
     let executor = {
         let lock_timeout = std::time::Duration::from_millis(500);
@@ -58,6 +64,13 @@ pub async fn perform_save_settings(
             app.set_settings_vscode_dir_error("".into());
         }
 
+        if distro_notes.chars().count() > 24 {
+            app.set_settings_distro_notes_error(crate::i18n::t("dialog.distro_notes_error").into());
+            has_error = true;
+        } else {
+            app.set_settings_distro_notes_error("".into());
+        }
+
         if autostart && !startup_script.trim().is_empty() {
             let startup_script_trimmed = startup_script.trim();
             if startup_script_trimmed == crate::app::WSL_INIT_SCRIPT {
@@ -92,6 +105,7 @@ pub async fn perform_save_settings(
     let config = crate::config::DistroInstanceConfig {
         terminal_dir,
         vscode_dir,
+        distro_notes,
         auto_startup: autostart,
         startup_script: startup_script.clone(),
         terminal_proxy,

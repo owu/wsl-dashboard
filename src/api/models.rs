@@ -157,6 +157,32 @@ pub struct MirrorListResponse {
     #[allow(dead_code)]
     pub update_time: String,
     pub distros: Vec<DistroInfo>,
+    // Mirror list used on the ARM64 platform (sibling of `distros`; choose one based on the OS platform).
+    #[serde(default)]
+    pub mirrors: Vec<DistroInfo>,
+}
+
+impl MirrorListResponse {
+    // Choose the mirror list based on the OS platform:
+    // - OS is arm64: use `mirrors`
+    // - otherwise (x64 or unknown, default): use `distros`
+    //
+    // Also logs the detected platform and the chosen array for debugging.
+    pub fn select_distros(mut self) -> Vec<DistroInfo> {
+        let os_arch = crate::utils::machine::os_arch();
+        let (array_name, list) = if os_arch == crate::utils::machine::Arch::Arm64 {
+            ("mirrors", std::mem::take(&mut self.mirrors))
+        } else {
+            ("distros", std::mem::take(&mut self.distros))
+        };
+        tracing::info!(
+            "MirrorListResponse: os_arch={} -> using '{}' array ({} items)",
+            os_arch.as_str(),
+            array_name,
+            list.len()
+        );
+        list
+    }
 }
 
 // 6. wslui_helper_donate data structure
@@ -385,4 +411,13 @@ pub struct MountDiskLink {
 pub struct HelperMountDiskData {
     pub mount_disk: MountDiskLink,
 }
+
+// ============================================================
+// 11. wslui_utils_ping data structure
+// ============================================================
+
+// Data field of the utils ping API (currently an empty object: {})
+#[allow(dead_code)]
+#[derive(Debug, Deserialize, Clone, Default)]
+pub struct UtilsPingData {}
 

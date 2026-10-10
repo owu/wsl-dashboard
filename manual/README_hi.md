@@ -266,7 +266,7 @@ winget install Owu.WSLDashboard
      > बिल्ड स्क्रिप्ट के लिए `x86_64-pc-windows-msvc` टूलचेन की आवश्यकता होती है।
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

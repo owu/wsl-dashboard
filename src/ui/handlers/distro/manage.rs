@@ -384,6 +384,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                     app.set_settings_lock_default(is_default);
                     app.set_settings_terminal_dir(instance_config.terminal_dir.into());
                     app.set_settings_vscode_dir(instance_config.vscode_dir.into());
+                    app.set_settings_distro_notes(instance_config.distro_notes.into());
                     app.set_settings_startup_script(instance_config.startup_script.into());
                     app.set_settings_terminal_proxy(instance_config.terminal_proxy);
                     let is_task_exists = crate::network::scheduler::check_task_exists();
@@ -391,6 +392,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                     app.set_settings_is_task_exists(is_task_exists);
                     app.set_settings_terminal_dir_error("".into());
                     app.set_settings_vscode_dir_error("".into());
+                    app.set_settings_distro_notes_error("".into());
                     app.set_settings_startup_script_error("".into());
                     app.set_settings_default_error("".into());
                     app.set_settings_enable_sparse(false);
@@ -433,16 +435,17 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
     {
         let ah_outer = app_handle.clone();
         let as_outer = app_state.clone();
-        app.on_confirm_distro_settings(move |name, terminal_dir, vscode_dir, is_default, autostart, startup_script, terminal_proxy| {
+        app.on_confirm_distro_settings(move |name, terminal_dir, vscode_dir, distro_notes, is_default, autostart, startup_script, terminal_proxy| {
             let ah = ah_outer.clone();
             let as_ptr = as_outer.clone();
             let name = name.to_string();
             let terminal_dir = terminal_dir.to_string();
             let vscode_dir = vscode_dir.to_string();
+            let distro_notes = distro_notes.to_string();
             let startup_script = startup_script.to_string();
 
             let _ = slint::spawn_local(async move {
-                super::settings_logic::perform_save_settings(ah, as_ptr, name, terminal_dir, vscode_dir, is_default, autostart, startup_script, terminal_proxy).await;
+                super::settings_logic::perform_save_settings(ah, as_ptr, name, terminal_dir, vscode_dir, distro_notes, is_default, autostart, startup_script, terminal_proxy).await;
             });
         });
     }

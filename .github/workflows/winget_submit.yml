@@ -1,4 +1,4 @@
-name: WinGet Submit
+name: 6. WinGet Submit
 run-name: WinGet:${{ github.event.inputs.tag_name || github.ref_name }}
 
 on:
@@ -56,16 +56,22 @@ jobs:
           echo "VERSION=$version" >> $env:GITHUB_OUTPUT
           Write-Host "Version: $version"
 
-      - name: Download installer
+      - name: Download installers
         shell: pwsh
         run: |
           $version = "${{ steps.get_version.outputs.VERSION }}"
-          $url = "https://github.com/owu/wsl-dashboard/releases/download/v$version/WSLDashboard.$version.Setup.x64.exe"
-          $dest = "build\releases\WSLDashboard.$version.Setup.x64.exe"
-          New-Item -ItemType Directory -Path (Split-Path $dest) -Force | Out-Null
-          Write-Host "Downloading installer from: $url"
-          Invoke-WebRequest -Uri $url -OutFile $dest
-          Write-Host "Downloaded to: $dest"
+          $files = @(
+            "WSLDashboard.$version.Setup.x64.exe",
+            "WSLDashboard.$version.Setup.arm64.exe"
+          )
+          foreach ($file in $files) {
+            $url = "https://github.com/owu/wsl-dashboard/releases/download/v$version/$file"
+            $dest = "build\releases\$file"
+            New-Item -ItemType Directory -Path (Split-Path $dest) -Force | Out-Null
+            Write-Host "Downloading installer from: $url"
+            Invoke-WebRequest -Uri $url -OutFile $dest
+            Write-Host "Downloaded to: $dest"
+          }
 
       - name: Generate winget manifests
         shell: pwsh

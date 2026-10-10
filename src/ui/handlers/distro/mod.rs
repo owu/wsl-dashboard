@@ -146,10 +146,10 @@ pub async fn resolve_temp_path(
     prefix: &str,
     extension: &str,
 ) -> (std::path::PathBuf, String) {
-    let (config_temp, distro_loc) = {
+    let (config_temp, backup_loc) = {
         let state = as_ptr.lock().await;
         let settings = state.config_manager.get_settings();
-        (settings.temp_location.clone(), settings.distro_location.clone())
+        (settings.temp_location.clone(), settings.backup_location.clone())
     };
 
     // 1. Get distro size
@@ -194,15 +194,15 @@ pub async fn resolve_temp_path(
     // Safety margin (e.g., 1GB) since the export might be slightly larger or we want to leave some space
     let required_bytes = vhdx_bytes + 1024 * 1024 * 1024;
 
-    let temp_dir = if c_free_bytes < required_bytes && !distro_loc.is_empty() {
-        // Use distro_location/temp
-        let path = std::path::PathBuf::from(distro_loc).join("temp");
+    let temp_dir = if c_free_bytes < required_bytes && !backup_loc.is_empty() {
+        // Use backup_location/temp
+        let path = std::path::PathBuf::from(backup_loc).join("temp");
         let _ = std::fs::create_dir_all(&path);
         path
     } else {
         std::path::PathBuf::from(config_temp)
     };
 
-    let temp_file = temp_dir.join(format!("{}_{}.{}", prefix, uuid::Uuid::new_v4(), extension));
+    let temp_file = temp_dir.join(format!("{}_{}.{}", prefix, uuid::Uuid::new_v7(uuid::Timestamp::now(uuid::NoContext)), extension));
     (temp_dir, temp_file.to_string_lossy().to_string())
 }

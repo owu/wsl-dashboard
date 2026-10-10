@@ -29,7 +29,7 @@ impl ScheduledTask for PopupSyncTask {
     }
 
     fn interval(&self) -> TaskInterval {
-        TaskInterval::Custom(60) // 60s interval, since data is from memory cache
+        TaskInterval::Custom(65) // 65s interval, since data is from memory cache
     }
 
     fn requires_window_visible(&self) -> bool {
@@ -125,7 +125,7 @@ impl ScheduledTask for MessageSyncTask {
     }
 
     fn interval(&self) -> TaskInterval {
-        TaskInterval::Custom(60) // 60s interval
+        TaskInterval::Custom(65) // 65s interval
     }
 
     fn requires_window_visible(&self) -> bool {

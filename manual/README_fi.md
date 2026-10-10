@@ -266,7 +266,7 @@ Varmista, että sinulla on Rust-työkalukehys (Rust 1.92+ tai uudempi) asennettu
      > Rakennusskripti vaatii `x86_64-pc-windows-msvc` -työkalukehyksen.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

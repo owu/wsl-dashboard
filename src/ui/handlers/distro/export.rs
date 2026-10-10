@@ -57,7 +57,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                         }
                         app.set_export_distro_name(name_str.into());
                         app.set_export_compress(true);
-                        let default_path = app.get_distro_location();
+                        let default_path = app.get_backup_location();
                         app.set_export_target_path(default_path);
                         app.set_export_error("".into());
                         app.set_show_export_dialog(true);

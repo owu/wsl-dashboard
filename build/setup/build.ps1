@@ -3,6 +3,10 @@ param(
     [string]$Version,
 
     [Parameter(Mandatory = $false)]
+    [ValidateSet("x64", "arm64")]
+    [string]$Arch = "x64",
+
+    [Parameter(Mandatory = $false)]
     [switch]$Hash
 )
 
@@ -26,13 +30,17 @@ $numericVersion = $VERSION -replace '-.*$', ''
 
 $APP_NAME = "wsldashboard"
 
-Write-Host "--- Starting Build Process for $APP_NAME v$VERSION ---" -ForegroundColor Cyan
+Write-Host "--- Starting Build Process for $APP_NAME v$VERSION ($Arch) ---" -ForegroundColor Cyan
 
 # 1. Check for release binary
-$EXE_PATH = Join-Path $PSScriptRoot "..\..\target\release\wsldashboard.exe"
+if ($Arch -eq "arm64") {
+    $EXE_PATH = Join-Path $PSScriptRoot "..\..\target\aarch64-pc-windows-msvc\release\wsldashboard.exe"
+} else {
+    $EXE_PATH = Join-Path $PSScriptRoot "..\..\target\release\wsldashboard.exe"
+}
 if (-not (Test-Path $EXE_PATH)) {
     Write-Error "Release binary not found at $EXE_PATH"
-    Write-Host "Step 1: Please run '.\build\portable\build.ps1' first to compile the project." -ForegroundColor Yellow
+    Write-Host "Step 1: Please run '.\build\portable\build.ps1 -Arch $Arch' first to compile the project." -ForegroundColor Yellow
     exit 1
 }
 Write-Host "Step 1: Found release binary at $EXE_PATH" -ForegroundColor Gray
@@ -63,13 +71,18 @@ Write-Host "Found ISCC at: $ISCC" -ForegroundColor Gray
 
 # 3. Build the installer
 Write-Host "Step 3: Generating Installer..." -ForegroundColor Yellow
-& $ISCC /DAppVersion=$VERSION /DAppVersionNumeric=$numericVersion "$PSScriptRoot\config.iss"
+$IsccArgs = @("/DAppVersion=$VERSION", "/DAppVersionNumeric=$numericVersion", "/DArch=$Arch")
+if ($Arch -eq "arm64") {
+    $IsccArgs += "/DArm64Build"
+    $IsccArgs += "/DExeSourceDir=..\..\target\aarch64-pc-windows-msvc\release"
+}
+& $ISCC @IsccArgs "$PSScriptRoot\config.iss"
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Inno Setup build failed!"
     exit 1
 }
 
-$INSTALLER_PATH = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VERSION.Setup.x64.exe"
+$INSTALLER_PATH = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VERSION.Setup.$Arch.exe"
 $ABS_PATH = Resolve-Path $INSTALLER_PATH
 
 Write-Host "--- Success! Installer generated at: $ABS_PATH ---" -ForegroundColor Green

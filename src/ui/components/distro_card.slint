@@ -39,6 +39,16 @@ component DistroInfo inherits VerticalLayout {
             color: Theme.accent;
             vertical-alignment: center;
         }
+        if (distro.notes != ""): Text {
+            text: "(" + distro.notes + ")";
+            font-size: 12px * LayoutConstants.font-scale;
+            font-family: Theme.default_font;
+            color: Theme.text_secondary;
+            vertical-alignment: center;
+            horizontal-alignment: is-rtl ? right : left;
+            overflow: elide;
+            horizontal-stretch: 1;
+        }
     }
 }
 

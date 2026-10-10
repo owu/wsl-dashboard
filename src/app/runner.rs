@@ -60,6 +60,15 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
             }
         });
     }
+
+    // Select the Skia software renderer backend (avoids GPU/OpenGL dependency issues in WSL)
+    // if let Err(e) = slint::BackendSelector::new()
+    //     .renderer_name("skia-software".into())
+    //     .select()
+    // {
+    //     error!("Failed to select skia software renderer: {e}");
+    // }
+    
     
     // 2. Create Slint window
     let app = AppWindow::new().expect("Failed to create app");
@@ -88,6 +97,7 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
 
     // Set version and URL
     app.global::<AppInfo>().set_version(env!("CARGO_PKG_VERSION").into());
+    app.global::<AppInfo>().set_arch_suffix(crate::utils::machine::arch_suffix().into());
     app.global::<AppInfo>().set_project_repository(PROJECT_REPOSITORY.into());
     app.global::<AppInfo>().set_issues_url(format!("{}{}", PROJECT_REPOSITORY, GITHUB_ISSUES).into());
     app.global::<AppInfo>().set_donate_url(format!("{}{}", crate::app::PROJECT_WEBSITE, crate::app::DONATE_URI).into());
@@ -174,6 +184,9 @@ pub async fn run_app(config_manager: ConfigManager, logging_system: LoggingSyste
 
             // Update check (5s delay, runs in all modes)
             scheduler.register(crate::app::tasks::UpdateCheckTask { app_state: state_clone });
+
+            // Ping (periodic server connectivity check, lowest priority, 60s interval, runs in all modes)
+            scheduler.register(crate::app::tasks::PingTask);
 
             scheduler.start();
         });

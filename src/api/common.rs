@@ -4,7 +4,7 @@
 use std::sync::LazyLock;
 use crate::api::cache::{CacheEntry, CACHE_TTL_MEDIUM, CACHE_TTL_LONG, try_get_cache, try_get_stale_cache, set_cache};
 use crate::api::client::WslUiClient;
-use tracing::{debug, error, warn};
+use tracing::{debug, error, warn, trace};
 use chrono;
 
 use crate::api::models::*;
@@ -18,6 +18,9 @@ static HELPER_INSTALL_CACHE: LazyLock<std::sync::Mutex<Option<CacheEntry<HelperI
 static HELPER_MIRRORS_CACHE: LazyLock<std::sync::Mutex<Option<CacheEntry<MirrorListResponse>>>> = LazyLock::new(|| std::sync::Mutex::new(None));
 static HELPER_DONATE_CACHE:  LazyLock<std::sync::Mutex<Option<CacheEntry<DonateData>>>> = LazyLock::new(|| std::sync::Mutex::new(None));
 static HELPER_SYNC_CACHE:   LazyLock<std::sync::Mutex<Option<CacheEntry<HelperSyncData>>>> = LazyLock::new(|| std::sync::Mutex::new(None));
+// Serializes concurrent requests for /desktop/v1/helper/sync to prevent duplicate
+// remote calls when PopupSyncTask and MessageSyncTask both miss the cache at the same time.
+static HELPER_SYNC_REQUEST_LOCK: LazyLock<std::sync::Mutex<()>> = LazyLock::new(|| std::sync::Mutex::new(()));
 static HELPER_BOOTSTRAP_CACHE: LazyLock<std::sync::Mutex<Option<CacheEntry<HelperBootstrapData>>>> = LazyLock::new(|| std::sync::Mutex::new(None));
 #[allow(dead_code)]
 static HELPER_SCHEDULER_CACHE: LazyLock<std::sync::Mutex<Option<CacheEntry<HelperSchedulerData>>>> = LazyLock::new(|| std::sync::Mutex::new(None));
@@ -33,7 +36,7 @@ pub fn wslui_latest_version() -> Result<ReleaseData, String> {
 
     // 2. Fetch from API
     let client = WslUiClient::new();
-    let result = match client.request_api2_with_timeout::<ReleaseData>("GET", "/common/v1/releases/version", None, Some(10000)) {
+    let result = match client.request_api1_with_timeout::<ReleaseData>("GET", "/common/v1/releases/version", None, Some(10000)) {
         Ok((resp, _)) => {
             debug!("Obtained latest release from wslui: {:?}", resp.data);
             Ok(resp.data)
@@ -69,7 +72,7 @@ pub fn wslui_helper_about() -> HelperAboutData {
     let client = WslUiClient::new();
     match client.request_api1::<HelperAboutData>("GET", "/desktop/v1/helper/about", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper about from wslui: {:?}", resp.data);
+            //debug!("Obtained helper about from wslui: {:?}", resp.data);
             set_cache(&HELPER_ABOUT_CACHE, resp.data.clone(), CACHE_TTL_LONG);
             resp.data
         }
@@ -90,7 +93,7 @@ pub fn wslui_helper_distro() -> HelperDistroData {
     let client = WslUiClient::new();
     match client.request_api1::<HelperDistroData>("GET", "/desktop/v1/helper/distro", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper distro from wslui: {:?}", resp.data);
+            //debug!("Obtained helper distro from wslui: {:?}", resp.data);
             set_cache(&HELPER_DISTRO_CACHE, resp.data.clone(), CACHE_TTL_MEDIUM);
             resp.data
         }
@@ -111,7 +114,7 @@ pub fn wslui_helper_install() -> HelperInstallData {
     let client = WslUiClient::new();
     match client.request_api1::<HelperInstallData>("GET", "/desktop/v1/helper/install", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper install from wslui: {:?}", resp.data);
+            //debug!("Obtained helper install from wslui: {:?}", resp.data);
             set_cache(&HELPER_INSTALL_CACHE, resp.data.clone(), CACHE_TTL_MEDIUM);
             resp.data
         }
@@ -133,7 +136,7 @@ pub fn wslui_helper_mirrors(url: &str) -> MirrorListResponse {
     let client = WslUiClient::new();
     match client.request_full_url::<MirrorListResponse>("GET", url, None, None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper mirror from wslui: {:?}", resp.data);
+            //debug!("Obtained helper mirror from wslui: {:?}", resp.data);
             set_cache(&HELPER_MIRRORS_CACHE, resp.data.clone(), CACHE_TTL_MEDIUM);
             resp.data
         }
@@ -154,7 +157,7 @@ pub fn wslui_helper_donate() -> DonateData {
     let client = WslUiClient::new();
     match client.request_api1::<DonateData>("GET", "/desktop/v1/helper/donate", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper donate from wslui: {:?}", resp.data);
+            //debug!("Obtained helper donate from wslui: {:?}", resp.data);
             set_cache(&HELPER_DONATE_CACHE, resp.data.clone(), CACHE_TTL_LONG);
             resp.data
         }
@@ -172,11 +175,22 @@ pub fn wslui_helper_sync() -> HelperSyncData {
         return data;
     }
 
+    // Single-flight: block concurrent callers while a request is in flight,
+    // then double-check the cache in case it was refreshed by the first caller.
+    let _request_guard = HELPER_SYNC_REQUEST_LOCK
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner());
+
+    if let Some(data) = try_get_cache(&HELPER_SYNC_CACHE) {
+        debug!("Returning helper sync data refreshed by a concurrent call");
+        return data;
+    }
+
     let client = WslUiClient::new();
     match client.request_api1::<HelperSyncData>("GET", "/desktop/v1/helper/sync", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper sync from wslui: {:?}", resp.data);
-            set_cache(&HELPER_SYNC_CACHE, resp.data.clone(), CACHE_TTL_LONG);
+            //debug!("Obtained helper sync from wslui: {:?}", resp.data);
+            set_cache(&HELPER_SYNC_CACHE, resp.data.clone(), CACHE_TTL_MEDIUM);
             resp.data
         }
         Err(e) => {
@@ -214,7 +228,7 @@ pub fn wslui_helper_bootstrap() -> HelperBootstrapData {
             } else {
                 debug!("Obtained unix_time from bootstrap JSON: {}", data.unix_time);
             }
-            debug!("Obtained helper bootstrap from wslui: {:?}", data);
+            //debug!("Obtained helper bootstrap from wslui: {:?}", data);
             set_cache(&HELPER_BOOTSTRAP_CACHE, data.clone(), CACHE_TTL_LONG);
             data
         }
@@ -236,7 +250,7 @@ pub fn wslui_helper_scheduler() -> HelperSchedulerData {
     let client = WslUiClient::new();
     match client.request_api1::<HelperSchedulerData>("GET", "/desktop/v1/helper/scheduler", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper crontab from wslui: {:?}", resp.data);
+            //debug!("Obtained helper crontab from wslui: {:?}", resp.data);
             set_cache(&HELPER_SCHEDULER_CACHE, resp.data.clone(), CACHE_TTL_LONG);
             resp.data
         }
@@ -257,13 +271,29 @@ pub fn wslui_helper_mount() -> HelperMountDiskData {
     let client = WslUiClient::new();
     match client.request_api1::<HelperMountDiskData>("GET", "/desktop/v1/helper/mount", None) {
         Ok((resp, _)) => {
-            debug!("Obtained helper mount from wslui: {:?}", resp.data);
+            //debug!("Obtained helper mount from wslui: {:?}", resp.data);
             set_cache(&HELPER_MOUNT_CACHE, resp.data.clone(), CACHE_TTL_LONG);
             resp.data
         }
         Err(e) => {
             error!("Failed to get helper mount from wslui: {}. Using default data.", e);
             HelperMountDiskData::default()
+        }
+    }
+}
+
+// Ping the wslui utils API (connectivity/availability check, no cache)
+pub fn wslui_utils_ping() -> UtilsPingData {
+    let client = WslUiClient::new();
+    match client.request_api1::<UtilsPingData>("GET", "/desktop/v1/utils/ping", None) {
+        Ok((resp, _)) => {
+            // Ping is called frequently; keep at trace level to avoid log spam.
+            trace!("wslui utils ping succeeded");
+            resp.data
+        }
+        Err(e) => {
+            error!("Failed to ping wslui utils: {}", e);
+            UtilsPingData::default()
         }
     }
 }

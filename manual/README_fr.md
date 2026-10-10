@@ -266,7 +266,7 @@ Assurez-vous d'avoir installé la chaîne d'outils Rust (Rust 1.92+ ou plus réc
      > Le script de build nécessite la chaîne d'outils `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

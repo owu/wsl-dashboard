@@ -103,6 +103,7 @@ pub fn refresh_localized_strings(app: &AppWindow) {
         log_path: i18n::tr("settings.log_path", &[]).into(),
         select_folder: i18n::tr("settings.select_folder", &[]).into(),
         install_dir: i18n::tr("settings.distro_dir", &[]).into(),
+        backup_dir: i18n::tr("settings.backup_dir", &[]).into(),
         auto_close: i18n::tr("settings.auto_shutdown_msg", &[]).into(),
         system_color: i18n::tr("settings.system_color", &[]).into(),
         auto_start: i18n::tr("settings.tray_autostart", &[]).into(),
@@ -248,7 +249,7 @@ pub async fn refresh_data(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mut
 static IS_REFRESHING: AtomicBool = AtomicBool::new(false);
 
 // Global static snapshot to prevent redundant refreshes across all threads
-static LAST_REFRESH_SNAPSHOT: Lazy<std::sync::Mutex<Option<Vec<(String, String, String, bool, Option<&'static str>, bool)>>>> = Lazy::new(|| std::sync::Mutex::new(None));
+static LAST_REFRESH_SNAPSHOT: Lazy<std::sync::Mutex<Option<Vec<(String, String, String, bool, Option<&'static str>, bool, String)>>>> = Lazy::new(|| std::sync::Mutex::new(None));
 static LAST_INSTALLABLE_SNAPSHOT: Lazy<std::sync::Mutex<Option<Vec<String>>>> = Lazy::new(|| std::sync::Mutex::new(None));
 
 // Refresh UI list of installed distributions
@@ -300,8 +301,9 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
     // Quick check: has the actual data changed before we do heavy icon loading?
     let instances_path = crate::config::ConfigManager::get_instances_path();
     let container = crate::config::instances::load_instances(&instances_path);
-    let current_snapshot: Vec<(String, String, String, bool, Option<&'static str>, bool)> = distros.iter().map(|d| {
+    let current_snapshot: Vec<(String, String, String, bool, Option<&'static str>, bool, String)> = distros.iter().map(|d| {
         let auto_startup = container.instances.get(&d.name).map(|c| c.auto_startup).unwrap_or(false);
+        let distro_notes = container.instances.get(&d.name).map(|c| c.distro_notes.clone()).unwrap_or_default();
         (
             d.name.clone(),
             format!("{:?}", d.status),
@@ -309,6 +311,7 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
             d.is_default,
             crate::utils::icon_mapper::map_name_to_icon_key(&d.name),
             auto_startup,
+            distro_notes,
         )
     }).collect();
 
@@ -363,6 +366,7 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
                 crate::utils::icon_mapper::get_initial(&d.name),
                 icon_key.and_then(crate::utils::icon_mapper::load_icon_data),
                 container.instances.get(&d.name).map(|c| c.auto_startup).unwrap_or(false),
+                container.instances.get(&d.name).map(|c| c.distro_notes.clone()).unwrap_or_default(),
             ));
         }
 
@@ -428,7 +432,7 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
 
         if let Some(app) = app_handle.upgrade() {
             if data_changed {
-                let slint_distros: Vec<Distro> = intermediate_distros.into_iter().map(|(name, status, version, is_default, icon_key, initial, preloaded_icon, auto_startup)| {
+                let slint_distros: Vec<Distro> = intermediate_distros.into_iter().map(|(name, status, version, is_default, icon_key, initial, preloaded_icon, auto_startup, distro_notes)| {
                     let mut image = slint::Image::default();
                     let mut has_icon = false;
                     
@@ -450,6 +454,7 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
                         initial: initial.into(),
                         distro_display_name: crate::utils::icon_mapper::get_display_name(icon_key).into(),
                         boot_run: auto_startup,
+                        notes: distro_notes.into(),
                     }
                 }).collect();
 
@@ -466,7 +471,8 @@ pub async fn refresh_distros_ui(app_handle: slint::Weak<AppWindow>, app_state: A
                                 || old_distro.status != new_distro.status
                                 || old_distro.is_default != new_distro.is_default 
                                 || old_distro.has_icon != new_distro.has_icon
-                                || old_distro.boot_run != new_distro.boot_run {
+                                || old_distro.boot_run != new_distro.boot_run
+                                || old_distro.notes != new_distro.notes {
                                 data_actually_changed = true;
                                 break;
                             }
@@ -525,18 +531,26 @@ fn get_distro_sort_rank(name: &str) -> usize {
 }
 
 // Sync `last_distros` cache in `instances.toml` with live WSL data.
+// - Stale (deleted) distros are removed — the registry set is authoritative.
 // - New distros are appended to the end.
-// - Stale (deleted) distros are removed.
 // - Running/stopped status and is_default are updated.
+//
+// Deletion is based on the registry (`HKCU\...\Lxss`, without going through the WSL service/VM):
+// "zero distros" is only assumed and the list cleared when the registry set is empty;
+// otherwise, even if the live list is empty (e.g. `wsl -l -v` times out due to a slow cold start),
+// the cached order is kept to avoid accidentally wiping drag-and-drop ordering data.
 fn sync_last_distros_cache(distros: &[crate::wsl::models::WslDistro]) {
     let path = crate::config::ConfigManager::get_instances_path();
     let mut container = crate::config::instances::load_instances(&path);
 
-    let live_names: std::collections::HashSet<String> =
-        distros.iter().map(|d| d.name.clone()).collect();
+    let installed_names: std::collections::HashSet<String> =
+        crate::utils::registry::get_wsl_distros_from_reg()
+            .into_iter()
+            .map(|d| d.name)
+            .collect();
 
-    // 1. Remove stale distros that no longer exist
-    container.last_distros.retain(|d| live_names.contains(&d.name));
+    // 1. Remove stale distros that no longer exist (based on the registry set)
+    container.last_distros.retain(|d| installed_names.contains(&d.name));
 
     // 2. Append newly discovered distros (to the end)
     let existing_names: std::collections::HashSet<String> =
@@ -719,7 +733,8 @@ pub async fn refresh_mirror_distros(app_handle: slint::Weak<AppWindow>, _app_sta
     let install_data = install_data_opt.unwrap();
     
     // Sort by predefined distribution order, then by name in descending order
-    let mut distros = response.distros;
+    // Choose the mirror list based on the OS platform: x64 (default) uses distros, arm64 uses mirrors
+    let mut distros = response.select_distros();
     distros.sort_by(|a, b| {
         let rank_a = get_distro_sort_rank(&a.name);
         let rank_b = get_distro_sort_rank(&b.name);
@@ -799,12 +814,9 @@ pub async fn load_local_mirror_distros(app_handle: slint::Weak<AppWindow>, json_
             match serde_json::from_str::<crate::api::client::ApiResponse<crate::api::models::MirrorListResponse>>(&json_str) {
                 Ok(api_response) => {
                     let mirror_response = api_response.data;
-                    tracing::info!(
-                        "[Debug] Parsed MirrorListResponse from local file: {} distros",
-                        mirror_response.distros.len()
-                    );
-                    
-                    let mut distros = mirror_response.distros;
+
+                    // Choose the mirror list based on the OS platform: x64 (default) uses distros, arm64 uses mirrors
+                    let mut distros = mirror_response.select_distros();
                     distros.sort_by(|a, b| {
                         let rank_a = get_distro_sort_rank(&a.name);
                         let rank_b = get_distro_sort_rank(&b.name);
@@ -885,6 +897,7 @@ pub async fn load_settings_to_ui(app: &AppWindow, app_state: &Arc<Mutex<AppState
     app.set_ui_language(settings.ui_language.clone().into());
     app.set_distro_location(settings.distro_location.clone().into());
     app.set_new_instance_path(settings.distro_location.clone().into());
+    app.set_backup_location(settings.backup_location.clone().into());
     app.set_logs_location(settings.logs_location.clone().into());
     app.set_auto_shutdown(settings.auto_shutdown);
     app.set_system_color(settings.system_color);

@@ -55,6 +55,7 @@ component SettingsTab inherits Rectangle {
 export component SettingsView inherits Rectangle {
     in-out property <string> ui_language: "auto";
     in-out property <string> distro_location: "";
+    in-out property <string> backup_location: "";
     in-out property <string> logs_location: "";
     in-out property <int> log_level: 4;
     in-out property <int> log_days: 7;
@@ -147,6 +148,7 @@ export component SettingsView inherits Rectangle {
     callback save_interface_settings();
     callback select-distro-folder();
     callback select-logs-folder();
+    callback select-backup-folder();
     callback open-wsl-settings();
     callback stop-wsl();
     callback language_selected(string);
@@ -224,6 +226,7 @@ export component SettingsView inherits Rectangle {
                         AdvancedSettingsSection {
                             strings: root.strings;
                             distro_location <=> root.distro_location;
+                            backup_location <=> root.backup_location;
                             logs_location <=> root.logs_location;
                             selected_log_level_index <=> root.selected-log-level-index;
                             selected_log_days_index <=> root.selected-log-days-index;
@@ -233,6 +236,7 @@ export component SettingsView inherits Rectangle {
                             sparse_vhd <=> root.sparse_vhd;
                             mount_auto_probe <=> root.mount_auto_probe;
                             select_distro_folder => { root.select-distro-folder(); }
+                            select_backup_folder => { root.select-backup-folder(); }
                             select_logs_folder => { root.select-logs-folder(); }
                         }
                     }

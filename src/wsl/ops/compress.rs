@@ -141,7 +141,7 @@ pub async fn optimize_vhd_elevated(vhdx_path: &str) -> WslCommandResult<String> 
     }
 
     let temp_dir = std::env::temp_dir();
-    let result_path = temp_dir.join(format!("wsl_opt_res_{}.txt", uuid::Uuid::new_v4()));
+    let result_path = temp_dir.join(format!("wsl_opt_res_{}.txt", uuid::Uuid::new_v7(uuid::Timestamp::now(uuid::NoContext))));
 
     // Build inline PowerShell command: execute compression and write result to a temp file
     // Use Ascii encoding to avoid BOM issues with PS 5.1 default UTF-8 that cause Rust read failures
@@ -209,6 +209,7 @@ pub async fn compress_vhdx<F>(
     enable_sparse_flag: bool,
     compress_script_url: &str,
     local_cleanup_script: &str,
+    backup_dir: &str,
     progress_callback: F
 ) -> WslCommandResult<String> 
 where F: Fn(&str) {
@@ -282,7 +283,10 @@ where F: Fn(&str) {
 
     // 5. Force Export backup (instead of previous VHDX copy)
     progress_callback("task.compress_export");
-    let tar_path = if !vhdx_path.is_empty() {
+    let tar_path = if !backup_dir.trim().is_empty() {
+        let _ = std::fs::create_dir_all(backup_dir);
+        Path::new(backup_dir).join(format!("{}.tar", distro_name))
+    } else if !vhdx_path.is_empty() {
         Path::new(&vhdx_path).with_extension("tar")
     } else {
         Path::new(&install_dir).join(format!("{}.tar", distro_name))

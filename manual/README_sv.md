@@ -266,7 +266,7 @@ Se till att du har Rust-verktygskedjan (Rust 1.92+ eller nyare) installerad.
      > Byggskriptet kräver verktygskedjan `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

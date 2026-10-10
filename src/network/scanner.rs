@@ -7,10 +7,10 @@ use super::models::{NetworkInterface};
 pub fn get_physical_interfaces() -> Vec<NetworkInterface> {
     let mut interfaces = Vec::new();
 
-    // Since we retrieve the network interface list in Rust, we can use the get_if_addrs crate.
+    // Since we retrieve the network interface list in Rust, we can use the if-addrs crate.
     // If this dependency is not included, it needs to be added to Cargo.toml, or return empty for now.
     // Placeholder for now, dependency will be added via Cargo later.
-    if let Ok(ifaces) = get_if_addrs::get_if_addrs() {
+    if let Ok(ifaces) = if_addrs::get_if_addrs() {
         for iface in ifaces {
             let ip = iface.ip();
             let is_loopback = ip.is_loopback();

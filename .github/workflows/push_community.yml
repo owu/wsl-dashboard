@@ -1,0 +1,63 @@
+name: 5. Push Community
+run-name: Push Community
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  push-community:
+    name: Push Community
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate target repository secret
+        shell: bash
+        env:
+          PUSH_COMMUNITY_REPO: ${{ secrets.PUSH_COMMUNITY_REPO }}
+        run: |
+          if [ -z "$PUSH_COMMUNITY_REPO" ]; then
+            echo "::error::Repository secret 'PUSH_COMMUNITY_REPO' is not set. Please configure it in repository Settings -> Secrets and variables -> Actions -> Repository secrets."
+            exit 1
+          fi
+          echo "Target repository: $PUSH_COMMUNITY_REPO"
+
+      - name: Checkout wsl-dashboard
+        uses: actions/checkout@v4
+
+      - name: Prepare Update Files
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          .\build\actions\push_update.ps1 -OutputDir "update_files" -Token $env:GITHUB_TOKEN
+
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ secrets.PUSH_COMMUNITY_REPO }}
+          ssh-key: ${{ secrets.PUSH_COMMUNITY_REPO_DEPLOY_KEY }}
+          path: target_repo
+
+      - name: Copy files to wwwroot directory
+        shell: bash
+        run: |
+          mkdir -p target_repo/wwwroot/common/v1/releases
+          cp update_files/common/v1/releases/latest target_repo/wwwroot/common/v1/releases/latest
+          cp update_files/common/v1/releases/version target_repo/wwwroot/common/v1/releases/version
+
+      - name: Commit and push
+        shell: bash
+        run: |
+          cd target_repo
+          git config user.name "github-actions[bot]"
+          git config user.email "owu[bot]@users.noreply.github.com"
+          git add wwwroot/common/v1/releases/latest wwwroot/common/v1/releases/version
+          if git diff --cached --quiet; then
+            echo "No changes detected, skipping commit and push."
+          else
+            git commit -m "Push Community"
+            git push origin HEAD
+          fi

@@ -266,7 +266,7 @@ Sørg for, at du har Rust-værktøjskæden (Rust 1.92+ eller nyere) installeret.
      > Byggescriptet kræver `x86_64-pc-windows-msvc` værktøjskæden.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

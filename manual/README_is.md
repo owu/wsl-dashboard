@@ -267,7 +267,7 @@ Gakktu úr skugga um að þú hafir Rust tækjapakkann (Rust 1.92+ eða nýrri) 
      > Smíðaskriftan krefst `x86_64-pc-windows-msvc` tækjapakkans.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

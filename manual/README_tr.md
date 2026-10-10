@@ -266,7 +266,7 @@ Rust araç zincirinin (Rust 1.92+ veya daha yeni) kurulu olduğundan emin olun.
      > Derleme betiği `x86_64-pc-windows-msvc` araç zincirini gerektirir.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

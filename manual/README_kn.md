@@ -266,7 +266,7 @@ Rust ಟೂಲ್‌ಚೈನ್ (Rust 1.92+ ಅಥವಾ ಹೊಸದು) ಸ�
      > ಬಿಲ್ಡ್ ಸ್ಕ್ರಿಪ್ಟ್‌ಗೆ `x86_64-pc-windows-msvc` ಟೂಲ್‌ಚೈನ್ ಅಗತ್ಯ.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

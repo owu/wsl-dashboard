@@ -266,7 +266,7 @@ Tabbatar da an shigar da kayan aikin Rust (Rust 1.92+ ko sabuwar sigar).
      > Rubutun gini yana buƙatar kayan aikin `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

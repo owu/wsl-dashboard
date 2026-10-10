@@ -266,7 +266,7 @@ winget install Owu.WSLDashboard
      > 构建脚本需要 `x86_64-pc-windows-msvc` 工具链。
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

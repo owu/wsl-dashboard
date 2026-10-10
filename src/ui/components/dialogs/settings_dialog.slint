@@ -14,6 +14,7 @@ export component SettingsDialog inherits Rectangle {
     in property <string> distro_name;
     in-out property <string> terminal_dir: "~";
     in-out property <string> vscode_dir: "/home";
+    in-out property <string> distro_notes: "";
     in property <bool> lock_default: false;
     in-out property <bool> is_default: false;
     in-out property <bool> autostart: false;
@@ -21,6 +22,7 @@ export component SettingsDialog inherits Rectangle {
     in property <string> startup_script_url: "";
     in property <string> terminal_dir_error: "";
     in property <string> vscode_dir_error: "";
+    in property <string> distro_notes_error: "";
     in property <string> startup_script_error: "";
     in property <string> default_error: "";
     in-out property <bool> terminal_proxy: true;
@@ -236,8 +238,33 @@ export component SettingsDialog inherits Rectangle {
                             }
                         }
 
+                        // 5. Distro notes
+                        VerticalLayout {
+                            spacing: 8px;
+                            Text {
+                                text: AppI18n.t("dialog.distro_notes", [AppI18n.version]);
+                                font-size: 13px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: Theme.text_secondary;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                            }
+
+                            CustomLineEdit {
+                                text <=> root.distro_notes;
+                                placeholder-text: "";
+                            }
+
+                            if (root.distro_notes_error != ""): Text {
+                                text: root.distro_notes_error;
+                                font-size: 11px * LayoutConstants.font-scale;
+                                font-family: Theme.default_font;
+                                color: #ff3333;
+                                horizontal-alignment: AppI18n.is_rtl ? right : left;
+                            }
+                        }
+
                         Rectangle {
-                            height: 8px;
+                            height: 2px;
                         } // Extra bottom padding for scrolling
                     }
                 }

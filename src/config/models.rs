@@ -5,14 +5,15 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 // Configuration file version constant
-pub const SETTINGS_VERSION: u32 = 9;
+pub const SETTINGS_VERSION: u32 = 10;
 
 // Application configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ApplicationConfig {
     pub name: String,
-    #[serde(alias = "homepage")]
+    #[serde(rename = "project-repository", alias = "homepage", alias = "project_repository")]
     pub project_repository: String,
+    #[serde(rename = "project-website", alias = "project_website")]
     pub project_website: String,
     #[serde(rename = "app-version", alias = "version")]
     pub app_version: String,
@@ -20,6 +21,8 @@ pub struct ApplicationConfig {
     pub setting_version: u8,
     #[serde(rename = "startup-time")]
     pub startup_time: String,
+    #[serde(rename = "device-id", default)]
+    pub device_id: String,
 }
 
 // System configuration
@@ -42,6 +45,8 @@ pub struct UserSettings {
     pub check_update: u8,
     #[serde(rename = "distro-location")]
     pub distro_location: String,
+    #[serde(rename = "backup-location", default = "default_backup_location")]
+    pub backup_location: String,
     #[serde(rename = "logs-location")]
     pub logs_location: String,
     #[serde(rename = "temp-location", default)]
@@ -97,6 +102,18 @@ impl Default for TraySettings {
 pub fn default_log_level() -> u8 { 4 }
 pub fn default_log_days() -> u8 { 7 }
 pub fn default_check_update() -> u8 { 7 }
+pub fn default_backup_location() -> String {
+    if std::path::Path::new("D:\\").exists() {
+        "D:\\linux".to_string()
+    } else {
+        // No D drive: fall back to a root "linux" folder on the system drive
+        std::env::var("SystemDrive")
+            .unwrap_or_else(|_| "C:".to_string())
+            .trim_end_matches('\\')
+            .to_string()
+            + "\\linux"
+    }
+}
 
 // Complete configuration
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -135,6 +152,7 @@ impl Config {
                 app_version: env!("CARGO_PKG_VERSION").to_string(),
                 setting_version: SETTINGS_VERSION as u8,
                 startup_time: chrono::Utc::now().timestamp_millis().to_string(),
+                device_id: String::new(),
             },
             system: SystemConfig {
                 system_language: String::new(),
@@ -145,6 +163,7 @@ impl Config {
                 check_time: "0".to_string(),
                 check_update: 7,
                 distro_location: Self::get_default_distro_location(),
+                backup_location: default_backup_location(),
                 logs_location: format!("{}\\.wsldashboard\\logs", home_dir),
                 temp_location: format!("{}\\.wsldashboard\\temp", home_dir),
                 ui_language: "auto".to_string(),
@@ -284,7 +303,7 @@ impl Default for NetworkCommonConfig {
 pub struct NetworkConfig {
     #[serde(default)]
     pub common: NetworkCommonConfig,
-    #[serde(default)]
+    #[serde(rename = "port-proxies", alias = "port_proxies", default)]
     pub port_proxies: Vec<crate::network::models::PortProxyRule>,
     #[serde(default)]
     pub proxy: crate::network::models::HttpProxyConfig,
@@ -330,6 +349,8 @@ pub struct DistroInstanceConfig {
     pub terminal_dir: String,
     #[serde(rename = "vscode-dir", default = "default_vscode_dir")]
     pub vscode_dir: String,
+    #[serde(rename = "distro-notes", default)]
+    pub distro_notes: String,
     #[serde(rename = "auto-startup", default)]
     pub auto_startup: bool,
     #[serde(rename = "startup-script", default)]
@@ -346,6 +367,7 @@ impl Default for DistroInstanceConfig {
         Self {
             terminal_dir: default_terminal_dir(),
             vscode_dir: default_vscode_dir(),
+            distro_notes: String::new(),
             auto_startup: false,
             startup_script: String::new(),
             terminal_proxy: true,
@@ -356,7 +378,7 @@ impl Default for DistroInstanceConfig {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct InstancesContainer {
     pub common: InstanceCommonConfig,
-    #[serde(default)]
+    #[serde(rename = "last-distros", alias = "last_distros", default)]
     pub last_distros: Vec<CachedDistro>,
     pub instances: std::collections::HashMap<String, DistroInstanceConfig>,
 }

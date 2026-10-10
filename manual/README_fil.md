@@ -266,7 +266,7 @@ Siguraduhin na naka-install ang Rust toolchain (Rust 1.92+ o mas bago).
      > Ang build script ay nangangailangan ng `x86_64-pc-windows-msvc` toolchain.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

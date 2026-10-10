@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 use ureq::{Agent, tls::{TlsConfig, TlsProvider}};
 use std::time::Duration;
 use std::thread;
+use std::sync::OnceLock;
 use tracing::{trace, debug, error};
 
 
@@ -17,8 +18,26 @@ pub struct ApiResponse<T> {
 
 pub struct WslUiClient {
     api1_url: String,
-    api2_url: String,
     agent: Agent,
+}
+
+// Metadata sent with every API request (non-sensitive: version / system language / device ID).
+// Populated once by `set_request_meta()` early during app startup, then read-only.
+#[derive(Debug, Clone, Default)]
+pub struct RequestMeta {
+    pub app_version: String,
+    pub system_language: String,
+    pub device_id: String,
+}
+
+// Global request metadata cache. OnceLock takes effect permanently on the first successful set;
+// when uninitialized (after the first upgrade from an older version, or in test environments) the headers are skipped automatically and requests are not blocked.
+static REQUEST_META: OnceLock<RequestMeta> = OnceLock::new();
+
+// Populate the global request metadata, injected into request headers uniformly by `request_url()`.
+// Called only once early during startup; repeated calls keep the first value.
+pub fn set_request_meta(meta: RequestMeta) {
+    let _ = REQUEST_META.set(meta);
 }
 
 impl WslUiClient {
@@ -42,7 +61,6 @@ impl WslUiClient {
 
         Self {
             api1_url: crate::app::API1_URL.to_string(),
-            api2_url: crate::app::API2_URL.to_string(),
             agent,
         }
     }
@@ -60,22 +78,6 @@ impl WslUiClient {
         T: for<'de> Deserialize<'de> + std::fmt::Debug,
     {
         let url = format!("{}{}", self.api1_url, uri);
-        self.request_url(method, &url, body, timeout_ms)
-    }
-
-    #[allow(dead_code)]
-    pub fn request_api2<T>(&self, method: &str, uri: &str, body: Option<serde_json::Value>) -> Result<(ApiResponse<T>, Option<String>), String>
-    where
-        T: for<'de> Deserialize<'de> + std::fmt::Debug,
-    {
-        self.request_api2_with_timeout(method, uri, body, None)
-    }
-
-    pub fn request_api2_with_timeout<T>(&self, method: &str, uri: &str, body: Option<serde_json::Value>, timeout_ms: Option<u64>) -> Result<(ApiResponse<T>, Option<String>), String>
-    where
-        T: for<'de> Deserialize<'de> + std::fmt::Debug,
-    {
-        let url = format!("{}{}", self.api2_url, uri);
         self.request_url(method, &url, body, timeout_ms)
     }
 
@@ -101,15 +103,27 @@ impl WslUiClient {
                     .config()
                     .timeout_global(Some(timeout))
                     .build()
-                    .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
             } else {
                 self.agent.get(url)
                     .config()
                     .timeout_global(Some(timeout))
                     .build()
-                    .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
                     .force_send_body()
             };
+
+            // Inject request headers uniformly: User-Agent + global request metadata (version/system language/device ID)
+            let mut req = req.header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+            if let Some(meta) = REQUEST_META.get() {
+                if !meta.app_version.is_empty() {
+                    req = req.header("App-Version", meta.app_version.as_str());
+                }
+                if !meta.system_language.is_empty() {
+                    req = req.header("System-Language", meta.system_language.as_str());
+                }
+                if !meta.device_id.is_empty() {
+                    req = req.header("Device-Id", meta.device_id.as_str());
+                }
+            }
 
             let resp = if let Some(ref b) = body {
                 req.send_json(b)
@@ -138,10 +152,15 @@ impl WslUiClient {
                 e.to_string()
             })?;
 
+            let url_path = url.split_once("://")
+                .and_then(|(_, rest)| rest.split_once('/'))
+                .map(|(_, path)| format!("/{}", path.split('?').next().unwrap_or(path)))
+                .unwrap_or_else(|| "/".to_string());
+
             let compact_body = serde_json::from_str::<serde_json::Value>(&resp_text)
                 .and_then(|v| serde_json::to_string(&v))
                 .unwrap_or(resp_text.clone());
-            debug!("WSLUI API Response: status={}, body={}", status, compact_body);
+            debug!("WSLUI API Response: method={}, path={}, status={}, body={}", method, url_path, status, compact_body);
 
             let clean_text = resp_text.trim_start_matches('\u{FEFF}').trim();
 
@@ -184,5 +203,79 @@ impl WslUiClient {
             || lower_msg.contains("timeout")
             || lower_msg.contains("connection timed out")
             || lower_msg.contains("request timed out")
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::{Read, Write};
+    use std::net::TcpListener;
+    use std::sync::{Arc, Mutex};
+
+    // Start a local HTTP echo server that captures received request headers and returns a wslui-style JSON response.
+    fn start_echo_server() -> (String, Arc<Mutex<Vec<(String, String)>>>) {
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let addr = listener.local_addr().unwrap();
+        let captured: Arc<Mutex<Vec<(String, String)>>> = Arc::new(Mutex::new(Vec::new()));
+        let captured_clone = captured.clone();
+
+        std::thread::spawn(move || {
+            if let Ok((mut stream, _)) = listener.accept() {
+                let mut buf = [0u8; 8192];
+                let n = stream.read(&mut buf).unwrap_or(0);
+                let req = String::from_utf8_lossy(&buf[..n]).to_string();
+
+                // Parse request headers (skip the request line, until the blank line)
+                let mut store = captured_clone.lock().unwrap();
+                for line in req.lines().skip(1).take_while(|l| !l.is_empty()) {
+                    if let Some((k, v)) = line.split_once(':') {
+                        store.push((k.trim().to_string(), v.trim().to_string()));
+                    }
+                }
+                drop(store);
+
+                let body = r#"{"err":0,"msg":"success","data":{}}"#;
+                let resp = format!(
+                    "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {}\r\nConnection: close\r\n\r\n{}",
+                    body.len(),
+                    body
+                );
+                let _ = stream.write_all(resp.as_bytes());
+                let _ = stream.flush();
+            }
+        });
+
+        (format!("http://{}", addr), captured)
+    }
+
+    // Verify that the request actually sent by `request_url()` contains the three metadata headers.
+    // This is an automated check of "whether the headers were sent successfully": capture the real HTTP request headers with a local echo server and assert on them.
+    #[test]
+    fn test_request_url_injects_meta_headers() {
+        let (base_url, captured) = start_echo_server();
+
+        set_request_meta(RequestMeta {
+            app_version: "0.12.0".to_string(),
+            system_language: "zh-CN".to_string(),
+            device_id: "a3f5c2d9e8b74f16a2c9d5e7f1b3a6c4".to_string(),
+        });
+
+        let client = WslUiClient::new();
+        let result: Result<
+            (ApiResponse<crate::api::models::UtilsPingData>, Option<String>),
+            String,
+        > = client.request_full_url("GET", &base_url, None, Some(5000));
+        assert!(result.is_ok(), "request should succeed, got: {:?}", result.err());
+
+        let headers = captured.lock().unwrap();
+        let has = |name: &str, val: &str| {
+            headers
+                .iter()
+                .any(|(k, v)| k.eq_ignore_ascii_case(name) && v == val)
+        };
+        assert!(has("App-Version", "0.12.0"), "App-Version missing: {:?}", *headers);
+        assert!(has("System-Language", "zh-CN"), "System-Language missing: {:?}", *headers);
+        assert!(has("Device-Id", "a3f5c2d9e8b74f16a2c9d5e7f1b3a6c4"), "Device-Id missing: {:?}", *headers);
     }
 }

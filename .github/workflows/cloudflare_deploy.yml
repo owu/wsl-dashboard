@@ -1,5 +1,5 @@
-name: Gitee Deploy
-run-name: Gitee:${{ github.event.inputs.tag_name || github.ref_name }}
+name: 3. Cloudflare Deploy
+run-name: Cloudflare:${{ github.event.inputs.tag_name || github.ref_name }}
 
 on:
   workflow_dispatch:
@@ -13,13 +13,9 @@ permissions:
   contents: read
 
 jobs:
-  deploy-to-gitee:
-    name: Deploy to Gitee
+  deploy-to-pages:
+    name: Deploy to Pages
     runs-on: windows-latest
-    env:
-      # Read from GitHub Secrets (Settings -> Secrets and variables -> Actions -> Secrets)
-      GITEE_REPO_OWNER: ${{ secrets.GITEE_REPO_OWNER }}
-      GITEE_REPO_NAME: ${{ secrets.GITEE_REPO_NAME }}
     
     steps:
       - name: Checkout repository
@@ -65,8 +61,9 @@ jobs:
           # Define the file patterns to download
           $files = @(
             "WSLDashboard.$version.Portable.x64.zip",
-            "WSLDashboard.$version.Setup.x64.zip",
-            "WSLDashboard.$version.Setup.x64.exe"
+            "WSLDashboard.$version.Setup.x64.exe",
+            "WSLDashboard.$version.Portable.arm64.zip",
+            "WSLDashboard.$version.Setup.arm64.exe"
           )
           
           foreach ($f in $files) {
@@ -81,27 +78,23 @@ jobs:
           
           Write-Host "[SUCCESS] All assets downloaded to $downloadDir"
 
-      - name: Deploy to Gitee
+      - name: Prepare Cloudflare Pages Assets
         shell: pwsh
-        env:
-          GITEE_API_TOKEN: ${{ secrets.GITEE_API_TOKEN }}
         run: |
-          if ([string]::IsNullOrWhiteSpace($env:GITEE_API_TOKEN)) {
-            Write-Error "GITEE_API_TOKEN is not set in repository secrets!"
-            exit 1
-          }
-          if ([string]::IsNullOrWhiteSpace($env:GITEE_REPO_OWNER) -or [string]::IsNullOrWhiteSpace($env:GITEE_REPO_NAME)) {
-            Write-Error "GITEE_REPO_OWNER or GITEE_REPO_NAME is not set in repository secrets!"
-            exit 1
-          }
-          
           $version = "${{ steps.get_version.outputs.VERSION }}"
           $downloadDir = "temp_downloads"
           
-          # The script now uses the environment variables defined at the job level
-          .\build\actions\gitee_release_deploy.ps1 `
+          .\build\actions\cloudflare_pages_prepare.ps1 `
             -Version "$version" `
-            -DownloadDir "$downloadDir" `
-            -GiteeToken "$env:GITEE_API_TOKEN" `
-            -RepoOwner "$env:GITEE_REPO_OWNER" `
-            -RepoName "$env:GITEE_REPO_NAME"
+            -OutputDir "pages/releases/download/v$version" `
+            -PortableX64Zip "$downloadDir/WSLDashboard.$version.Portable.x64.zip" `
+            -SetupX64Exe "$downloadDir/WSLDashboard.$version.Setup.x64.exe" `
+            -PortableArm64Zip "$downloadDir/WSLDashboard.$version.Portable.arm64.zip" `
+            -SetupArm64Exe "$downloadDir/WSLDashboard.$version.Setup.arm64.exe"
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy pages --project-name ${{ secrets.CLOUDFLARE_DOWNLOAD_NAME }} --branch main

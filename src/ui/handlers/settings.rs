@@ -105,6 +105,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         let _ = slint::spawn_local(async move {
             if let Some(app) = ah.upgrade() {
                 let distro_location = app.get_distro_location().to_string();
+                let backup_location = app.get_backup_location().to_string();
                 let logs_location = app.get_logs_location().to_string();
                 let auto_shutdown = app.get_auto_shutdown();
                 let log_level = app.get_log_level() as u8;
@@ -132,6 +133,7 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
 
                 let mut settings = state.config_manager.get_settings().clone();
                 settings.distro_location = distro_location;
+                settings.backup_location = backup_location;
                 settings.logs_location = logs_location;
                 settings.auto_shutdown = auto_shutdown;
                 settings.mount_auto_probe = mount_auto_probe;
@@ -282,6 +284,18 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
         {
             if let Some(app) = ah.upgrade() {
                 app.set_logs_location(path.display().to_string().into());
+            }
+        }
+    });
+
+    let ah = app_handle.clone();
+    app.on_select_backup_folder(move || {
+        if let Some(path) = rfd::FileDialog::new()
+            .set_title(i18n::t("settings.select_backup_dir"))
+            .pick_folder()
+        {
+            if let Some(app) = ah.upgrade() {
+                app.set_backup_location(path.display().to_string().into());
             }
         }
     });

@@ -2,19 +2,33 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 use tokio::task;
-use tracing::{info, trace, error};
+use tracing::{info, trace, error, warn};
 use crate::wsl::executor::WslCommandExecutor;
 use crate::wsl::models::{WslCommandResult, WslDistro, WslInformation, WslStatus};
 
 pub async fn list_distros(executor: &WslCommandExecutor) -> WslCommandResult<Vec<WslDistro>> {
-    let result = executor.execute_command(&["-l", "-v"]).await;
+    // Distro listing uses a shorter timeout (5s): under normal WSL, `wsl -l -v` usually returns within 1s;
+    // if it exceeds 5s, the WSL VM is most likely not ready yet (e.g. a slow Windows cold start),
+    // so failing early lets the UI hide the unavailable cached list sooner instead of waiting a full 10s.
+    let result = executor
+        .execute_command_with_timeout(&["-l", "-v"], Some(std::time::Duration::from_secs(5)))
+        .await;
     if !result.success {
         let distros = crate::wsl::parser::parse_distros_list(&result.output);
         if distros.is_empty() {
-            let version_check = executor.execute_command(&["--version"]).await;
-            if version_check.success {
+            // Previously, inferring "zero distros" from a successful `wsl --version` was a misjudgment:
+            // --version only proves WSL is installed, not that there are no distros.
+            // During a slow cold start `wsl -l -v` times out and fails, and that logic would misread "couldn't read" as "empty", clearing the ordering cache.
+            // Now the registry is used instead (without going through the WSL service/VM; still readable during a slow cold start):
+            // only an empty registry confirms "zero distros"; otherwise it is treated as temporarily unknown and an error is returned to let the caller keep the previous list.
+            let installed = crate::utils::registry::get_wsl_distros_from_reg();
+            if installed.is_empty() {
                 return WslCommandResult::success(result.output, Some(distros));
             }
+            warn!(
+                "list_distros: `wsl -l -v` failed but registry reports {} installed distro(s); keeping previous list",
+                installed.len()
+            );
         }
         return WslCommandResult::error(result.output, result.error.unwrap_or_default());
     }

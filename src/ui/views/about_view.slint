@@ -160,7 +160,7 @@ export component AboutView inherits VerticalLayout {
                                         }
                                     }
                                     Text {
-                                        text: "v" + AppInfo.version;
+                                        text: "v" + AppInfo.version + AppInfo.arch_suffix;
                                         font-size: 13px * LayoutConstants.font-scale;
                                         font-family: Theme.default_font;
                                         color: Theme.text_secondary;

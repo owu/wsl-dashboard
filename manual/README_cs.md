@@ -265,7 +265,7 @@ Ujistěte se, že máte nainstalovanou sadu nástrojů Rust (Rust 1.92+ nebo nov
      > Sestavovací skript vyžaduje sadu nástrojů `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

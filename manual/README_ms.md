@@ -266,7 +266,7 @@ Pastikan anda telah memasang Rust toolchain (Rust 1.92+ atau lebih baharu).
      > Skrip binaan memerlukan toolchain `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

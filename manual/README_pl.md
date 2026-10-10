@@ -266,7 +266,7 @@ Upewnij się, że masz zainstalowany Rust toolchain (Rust 1.92+ lub nowszy).
      > Skrypt build wymaga toolchain `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

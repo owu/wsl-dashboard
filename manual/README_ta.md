@@ -265,7 +265,7 @@ Rust கருவித்தொகுப்பு (Rust 1.92+ அல்லத�
      > கட்டமைப்பு ஸ்கிரிப்ட்டிற்கு `x86_64-pc-windows-msvc` கருவித்தொகுப்பு தேவை.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

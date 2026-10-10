@@ -7,6 +7,7 @@ pub mod message_handler;
 pub mod expiry_task;
 pub mod update_task;
 pub mod compat_task;
+pub mod ping_task;
 
 use std::sync::Arc;
 use tokio::sync::Mutex;
@@ -18,6 +19,7 @@ pub use sync_task::{PopupSyncTask, MessageSyncTask};
 pub use expiry_task::VersionExpiryTask;
 pub use update_task::UpdateCheckTask;
 pub use compat_task::WslCompatTask;
+pub use ping_task::PingTask;
 
 // Start WSL status monitoring task
 pub fn spawn_wsl_monitor(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<AppState>>) {

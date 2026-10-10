@@ -266,7 +266,7 @@ Győződjön meg arról, hogy a Rust eszközkészlet (Rust 1.92+ vagy újabb) te
      > A build szkripthez az `x86_64-pc-windows-msvc` eszközkészlet szükséges.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

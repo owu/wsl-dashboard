@@ -266,7 +266,7 @@ Rust ടൂൾചെയിൻ (Rust 1.92+ അല്ലെങ്കിൽ ഏറ�
      > ബിൽഡ് സ്ക്രിപ്റ്റിന് `x86_64-pc-windows-msvc` ടൂൾചെയിൻ ആവശ്യമാണ്.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

@@ -31,6 +31,7 @@ export struct Distro {
     initial: string,
     distro_display_name: string,
     boot_run: bool,
+    notes: string,
 }
 
 export struct InstallableDistro {
@@ -137,6 +138,7 @@ export struct SettingsStrings {
     log_path: string,
     select_folder: string,
     install_dir: string,
+    backup_dir: string,
     auto_close: string,
     system_color: string,
     auto_start: string,
@@ -256,6 +258,8 @@ export global Theme {
 
 export global AppInfo {
     in property <string> version: "0.0.0";
+    // Display suffix for the runtime architecture, e.g. ".x64" or ".arm64"
+    in property <string> arch_suffix: "";
     in property <bool> checking_update: false;
     in property <bool> has_update: false;
     in-out property <string> latest_version: "";

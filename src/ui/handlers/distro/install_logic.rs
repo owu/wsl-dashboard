@@ -401,7 +401,7 @@ pub async fn perform_install(
                         let (temp_dir, temp_file_str) = {
                             let temp_location = config_manager.get_settings().temp_location.clone();
                             let temp_dir = PathBuf::from(temp_location);
-                            let temp_file = temp_dir.join(format!("wsl_move_{}.tar", uuid::Uuid::new_v4()));
+                            let temp_file = temp_dir.join(format!("wsl_move_{}.tar", uuid::Uuid::new_v7(uuid::Timestamp::now(uuid::NoContext))));
                             (temp_dir, temp_file.to_string_lossy().to_string())
                         };
                         

@@ -264,7 +264,7 @@ Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ 
      > ግንባታ ስክሪፕቱ `x86_64-pc-windows-msvc` ቱልቻይን ይፈልጋል።
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 
@@ -332,3 +332,4 @@ Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ 
 ---
 
 Built with ❤️ for the WSL Community.
+

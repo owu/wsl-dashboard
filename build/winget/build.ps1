@@ -30,7 +30,6 @@ $REPO = "https://github.com/owu/wsl-dashboard"
 $SHORT_DESCRIPTION = "A modern, high-performance, lightweight, and low-memory WSL instance management dashboard."
 $TAGS = @("wsl", "windows-subsystem-for-linux", "linux", "dashboard", "gui", "management", "rust")
 $INSTALLER_TYPE = "inno"
-$ARCH = "x64"
 $SCOPE = "machine"
 
 # Read version from Cargo.toml if not provided
@@ -91,19 +90,31 @@ if ($Submit) {
 
 # ---- Generate mode: create local manifest files ----
 
-# 1. Locate the Setup installer
-$SETUP_EXE = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VERSION.Setup.x64.exe"
-if (-not (Test-Path $SETUP_EXE)) {
-    Write-Error "Setup installer not found at $SETUP_EXE"
+# 1. Locate the Setup installers (x64 required, arm64 optional)
+$X64_EXE = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VERSION.Setup.x64.exe"
+if (-not (Test-Path $X64_EXE)) {
+    Write-Error "Setup installer not found at $X64_EXE"
     Write-Host "Please run '.\build\setup\build.ps1' first to build the installer." -ForegroundColor Yellow
     exit 1
 }
-Write-Host "Step 1: Found installer at $SETUP_EXE" -ForegroundColor Gray
+Write-Host "Step 1: Found x64 installer at $X64_EXE" -ForegroundColor Gray
+
+$ARM64_EXE = Join-Path $PSScriptRoot "..\..\build\releases\WSLDashboard.$VERSION.Setup.arm64.exe"
+$hasArm64 = Test-Path $ARM64_EXE
+if ($hasArm64) {
+    Write-Host "Step 1: Found arm64 installer at $ARM64_EXE" -ForegroundColor Gray
+} else {
+    Write-Host "Step 1: arm64 installer not found, generating x64-only manifest" -ForegroundColor Yellow
+}
 
 # 2. Calculate SHA256
 Write-Host "Step 2: Calculating SHA256 hash..." -ForegroundColor Yellow
-$hash = (Get-FileHash -Path $SETUP_EXE -Algorithm SHA256).Hash
-Write-Host "SHA256: $hash" -ForegroundColor Gray
+$hashX64 = (Get-FileHash -Path $X64_EXE -Algorithm SHA256).Hash
+Write-Host "SHA256 (x64): $hashX64" -ForegroundColor Gray
+if ($hasArm64) {
+    $hashArm64 = (Get-FileHash -Path $ARM64_EXE -Algorithm SHA256).Hash
+    Write-Host "SHA256 (arm64): $hashArm64" -ForegroundColor Gray
+}
 
 # 3. Prepare output directory
 if ([string]::IsNullOrWhiteSpace($OutputDir)) {
@@ -130,7 +141,31 @@ $versionFile = Join-Path $OutputDir "$PACKAGE_ID.yaml"
 Set-Content -Path $versionFile -Value $versionManifest -Encoding UTF8
 Write-Host "Generated: $versionFile" -ForegroundColor Green
 
-# 6. Generate installer manifest
+# 6. Generate installer manifest (one installer entry per architecture)
+$installerEntries = @(
+    @"
+- Architecture: x64
+  InstallerUrl: $REPO/releases/download/v$VERSION/WSLDashboard.$VERSION.Setup.x64.exe
+  InstallerSha256: $hashX64
+  Dependencies:
+    PackageDependencies:
+      - PackageIdentifier: Microsoft.VCRedist.2015+.x64
+        MinimumVersion: 14.40.33810
+"@
+)
+if ($hasArm64) {
+    $installerEntries += @"
+- Architecture: arm64
+  InstallerUrl: $REPO/releases/download/v$VERSION/WSLDashboard.$VERSION.Setup.arm64.exe
+  InstallerSha256: $hashArm64
+  Dependencies:
+    PackageDependencies:
+      - PackageIdentifier: Microsoft.VCRedist.2015+.arm64
+        MinimumVersion: 14.40.33810
+"@
+}
+$installersYaml = "Installers:`n" + ($installerEntries -join "`n")
+
 $installerManifest = @"
 # Created using wingetcreate 1.12.8.0
 # yaml-language-server: `$schema=https://aka.ms/winget-manifest.installer.1.12.0.schema.json
@@ -143,14 +178,7 @@ InstallerSwitches:
   Silent: /VERYSILENT /LANG=english /NORESTART /SUPPRESSMSGBOXES
   SilentWithProgress: /SILENT /LANG=english /NORESTART /SUPPRESSMSGBOXES
 ElevationRequirement: elevationRequired
-Dependencies:
-  PackageDependencies:
-    - PackageIdentifier: Microsoft.VCRedist.2015+.x64
-      MinimumVersion: 14.40.33810
-Installers:
-- Architecture: $ARCH
-  InstallerUrl: $REPO/releases/download/v$VERSION/WSLDashboard.$VERSION.Setup.x64.exe
-  InstallerSha256: $hash
+$installersYaml
 ManifestType: installer
 ManifestVersion: 1.12.0
 ReleaseDate: $(Get-Date -Format 'yyyy-MM-dd')

@@ -266,7 +266,7 @@ Priksa manawa toolchain Rust wis dipasang (Rust 1.92+ utawa versi luwih anyar).
      > Skrip bangunan mbutuhake toolchain `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

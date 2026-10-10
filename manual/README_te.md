@@ -265,7 +265,7 @@ Rust టూల్‌చైన్ (Rust 1.92+ లేదా తాజా వెర
      > బిల్డ్ స్క్రిప్ట్‌కు `x86_64-pc-windows-msvc` టూల్‌చైన్ అవసరం.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

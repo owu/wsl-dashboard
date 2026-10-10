@@ -266,7 +266,7 @@ Rust toolchain (Rust 1.92+ သို့မဟုတ် နောက်ဆုံ�
      > Build script သည် `x86_64-pc-windows-msvc` toolchain လိုအပ်သည်။
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

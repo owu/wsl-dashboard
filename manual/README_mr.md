@@ -266,7 +266,7 @@ Rust टूलचेन (Rust 1.92+ किंवा नवीनतम) स्�
      > बिल्ड स्क्रिप्टला `x86_64-pc-windows-msvc` टूलचेन आवश्यक आहे.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

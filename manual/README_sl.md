@@ -267,7 +267,7 @@ Prepričajte se, da imate nameščena orodja Rust (Rust 1.92+ ali novejša).
      > Gradbena skripta zahteva orodja `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

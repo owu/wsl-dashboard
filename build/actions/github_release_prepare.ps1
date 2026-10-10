@@ -1,15 +1,16 @@
 param (
-    [Parameter(Mandatory=$true)] [string]$Version
+    [Parameter(Mandatory=$true)] [string]$Version,
+    [Parameter(Mandatory=$false)] [ValidateSet("x64","arm64")] [string]$Arch = "x64"
 )
 
 Write-Host "--------------------------------------------------"
-Write-Host "[START] Preparing assets for version: $Version"
+Write-Host "[START] Preparing assets for version: $Version ($Arch)"
 Write-Host "--------------------------------------------------"
 
 # 1. Call Inno Setup to build the installer
 Write-Host "[INFO] Building Installer using Inno Setup..."
 try {
-    .\build\setup\build.ps1 -Version "$Version" -ErrorAction Stop
+    .\build\setup\build.ps1 -Version "$Version" -Arch $Arch -ErrorAction Stop
     Write-Host "[OK] Installer build completed."
 } catch {
     Write-Error "[ERROR] Failed to build installer: $_"
@@ -18,10 +19,15 @@ try {
 
 # 2. Prepare Portable Assets
 Write-Host "`n[INFO] Preparing Portable assets..."
-$release_dir = "target/release"
+# x64 is built natively into target/release, arm64 is cross-compiled into its own target directory
+if ($Arch -eq "arm64") {
+    $release_dir = "target/aarch64-pc-windows-msvc/release"
+} else {
+    $release_dir = "target/release"
+}
 $raw_exe = "wsldashboard.exe"
-$portable_exe = "WSLDashboard.$Version.Portable.x64.exe"
-$portable_zip = "WSLDashboard.$Version.Portable.x64.zip"
+$portable_exe = "WSLDashboard.$Version.Portable.$Arch.exe"
+$portable_zip = "WSLDashboard.$Version.Portable.$Arch.zip"
 
 if (Test-Path "$release_dir/$raw_exe") {
     Push-Location $release_dir
@@ -39,26 +45,7 @@ if (Test-Path "$release_dir/$raw_exe") {
     }
 } else {
     Write-Error "[ERROR] Portable exe not found at $release_dir/$raw_exe"
-    exit 1
-}
-
-# 3. Prepare Setup ZIP
-Write-Host "`n[INFO] Preparing Setup ZIP..."
-$setup_dir = "build/releases"
-$setup_exe = "WSLDashboard.$Version.Setup.x64.exe"
-$setup_zip = "WSLDashboard.$Version.Setup.x64.zip"
-
-if (Test-Path "$setup_dir/$setup_exe") {
-    Push-Location $setup_dir
-    try {
-        Write-Host "[INFO] Compressing Setup ZIP (7z mx9)..."
-        7z a -tzip -mx9 "$setup_zip" "$setup_exe" | Out-Null
-        Write-Host "[OK] Created: $setup_zip"
-    } finally {
-        Pop-Location
-    }
-} else {
-    Write-Error "[ERROR] Setup exe not found at $setup_dir/$setup_exe"
+    Write-Host "[HINT] Run '.\build\portable\build.ps1 -Arch $Arch' first." -ForegroundColor Yellow
     exit 1
 }
 

@@ -57,8 +57,9 @@ $UploadUrl = "$ApiBase/repos/$RepoOwner/$RepoName/releases/$ReleaseId/attach_fil
 
 $filesToUpload = @(
     "WSLDashboard.$Version.Portable.x64.zip",
-    "WSLDashboard.$Version.Setup.x64.zip",
-    "WSLDashboard.$Version.Setup.x64.exe"
+    "WSLDashboard.$Version.Setup.x64.exe",
+    "WSLDashboard.$Version.Portable.arm64.zip",
+    "WSLDashboard.$Version.Setup.arm64.exe"
 )
 
 Write-Host "`n[INFO] Starting asset upload..."

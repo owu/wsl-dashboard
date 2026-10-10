@@ -137,6 +137,22 @@ impl WslDashboard {
                     self.state_changed.notify_one();
                 }
             }
+        } else {
+            // `wsl -l -v` failed (e.g. the WSL VM is starting up slowly after a Windows cold start):
+            // the cached distros cannot currently provide any service, so the UI stops showing them
+            // to avoid the user getting stuck for a long time after clicking to start or open a terminal.
+            // Only the in-memory list is cleared; the [[last-distros]] cache in `instances.toml` is not cleared because of this:
+            // deletion of the file cache is decided by refresh_distros_ui -> sync_last_distros_cache based on the registry.
+            let mut distros_lock = self.distros.lock().await;
+            let had_distros = !distros_lock.is_empty();
+            if had_distros {
+                distros_lock.clear();
+            }
+            drop(distros_lock);
+            if had_distros {
+                trace!("WSL distro list refresh failed, hiding cached list (file cache preserved)");
+                self.state_changed.notify_one();
+            }
         }
         result
     }

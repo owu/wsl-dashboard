@@ -266,7 +266,7 @@ Certifique-se de que tem o conjunto de ferramentas Rust instalado (Rust 1.92+ ou
      > O script de compilação requer o conjunto de ferramentas `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

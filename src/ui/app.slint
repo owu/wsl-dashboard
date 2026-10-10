@@ -122,6 +122,7 @@ export component AppWindow inherits Window {
     in-out property <string> ui_language: "auto";
     in property <string> system_language: "en"; // Injected by backend at startup
     in-out property <string> distro_location: "";
+    in-out property <string> backup_location: "";
     in-out property <string> logs_location: "";
     in-out property <int> log_level: 4;
     in-out property <int> log_days: 7;
@@ -165,6 +166,7 @@ export component AppWindow inherits Window {
     in-out property <string> settings_distro_name: "";
     in-out property <string> settings_terminal_dir: "~";
     in-out property <string> settings_vscode_dir: "/home";
+    in-out property <string> settings_distro_notes: "";
     in-out property <bool> settings_is_default: false;
     in-out property <bool> settings_lock_default: false;
     in-out property <bool> settings_autostart: false;
@@ -172,6 +174,7 @@ export component AppWindow inherits Window {
     in-out property <string> settings_startup_script_url: "";
     in-out property <string> settings_terminal_dir_error: "";
     in-out property <string> settings_vscode_dir_error: "";
+    in-out property <string> settings_distro_notes_error: "";
     in-out property <string> settings_startup_script_error: "";
     in-out property <string> settings_default_error: "";
     in-out property <bool> settings_is_task_exists: true;
@@ -358,7 +361,7 @@ export component AppWindow inherits Window {
     callback edit_bashrc_distro(string);
     callback information_clicked(string);
     callback settings_clicked(string);
-    callback confirm_distro_settings(string, string, string, bool, bool, string, bool);
+    callback confirm_distro_settings(string, string, string, string, bool, bool, string, bool);
     callback delete_clicked(string);
     callback clone_distro(string);
     callback open_url(string);
@@ -392,6 +395,7 @@ export component AppWindow inherits Window {
     callback save_sidebar_state();
     callback select_distro_folder();
     callback select_logs_folder();
+    callback select_backup_folder();
     callback toggle_theme();
     callback open_wsl_settings();
     callback confirm_stop_wsl();
@@ -977,6 +981,7 @@ export component AppWindow inherits Window {
                                 show_drag <=> AppApi.show_drag;
                                 ui_language <=> root.ui_language;
                                 distro_location <=> root.distro_location;
+                                backup_location <=> root.backup_location;
                                 logs_location <=> root.logs_location;
                                 log_level <=> root.log_level;
                                 log_days <=> root.log_days;
@@ -1008,6 +1013,9 @@ export component AppWindow inherits Window {
                                 }
                                 select-logs-folder => {
                                     root.select_logs_folder();
+                                }
+                                select-backup-folder => {
+                                    root.select_backup_folder();
                                 }
                                 open-wsl-settings => {
                                     root.open_wsl_settings();
@@ -1192,6 +1200,7 @@ export component AppWindow inherits Window {
         settings_target_name: root.settings_distro_name;
         settings_terminal_dir <=> root.settings_terminal_dir;
         settings_vscode_dir <=> root.settings_vscode_dir;
+        settings_distro_notes <=> root.settings_distro_notes;
         settings_is_default <=> root.settings_is_default;
         settings_lock_default <=> root.settings_lock_default;
         settings_autostart <=> root.settings_autostart;
@@ -1199,12 +1208,13 @@ export component AppWindow inherits Window {
         settings_startup_script_url: root.settings_startup_script_url;
         settings_terminal_dir_error: root.settings_terminal_dir_error;
         settings_vscode_dir_error: root.settings_vscode_dir_error;
+        settings_distro_notes_error: root.settings_distro_notes_error;
         settings_startup_script_error: root.settings_startup_script_error;
         settings_default_error: settings_default_error;
         settings_is_task_exists: settings_is_task_exists;
         settings_terminal_proxy <=> root.settings_terminal_proxy;
-        confirm_settings(n, td, vd, id, as, ss, tp) => {
-            root.confirm_distro_settings(n, td, vd, id, as, ss, tp);
+        confirm_settings(n, td, vd, dn, id, as, ss, tp) => {
+            root.confirm_distro_settings(n, td, vd, dn, id, as, ss, tp);
         }
         close_settings => {
             root.show_settings = false;

@@ -71,6 +71,13 @@ pub fn migrate_config(config: &mut Config) {
         config.sidebar.mount = true;
     }
 
+    // v9 -> v10 logic
+    if old_version < 10 {
+        info!("Upgrading to v10: adding [application] device-id, [settings] backup-location");
+        config.application.device_id = String::new();
+        config.settings.backup_location = crate::config::default_backup_location();
+    }
+
     config.application.setting_version = SETTINGS_VERSION as u8;
     info!("Configuration migration complete, current version: v{}", SETTINGS_VERSION);
 }
@@ -85,7 +92,10 @@ pub fn migrate_instances_config(container: &mut super::InstancesContainer) {
     info!("Detected instances configuration version v{}, upgrading to v{}...", old_version, super::INSTANCES_VERSION);
 
     if old_version < 2 {
-        info!("Upgrading instances config to v2: adding terminal-proxy field (default enabled)");
+        info!("Upgrading instances config to v2: adding terminal-proxy field (default enabled), distro-notes (default empty)");
+        for instance in container.instances.values_mut() {
+            instance.distro_notes = String::new();
+        }
     }
     
     container.common.setting_version = super::INSTANCES_VERSION;

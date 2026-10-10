@@ -265,7 +265,7 @@ Rust alət zəncirinin (Rust 1.92+ və ya ən son versiya) quraşdırıldığın
      > Qurğu skripti `x86_64-pc-windows-msvc` alət zənciri tələb edir.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 
@@ -333,3 +333,4 @@ Bu layihə GPL-3.0 lisenziyası altında lisenziyalaşdırılmışdır – ətra
 ---
 
 Built with ❤️ for the WSL Community.
+

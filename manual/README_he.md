@@ -266,7 +266,7 @@ winget install Owu.WSLDashboard
      > סקריפט הבנייה דורש את ערכת הכלים `x86_64-pc-windows-msvc`.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

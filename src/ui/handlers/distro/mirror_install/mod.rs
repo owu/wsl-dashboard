@@ -79,7 +79,7 @@ pub async fn install_from_mirror(
     let temp_location = config_manager.get_settings().temp_location.clone();
     let temp_dir = std::path::PathBuf::from(temp_location.clone());
     let _ = tokio::task::spawn_blocking(move || std::fs::create_dir_all(&temp_dir)).await;
-    let temp_file = std::path::PathBuf::from(temp_location).join(format!("mirror_download_{}.tmp", uuid::Uuid::new_v4()));
+    let temp_file = std::path::PathBuf::from(temp_location).join(format!("mirror_download_{}.tmp", uuid::Uuid::new_v7(uuid::Timestamp::now(uuid::NoContext))));
 
     let (tx, mut rx) = tokio::sync::mpsc::channel(100);
     let ah_ui = ah.clone();

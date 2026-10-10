@@ -265,7 +265,7 @@ Rust ਟੂਲਚੇਨ (Rust 1.92+ ਜਾਂ ਨਵੀਨਤਮ) ਇੰਸਟ�
      > ਬਿਲਡ ਸਕ੍ਰਿਪਟ ਨੂੰ `x86_64-pc-windows-msvc` ਟੂਲਚੇਨ ਦੀ ਲੋੜ ਹੈ.
 
      ```powershell
-     .\build\portable\build.ps1
+     .\build\portable\build.ps1 -Arch x64
      ```
 
 

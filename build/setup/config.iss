@@ -8,6 +8,14 @@
 #ifndef AppVersionNumeric
   #define AppVersionNumeric AppVersion
 #endif
+; Target architecture suffix ("x64" or "arm64"), injected via /DArch=... by build.ps1
+#ifndef Arch
+  #define Arch "x64"
+#endif
+; Directory holding the built executable, injected via /DExeSourceDir=... for non-x64 targets
+#ifndef ExeSourceDir
+  #define ExeSourceDir "..\..\target\release"
+#endif
 #define AppPublisher "https://github.com/owu"
 #define AppURL "https://www.wslui.com"
 #define AppExeName "wsldashboard.exe"
@@ -33,13 +41,19 @@ DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 LicenseFile=..\..\LICENSE
 ; Set to 64-bit installation mode to install to C:\Program Files by default instead of (x86)
+#ifdef Arm64Build
+; arm64 build (Arm64Build is injected via /DArm64Build by build.ps1)
+ArchitecturesAllowed=arm64
+ArchitecturesInstallIn64BitMode=arm64
+#else
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
+#endif
 ; Request admin privileges to install for all users (default installation to C:\Program Files)
 PrivilegesRequired=admin
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\..\build\releases
-OutputBaseFilename=WSLDashboard.{#AppVersion}.Setup.x64
+OutputBaseFilename=WSLDashboard.{#AppVersion}.Setup.{#Arch}
 SetupIconFile=..\..\assets\logo\logo.ico
 UninstallDisplayIcon={app}\{#AppExeName}
 UninstallDisplayName={#AppName}
@@ -115,7 +129,7 @@ Name: "startmenuicon"; Description: "{cm:StartMenuIcon}"
 Name: "createscheduler"; Description: "{cm:CreateSchedulerTask}"; Check: IsAdminInstallMode
 
 [Files]
-Source: "..\..\target\release\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ExeSourceDir}\{#AppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 ; Add other non-embedded resources here if needed
 ; Source: "assets\*"; DestDir: "{app}\assets"; Flags: ignoreversion recursesubdirs createallsubdirs
 

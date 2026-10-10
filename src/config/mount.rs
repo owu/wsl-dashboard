@@ -36,7 +36,7 @@ impl Default for MountDiskCommonConfig {
 pub struct MountDiskConfig {
     #[serde(default)]
     pub common: MountDiskCommonConfig,
-    #[serde(default)]
+    #[serde(rename = "mounted-disks", alias = "mounted_disks", default)]
     pub mounted_disks: Vec<MountedDiskRecord>,
 }
 

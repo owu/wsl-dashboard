@@ -144,6 +144,7 @@ export component AdvancedSettingsSection inherits VerticalLayout {
     in property <SettingsStrings> strings;
     
     in-out property <string> distro_location;
+    in-out property <string> backup_location;
     in-out property <string> logs_location;
     in-out property <int> selected_log_level_index;
     in-out property <int> selected_log_days_index;
@@ -154,6 +155,7 @@ export component AdvancedSettingsSection inherits VerticalLayout {
     in-out property <bool> mount_auto_probe;
     
     callback select_distro_folder();
+    callback select_backup_folder();
     callback select_logs_folder();
     
     spacing: 16px;
@@ -166,6 +168,16 @@ export component AdvancedSettingsSection inherits VerticalLayout {
         CustomLineEdit { text: root.distro_location; enabled: false; horizontal-stretch: 1; }
         if (!AppI18n.is-rtl): CustomButton { text: root.strings.select_folder; height: 32px; clicked => { root.select_distro_folder(); } }
     }
+
+    Rectangle { height: 1px; background: Theme.border_color; }
+    Text { text: root.strings.backup_dir; font-size: 13px * LayoutConstants.font-scale; font-family: Theme.default_font; color: Theme.text_secondary; horizontal-alignment: AppI18n.is-rtl ? right : left; }
+    HorizontalLayout {
+        spacing: 8px;
+        if (AppI18n.is-rtl): CustomButton { text: root.strings.select_folder; height: 32px; clicked => { root.select_backup_folder(); } }
+        CustomLineEdit { text: root.backup_location; enabled: false; horizontal-stretch: 1; }
+        if (!AppI18n.is-rtl): CustomButton { text: root.strings.select_folder; height: 32px; clicked => { root.select_backup_folder(); } }
+    }
+    
     Rectangle { height: 1px; background: Theme.border_color; }
     Text { text: root.strings.log_path; font-size: 13px * LayoutConstants.font-scale; font-family: Theme.default_font; color: Theme.text_secondary; horizontal-alignment: AppI18n.is-rtl ? right : left; }
     HorizontalLayout {
