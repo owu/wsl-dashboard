@@ -6,8 +6,6 @@
 
 A modern, high-performance, lightweight, and low-memory WSL (Windows Subsystem for Linux) instance management dashboard. Built with Rust and Slint for a premium native experience.
 
----
-
 ```diff
 Notice:​
 
@@ -27,24 +25,12 @@ Notice:​
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | [हिन्दी](./manual/README_hi.md) | [Español](./manual/README_es.md) | [Français](./manual/README_fr.md) | [العربية](./manual/README_ar.md) | [বাংলা](./manual/README_bn.md) | [Português](./manual/README_pt.md) | [Русский](./manual/README_ru.md) | [اردو](./manual/README_ur.md) | [Bahasa Indonesia](./manual/README_id.md) | [Deutsch](./manual/README_de.md) | [日本語](./manual/README_ja.md) | [Türkçe](./manual/README_tr.md) | [한국어](./manual/README_ko.md) | [Italiano](./manual/README_it.md) | [Nederlands](./manual/README_nl.md) | [Svenska](./manual/README_sv.md) | [Čeština](./manual/README_cs.md) | [Ελληνικά](./manual/README_el.md) | [Magyar](./manual/README_hu.md) | [עברית](./manual/README_he.md) | [Norsk](./manual/README_no.md) | [Dansk](./manual/README_da.md) | [Suomi](./manual/README_fi.md) | [Slovenčina](./manual/README_sk.md) | [Slovenščina](./manual/README_sl.md) | [Íslenska](./manual/README_is.md) | [Tiếng Việt](./manual/README_vi.md) | [తెలుగు](./manual/README_te.md) | [Basa Jawa](./manual/README_jv.md) | [ภาษาไทย](./manual/README_th.md) | [தமிழ்](./manual/README_ta.md) | [Filipino](./manual/README_fil.md) | [ਪੰਜਾਬੀ](./manual/README_pa.md) | [Bahasa Melayu](./manual/README_ms.md) | [Polski](./manual/README_pl.md) | [Українська](./manual/README_uk.md) | [فارسی](./manual/README_fa.md) | [ಕನ್ನಡ](./manual/README_kn.md) | [मराठी](./manual/README_mr.md) | [Hausa](./manual/README_ha.md) | [မြန်မာ](./manual/README_my.md) | [Oʻzbek](./manual/README_uz.md) | [Azərbaycan](./manual/README_az.md) | [Cebuano](./manual/README_ceb.md) | [മലയാളം](./manual/README_ml.md) | [سنڌي](./manual/README_sd.md) | [አማርኛ](./manual/README_am.md)
+README I18N :  English | [简体中文](./manual/README_zh_CN.md) | [繁體中文](./manual/README_zh_TW.md) | [हिन्दी](./manual/README_hi.md) | [Español](./manual/README_es.md) | [Français](./manual/README_fr.md) | [العربية](./manual/README_ar.md) | [বাংলা](./manual/README_bn.md) | [Português](./manual/README_pt.md) | [Русский](./manual/README_ru.md) | [اردو](./manual/README_ur.md) | [Bahasa Indonesia](./manual/README_id.md) | [Deutsch](./manual/README_de.md) | [日本語](./manual/README_ja.md) | [Türkçe](./manual/README_tr.md) | [한국어](./manual/README_ko.md) | [Italiano](./manual/README_it.md) | [Nederlands](./manual/README_nl.md) | [Svenska](./manual/README_sv.md) | [Čeština](./manual/README_cs.md) | [Ελληνικά](./manual/README_el.md) | [Magyar](./manual/README_hu.md) | [עברית](./manual/README_he.md) | [Norsk](./manual/README_no.md) | [Dansk](./manual/README_da.md) | [Suomi](./manual/README_fi.md) | [Slovenčina](./manual/README_sk.md) | [Slovenščina](./manual/README_sl.md) | [Íslenska](./manual/README_is.md) | [Tiếng Việt](./manual/README_vi.md) | [తెలుగు](./manual/README_te.md) | [Basa Jawa](./manual/README_jv.md) | [ภาษาไทย](./manual/README_th.md) | [தமிழ்](./manual/README_ta.md) | [Filipino](./manual/README_fil.md) | [ਪੰਜਾਬੀ](./manual/README_pa.md) | [Bahasa Melayu](./manual/README_ms.md) | [Polski](./manual/README_pl.md) | [Українська](./manual/README_uk.md) | [فارسی](./manual/README_fa.md) | [ಕನ್ನಡ](./manual/README_kn.md) | [मराठी](./manual/README_mr.md) | [Hausa](./manual/README_ha.md) | [မြန်မာ](./manual/README_my.md) | [Oʻzbek](./manual/README_uz.md) | [Azərbaycan](./manual/README_az.md) | [Cebuano](./manual/README_ceb.md) | [മലയാളം](./manual/README_ml.md) | [سنڌي](./manual/README_sd.md) | [አማርኛ](./manual/README_am.md)
 
 ---
 
 ## 📑 Table of Contents
-- [🌍 Language Support](#-language-support)
-- [🚀 Key Features & Usage](#-key-features--usage)
-- [⚙️ Configuration & Logs](#️-configuration--logs)
-- [🖼️ Screenshots](#️-screenshots)
-- [🎬 Operation Demo](#-operation-demo)
-- [💻 System Requirements](#-system-requirements)
-- [📦 Installation](#-installation)
-- [🛠️ Tech Stack & Performance](#️-tech-stack--performance)
-- [📢 Official Community Groups](#-official-community-groups)
-- [🤝 Community Support](#-community-support)
-- [❤️ Support this project](#️-support-this-project)
-- [⭐️ Labor of love](#️-labor-of-love)
-- [📄 License](#-license)
+[🌍 Language Support](#-language-support) | [🚀 Key Features & Usage](#-key-features--usage) | [🖼️ Screenshots](#️-screenshots) | [📦 Installation](#-installation) | [📢 Official Community Groups](#-official-community-groups) | [❤️ Support this project](#️-support-this-project) | [⭐️ Labor of love](#️-labor-of-love) | [📄 License](#-license)
 
 ---
 
@@ -105,7 +91,6 @@ English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic
   <img src="assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Key Features & Usage
 
 - **Modern Native UI**: Intuitive GUI with Dark/Light mode support, smooth animations, and high-performance rendering powered by **Skia**.
@@ -121,89 +106,18 @@ English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic
 - **Ultra-Low Memory Footprint**: Highly optimized for efficiency. Silent startup (system tray) uses only **~10MB** RAM. Windowed mode usage varies by font complexity: **~18MB** for standard languages (English, German, Spanish, etc.) and **~38MB** for large font languages (Chinese, Japanese, Korean, etc.).
 - **Advanced Networking**: Seamless port forwarding management (with automatic firewall rule creation) and global HTTP proxy configuration for unified connectivity.
 - **USB Device Management**: Full integration with `usbipd-win` for effortless binding, attaching, and managing of local USB devices across your WSL instances directly from the dashboard UI.
-
-
-## ⚙️ Configuration & Logs
-
-All configuration is managed through the Settings view:
-
-- Choose the default installation directory for new WSL instances.
-- Configure the log directory and log level (Error / Warn / Info / Debug / Trace).
-- Pick the UI language or let it follow the system language.
-- Toggle dark mode and whether the app can auto-shutdown WSL after operations.
-- Configure how often the app checks for updates (daily, weekly, biweekly, monthly).
-- Enable automatic startup on system boot (with automatic path repair).
-- Set the app to minimize to the system tray on startup for a distraction-free experience.
-- Configure the close button to minimize to the system tray instead of exiting.
-- Customize the sidebar by toggling the visibility of specific feature tabs.
-
-Log files are written to the configured log directory and can be attached when reporting issues.
+- **Configuration & Logs**: Manage the default install directory, log directory and level, UI language, dark mode, update-check frequency, autostart and close behavior, plus sidebar visibility, all from one Settings view.
+- **Distro Keep-Alive**: Start a distro with one click to keep it running instead of shutting down after ~60 seconds of idle; or enable "Start this distro when Windows starts" for always-on use.
+- **Global Shortcuts**: Define global hotkeys to show/hide the main window or open a chosen distro's terminal instantly.
 
 
 ## 🖼️ Screenshots
-
-### Home (Light & Dark Mode)
 <p align="center">
   <img src="assets/screenshot/home.png" width="48%" />
   <img src="assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="assets/screenshot/home-settings.png" width="48%" />
-  <img src="assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Collapse menu
-<p align="center">
-  <img src="assets/screenshot/usb.png" width="48%" />
-  <img src="assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Network
-<p align="center">
-  <img src="assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Add Instance & Settings
-<p align="center">
-  <img src="assets/screenshot/add.png" width="48%" />
-  <img src="assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### About & Donate
-<p align="center">
-  <img src="assets/screenshot/about.png" width="48%" />
-  <img src="assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Disk Mount
-<p align="center">
-  <img src="assets/screenshot/mount.png" width="48%" />
-  <img src="assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Task Scheduler
-<p align="center">
-  <img src="assets/screenshot/task.png" width="48%" />
-  <img src="assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Operation Demo
-
-[Help us improve! Watch our intro video and share your thoughts.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 System Requirements
-
-- Windows 10 or Windows 11 with WSL enabled (WSL 2 recommended).
-- At least one WSL distribution installed, or permission to install new ones.
-- 64-bit CPU; 4 GB RAM or more recommended for smooth multi-distro usage.
+Want to see the dashboard in action? Visit the [official website](https://www.wslui.com/) for the full screenshot gallery.
 
 ## 📦 Installation
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For more information, visit the [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Option 3: Download prebuilt binary
-
-You can also download the precompiled release directly:
-
-1. Go to the [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) page.
-2. Download the latest `wsldashboard` executable for Windows.
-3. Extract (if packaged) and run `wsldashboard.exe`.
-
-No installer is required; the app is a single portable binary.
-
-### Option 4: Build from source
+### Option 3: Build from source
 
 Ensure you have the Rust toolchain (Rust 1.92+ or newer) installed.
 
@@ -270,44 +174,18 @@ Ensure you have the Rust toolchain (Rust 1.92+ or newer) installed.
      ```
 
 
-## 🛠️ Tech Stack & Performance
-
-- **Core**: Implemented in Rust for memory safety and zero-cost abstractions.
-- **UI Framework**: Slint with high-performance **Skia** rendering backend.
-- **Async Runtime**: Tokio for non-blocking system commands and I/O.
-- **Performance Highlights**:
-  - **Responsiveness**: Near-instant startup and real-time WSL status monitoring.
-  - **Efficiency**: Ultra-low resource usage (see [Key Features](#-key-features--usage) for details).
-  - **Portability**: Optimized release build produces a single compact executable.
-
-
 ## 📢 Official Community Groups
 
 Welcome to the official WSL UI community groups! Join our channels to discuss usage tips, report issues, get the latest updates, and connect with the developers and other users.
+
+<div align="center">
 
 | Global Group (Telegram) | Chinese Group (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Scan to join | Scan to join |
 
----
-
-
-## 🤝 Community Support
-
-A big thank you to the following communities for their support:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For the powerful and safe programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For the modern UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For the amazing Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For the efficient async runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For continuous platform improvements
-- [Reddit](https://www.reddit.com) - For global community discussions and support
-- [Hacker News](https://news.ycombinator.com) - For global community discussions and support
-- [Linux.do](https://linux.do) - For popular community for IT professionals
-- [V2EX](https://www.v2ex.com) - For Chinese tech community discussions
-
-Your contributions and feedback make this project possible!
+</div>
 
 
 ## ❤️ Support this project
@@ -315,9 +193,7 @@ Your contributions and feedback make this project possible!
 - This project is licensed under GPL-3.0 and is free for all users.
 - From feature development and daily testing to bug fixes, all work is done in spare time. The road of open source is not easy alone — your recognition and support give the project the confidence to keep going.
 - If this tool has genuinely helped you, consider lending a hand. All donations go toward server costs, version iterations, and feature improvements, keeping the project continuously updated and steadily progressing.
-- Every bit of kindness is a ray of starlight. Thank you again for your understanding and generosity!
-
-Visit our donation page: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Every bit of kindness is a ray of starlight. Thank you again for your understanding and generosity! [Visit our donation page](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Labor of love
@@ -332,4 +208,4 @@ This project is licensed under the GPL-3.0 – see the [LICENSE](LICENSE) file f
 
 ---
 
-Built with ❤️ for the WSL Community.
+❤️ Thanks to these communities: [Rust Programming Language](https://www.rust-lang.org), [Slint](https://slint.dev), [WSL](https://github.com/microsoft/WSL), [Tokio](https://tokio.rs), [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community), [Reddit](https://www.reddit.com), [Hacker News](https://news.ycombinator.com), [Linux.do](https://linux.do), [V2EX](https://www.v2ex.com).

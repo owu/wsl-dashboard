@@ -6,8 +6,6 @@
 
 WSL (Windows Subsystem for Linux) ထိန်းချုပ်မှု Dashboard သစ်၊ စွမ်းဆောင်ရည်မြင့်၊ ပေါ့ပါးပြီး မမ်မိုရီသုံးစွဲမှုနည်းပါးသော။ Rust နှင့် Slint ဖြင့်တည်ဆောက်ထားပြီး အကောင်းဆုံး native အတွေ့အကြုံကို ပေးအပ်ပါသည်။
 
----
-
 ```diff
 အသိပေးချက်:
 
@@ -27,24 +25,12 @@ WSL (Windows Subsystem for Linux) ထိန်းချုပ်မှု Dashbo
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | မြန်မာ | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | မြန်မာ | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 မာတိကာ
-- [🌍 ဘာသာစကား ပံ့ပိုးမှု](#-ဘာသာစကား-ပံ့ပိုးမှု)
-- [🚀 အဓိကလုပ်ဆောင်ချက်များနှင့် အသုံးပြုပုံ](#-အဓိကလုပ်ဆောင်ချက်များနှင့်-အသုံးပြုပုံ)
-- [⚙️ ဖွဲ့စည်းမှုနှင့် Log](#️-ဖွဲ့စည်းမှုနှင့်-log)
-- [🖼️ ဆော့ဖ်ဝဲ မျက်နှာပြင်ရိုက်ချက်များ](#️-ဆော့ဖ်ဝဲ-မျက်နှာပြင်ရိုက်ချက်များ)
-- [🎬 လုပ်ဆောင်ချက် သရုပ်ပြ](#-လုပ်ဆောင်ချက်-သရုပ်ပြ)
-- [💻 စနစ် လိုအပ်ချက်များ](#-စနစ်-လိုအပ်ချက်များ)
-- [📦 ထည့်သွင်းမှု လမ်းညွှန်](#-ထည့်သွင်းမှု-လမ်းညွှန်)
-- [🛠️ နည်းပညာ အစုနှင့် စွမ်းဆောင်ရည်](#️-နည်းပညာ-အစုနှင့်-စွမ်းဆောင်ရည်)
-- [📢 တရားဝင့် လူမဆှဲ အုပ့်စု](#-တရားဝင့်-လူမဆှဲ-အုပ့်စု)
-- [🤝 အသိုင်းအဝိုင်း ပံ့ပိုးမှု](#-အသိုင်းအဝိုင်း-ပံ့ပိုးမှု)
-- [❤️ ဤစီမံကိန်းကို ပံ့ပိုးပါ](#️-ဤစီမံကိန်းကို-ပံ့ပိုးပါ)
-- [⭐️ ချစ်ခြင်းဖြင့်](#️-ချစ်ခြင်းဖြင့်)
-- [📄 အိုင်ပင်းဆို့စ် လိုင်စင်](#-အိုင်ပင်းဆို့စ်-လိုင်စင်)
+[🌍 ဘာသာစကား ပံ့ပိုးမှု](#-ဘာသာစကား-ပံ့ပိုးမှု) | [🚀 အဓိကလုပ်ဆောင်ချက်များနှင့် အသုံးပြုပုံ](#-အဓိကလုပ်ဆောင်ချက်များနှင့်-အသုံးပြုပုံ) | [🖼️ ဆော့ဖ်ဝဲ မျက်နှာပြင်ရိုက်ချက်များ](#️-ဆော့ဖ်ဝဲ-မျက်နှာပြင်ရိုက်ချက်များ) | [📦 ထည့်သွင်းမှု လမ်းညွှန်](#-ထည့်သွင်းမှု-လမ်းညွှန်) | [📢 တရားဝင့် လူမဆှဲ အုပ့်စု](#-တရားဝင့်-လူမဆှဲ-အုပ့်စု) | [❤️ ဤစီမံကိန်းကို ပံ့ပိုးပါ](#️-ဤစီမံကိန်းကို-ပံ့ပိုးပါ) | [⭐️ ချစ်ခြင်းဖြင့်](#️-ချစ်ခြင်းဖြင့်) | [📄 အိုင်ပင်းဆို့စ် လိုင်စင်](#-အိုင်ပင်းဆို့စ်-လိုင်စင်)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 အဓိကလုပ်ဆောင်ချက်များနှင့် အသုံးပြုပုံ
 
 - **ခေတ်မီ Native UI**: မှောင်/လင်း မုဒ်၊ ချောမွေ့သော animation များဖြင့် ရိုးရှင်းသော GUI၊ **Skia** ဖြင့် မြင့်မားသော စွမ်းဆောင်ရည် rendering။
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **မမ်မိုရီ သုံးစွဲမှု အလွန်နည်းပါးခြင်း**: အလွန်ကောင်းမွန်စွာ optimize လုပ်ထားသော အရင်းအမြစ် ထိရောက်မှု။ အသံမထွက်ဘဲ စတင်ခြင်း (system tray) သည် **10MB** မမ်မိုရီသာ သုံးစွဲသည်။ window မုဒ်တွင် font ရှုပ်ထွေးမှုပေါ် မူတည်၍ **18MB** (အင်္ဂလိပ်၊ ဂျာမန် စသော စံဘာသာစကားများ) မှ **38MB** (CJK ကဲ့သို့ အကြီးစား character set များ) အထိ သုံးစွဲသည်။
 - **အဆင့်မြင့် ကွန်ရက် စီမံခန့်ခွဲမှု**: port forwarding (firewall စည်းမျဉ်းများကို အလိုအလျောက် ဖန်တီးခြင်း) နှင့် global HTTP proxy configuration ကို ချောမွေ့စွာ စီမံခန့်ခွဲခြင်း။
 - **USB စက်ပစ္စည်း စီမံခန့်ခွဲမှု**: `usbipd-win` နှင့် နက်ရှိုင်းစွာ ပေါင်းစည်းခြင်း၊ WSL instance အားလုံးအတွက် dashboard UI တွင် local USB စက်ပစ္စည်းများကို bind၊ attach နှင့် စီမံခန့်ခွဲမှု လုပ်ဆောင်ချက်များ ပြုလုပ်နိုင်သည်။
-
-
-## ⚙️ ဖွဲ့စည်းမှုနှင့် Log
-
-ဖွဲ့စည်းမှုအားလုံးကို "ဆက်တင်များ" မြင်ကွင်းမှတစ်ဆင့် စီမံခန့်ခွဲသည်:
-
-- WSL instance အသစ်များအတွက် မူလ ထည့်သွင်းမှု လမ်းညွှန်ကို ရွေးချယ်ပါ။
-- Log လမ်းညွှန်နှင့် log level (Error / Warn / Info / Debug / Trace) ကို ဖွဲ့စည်းပါ။
-- UI ဘာသာစကားကို ရွေးချယ်ပါ သို့မဟုတ် စနစ် ဘာသာစကားကို လိုက်နာပါ။
-- မှောင်မုဒ် ပြောင်းလဲခြင်း၊ နှင့် လုပ်ဆောင်ချက်ပြီးနောက် app သည် WSL ကို အလိုအလျောက် ပိတ်သင့်မသင့်။
-- Update စစ်ဆေးမှု ကြိမ်နှုန်းကို ဖွဲ့စည်းပါ (နေ့စဉ်၊ အပတ်စဉ်၊ နှစ်ပတ်လျှင်တစ်ကြိမ်၊ လစဉ်)။
-- Boot စတင်ခြင်းကို ဖွင့်ပါ (လမ်းညွှန် အလိုအလျောက် ပြင်ဆင်ခြင်း လုပ်ဆောင်ချက်ဖြင့်)။
-- စတင်သည့်အခါ tray သို့ အသေးငယ်ဆုံးချရန် သတ်မှတ်ပါ။
-- ပိတ်ရန် ခလုတ်၏ လုပ်ဆောင်ချက်ကို ဖွဲ့စည်းပါ (ပရိုဂရမ်မှ ထွက်ခြင်းထက် tray သို့ အသေးငယ်ဆုံးချခြင်း)။
-- သီးခြား လုပ်ဆောင်ချက် tab များ၏ မြင်ကွင်းကို ပြောင်းလဲခြင်းဖြင့် sidebar ကို စိတ်ကြိုက်ပြင်ဆင်ပါ။
-
-Log ဖိုင်များကို ဖွဲ့စည်းထားသော log လမ်းညွှန်သို့ ရေးသားပြီး၊ ပြဿနာ အစီရင်ခံသည့်အခါ log များကို ပူးတွဲနိုင်သည်။
+- **ဖွဲ့စည်းမှုနှင့် မှတ်တမ်းများ**: ဆက်တင်များမှ မူရင်းထည့်သွင်းဖိုလ်ဒါ၊ မှတ်တမ်းဖိုလ်ဒါနှင့် အဆင့်၊ UI ဘာသာစကား၊ အမှောင်မုဒ်၊ အပ်ဒိတ်စစ်ဆေးမှု အကြိမ်ရေ၊ အလိုအလျောက်စတင်မှုနှင့် ပိတ်သည့်အပြုအမူ၊ နှင့် ဘေးဘားကို စီမံပါ။
+- **ဒစ်စထရိုကို ဆက်လက်အသုံးပြုနိုင်ရန်**: «စတင်» ကို တစ်ချက်နှိပ်ပါက ~၆၀ စက္ကန့် အနားယူပြီးနောက် အလိုအလျောက်ပိတ်မည့်အစား ဆက်လက်လည်ပတ်နေမည်။ «Windows စတင်ချိန် ဤဒစ်စထရိုကို စတင်ပါ» ကိုလည်း ဖွင့်နိုင်သည်။
+- **ဂလိုဘယ် ကီးစ်ဖြတ်လမ်းများ**: ပင်မဝင်းဒိုးကို ပြ/ဖျောက် သို့မဟုတ် ဒစ်စထရိုတစ်ခု၏ တာမင်နယ်ကို ချက်ချင်းဖွင့်ရန် ဂလိုဘယ်ဖြတ်လမ်းများ သတ်မှတ်ပါ။
 
 
 ## 🖼️ ဆော့ဖ်ဝဲ မျက်နှာပြင်ရိုက်ချက်များ
-
-### ပင်မ မျက်နှာပြင် (မှောင် & လင်း မုဒ်)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Menu ခေါက်ခြင်း
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### ကွန်ရက် စီမံခန့်ခွဲမှု
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Instance ထည့်ခြင်း & ဆက်တင်များ
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### အကြောင်း & လှူဒါန်းခြင်း
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### ဒစ်ခ် တပ်ဆင်ခြင်း
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### အလုပ်ချိန်ဇယား
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 လုပ်ဆောင်ချက် သရုပ်ပြ
-
-[ကျွန်ုပ်တို့ကို ကူညီတိုးတက်စေပါ! ကျွန်ုပ်တို့၏ မိတ်ဆက်ဗီဒီယိုကို ကြည့်ရှုပြီး သင့်ထင်မြင်ချက်များကို မျှဝေပါ။](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 စနစ် လိုအပ်ချက်များ
-
-- WSL ဖွင့်ထားသော Windows 10 သို့မဟုတ် Windows 11 (WSL 2 အသုံးပြုရန် အကြံပြုထားသည်)။
-- WSL distro အနည်းဆုံးတစ်ခု ထည့်သွင်းထားခြင်း သို့မဟုတ် distro အသစ် ထည့်သွင်းခွင့် ရှိခြင်း။
-- 64-bit CPU; ချောမွေ့သော multi-distro အသုံးပြုမှုအတွက် 4 GB သို့မဟုတ် ၎င်းထက်ပိုသော RAM အကြံပြုထားသည်။
+ဒက်ရှ်ဘုတ် အလုပ်လုပ်နေသည်ကို ကြည့်လိုပါသလား။ အပြည့်အစုံ ဖန်သားပြင်ဓာတ်ပုံပြခန်းအတွက် [တရားဝင် ဝဘ်ဆိုက်](https://www.wslui.com/) သို့ သွားပါ။
 
 ## 📦 ထည့်သွင်းမှု လမ်းညွှန်
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 နောက်ထပ်အချက်အလက်များအတွက် [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) သို့ သွားရောက်ပါ။
 
-### နည်းလမ်း 3: Pre-compiled Binary ဒေါင်းလုဒ်လုပ်ခြင်း
-
-အလွယ်ဆုံးနည်းလမ်းမှာ ကြိုတင် compile လုပ်ထားသော version ကို အသုံးပြုခြင်းဖြစ်သည်:
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) စာမျက်နှာသို့ သွားပါ။
-2. Windows အတွက် `wsldashboard` executable နောက်ဆုံး version ကို ဒေါင်းလုဒ်လုပ်ပါ။
-3. ဖြည်ပါ (zip file ဖြစ်ပါက) ပြီး `wsldashboard.exe` ကို run ပါ။
-
-ထည့်သွင်းရန် မလိုအပ်ပါ၊ ဤ app သည် တစ်ခုတည်းသော file portable program ဖြစ်သည်။
-
-### နည်းလမ်း 4: Source Code မှ Build လုပ်ခြင်း
+### နည်းလမ်း 3: Source Code မှ Build လုပ်ခြင်း
 
 Rust toolchain (Rust 1.92+ သို့မဟုတ် နောက်ဆုံး version) ထည့်သွင်းထားကြောင်း သေချာပါစေ။
 
@@ -270,45 +174,18 @@ Rust toolchain (Rust 1.92+ သို့မဟုတ် နောက်ဆုံ�
      ```
 
 
-## 🛠️ နည်းပညာ အစုနှင့် စွမ်းဆောင်ရည်
-
-- **Kernel**: Rust ဖြင့် အကောင်အထည်ဖော်ထားပြီး မမ်မိုရီ လုံခြုံရေးနှင့် zero-cost abstraction ကို သေချာစေသည်။
-- **UI Framework**: မြင့်မားသော စွမ်းဆောင်ရည် **Skia** rendering backend ပါဝင်သော Slint။
-- **Asynchronous Runtime**: non-blocking system commands နှင့် I/O အတွက် Tokio။
-- **စွမ်းဆောင်ရည် ထူးခြားချက်များ**:
-  - **တုံ့ပြန်မှု အမြန်နှုန်း**: ချက်ချင်း စတင်ခြင်း၊ နှင့် WSL အခြေအနေကို အချိန်နှင့်တပြေးညီ စောင့်ကြည့်ခြင်း။
-  - **အရင်းအမြစ် ထိရောက်မှု**: အလွန်နည်းပါးသော အရင်းအမြစ် သုံးစွဲမှု ([အဓိကလုပ်ဆောင်ချက်များ](#-အဓိကလုပ်ဆောင်ချက်များနှင့်-အသုံးပြုပုံ) တွင် ကြည့်ရှုပါ)။
-  - **Portable**: optimize လုပ်ထားသော release version သည် တစ်ခုတည်းသော compact executable ဖိုင်ကို ဖန်တီးသည်။
-
-
-
-
 ## 📢 တရားဝင့် လူမဆှဲ အုပ့်စု
 
 WSL UI တရားဝင့် လူမဆှဲ အုပ့်စုမှာ ကြိုမှိုက့်ပင့်ဆိုပါသည့်! အသုံးပြုနည့်း အကြံဉာဏ့်မည့်းကို ဆြေးနြေးရန့်, ပြဿနာမည့်းကို အသိပေးရန့်, နန့်နှုတ့်စားရန့် နှင့် ဖြုံ့်ဖြိုးသုးမည့်းနှင့် အခြား အသုံးပြုသုးမည့်းနှင့် ချိတ့်ဆက့်ရန့် ကျှူန့်ပြုတိုင့်း၏ မကှုံးင့်းရန့် ဝင့်ပါ။
+
+<div align="center">
 
 | ကမ္ဘာ့ အုပ့်စု (Telegram) | တရုတ့် အုပ့်စု (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | ဝင့်ရန့် စကန့်နာ ပြုပါ | ဝင့်ရန့် စကန့်နာ ပြုပါ |
 
----
-
-## 🤝 အသိုင်းအဝိုင်း ပံ့ပိုးမှု
-
-အောက်ပါ အသိုင်းအဝိုင်းများ၏ ပံ့ပိုးမှုအတွက် ကျေးဇူးတင်ပါသည်:
-
-- [Rust Programming Language](https://www.rust-lang.org) - အစွမ်းထက်ပြီး လုံခြုံသော programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - ခေတ်မီ UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - အကောင်းဆုံး Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - ထိရောက်သော asynchronous runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - ဆက်လက်ဖြစ်ပေါ်နေသော platform တိုးတက်မှုများ
-- [Reddit](https://www.reddit.com) - ကမ္ဘာလုံးဆိုင်ရာ အသိုင်းအဝိုင်း ဆွေးနွေးမှုနှင့် ပံ့ပိုးမှု
-- [Hacker News](https://news.ycombinator.com) - ကမ္ဘာလုံးဆိုင်ရာ အသိုင်းအဝိုင်း ဆွေးနွေးမှုနှင့် ပံ့ပိုးမှု
-- [Linux.do](https://linux.do) - IT ကျွမ်းကျင်သူများအတွက် လူကြိုက်များသော အသိုင်းအဝိုင်း
-- [V2EX](https://www.v2ex.com) - တရုတ် နည်းပညာ အသိုင်းအဝိုင်း ဆွေးနွေးမှု
-
-သင့်ပံ့ပိုးမှုနှင့် feedback များက ဤစီမံကိန်းကို ဖြစ်နိုင်စေသည်!
+</div>
 
 
 ## ❤️ ဤစီမံကိန်းကို ပံ့ပိုးပါ
@@ -316,9 +193,7 @@ WSL UI တရားဝင့် လူမဆှဲ အုပ့်စုမှ�
 - ဤစီမံကိန်းသည် GPL-3.0 open source license ကို အသုံးပြုထားပြီး အသုံးပြုသူအားလုံးအတွက် အခမဲ့ဖြစ်သည်။
 - Feature development မှ daily testing နှင့် bug fixes အထိ လုပ်ငန်းအားလုံးသည် အားလပ်ချိန်မှလာသည်။ Open source လမ်းကြောင်းသည် တစ်ယောက်တည်းလျှောက်ရန် မလွယ်ကူပါ၊ သင့်အသိအမှတ်ပြုမှုနှင့် ပံ့ပိုးမှုသည် စီမံကိန်း ဆက်လက်ရှင်သန်ရန် အင်အားဖြစ်သည်။
 - ဤကိရိယာက သင့်ကို အမှန်တကယ် ကူညီသည်ဟု ခံစားရပါက ကူညီပါ။ လှူဒါန်းမှုအားလုံးကို server ကုန်ကျစရိတ်၊ version iteration နှင့် feature optimization အတွက် အသုံးပြုမည်ဖြစ်ပြီး စီမံကိန်း ဆက်လက် update ဖြစ်စေမည်။
-- ကောင်းသောအရာ အနည်းငယ်သည် ကြယ်များဖြစ်သည်။ သင့်နားလည်မှုနှင့် ရက်ရောမှုအတွက် ထပ်မံကျေးဇူးတင်ပါသည်!
-
-ကျွန်ုပ်တို့၏ လှူဒါန်းမှု စာမျက်နှာကို ဝင်ကြည့်ပါ: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- ကောင်းသောအရာ အနည်းငယ်သည် ကြယ်များဖြစ်သည်။ သင့်နားလည်မှုနှင့် ရက်ရောမှုအတွက် ထပ်မံကျေးဇူးတင်ပါသည်! [ကျွန်ုပ်တို့၏ လှူဒါန်းမှု စာမျက်နှာကို ဝင်ကြည့်ပါ](https://www.wslui.com/donate/).
 
 
 ## ⭐️ ချစ်ခြင်းဖြင့်
@@ -329,8 +204,3 @@ WSL UI တရားဝင့် လူမဆှဲ အုပ့်စုမှ�
 ## 📄 အိုင်ပင်းဆို့စ် လိုင်စင်
 
 ဤစီမံကိန်းကို GPL-3.0 license ဖြင့် ခွင့်ပြုထားသည် – အသေးစိတ်အတွက် [LICENSE](../LICENSE) ဖိုင်ကို ကြည့်ရှုပါ။
-
-
----
-
-Built with ❤️ for the WSL Community.

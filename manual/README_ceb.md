@@ -6,8 +6,6 @@
 
 Usa ka moderno, high-performance, gaan ug ubos ang memory usage nga dashboard sa pagdumala sa WSL (Windows Subsystem for Linux) instances. Gitukod gamit ang Rust ug Slint, naghatag ug labing maayong native nga kasinatian.
 
----
-
 ```diff
 Pahibalo:
 
@@ -27,24 +25,12 @@ Pahibalo:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | Cebuano | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | Cebuano | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Talaan sa Sulod
-- [🌍 Pagsuporta sa Pinulongan](#-pagsuporta-sa-pinulongan)
-- [🚀 Mga Panguna nga Bahin ug Paggamit](#-mga-panguna-nga-bahin-ug-paggamit)
-- [⚙️ Configuration ug Log](#️-configuration-ug-log)
-- [🖼️ Mga Screenshot sa Software](#️-mga-screenshot-sa-software)
-- [🎬 Demo sa Operasyon](#-demo-sa-operasyon)
-- [💻 Mga Kinahanglanon sa Sistema](#-mga-kinahanglanon-sa-sistema)
-- [📦 Giya sa Pag-install](#-giya-sa-pag-install)
-- [🛠️ Tech Stack ug Performance](#️-tech-stack-ug-performance)
-- [📢 Opisyal na Komunidad Grupo](#-opisyal-na-komunidad-grupo)
-- [🤝 Pagsuporta sa Komunidad](#-pagsuporta-sa-komunidad)
-- [❤️ Suportaha Kini nga Proyekto](#️-suportaha-kini-nga-proyekto)
-- [⭐️ Alang sa Gugma](#️-alang-sa-gugma)
-- [📄 Lisensya sa Open Source](#-lisensya-sa-open-source)
+[🌍 Pagsuporta sa Pinulongan](#-pagsuporta-sa-pinulongan) | [🚀 Mga Panguna nga Bahin ug Paggamit](#-mga-panguna-nga-bahin-ug-paggamit) | [🖼️ Mga Screenshot sa Software](#️-mga-screenshot-sa-software) | [📦 Giya sa Pag-install](#-giya-sa-pag-install) | [📢 Opisyal na Komunidad Grupo](#-opisyal-na-komunidad-grupo) | [❤️ Suportaha Kini nga Proyekto](#️-suportaha-kini-nga-proyekto) | [⭐️ Alang sa Gugma](#️-alang-sa-gugma) | [📄 Lisensya sa Open Source](#-lisensya-sa-open-source)
 
 ---
 
@@ -105,7 +91,6 @@ English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Mga Panguna nga Bahin ug Paggamit
 
 - **Modernong Native UI**: Intuitive nga GUI nga adunay dark/light mode, hapsay nga animation, ug high-performance rendering nga gidagan sa **Skia**.
@@ -121,87 +106,18 @@ English, Simplified Chinese, Traditional Chinese, Hindi, Spanish, French, Arabic
 - **Grabe ka Uban ang Memory Usage**: Taas nga optimized resource efficiency. Walay tunog nga pag-start (system tray) mga **10MB** ra sa memory. Sa window mode, ang paggamit nagdepende sa pagkakomplikado sa font: mga **10MB** (standard languages sama sa English, German, ug uban pa) hangtod sa **38MB** (dakong character set sama sa CJK).
 - **Advanced Network Management**: Walay-pugong nga pagdumala sa port forwarding (automatic firewall rule creation) ug global HTTP proxy configuration.
 - **USB Device Management**: Lawom nga pag-integrate sa `usbipd-win`, nga nagtugot sa bind, attach, ug management operations sa lokal nga USB devices diretso sa dashboard UI alang sa tanan nga WSL instances.
-
-
-## ⚙️ Configuration ug Log
-
-Ang tanan nga configuration gidumala pinaagi sa "Settings" view:
-
-- Pagpili sa default installation directory alang sa bag-ong WSL instances.
-- Pag-configure sa log directory ug log level (Error / Warn / Info / Debug / Trace).
-- Pagpili sa UI language o pagsunod sa system language.
-- Pag-toggle sa dark mode, ug kung ang app kinahanglan ba mag-auto-close sa WSL pagkahuman sa operasyon.
-- Pag-configure sa frequency sa pag-check sa update (adlaw-adlaw, matag semana, matag duha ka semana, matag bulan).
-- Paghimo sa auto-start sa boot (nga adunay auto-fix path feature).
-- Pag-set sa minimize sa tray sa pag-abli.
-- Pag-configure sa behavior sa close button (minimize sa tray imbes mag-exit sa programa).
-- I-customize ang sidebar pinaagi sa pag-toggle sa visibility sa piho nga feature tabs.
-
-Ang mga log file isulat sa gi-configure nga log directory, ug mahimong i-attach ang mga log sa pag-report sa problema.
+- **Konfigurasyon ug mga log**: Pinaagi sa Settings, dumalahon ang default nga install folder, log folder ug lebel, pinulongan sa UI, dark mode, kanunay sa pagsusi sa update, autostart ug kinaiya sa pagsira, ug ang sidebar.
+- **Pagpabiling aktibo sa distro**: Usa ka klik sa «Start» magpabiling nagdagan ang distro imbes palongon pagkahuman sa ~60 segundos nga walay kalihokan; mahimo usab nga i-on ang «Start ini nga distro kon magsugod ang Windows».
+- **Global nga mga shortcut**: Pagtakda og global nga mga shortcut aron ipakita/tago ang panguna nga bintana o ablihan dayon ang terminal sa usa ka distro.
 
 
 ## 🖼️ Mga Screenshot sa Software
-
-### Main Interface (Dark & Light Mode)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Menu Collapse
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Network Management
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Add Instance & Settings
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### About & Donate
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Disk Mount
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-</p>
-
-### Pag-iskedyul sa Taksa
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-</p>
-
-## 🎬 Demo sa Operasyon
-
-[Tabangi kami nga mapalambo! Tan-awa ang among introduction video ug isulti ang imong hunahuna.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Mga Kinahanglanon sa Sistema
-
-- Windows 10 o Windows 11 nga adunay gipagana nga WSL (girekomenda ang paggamit sa WSL 2).
-- Labing menos usa ka WSL distro ang gi-install, o adunay katungod sa pag-install sa bag-ong distro.
-- 64-bit CPU; girekomenda ang 4 GB o labaw pa nga RAM alang sa hapsay nga multi-distro nga paggamit.
+Gusto nimong makita ang dashboard nga naglihok? Bisitaha ang [opisyal nga website](https://www.wslui.com/) alang sa tibuok nga gallery sa mga screenshot.
 
 ## 📦 Giya sa Pag-install
 
@@ -231,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Para sa dugang impormasyon, bisitaha ang [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Paagi 3: Pag-download sa Pre-compiled Binary
-
-Ang labing sayon nga paagi mao ang paggamit sa gipangandam nga bersyon:
-
-1. Adto sa [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) page.
-2. I-download ang pinakabag-ong `wsldashboard` executable alang sa Windows.
-3. I-extract (kung compressed file) ug i-run ang `wsldashboard.exe`.
-
-Walay kinahanglan nga pag-install, kini nga app usa ka single-file portable program.
-
-### Paagi 4: Pag-build gikan sa Source
+### Paagi 3: Pag-build gikan sa Source
 
 Siguruha nga ang Rust toolchain gi-install (Rust 1.92+ o mas bag-ong bersyon).
 
@@ -268,46 +174,18 @@ Siguruha nga ang Rust toolchain gi-install (Rust 1.92+ o mas bag-ong bersyon).
      ```
 
 
-## 🛠️ Tech Stack ug Performance
-
-- **Kernel**: Gipatuman gamit ang Rust, nagsiguro sa memory safety ug zero-cost abstraction.
-- **UI Framework**: Slint nga adunay high-performance **Skia** rendering backend.
-- **Asynchronous Runtime**: Tokio, alang sa non-blocking system commands ug I/O.
-- **Performance Highlights**:
-  - **Speed sa Pagtubol**: Halos instant nga pag-start, ug real-time nga pag-monitor sa WSL status.
-  - **Resource Efficiency**: Grabe ka ubos nga resource usage (tan-awa ang mga detalye sa [Panguna nga Bahin](#-mga-panguna-nga-bahin-ug-paggamit)).
-  - **Portability**: Ang optimized release version nagmugna ug usa ka compact executable file.
-
-
-
 ## 📢 Opisyal na Komunidad Grupo
 
 Malipayong pag-abot sa opisyal na mga grupo sa komunidad sa WSL UI! Sumali sa among mga channel para sa diskusyon sa mga tips sa paggamit, pag-report sa mga problema, pagkuha sa mga labing bag-ong update, ug pagkonekta sa mga developer ug uban pang mga user.
+
+<div align="center">
 
 | Global Group (Telegram) | Chinese Group (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Scan para sumali | Scan para sumali |
 
----
-
-
-
-## 🤝 Pagsuporta sa Komunidad
-
-Dako among pasalamat sa pagsuporta sa mosunod nga mga komunidad:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Gamhanan ug luwas nga programming language
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Modernong UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Maayo kaayo nga Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Episyente nga asynchronous runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Padayon nga pag-uswag sa platform
-- [Reddit](https://www.reddit.com) - Global nga diskusyon ug pagsuporta sa komunidad
-- [Hacker News](https://news.ycombinator.com) - Global nga diskusyon ug pagsuporta sa komunidad
-- [Linux.do](https://linux.do) - Sikat nga komunidad alang sa mga IT professionals
-- [V2EX](https://www.v2ex.com) - Diskusyon sa Chinese tech community
-
-Ang imong kontribusyon ug feedback nagpahimo niini nga proyekto!
+</div>
 
 
 ## ❤️ Suportaha Kini nga Proyekto
@@ -315,9 +193,7 @@ Ang imong kontribusyon ug feedback nagpahimo niini nga proyekto!
 - Kini nga proyekto naggamit sa GPL-3.0 open source license, libre alang sa tanan nga users.
 - Gikan sa feature development, adlaw-adlaw nga testing, hangtod sa bug fixes, tanan nga trabaho gikan sa libre nga oras. Ang open source nga dalan lisud mag-inusara, ang imong pag-ila ug pagsuporta mao ang pwersa aron ang proyekto magpadayon.
 - Kung gibati nimo nga kini nga himan nakatabang kanimo, ayaw pagpanuko sa pagtabang. Ang tanan nga donasyon gamiton alang sa server costs, version iteration, ug feature optimization.
-- Gamay nga kaayo, mga bitoon. Salamat pag-usab sa imong pagsabot ug pagkamapinanggaron!
-
-Bisitaha ang among donasyon nga pahina: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Gamay nga kaayo, mga bitoon. Salamat pag-usab sa imong pagsabot ug pagkamapinanggaron! [Bisitaha ang among donasyon nga pahina](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Alang sa Gugma
@@ -328,8 +204,3 @@ Kung gibati nimo nga kini nga proyekto nakatabang kanimo, mapasalamaton ko kung 
 ## 📄 Lisensya sa Open Source
 
 Kini nga proyekto lisensyado sa ilalim sa GPL-3.0 – tan-awa ang file sa [LICENSE](../LICENSE) alang sa mga detalye.
-
-
----
-
-Built with ❤️ for the WSL Community.

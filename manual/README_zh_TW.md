@@ -6,8 +6,6 @@
 
 一款現代、高效能、輕量級且低記憶體佔用的 WSL (Windows Subsystem for Linux) 實例管理儀表板。基於 Rust 和 Slint 構建，提供頂級的原生體驗。
 
----
-
 ```diff
 注意:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | 繁體中文 | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | 繁體中文 | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 目錄
-- [🌍 語言支持](#-語言支持)
-- [🚀 核心功能與使用](#-核心功能與使用)
-- [⚙️ 配置與日誌](#️-配置與日誌)
-- [🖼️ 軟體截圖](#️-軟體截圖)
-- [🎬 操作演示](#-操作演示)
-- [💻 系統要求](#-系統要求)
-- [📦 安裝指南](#-安裝指南)
-- [🛠️ 技術棧與性能](#️-技術棧與性能)
-- [📢 官方交流群](#-官方交流群)
-- [🤝 社區支持](#-社區支持)
-- [❤️ 支持本專案](#️-支持本專案)
-- [⭐️ 為愛發電](#️-為愛發電)
-- [📄 開源協議](#-開源協議)
+[🌍 語言支持](#-語言支持) | [🚀 核心功能與使用](#-核心功能與使用) | [🖼️ 軟體截圖](#️-軟體截圖) | [📦 安裝指南](#-安裝指南) | [📢 官方交流群](#-官方交流群) | [❤️ 支持本專案](#️-支持本專案) | [⭐️ 為愛發電](#️-為愛發電) | [📄 開源協議](#-開源協議)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | 繁體中�
   <img src="../assets/flags/et.svg" width="32" title="阿姆哈拉語" alt="阿姆哈拉語" />
 </p>
 
-
 ## 🚀 核心功能與使用
 
 - **現代原生 UI**：直觀的 GUI，支持深色/淺色模式，流暢的動畫，由 **Skia** 驅動的高性能渲染。
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | 繁體中�
 - **極低內存佔用**：高度優化的資源效率。靜默啟動（系統托盤）僅約 **10MB** 內存。視窗模式下根據字體複雜度佔用約 **18MB**（標準語言如英語、德語等）到 **38MB**（大字符集如中日韓語）。
 - **高級網路管理**: 無縫管理連接埠轉發（自動建立防火牆規則）以及全局 HTTP 代理配置，實現統一的連線體驗。
 - **USB 設備管理**: 與 `usbipd-win` 深度整合，可在儀表板 UI 中直接對所有 WSL 實例的本地 USB 設備進行輕鬆的綁定、附加和管理操作。
-
-
-## ⚙️ 配置與日誌
-
-所有配置均通過「設置」視圖管理：
-
-- 選擇新 WSL 實例的默認安裝目錄。
-- 配置日誌目錄和日誌級別 (Error / Warn / Info / Debug / Trace)。
-- 選擇 UI 語言或跟隨系統語言。
-- 切換深色模式，及應用是否在操作後自動關閉 WSL。
-- 配置檢查更新的頻率（每天、每周、每兩周、每月）。
-- 啟用開机自啟（帶路徑自動修復功能）。
-- 設置啟動時最小化到托盤。
-- 配置關閉按鈕的行为（最小化到托盤而非退出程序）。
-- 透過切換特定功能分頁的可見性來自訂側邊欄。
-
-日誌文件將寫入配置的日誌目錄，在報告問題時可以附帶日誌。
+- **設定與日誌**：在統一的「設定」檢視中管理預設安裝目錄、日誌目錄與等級、介面語言、深色模式、更新檢查頻率、開機自啟與關閉行為，並可自訂側邊欄。
+- **發行版保活**：一鍵「啟動」即可讓發行版持續執行，避免閒置約 60 秒後被自動關閉；也可開啟「在 Windows 啟動時自動啟動該發行版」，實現開機即常駐。
+- **全域快速鍵**：自訂全域快速鍵，隨時顯示/隱藏主視窗，或一鍵開啟指定發行版的終端機。
 
 
 ## 🖼️ 軟體截圖
-
-### 主介面 (深色 & 淺色模式)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & 菜單折疊
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### 網路管理
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### 添加實例 & 設置
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### 關於 & 捐贈
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### 磁碟掛載
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### 任務計劃
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 操作演示
-
-[幫助我們改進！觀看我們的介紹影片並分享您的想法。](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 系統要求
-
-- 啟用了 WSL 的 Windows 10 或 Windows 11（推薦使用 WSL 2）。
-- 至少安裝了一個 WSL 發行版，或擁有安裝新發行版的權限。
-- 64 位元 CPU；建議 4 GB 或更多 RAM 以確保多發行版使用順畅。
+想看看儀表板實際運行的樣子？前往[官方網站](https://www.wslui.com/)查看完整截圖。
 
 ## 📦 安裝指南
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 更多資訊，請造訪 [WinGet 社群儲存庫](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard)。
 
-### 方式 3: 下載預編譯二進制文件
-
-最简单的方式是使用編譯好的版本：
-
-1. 前往 [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) 頁面。
-2. 下載適用於 Windows 的最新 `wsldashboard` 可執行文件。
-3. 解壓（如果是壓縮包）並運行 `wsldashboard.exe`。
-
-無需安裝，本應用為單文件便攜式程序。
-
-### 方式 4: 從源碼構建
+### 方式 3: 從源碼構建
 
 請確保已安裝 Rust 工具鏈（Rust 1.92+ 或更新版本）。
 
@@ -270,44 +174,18 @@ winget install Owu.WSLDashboard
      ```
 
 
-## 🛠️ 技術棧與性能
-
-- **內核**：使用 Rust 實現，確保內存安全和零成本抽象。
-- **UI 框架**：使用高性能 **Skia** 渲染後端的 Slint。
-- **非同步執行階段**：Tokio，用於非阻塞系統命令和 I/O。
-- **性能亮點**：
-  - **響應速度**：近乎瞬時的啟動速度，並即時監控 WSL 狀態。
-  - **資源效率**：極低的資源佔用（詳见 [核心功能](#-核心功能與使用)）。
-  - **便攜性**：優化後的發布版本生成單個精簡的可執行文件。
-
-
-
 ## 📢 官方交流群
 
 歡迎加入 WSL UI 官方交流群，與開發者和其他用戶一起討論使用心得、回饋問題、取得最新動態。
+
+<div align="center">
 
 | 全球交流群 (Telegram) | 中文交流群 (微信) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | 掃碼加入 | 掃碼加入 |
 
----
-
-## 🤝 社區支持
-
-衷心感謝以下社區的支持：
-
-- [Rust Programming Language](https://www.rust-lang.org) - 強大且安全的程式語言
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - 現代化的 UI 框架
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - 出色的 Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - 高效的非同步執行階段
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - 持續的平台改進
-- [Reddit](https://www.reddit.com) - 全球社區討論與支持
-- [Hacker News](https://news.ycombinator.com) - 全球社區討論與支持
-- [Linux.do](https://linux.do) - IT 專業人士的熱門社區
-- [V2EX](https://www.v2ex.com) - 中文技術社區討論
-
-您的貢獻和回饋使這個項目成為可能！
+</div>
 
 
 ## ❤️ 支持本專案
@@ -315,9 +193,7 @@ winget install Owu.WSLDashboard
 - 本專案採用 GPL-3.0 開源協議，面向所有使用者免費使用。
 - 從功能開發、日常測試到問題修復，所有工作都源於業餘時間的堅持。開源之路獨行不易，你的認可與支持，是專案長久走下去的底氣。
 - 如果你覺得這款工具切實幫到了你，不妨伸出援手。所有捐贈將用於伺服器開銷、版本迭代與功能優化，讓專案持續更新、穩步前行。
-- 點滴善意，皆為星光。再次感謝你的理解與慷慨！
-
-前往我們的捐款頁面：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- 點滴善意，皆為星光。再次感謝你的理解與慷慨！前往我們的[捐款頁面](https://www.wslui.com/donate/)。
 
 
 ## ⭐️ 為愛發電
@@ -328,8 +204,3 @@ winget install Owu.WSLDashboard
 ## 📄 開源協議
 
 本项目採用 GPL-3.0 協議授權 – 詳见 [LICENSE](../LICENSE) 文件。
-
-
----
-
-Built with ❤️ for the WSL Community.

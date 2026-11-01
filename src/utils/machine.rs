@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-//! Runtime architecture (machine) detection utility.
-//!
-//! Provides two kinds of architecture information:
-//! - [`current_arch`]: the running architecture of the current exe itself (equivalent to `std::env::consts::ARCH`).
-//! - [`os_arch`]: the native architecture of the operating system (host). Even if an x64 exe runs
-//!   under emulation on arm64 Windows, `os_arch` still returns [`Arch::Arm64`], differing from `current_arch`.
+// Runtime architecture (machine) detection utility.
+//
+// Provides two kinds of architecture information:
+// - [`current_arch`]: the running architecture of the current exe itself (equivalent to `std::env::consts::ARCH`).
+// - [`os_arch`]: the native architecture of the operating system (host). Even if an x64 exe runs
+//   under emulation on arm64 Windows, `os_arch` still returns [`Arch::Arm64`], differing from `current_arch`.
 
 use windows::Win32::System::SystemInformation::{
     GetNativeSystemInfo, PROCESSOR_ARCHITECTURE_AMD64, PROCESSOR_ARCHITECTURE_ARM64, SYSTEM_INFO,

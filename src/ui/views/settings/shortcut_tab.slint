@@ -1,0 +1,837 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
+// SPDX-License-Identifier: GPL-3.0-only
+
+// Shortcut settings tab
+//
+// Interaction rules:
+// - Shortcut changes take effect immediately, so this tab has no separate save button
+// - The recorder has four states: unbound placeholder, bound keycaps, recording ("press shortcut..."), conflict (red border)
+// - Global shortcuts stay active while the app is running (including when the main window is hidden in the tray)
+//
+// Visual spec aligned with .documents/v0.15.0/shortcut-prototype/:
+// - The upper area is the "show / hide window" card (with an embedded toggle row on a light background)
+// - A 1px divider in the middle; the lower area is "distro terminal shortcuts" with no card:
+//   the row container hk-list has its own light background + border, and each row uses cells with the "label above the control"
+ 
+import { Theme, AppI18n, LayoutConstants, DistroOption, ShortcutRow } from "../../theme.slint";
+import { ActionIcon } from "../../components/common.slint";
+import { CustomButton } from "../../components/form_widgets.slint";
+import { CustomScrollbar } from "../../components/scrollbar.slint";
+
+// Keycap: shows a single key of the combo
+component KeyCap inherits Rectangle {
+    in property <string> label;
+    // Keycap background / bottom edge (aligned with the prototype's --keycap-bg / --keycap-shadow)
+    property <color> keycap_bg: Theme.dark_mode ? #33353A : #FFFFFF;
+    property <color> keycap_edge: Theme.dark_mode ? #2A2B2F : #E9EAEE;
+
+    height: 22px;
+    width: max(20px, cap-label.preferred-width + 14px);
+    border-radius: 5px;
+    background: keycap_bg;
+    border-width: 1px;
+    border-color: Theme.dark_mode ? #4A4D54 : #CBD0D7;
+    clip: true;
+
+    // Keycap bottom edge: Slint does not support single-side borders, so a 2px color band + clip simulates a 3D keycap
+    Rectangle {
+        y: parent.height - 2px;
+        height: 2px;
+        width: parent.width;
+        background: keycap_edge;
+    }
+
+    cap-label := Text {
+        text: root.label;
+        font-size: 11px * LayoutConstants.font-scale;
+        font-family: "Consolas";
+        font-weight: 700;
+        color: Theme.text_primary;
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+}
+
+// Shortcut recorder
+component ShortcutRecorder inherits Rectangle {
+    in property <string> shortcut: "";
+    in property <[string]> keycaps;
+    in property <bool> recording: false;
+    in property <string> recording-text: "";
+    in property <bool> conflict: false;
+    callback start-recording();
+    callback clear();
+
+    height: 34px;
+    border-radius: 6px;
+    border-width: 1px;
+    background: Theme.input_bg;
+    // Conflict red border / recording accent border / darker border on hover; otherwise the input border
+    border-color: root.conflict ? Theme.icon_color_danger
+                : root.recording ? Theme.accent
+                : hover-area.has-hover ? Theme.text_secondary
+                : Theme.input_border;
+    animate border-color { duration: 150ms; }
+
+    // Focus ring: overlaid outside the border while recording / conflicting (aligned with the prototype's box-shadow ring)
+    Rectangle {
+        visible: root.recording || root.conflict;
+        x: -3px;
+        y: -3px;
+        width: parent.width + 6px;
+        height: parent.height + 6px;
+        border-radius: 9px;
+        border-width: 3px;
+        border-color: root.conflict ? Theme.icon_color_danger.with-alpha(0.22)
+                                   : Theme.accent.with-alpha(0.22);
+    }
+
+    // Click to record (declared before the content so the button's own TouchArea takes over the hit area first)
+    hover-area := TouchArea {
+        mouse-cursor: pointer;
+        clicked => {
+            if (!root.recording) { root.start-recording(); }
+        }
+    }
+
+    HorizontalLayout {
+        padding-left: AppI18n.is-rtl ? 4px : 8px;
+        padding-right: AppI18n.is-rtl ? 8px : 4px;
+        spacing: 6px;
+        alignment: AppI18n.is-rtl ? end : start;
+        // Keycaps and the clear button have a fixed height, so they must be centered explicitly (the default stretch on the cross axis has no effect on fixed-size items)
+        cross-axis-alignment: center;
+
+        // RTL: the clear button mirrors to the left side of the content
+        if (AppI18n.is-rtl && (root.recording || root.shortcut != "")): ActionIcon {
+            icon: "\u{E711}";
+            icon_type: "action";
+            icon_size: 12px;
+            tooltip: root.recording
+                     ? AppI18n.t("settings.shortcut.cancel_recording", [AppI18n.version])
+                     : AppI18n.t("settings.shortcut.clear_binding", [AppI18n.version]);
+            clicked => { root.clear(); }
+        }
+
+        // Recording: accent dot + hint text
+        if (root.recording): HorizontalLayout {
+            spacing: 6px;
+            alignment: AppI18n.is-rtl ? end : start;
+            cross-axis-alignment: center;
+            if (AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+            if (!AppI18n.is-rtl): Rectangle {
+                width: 8px;
+                height: 8px;
+                border-radius: 4px;
+                background: Theme.accent;
+            }
+            Text {
+                text: root.recording-text != ""
+                      ? root.recording-text
+                      : AppI18n.t("settings.shortcut.recording", [AppI18n.version]);
+                font-size: 12px * LayoutConstants.font-scale;
+                font-family: Theme.default_font;
+                color: Theme.accent;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                vertical-alignment: center;
+                overflow: elide;
+            }
+            if (AppI18n.is-rtl): Rectangle {
+                width: 8px;
+                height: 8px;
+                border-radius: 4px;
+                background: Theme.accent;
+            }
+            if (!AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+        }
+
+        // Bound: keycaps (keys joined by +)
+        if (!root.recording && root.shortcut != ""): HorizontalLayout {
+            spacing: 3px;
+            alignment: AppI18n.is-rtl ? end : start;
+            cross-axis-alignment: center;
+            if (AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+            for cap[i] in root.keycaps: HorizontalLayout {
+                spacing: 3px;
+                alignment: center;
+                cross-axis-alignment: center;
+                if (i > 0): Text {
+                    text: "+";
+                    font-size: 11px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    color: Theme.text_secondary;
+                    vertical-alignment: center;
+                }
+                KeyCap { label: cap; }
+            }
+            if (!AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+        }
+
+        // Unbound: placeholder text
+        if (!root.recording && root.shortcut == ""): Text {
+            text: AppI18n.t("settings.shortcut.placeholder", [AppI18n.version]);
+            font-size: 12px * LayoutConstants.font-scale;
+            font-family: Theme.default_font;
+            color: Theme.text_secondary;
+            horizontal-alignment: AppI18n.is-rtl ? right : left;
+            vertical-alignment: center;
+            horizontal-stretch: 1;
+            overflow: elide;
+        }
+
+        // LTR: the clear button is on the right side of the content (preserves the original layout)
+        if (!AppI18n.is-rtl && (root.recording || root.shortcut != "")): ActionIcon {
+            icon: "\u{E711}";
+            icon_type: "action";
+            icon_size: 12px;
+            tooltip: root.recording
+                     ? AppI18n.t("settings.shortcut.cancel_recording", [AppI18n.version])
+                     : AppI18n.t("settings.shortcut.clear_binding", [AppI18n.version]);
+            clicked => { root.clear(); }
+        }
+    }
+}
+
+// Distro dropdown: shows a colored badge + name and pops up the list of selectable distros
+//
+// The badge color is mapped from the distro name (icon_mapper::map_name_to_color); it is a simple
+// name match and does not probe real distro info.
+component DistroDropdown inherits Rectangle {
+    in property <string> current: "";
+    in property <string> mono: "";
+    in property <color> badge-color: #6B7684;
+    in property <[DistroOption]> options;
+    in property <int> selected-index: 0;
+    callback selected(int);
+
+    property <bool> open: false;
+
+    height: 34px;
+    border-radius: 6px;
+    background: Theme.input_bg;
+    border-width: 1px;
+    border-color: root.open ? Theme.accent : (drop-touch.has-hover ? Theme.text_secondary : Theme.input_border);
+    animate border-color { duration: 150ms; }
+
+    HorizontalLayout {
+        padding-left: 8px;
+        padding-right: 8px;
+        spacing: 6px;
+        alignment: AppI18n.is-rtl ? end : start;
+        cross-axis-alignment: center;
+
+        // RTL: dropdown arrow on the left
+        if (AppI18n.is-rtl): Text {
+            text: "\u{E70D}";
+            font-family: Theme.icon_font;
+            color: Theme.text_secondary;
+            vertical-alignment: center;
+            font-size: 11px;
+        }
+
+        // LTR: badge on the left
+        if (!AppI18n.is-rtl): Rectangle {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: root.badge-color;
+            Text {
+                text: root.mono;
+                font-size: 9px * LayoutConstants.font-scale;
+                font-weight: 700;
+                font-family: Theme.default_font;
+                color: #FFFFFF;
+                horizontal-alignment: center;
+                vertical-alignment: center;
+            }
+        }
+
+        Text {
+            text: root.current;
+            color: Theme.text_primary;
+            font-family: Theme.default_font;
+            font-size: 13px * LayoutConstants.font-scale;
+            horizontal-alignment: AppI18n.is-rtl ? right : left;
+            vertical-alignment: center;
+            horizontal-stretch: 1;
+            overflow: elide;
+            min-width: 0;
+        }
+
+        // RTL: badge on the right
+        if (AppI18n.is-rtl): Rectangle {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            background: root.badge-color;
+            Text {
+                text: root.mono;
+                font-size: 9px * LayoutConstants.font-scale;
+                font-weight: 700;
+                font-family: Theme.default_font;
+                color: #FFFFFF;
+                horizontal-alignment: center;
+                vertical-alignment: center;
+            }
+        }
+
+        // LTR: dropdown arrow on the right (Segoe Fluent Icons: ChevronDown)
+        if (!AppI18n.is-rtl): Text {
+            text: "\u{E70D}";
+            font-family: Theme.icon_font;
+            color: Theme.text_secondary;
+            vertical-alignment: center;
+            font-size: 11px;
+        }
+    }
+
+    drop-touch := TouchArea {
+        mouse-cursor: pointer;
+        clicked => {
+            if (!root.open) {
+                root.open = true;
+                popup.show();
+            } else {
+                root.open = false;
+                popup.close();
+            }
+        }
+    }
+
+    popup := PopupWindow {
+        x: 0;
+        y: root.height + 4px;
+        width: Math.max(root.width, 200px);
+        height: root.open ? Math.min(root.options.length * 32px + 2px, 200px) : 0px;
+        close-policy: PopupClosePolicy.close-on-click-outside;
+
+        if (root.open): Rectangle {
+            width: 100%;
+            height: 100%;
+            background: Theme.input_bg;
+            border-width: 1px;
+            border-color: Theme.input_border;
+            border-radius: 4px;
+            drop-shadow-blur: 8px;
+            drop-shadow-color: Theme.dark_mode ? #00000066 : #00000033;
+            z: 1000;
+
+            flick := Flickable {
+                x: 1px;
+                y: 1px;
+                width: parent.width - 2px;
+                height: parent.height - 2px;
+                viewport-height: root.options.length * 32px;
+                interactive: true;
+
+                VerticalLayout {
+                    padding: 0;
+                    spacing: 0;
+                    alignment: start;
+                    for option[i] in root.options: Rectangle {
+                        height: 32px;
+                        border-radius: 2px;
+                        background: area.pressed ? Theme.selected_bg : (area.has-hover ? Theme.hover_bg : transparent);
+
+                        HorizontalLayout {
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            spacing: 6px;
+                            alignment: AppI18n.is-rtl ? end : start;
+                            // Badge / marker have fixed sizes, and the default stretch on the cross axis does
+                            // not center them vertically, so center must be set explicitly; otherwise the badge
+                            // sticks to the top of the row (inconsistent with the alignment inside the input)
+                            cross-axis-alignment: center;
+
+                            // RTL: selected marker on the left
+                            if (AppI18n.is-rtl && i == root.selected-index): Text {
+                                text: "\u{E73E}";
+                                font-family: Theme.icon_font;
+                                font-size: 12px;
+                                color: Theme.accent;
+                                vertical-alignment: center;
+                            }
+
+                            // LTR: badge on the left
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 5px;
+                                background: option.color;
+                                Text {
+                                    text: option.mono;
+                                    font-size: 9px * LayoutConstants.font-scale;
+                                    font-weight: 700;
+                                    font-family: Theme.default_font;
+                                    color: #FFFFFF;
+                                    horizontal-alignment: center;
+                                    vertical-alignment: center;
+                                }
+                            }
+
+                            Text {
+                                text: option.name;
+                                color: Theme.text_primary;
+                                font-family: Theme.default_font;
+                                font-size: 13px * LayoutConstants.font-scale;
+                                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                vertical-alignment: center;
+                                horizontal-stretch: 1;
+                                overflow: elide;
+                                min-width: 0;
+                            }
+
+                            // RTL: badge on the right
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 18px;
+                                height: 18px;
+                                border-radius: 5px;
+                                background: option.color;
+                                Text {
+                                    text: option.mono;
+                                    font-size: 9px * LayoutConstants.font-scale;
+                                    font-weight: 700;
+                                    font-family: Theme.default_font;
+                                    color: #FFFFFF;
+                                    horizontal-alignment: center;
+                                    vertical-alignment: center;
+                                }
+                            }
+
+                            // LTR: selected marker on the right
+                            if (!AppI18n.is-rtl && i == root.selected-index): Text {
+                                text: "\u{E73E}";
+                                font-family: Theme.icon_font;
+                                font-size: 12px;
+                                color: Theme.accent;
+                                vertical-alignment: center;
+                            }
+                        }
+
+                        area := TouchArea {
+                            clicked => {
+                                root.selected(i);
+                                root.open = false;
+                                popup.close();
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (flick.viewport-height > self.height - 2px): CustomScrollbar {
+                x: AppI18n.is-rtl ? 2px : parent.width - 8px;
+                y: 1px;
+                width: 6px;
+                height: parent.height - 2px;
+                maximum: flick.viewport-height - flick.height;
+                page_size: flick.height;
+                value: -flick.viewport-y;
+                scroll_to(v) => { flick.viewport-y = -v; }
+            }
+        }
+    }
+}
+
+// "Add distro shortcut" button: full row width. The prototype uses a dashed border; Slint has no dashed borders,
+// so it is approximated with a weak border + accent on hover + light accent background.
+component AddRowButton inherits Rectangle {
+    in property <string> text: "";
+    in property <bool> enabled: true;
+    callback clicked;
+
+    height: 38px;
+    border-radius: 6px;
+    background: (add-touch.has-hover && root.enabled) ? Theme.accent.with-alpha(0.06) : transparent;
+    border-width: 1px;
+    border-color: (add-touch.has-hover && root.enabled) ? Theme.accent : Theme.input_border;
+    animate border-color { duration: 150ms; }
+    animate background { duration: 150ms; }
+    opacity: root.enabled ? 1 : 0.45;
+
+    add-touch := TouchArea {
+        mouse-cursor: root.enabled ? pointer : default;
+        clicked => { if (root.enabled) { root.clicked(); } }
+    }
+
+    HorizontalLayout {
+        alignment: center;
+        spacing: 6px;
+
+        // LTR: icon before the text
+        if (!AppI18n.is-rtl): Text {
+            text: "\u{E710}";
+            font-family: Theme.icon_font;
+            font-size: 13px;
+            color: (add-touch.has-hover && root.enabled) ? Theme.accent : Theme.text_secondary;
+            vertical-alignment: center;
+        }
+        Text {
+            text: root.text;
+            font-size: 13px * LayoutConstants.font-scale;
+            font-family: Theme.default_font;
+            font-weight: 600;
+            color: (add-touch.has-hover && root.enabled) ? Theme.accent : Theme.text_secondary;
+            vertical-alignment: center;
+        }
+        // RTL: icon after the text
+        if (AppI18n.is-rtl): Text {
+            text: "\u{E710}";
+            font-family: Theme.icon_font;
+            font-size: 13px;
+            color: (add-touch.has-hover && root.enabled) ? Theme.accent : Theme.text_secondary;
+            vertical-alignment: center;
+        }
+    }
+}
+
+export component ShortcutSettingsSection inherits VerticalLayout {
+    in property <string> toggle_shortcut: "";
+    in property <[string]> toggle_keycaps;
+    in property <int> recording_slot: -1;
+    in property <string> recording_text: "";
+    in property <int> conflict_slot: -1;
+    in property <string> conflict_text: "";
+    in property <[ShortcutRow]> rows;
+    in property <bool> can_add: false;
+
+    // Content background (aligned with the prototype's --surface-2 / --surface-3): light box and row hover
+    property <color> list_bg: Theme.dark_mode ? #232326 : #F6F7F9;
+    property <color> row_hover_bg: Theme.dark_mode ? #2F3033 : #EBECEF;
+
+    callback start-recording(int);
+    callback cancel-recording();
+    callback clear(int);
+    callback remove-row(int);
+    callback add-row();
+    callback distro-selected(int, int);
+
+    spacing: 0px;
+
+    // ---------------- Show / hide window ----------------
+    VerticalLayout {
+        spacing: 5px;
+
+        // Toggle row: keeps the outer frame (action label + recorder)
+        Rectangle {
+            background: root.list_bg;
+            border-radius: 8px;
+            border-width: 1px;
+            border-color: Theme.border_color;
+
+            HorizontalLayout {
+                padding-left: 14px;
+                padding-right: 14px;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                spacing: 12px;
+                alignment: AppI18n.is-rtl ? end : start;
+
+                // RTL: recorder on the left
+                if (AppI18n.is-rtl): ShortcutRecorder {
+                    width: 238px;
+                    shortcut: root.toggle_shortcut;
+                    keycaps: root.toggle_keycaps;
+                    recording: root.recording_slot == 0;
+                    recording-text: root.recording_text;
+                    conflict: root.conflict_slot == 0;
+                    start-recording => { root.start-recording(0); }
+                    clear => {
+                        if (root.recording_slot == 0) { root.cancel-recording(); }
+                        else { root.clear(0); }
+                    }
+                }
+
+                if (AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+
+                Text {
+                    text: AppI18n.t("settings.shortcut.toggle_window_title", [AppI18n.version]);
+                    font-size: 13px * LayoutConstants.font-scale;
+                    font-weight: 500;
+                    font-family: Theme.default_font;
+                    color: Theme.text_primary;
+                    horizontal-alignment: AppI18n.is-rtl ? right : left;
+                    vertical-alignment: center;
+                    overflow: elide;
+                }
+
+                if (!AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
+
+                // LTR: recorder on the right
+                if (!AppI18n.is-rtl): ShortcutRecorder {
+                    width: 238px;
+                    shortcut: root.toggle_shortcut;
+                    keycaps: root.toggle_keycaps;
+                    recording: root.recording_slot == 0;
+                    recording-text: root.recording_text;
+                    conflict: root.conflict_slot == 0;
+                    start-recording => { root.start-recording(0); }
+                    clear => {
+                        if (root.recording_slot == 0) { root.cancel-recording(); }
+                        else { root.clear(0); }
+                    }
+                }
+            }
+        }
+
+        if (root.conflict_slot == 0 && root.conflict_text != ""): Text {
+            text: root.conflict_text;
+            wrap: word-wrap;
+            font-size: 12px * LayoutConstants.font-scale;
+            font-family: Theme.default_font;
+            horizontal-alignment: AppI18n.is-rtl ? right : left;
+            color: Theme.icon_color_danger;
+        }
+    }
+
+    // ---------------- Divider ----------------
+    VerticalLayout {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        Rectangle { height: 1px; background: Theme.border_color; }
+    }
+
+    // ---------------- Distro terminal shortcuts ----------------
+    VerticalLayout {
+        spacing: 0px;
+
+        HorizontalLayout {
+            spacing: 10px;
+            alignment: AppI18n.is-rtl ? end : start;
+            Text {
+                text: AppI18n.t("settings.shortcut.terminals_title", [AppI18n.version]);
+                font-size: 14px * LayoutConstants.font-scale;
+                font-weight: 500;
+                font-family: Theme.default_font;
+                color: Theme.text_primary;
+                horizontal-alignment: AppI18n.is-rtl ? right : left;
+                vertical-alignment: center;
+            }
+            Rectangle { horizontal-stretch: 1; }
+        }
+
+        Rectangle { height: 6px; }
+
+        Text {
+            text: AppI18n.t("settings.shortcut.terminals_desc", [AppI18n.version]);
+            wrap: word-wrap;
+            font-size: 12px * LayoutConstants.font-scale;
+            font-family: Theme.default_font;
+            color: Theme.text_secondary;
+            horizontal-alignment: AppI18n.is-rtl ? right : left;
+        }
+
+        Rectangle { height: 14px; }
+
+        // Bound rows: row container + add button
+        if (root.rows.length > 0): VerticalLayout {
+            spacing: 12px;
+
+            Rectangle {
+                background: root.list_bg;
+                border-radius: 10px;
+                border-width: 1px;
+                border-color: Theme.border_color;
+
+                VerticalLayout {
+                    spacing: 0px;
+
+                    for row[i] in root.rows: Rectangle {
+                        background: row-hover.has-hover ? root.row_hover_bg : transparent;
+                        row-hover := TouchArea { }
+
+                        VerticalLayout {
+                            spacing: 0px;
+
+                            HorizontalLayout {
+                                padding-left: 14px;
+                                padding-right: 14px;
+                                padding-top: 12px;
+                                padding-bottom: 12px;
+                                spacing: 12px;
+                                alignment: AppI18n.is-rtl ? end : start;
+                                // Align items to the bottom of the content area (label + input control); the delete button is then centered by control height
+                                cross-axis-alignment: end;
+
+                                // RTL: delete button on the left
+                                if (AppI18n.is-rtl): VerticalLayout {
+                                    alignment: end;
+                                    padding-bottom: (34px - 28px) / 2;
+                                    ActionIcon {
+                                        icon: "\u{E74D}";
+                                        icon_type: "danger";
+                                        icon_size: 13px;
+                                        tooltip: AppI18n.t("settings.shortcut.delete_row", [AppI18n.version]);
+                                        clicked => { root.remove-row(i + 1); }
+                                    }
+                                }
+
+                                // LTR: cell one (distro) on the left
+                                if (!AppI18n.is-rtl): VerticalLayout {
+                                    width: 212px;
+                                    spacing: 6px;
+                                    Text {
+                                        text: AppI18n.t("settings.shortcut.distro_label", [AppI18n.version]);
+                                        font-size: 12px * LayoutConstants.font-scale;
+                                        font-family: Theme.default_font;
+                                        color: Theme.text_secondary;
+                                    }
+                                    DistroDropdown {
+                                        width: 212px;
+                                        current: row.distro;
+                                        mono: row.mono;
+                                        badge-color: row.color;
+                                        options: row.options;
+                                        selected-index: row.selected_index;
+                                        selected(index) => { root.distro-selected(i + 1, index); }
+                                    }
+                                }
+
+                                // Cell two: shortcut (always centered)
+                                VerticalLayout {
+                                    horizontal-stretch: 1;
+                                    spacing: 6px;
+                                    Text {
+                                        text: AppI18n.t("settings.shortcut.shortcut_label", [AppI18n.version]);
+                                        font-size: 12px * LayoutConstants.font-scale;
+                                        font-family: Theme.default_font;
+                                        color: Theme.text_secondary;
+                                        horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                    }
+
+                                    ShortcutRecorder {
+                                        horizontal-stretch: 1;
+                                        min-width: 238px;
+                                        shortcut: row.shortcut;
+                                        keycaps: row.keycaps;
+                                        recording: root.recording_slot == i + 1;
+                                        recording-text: root.recording_text;
+                                        conflict: root.conflict_slot == i + 1;
+                                        start-recording => { root.start-recording(i + 1); }
+                                        clear => {
+                                            if (root.recording_slot == i + 1) { root.cancel-recording(); }
+                                            else { root.clear(i + 1); }
+                                        }
+                                    }
+
+                                    if (root.conflict_slot == i + 1 && root.conflict_text != ""): Text {
+                                        text: root.conflict_text;
+                                        wrap: word-wrap;
+                                        font-size: 12px * LayoutConstants.font-scale;
+                                        font-family: Theme.default_font;
+                                        color: Theme.icon_color_danger;
+                                        horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                    }
+                                }
+
+                                // RTL: cell one (distro) on the right
+                                if (AppI18n.is-rtl): VerticalLayout {
+                                    width: 212px;
+                                    spacing: 6px;
+                                    Text {
+                                        text: AppI18n.t("settings.shortcut.distro_label", [AppI18n.version]);
+                                        font-size: 12px * LayoutConstants.font-scale;
+                                        font-family: Theme.default_font;
+                                        color: Theme.text_secondary;
+                                        horizontal-alignment: right;
+                                    }
+                                    DistroDropdown {
+                                        width: 212px;
+                                        current: row.distro;
+                                        mono: row.mono;
+                                        badge-color: row.color;
+                                        options: row.options;
+                                        selected-index: row.selected_index;
+                                        selected(index) => { root.distro-selected(i + 1, index); }
+                                    }
+                                }
+
+                                // LTR: delete button on the right
+                                if (!AppI18n.is-rtl): VerticalLayout {
+                                    alignment: end;
+                                    padding-bottom: (34px - 28px) / 2;
+                                    ActionIcon {
+                                        icon: "\u{E74D}";
+                                        icon_type: "danger";
+                                        icon_size: 13px;
+                                        tooltip: AppI18n.t("settings.shortcut.delete_row", [AppI18n.version]);
+                                        clicked => { root.remove-row(i + 1); }
+                                    }
+                                }
+                            }
+
+                            if (i < root.rows.length - 1): Rectangle {
+                                height: 1px;
+                                background: Theme.border_color;
+                            }
+                        }
+                    }
+                }
+            }
+
+            AddRowButton {
+                text: AppI18n.t("settings.shortcut.add_row", [AppI18n.version]);
+                enabled: root.can_add;
+                clicked => { root.add-row(); }
+            }
+        }
+
+        // Empty state: no distro shortcut bound yet
+        if (root.rows.length == 0): Rectangle {
+            background: root.list_bg;
+            border-radius: 10px;
+            border-width: 1px;
+            border-color: Theme.border_color;
+
+            VerticalLayout {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 32px;
+                padding-bottom: 32px;
+                spacing: 10px;
+                alignment: center;
+
+                Rectangle {
+                    width: 46px;
+                    height: 46px;
+                    border-radius: 23px;
+                    background: Theme.accent.with-alpha(0.12);
+                    Text {
+                        text: "\u{E765}";
+                        font-family: Theme.icon_font;
+                        font-size: 20px;
+                        color: Theme.accent;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                    }
+                }
+
+                Text {
+                    text: AppI18n.t("settings.shortcut.empty_title", [AppI18n.version]);
+                    font-size: 14px * LayoutConstants.font-scale;
+                    font-weight: 500;
+                    font-family: Theme.default_font;
+                    color: Theme.text_primary;
+                    horizontal-alignment: center;
+                }
+                Text {
+                    text: AppI18n.t("settings.shortcut.empty_desc", [AppI18n.version]);
+                    wrap: word-wrap;
+                    max-width: 360px;
+                    font-size: 12px * LayoutConstants.font-scale;
+                    font-family: Theme.default_font;
+                    color: Theme.text_secondary;
+                    horizontal-alignment: AppI18n.is-rtl ? right : left;
+                }
+                CustomButton {
+                    text: AppI18n.is-rtl
+                          ? AppI18n.t("settings.shortcut.add_row", [AppI18n.version]) + " +"
+                          : "+ " + AppI18n.t("settings.shortcut.add_row", [AppI18n.version]);
+                    primary: true;
+                    enabled: root.can_add;
+                    clicked => { root.add-row(); }
+                }
+            }
+        }
+    }
+}

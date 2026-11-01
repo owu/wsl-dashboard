@@ -6,8 +6,6 @@
 
 Moderní, vysoce výkonný, lehký a na paměť nenáročný panel pro správu instancí WSL (Windows Subsystem for Linux). Postavený s Rust a Slint pro prémiový nativní zážitek.
 
----
-
 ```diff
 Oznámení:
 
@@ -27,24 +25,12 @@ Oznámení:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | Čeština | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | Čeština | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Obsah
-- [🌍 Podporované jazyky](#-podporované-jazyky)
-- [🚀 Klíčové vlastnosti a použití](#-klíčové-vlastnosti-a-použití)
-- [⚙️ Konfigurace a protokoly](#️-konfigurace-a-protokoly)
-- [🖼️ Snímky obrazovky](#️-snímky-obrazovky)
-- [🎬 Ukázka provozu](#-ukázka-provozu)
-- [💻 Systémové požadavky](#-systémové-požadavky)
-- [📦 Instalační příručka](#-instalační-příručka)
-- [🛠️ Technologický zásobník a výkon](#️-technologický-zásobník-a-výkon)
-- [📢 Oficiální komunitní skupiny](#-oficiální-komunitní-skupiny)
-- [🤝 Podpora komunity](#-podpora-komunity)
-- [❤️ Podpořit tento projekt](#️-podpořit-tento-projekt)
-- [⭐️ Dílo z lásky](#️-dílo-z-lásky)
-- [📄 Licence](#-licence)
+[🌍 Podporované jazyky](#-podporované-jazyky) | [🚀 Klíčové vlastnosti a použití](#-klíčové-vlastnosti-a-použití) | [🖼️ Snímky obrazovky](#️-snímky-obrazovky) | [📦 Instalační příručka](#-instalační-příručka) | [📢 Oficiální komunitní skupiny](#-oficiální-komunitní-skupiny) | [❤️ Podpořit tento projekt](#️-podpořit-tento-projekt) | [⭐️ Dílo z lásky](#️-dílo-z-lásky) | [📄 Licence](#-licence)
 
 ---
 
@@ -105,7 +91,6 @@ Angličtina, zjednodušená čínština, tradiční čínština, hindština, šp
   <img src="../assets/flags/et.svg" width="32" title="Amharština" alt="Amharština" />
 </p>
 
-
 ## 🚀 Klíčové vlastnosti a použití
 
 - **Moderní nativní UI**: Intuitivní grafické rozhraní s podporou tmavého/světlého režimu, plynulými animacemi a vysoce výkonným vykreslováním pomocí engine **Skia**.
@@ -121,89 +106,18 @@ Angličtina, zjednodušená čínština, tradiční čínština, hindština, šp
 - **Extrémně nízké nároky na paměť**: Vysoce optimalizováno pro efektivitu. Tichý start (v liště) využívá pouze **~10 MB** RAM. Využití v režimu okna se liší podle složitosti písma: **~18 MB** pro standardní jazyky a **~38 MB** pro jazyky s rozsáhlými znakovými sadami (čínština, japonština, korejština).
 - **Pokročilé sítě**: Bezproblémová správa přesměrování portů (s automatickým vytvářením pravidel brány firewall) a globální konfigurace HTTP proxy pro sjednocené připojení.
 - **Správa zařízení USB**: Plná integrace s `usbipd-win` pro snadné vázání, připojování a správu místních zařízení USB napříč instancemi WSL přímo z uživatelského rozhraní řídicího panelu.
-
-
-## ⚙️ Konfigurace a protokoly
-
-Veškerá konfigurace se spravuje prostřednictvím zobrazení Nastavení:
-
-- Výběr výchozího instalačního adresáře pro nové instance WSL.
-- Konfigurace adresáře pro protokoly a úrovně protokolování (Error / Warn / Info / Debug / Trace).
-- Výběr jazyka rozhraní nebo nastavení podle systému.
-- Přepínání tmavého režimu a nastavení automatického ukončování WSL po operacích.
-- Konfigurace četnosti kontroly aktualizací (denně, týdně, čtrnáctidenně, měsíčně).
-- Povolení automatického spouštění při startu systému (s automatickou opravou cesty).
-- Nastavení minimalizace do lišty při spuštění.
-- Nastavení tlačítka zavřít pro minimalizaci do lišty namísto ukončení programu.
-- Přizpůsobte si postranní panel přepínáním viditelnosti konkrétních karet funkcí.
-
-Soubory protokolů se zapisují do nakonfigurovaného adresáře a lze je přiložit při hlášení problémů.
+- **Konfigurace a protokoly**: V Nastavení spravujte výchozí instalační složku, složku a úroveň protokolů, jazyk rozhraní, tmavý režim, frekvenci kontroly aktualizací, automatické spuštění a chování při zavření i postranní panel.
+- **Udržování distribuce v chodu**: Jedním kliknutím na „Spustit" necháte distribuci běžet místo vypnutí po ~60 s nečinnosti; lze zapnout i „Spouštět tuto distribuci při startu Windows".
+- **Globální klávesové zkratky**: Nastavte globální zkratky pro zobrazení/skrytí hlavního okna nebo otevření terminálu zvolené distribuce.
 
 
 ## 🖼️ Snímky obrazovky
-
-### Domů (Světlý a tmavý režim)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & sbalené menu
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### sieť
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Přidat instanci a Nastavení
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### O aplikaci & Darovat
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Připojení disku
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Plánování úloh
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Ukázka provozu
-
-[Pomozte nám se zlepšit! Podívejte se na naše úvodní video a podělte se o své názory.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Systémové požadavky
-
-- Windows 10 nebo Windows 11 s povoleným WSL (doporučeno WSL 2).
-- Alespoň jedna nainstalovaná distribuce WSL nebo oprávnění k instalaci nových.
-- 64bitový procesor; pro plynulé používání více distribucí doporučeno 4 GB RAM nebo více.
+Chcete vidět panel v akci? Navštivte [oficiální web](https://www.wslui.com/) a prohlédněte si kompletní galerii snímků obrazovky.
 
 ## 📦 Instalační příručka
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Další informace naleznete v [komunitním repozitáři WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Možnost 3: Stažení předem sestaveného binárního souboru
-
-Nejjednodušší způsob, jak začít, je použít předkompilovanou verzi:
-
-1. Přejděte na stránku [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Stáhněte si nejnovější spustitelný soubor `wsldashboard` pro Windows.
-3. Rozbalte jej (pokud je v archivu) a spusťte `wsldashboard.exe`.
-
-Není vyžadován žádný instalátor; aplikace je jediný přenosný binární soubor.
-
-### Možnost 4: Sestavení ze zdrojového kódu
+### Možnost 3: Sestavení ze zdrojového kódu
 
 Ujistěte se, že máte nainstalovanou sadu nástrojů Rust (Rust 1.92+ nebo novější).
 
@@ -269,44 +173,18 @@ Ujistěte se, že máte nainstalovanou sadu nástrojů Rust (Rust 1.92+ nebo nov
      ```
 
 
-## 🛠️ Technologický zásobník a výkon
-
-- **Jádro**: Implementováno v jazyce Rust pro bezpečnost paměti a nulové náklady na abstrakce.
-- **UI Framework**: Slint s vysoce výkonným vykreslovacím enginem **Skia**.
-- **Asynchronní běhové prostředí**: Tokio pro neblokující systémové příkazy a I/O.
-- **Hlavní výhody výkonu**:
-  - **Responzivita**: Téměř okamžité spuštění a sledování stavu WSL v reálném čase.
-  - **Efektivita**: Extrémně nízké využití zdrojů (podrobnosti viz [Klíčové vlastnosti](#-klíčové-vlastnosti-a-použití)).
-  - **Přenositelnost**: Optimalizované sestavení produkuje jediný kompaktní spustitelný soubor.
-
-
-
 ## 📢 Oficiální komunitní skupiny
 
 Vítejte v oficiálních komunitních skupinách WSL UI! Připojte se k našim kanálům k diskusi o tipy pro použití, hlášení problémů, získávání nejnovějších aktualizací a propojení s vývojáři a dalšími uživateli.
+
+<div align="center">
 
 | Globální skupina (Telegram) | Čínská skupina (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Naskenujte pro připojení | Naskenujte pro připojení |
 
----
-
-## 🤝 Podpora komunity
-
-Velké díky následujícím komunitám za jejich podporu:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Za výkonný a bezpečný programovací jazyk
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Za moderní UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Za úžasný Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Za efektivní asynchronní běhové prostředí
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Za neustálá vylepšení platformy
-- [Reddit](https://www.reddit.com) - Za globální komunitní diskuse a podporu
-- [Hacker News](https://news.ycombinator.com) - Za globální komunitní diskuse a podporu
-- [Linux.do](https://linux.do) - Za oblíbenou komunitu pro IT profesionály
-- [V2EX](https://www.v2ex.com) - Za diskuse v čínské technologické komunitě
-
-Vaše příspěvky a zpětná vazba dělají tento projekt možným！
+</div>
 
 
 ## ❤️ Podpořit tento projekt
@@ -314,9 +192,7 @@ Vaše příspěvky a zpětná vazba dělají tento projekt možným！
 - Tento projekt je licencován pod GPL-3.0 a je zdarma pro všechny uživatele.
 - Od vývoje funkcí a denního testování po opravy chyb — veškerá práce je vykonávána ve volném čase. Cesta open source není snadná, když jdete sami. Vaše uznání a podpora dávají projektu sebevědomí pokračovat.
 - Pokud vám tento nástroj skutečně pomohl, zvažte přispění. Všechny dary jdou na náklady na server, aktualizace verzí a vylepšení funkcí, což udržuje projekt neustále aktualizovaný a stabilně postupující.
-- Každý malý skutek laskavosti je paprsek hvězdného světla. Děkujeme ještě jednou za vaše pochopení a štědrost！
-
-Navštivte naši stránku pro darování：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Každý malý skutek laskavosti je paprsek hvězdného světla. Děkujeme ještě jednou za vaše pochopení a štědrost！ [Navštivte naši stránku pro darování](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Dílo z lásky
@@ -327,8 +203,3 @@ Pokud vám tento projekt připadá užitečný, byl bych vděčný, kdybyste mu 
 ## 📄 Licence
 
 Tento projekt je licencován pod GPL-3.0 – podrobnosti naleznete v souboru [LICENSE](../LICENSE).
-
-
----
-
-Built with ❤️ for the WSL Community.

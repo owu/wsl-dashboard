@@ -6,8 +6,6 @@
 
 Papan pemuka pengurusan instans WSL (Windows Subsystem for Linux) yang moden, berprestasi tinggi, ringan dan menggunakan sedikit memori. Dibina dengan Rust dan Slint untuk pengalaman natif yang cemerlang.
 
----
-
 ```diff
 Pemberitahuan:
 
@@ -27,24 +25,12 @@ Pemberitahuan:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | Bahasa Melayu | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | Bahasa Melayu | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Kandungan
-- [🌍 Sokongan Bahasa](#-sokongan-bahasa)
-- [🚀 Ciri Utama & Penggunaan](#-ciri-utama--penggunaan)
-- [⚙️ Konfigurasi & Log](#️-konfigurasi--log)
-- [🖼️ Tangkapan Skrin](#️-tangkapan-skrin)
-- [🎬 Demo Operasi](#-demo-operasi)
-- [💻 Keperluan Sistem](#-keperluan-sistem)
-- [📦 Panduan Pemasangan](#-panduan-pemasangan)
-- [🛠️ Teknologi & Prestasi](#️-teknologi--prestasi)
-- [📢 Kumpulan Komuniti Rasmi](#-kumpulan-komuniti-rasmi)
-- [🤝 Sokongan Komuniti](#-sokongan-komuniti)
-- [❤️ Sokong Projek Ini](#️-sokong-projek-ini)
-- [⭐️ Sokongan Ikhlas](#️-sokongan-ikhlas)
-- [📄 Lesen Sumber Terbuka](#-lesen-sumber-terbuka)
+[🌍 Sokongan Bahasa](#-sokongan-bahasa) | [🚀 Ciri Utama & Penggunaan](#-ciri-utama--penggunaan) | [🖼️ Tangkapan Skrin](#️-tangkapan-skrin) | [📦 Panduan Pemasangan](#-panduan-pemasangan) | [📢 Kumpulan Komuniti Rasmi](#-kumpulan-komuniti-rasmi) | [❤️ Sokong Projek Ini](#️-sokong-projek-ini) | [⭐️ Sokongan Ikhlas](#️-sokongan-ikhlas) | [📄 Lesen Sumber Terbuka](#-lesen-sumber-terbuka)
 
 ---
 
@@ -105,7 +91,6 @@ Bahasa Inggeris, Bahasa Cina Ringkas, Bahasa Cina Tradisional, Bahasa Hindi, Bah
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Ciri Utama & Penggunaan
 
 - **Antaramuka Natif Moden**: GUI intuitif dengan sokongan mod gelap/terang, animasi lancar dan rendering berprestasi tinggi yang dikuasakan oleh **Skia**.
@@ -121,89 +106,18 @@ Bahasa Inggeris, Bahasa Cina Ringkas, Bahasa Cina Tradisional, Bahasa Hindi, Bah
 - **Penggunaan Memori Sangat Rendah**: Kecekapan sumber yang dioptimumkan tinggi. Permulaan senyap (dulang sistem) hanya menggunakan kira-kira **10MB** memori. Dalam mod tetingkap, penggunaan adalah kira-kira **18MB** (bahasa standard seperti Inggeris, Jerman, dll.) hingga **38MB** (set aksara besar seperti CJK) bergantung pada kerumitan fon.
 - **Pengurusan Rangkaian Lanjutan**: Pengurusan pengalihan port yang lancar (penciptaan peraturan dinding api automatik) dan konfigurasi proksi HTTP global untuk pengalaman penyambungan yang bersatu.
 - **Pengurusan Peranti USB**: Integrasi mendalam dengan `usbipd-win`, membolehkan pengikatan, penyambungan dan pengurusan peranti USB tempatan dengan mudah untuk semua instans WSL terus dari UI papan pemuka.
-
-
-## ⚙️ Konfigurasi & Log
-
-Semua konfigurasi diuruskan melalui paparan "Tetapan":
-
-- Pilih direktori pemasangan lalai untuk instans WSL baru.
-- Konfigurasikan direktori log dan tahap log (Error / Warn / Info / Debug / Trace).
-- Pilih bahasa antaramuka atau ikut bahasa sistem.
-- Tukar mod gelap dan pilihan sama ada aplikasi menutup WSL secara automatik selepas operasi.
-- Konfigurasikan kekerapan menyemak kemas kini (harian, mingguan, dua mingguan, bulan).
-- Aktifkan auto-mula (dengan ciri pembaikan laluan automatik).
-- Tetapkan minimasi ke dulang semasa permulaan.
-- Konfigurasikan tingkah laku butang tutup (minimasi ke dulang bukannya keluar dari aplikasi).
-- Sesuaikan bar sisi dengan menukar keterlihatan tab ciri tertentu.
-
-Fail log ditulis ke direktori log yang dikonfigurasikan dan boleh dilampirkan semasa melaporkan isu.
+- **Konfigurasi dan log**: Urus folder pemasangan lalai, folder dan tahap log, bahasa UI, mod gelap, kekerapan semakan kemas kini, autostart dan tingkah laku penutupan, serta bar sisi melalui Tetapan.
+- **Menjaga distro kekal aktif**: Satu klik «Mula» mengekalkan distro berjalan dan bukannya dimatikan selepas ~60 saat melahu; anda juga boleh mendayakan «Mulakan distro ini apabila Windows bermula».
+- **Pintasan global**: Tetapkan pintasan global untuk menunjukkan/menyembunyikan tetingkap utama atau membuka terminal distro dengan segera.
 
 
 ## 🖼️ Tangkapan Skrin
-
-### Laman Utama (Mod Gelap & Terang)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Menu Dilipat
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Pengurusan Rangkaian
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Tambah Instans & Tetapan
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Tentang & Derma
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Pemasangan Cakera
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Penjadualan Tugas
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Demo Operasi
-
-[Bantu kami menambah baik! Tonton video pengenalan kami dan kongsi pendapat anda.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Keperluan Sistem
-
-- Windows 10 atau Windows 11 dengan WSL diaktifkan (WSL 2 disyorkan).
-- Sekurang-kurangnya satu distro WSL dipasang, atau kebenaran untuk memasang distro baru.
-- CPU 64-bit; 4 GB RAM atau lebih disyorkan untuk penggunaan pelbagai distro yang lancar.
+Mahu melihat papan pemuka beraksi? Lawati [laman web rasmi](https://www.wslui.com/) untuk galeri tangkapan skrin penuh.
 
 ## 📦 Panduan Pemasangan
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For more information, visit the [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Kaedah 3: Muat Turun Binari Sedia Bina
-
-Cara paling mudah untuk bermula ialah menggunakan versi sedia bina:
-
-1. Pergi ke halaman [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Muat turun fail boleh laku `wsldashboard` terkini untuk Windows.
-3. Nyahmampat (jika arkib) dan jalankan `wsldashboard.exe`.
-
-Pemasangan tidak diperlukan — aplikasi ini adalah program mudah alih satu fail.
-
-### Kaedah 4: Bina dari Kod Sumber
+### Kaedah 3: Bina dari Kod Sumber
 
 Pastikan anda telah memasang Rust toolchain (Rust 1.92+ atau lebih baharu).
 
@@ -270,44 +174,18 @@ Pastikan anda telah memasang Rust toolchain (Rust 1.92+ atau lebih baharu).
      ```
 
 
-## 🛠️ Teknologi & Prestasi
-
-- **Teras**: Dilaksanakan dalam Rust untuk keselamatan memori dan zero-cost abstraction.
-- **UI Framework**: Slint dengan backend rendering **Skia** berprestasi tinggi.
-- **Async runtime**: Tokio, untuk arahan sistem dan I/O tanpa sekatan.
-- **Sorotan Prestasi**:
-  - **Kelajuan Tindak Balas**: Permulaan hampir segera, pemantauan status WSL masa nyata.
-  - **Kecekapan Sumber**: Penggunaan sumber yang sangat rendah (lihat [Ciri Utama](#-ciri-utama--penggunaan)).
-  - **Kemudahalihan**: Versi keluaran yang dioptimumkan menghasilkan satu fail boleh laku yang padat.
-
-
-
 ## 📢 Kumpulan Komuniti Rasmi
 
 Selamat datang ke kumpulan komuniti WSL UI rasmi! Sertai saluran kami untuk membincangkan tip penggunaan, melaporkan isu, mendapatkan terkini update dan berhubung dengan pembangun serta pengguna lain.
+
+<div align="center">
 
 | Kumpulan Global (Telegram) | Kumpulan China (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Imbas untuk menyertai | Imbas untuk menyertai |
 
----
-
-## 🤝 Sokongan Komuniti
-
-Penghargaan ikhlas kepada komuniti berikut atas sokongan mereka:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Bahasa pengaturcaraan yang berkuasa dan selamat
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - UI framework moden
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Windows Subsystem for Linux yang cemerlang
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Async runtime yang cekap
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Penambahbaikan platform berterusan
-- [Reddit](https://www.reddit.com) - Perbincangan dan sokongan komuniti global
-- [Hacker News](https://news.ycombinator.com) - Perbincangan dan sokongan komuniti global
-- [Linux.do](https://linux.do) - Komuniti profesional IT yang popular
-- [V2EX](https://www.v2ex.com) - Perbincangan komuniti teknologi Cina
-
-Sumbangan dan maklum balas anda menjadikan projek ini mungkin!
+</div>
 
 
 ## ❤️ Sokong Projek Ini
@@ -315,9 +193,7 @@ Sumbangan dan maklum balas anda menjadikan projek ini mungkin!
 - Projek ini dilesenkan di bawah GPL-3.0 dan tersedia secara percuma untuk semua pengguna.
 - Dari pembangunan ciri, pengujian harian hingga pembaikan pepijat — semua kerja dilakukan dalam masa lapang. Jalan sumber terbuka tidak mudah untuk ditempuh sendiri. Pengiktirafan dan sokongan anda memberi projek ini keyakinan untuk terus maju.
 - Jika alat ini benar-benar membantu anda, sila pertimbangkan untuk memberi sokongan. Semua derma digunakan untuk kos pelayan, pembangunan versi dan penambahbaikan ciri, supaya projek sentiasa dikemas kini dan maju dengan stabil.
-- Setiap kebaikan kecil adalah sinar bintang. Sekali lagi terima kasih atas kefahaman dan kemurahan hati anda!
-
-Lawati halaman derma kami: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Setiap kebaikan kecil adalah sinar bintang. Sekali lagi terima kasih atas kefahaman dan kemurahan hati anda! [Lawati halaman derma kami](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Sokongan Ikhlas
@@ -328,8 +204,3 @@ Jika anda merasakan projek ini bermanfaat, saya amat berterima kasih jika anda d
 ## 📄 Lesen Sumber Terbuka
 
 Projek ini dilesenkan di bawah GPL-3.0 – lihat fail [LICENSE](../LICENSE) untuk butiran lanjut.
-
-
----
-
-Built with ❤️ for the WSL Community.

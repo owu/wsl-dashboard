@@ -6,8 +6,6 @@
 
 ಆಧುನಿಕ, ಹೆಚ್ಚಿನ-ಕಾರ್ಯಕ್ಷಮತೆ, ಹಗುರ ಮತ್ತು ಕಡಿಮೆ ಮೆಮೊರಿ ಬಳಕೆಯ WSL (Windows Subsystem for Linux) ಇನ್‌ಸ್ಟಾನ್ಸ್ ನಿರ್ವಹಣಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್. Rust ಮತ್ತು Slint ಮೇಲೆ ನಿರ್ಮಿತ, ಅತ್ಯುತ್ತಮ ನೇಟಿವ್ ಅನುಭವವನ್ನು ಒದಗಿಸುತ್ತದೆ.
 
----
-
 ```diff
 ಸೂಚನೆ:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | ಕನ್ನಡ | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | ಕನ್ನಡ | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 ವಿಷಯ ಸೂಚಿ
-- [🌍 ಭಾಷಾ ಬೆಂಬಲ](#-ಭಾಷಾ-ಬೆಂಬಲ)
-- [🚀 ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು & ಬಳಕೆ](#-ಮುಖ್ಯ-ವೈಶಿಷ್ಟ್ಯಗಳು--ಬಳಕೆ)
-- [⚙️ ಸಂರಚನೆ & ಲಾಗ್‌ಗಳು](#️-ಸಂರಚನೆ--ಲಾಗ್ಗಳು)
-- [🖼️ ಸಾಫ್ಟ್‌ವೇರ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳು](#️-ಸಾಫ್ಟ್ವೇರ್-ಸ್ಕ್ರೀನ್ಶಾಟ್ಗಳು)
-- [🎬 ಕಾರ್ಯಾಚರಣೆ ಡೆಮೋ](#-ಕಾರ್ಯಾಚರಣೆ-ಡೆಮೋ)
-- [💻 ಸಿಸ್ಟಮ್ ಅಗತ್ಯತೆಗಳು](#-ಸಿಸ್ಟಮ್-ಅಗತ್ಯತೆಗಳು)
-- [📦 ಸ್ಥಾಪನಾ ಮಾರ್ಗದರ್ಶಿ](#-ಸ್ಥಾಪನಾ-ಮಾರ್ಗದರ್ಶಿ)
-- [🛠️ ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್ & ಕಾರ್ಯಕ್ಷಮತೆ](#️-ತಂತ್ರಜ್ಞಾನ-ಸ್ಟ್ಯಾಕ್--ಕಾರ್ಯಕ್ಷಮತೆ)
-- [📢 ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳು](#-ಅಧಿಕೃತ-ಸಮುದಾಯ-ಗುಂಪುಗಳು)
-- [🤝 ಸಮುದಾಯ ಬೆಂಬಲ](#-ಸಮುದಾಯ-ಬೆಂಬಲ)
-- [❤️ ಈ ಯೋಜನೆಗೆ ಬೆಂಬಲ ನೀಡಿ](#️-ಈ-ಯೋಜನೆಗೆ-ಬೆಂಬಲ-ನೀಡಿ)
-- [⭐️ ಪ್ರೀತಿಯಿಂದ ನಡೆಯುವ ಯೋಜನೆ](#️-ಪ್ರೀತಿಯಿಂದ-ನಡೆಯುವ-ಯೋಜನೆ)
-- [📄 ಮುಕ್ತ ಮೂಲ ಪರವಾನಗಿ](#-ಮುಕ್ತ-ಮೂಲ-ಪರವಾನಗಿ)
+[🌍 ಭಾಷಾ ಬೆಂಬಲ](#-ಭಾಷಾ-ಬೆಂಬಲ) | [🚀 ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು & ಬಳಕೆ](#-ಮುಖ್ಯ-ವೈಶಿಷ್ಟ್ಯಗಳು--ಬಳಕೆ) | [🖼️ ಸಾಫ್ಟ್‌ವೇರ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳು](#️-ಸಾಫ್ಟ್ವೇರ್-ಸ್ಕ್ರೀನ್ಶಾಟ್ಗಳು) | [📦 ಸ್ಥಾಪನಾ ಮಾರ್ಗದರ್ಶಿ](#-ಸ್ಥಾಪನಾ-ಮಾರ್ಗದರ್ಶಿ) | [📢 ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳು](#-ಅಧಿಕೃತ-ಸಮುದಾಯ-ಗುಂಪುಗಳು) | [❤️ ಈ ಯೋಜನೆಗೆ ಬೆಂಬಲ ನೀಡಿ](#️-ಈ-ಯೋಜನೆಗೆ-ಬೆಂಬಲ-ನೀಡಿ) | [⭐️ ಪ್ರೀತಿಯಿಂದ ನಡೆಯುವ ಯೋಜನೆ](#️-ಪ್ರೀತಿಯಿಂದ-ನಡೆಯುವ-ಯೋಜನೆ) | [📄 ಮುಕ್ತ ಮೂಲ ಪರವಾನಗಿ](#-ಮುಕ್ತ-ಮೂಲ-ಪರವಾನಗಿ)
 
 ---
 
@@ -105,7 +91,6 @@ I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中�
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು & ಬಳಕೆ
 
 - **ಆಧುನಿಕ ನೇಟಿವ್ UI**: **Skia** ನಿಂದ ಚಾಲಿತ ಹೆಚ್ಚಿನ-ಕಾರ್ಯಕ್ಷಮತೆ ರೆಂಡರಿಂಗ್, ಡಾರ್ಕ್/ಲೈಟ್ ಮೋಡ್, ನಯವಾದ ಅನಿಮೇಶನ್‌ಗಳೊಂದಿಗೆ ಸಹಜ GUI.
@@ -121,89 +106,18 @@ I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中�
 - **ಅತ್ಯಂತ ಕಡಿಮೆ ಮೆಮೊರಿ ಬಳಕೆ**: ಅತ್ಯಧಿಕ ಆಪ್ಟಿಮೈಜ್ ಮಾಡಿದ ಸಂಪನ್ಮೂಲ ದಕ್ಷತೆ. ಸೈಲೆಂಟ್ ಸ್ಟಾರ್ಟಪ್ (ಸಿಸ್ಟಮ್ ಟ್ರೇ) ಸುಮಾರು **10MB** ಮೆಮೊರಿ. ವಿಂಡೋ ಮೋಡ್‌ನಲ್ಲಿ ಫಾಂಟ್ ಸಂಕೀರ್ಣತೆಯ ಆಧಾರದ ಮೇಲೆ ಸುಮಾರು **18MB** (ಇಂಗ್ಲಿಷ್, ಜರ್ಮನ್ ನಂತಹ ಪ್ರಮಾಣಿತ ಭಾಷೆಗಳು) ನಿಂದ **38MB** (ಚೈನೀಸ್-ಜಪಾನೀಸ್-ಕೊರಿಯನ್ ನಂತಹ ದೊಡ್ಡ ಅಕ್ಷರ ಸೆಟ್‌ಗಳು).
 - **ಸುಧಾರಿತ ನೆಟ್‌ವರ್ಕ್ ನಿರ್ವಹಣೆ**: ಪೋರ್ಟ್ ಫಾರ್ವರ್ಡಿಂಗ್ (ಸ್ವಯಂ-ಕ್ರಿಯೇಟ್ ಫೈರ್‌ವಾಲ್ ನಿಯಮಗಳು) ಮತ್ತು ಜಾಗತಿಕ HTTP ಪ್ರಾಕ್ಸಿ ಸಂರಚನೆಯನ್ನು ನಯವಾಗಿ ನಿರ್ವಹಿಸುವಿಕೆ, ಏಕೀಕೃತ ಸಂಪರ್ಕ ಅನುಭವವನ್ನು ಸಾಧಿಸುವಿಕೆ.
 - **USB ಸಾಧನ ನಿರ್ವಹಣೆ**: `usbipd-win` ಜೊತೆ ಆಳವಾದ ಸಂಯೋಜನೆ, ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ UI ನಲ್ಲಿ ನೇರವಾಗಿ ಎಲ್ಲಾ WSL ಇನ್‌ಸ್ಟಾನ್ಸ್‌ಗಳಲ್ಲಿ ಸ್ಥಳೀಯ USB ಸಾಧನಗಳನ್ನು ಸುಲಭವಾಗಿ ಬೈಂಡ್, ಅಟ್ಯಾಚ್ ಮತ್ತು ನಿರ್ವಹಿಸುವಿಕೆ.
-
-
-## ⚙️ ಸಂರಚನೆ & ಲಾಗ್‌ಗಳು
-
-ಎಲ್ಲಾ ಸಂರಚನೆಗಳನ್ನು "ಸೆಟ್ಟಿಂಗ್‌ಗಳು" ವೀಕ್ಷಣೆಯಿಂದ ನಿರ್ವಹಿಸಲಾಗುತ್ತದೆ:
-
-- ಹೊಸ WSL ಇನ್‌ಸ್ಟಾನ್ಸ್‌ಗಳಿಗೆ ಡೀಫಾಲ್ಟ್ ಸ್ಥಾಪನಾ ಡೈರೆಕ್ಟರಿ ಆಯ್ಕೆಮಾಡಿ.
-- ಲಾಗ್ ಡೈರೆಕ್ಟರಿ ಮತ್ತು ಲಾಗ್ ಮಟ್ಟ ಸಂರಚಿಸಿ (Error / Warn / Info / Debug / Trace).
-- UI ಭಾಷೆ ಆಯ್ಕೆಮಾಡಿ ಅಥವಾ ಸಿಸ್ಟಮ್ ಭಾಷೆಯನ್ನು ಅನುಸರಿಸಿ.
-- ಡಾರ್ಕ್ ಮೋಡ್ ಟಾಗಲ್ ಮಾಡಿ, ಮತ್ತು ಕಾರ್ಯಾಚರಣೆಯ ನಂತರ ॲಪ್ WSL ಸ್ವಯಂ-ಮುಚ್ಚುವಿಕೆ.
-- ನವೀಕರಣ ಪರಿಶೀಲನೆ ಆವರ್ತನೆ ಸಂರಚಿಸಿ (ದೈನಂದಿನ, ಸಾಪ್ತಾಹಿಕ, ಪಾಕ್ಷಿಕ, ಮಾಸಿಕ).
-- ಬೂಟ್‌ನಲ್ಲಿ ಸ್ವಯಂ-ಪ್ರಾರಂಭ ಸಕ್ರಿಯಗೊಳಿಸಿ (ಮಾರ್ಗ ಸ್ವಯಂ-ಫಿಕ್ಸ್ ವೈಶಿಷ್ಟ್ಯದೊಂದಿಗೆ).
-- ಸ್ಟಾರ್ಟಪ್‌ನಲ್ಲಿ ಟ್ರೇಗೆ ಮಿನಿಮೈಜ್ ಸೆಟ್ ಮಾಡಿ.
-- ಮುಚ್ಚು ಬಟನ್ ವರ್ತನೆ ಸಂರಚಿಸಿ (ಪ್ರೋಗ್ರಾಂನಿಂದ ನಿರ್ಗಮಿಸುವ ಬದಲು ಟ್ರೇಗೆ ಮಿನಿಮೈಜ್).
-- ನಿರ್ದಿಷ್ಟ ವೈಶಿಷ್ಟ್ಯ ಟ್ಯಾಬ್‌ಗಳ ದೃಶ್ಯತೆಯನ್ನು ಟಾಗಲ್ ಮಾಡುವ ಮೂಲಕ ಸೈಡ್‌ಬಾರ್ ಅನ್ನು ಕಸ್ಟಮೈಸ್ ಮಾಡಿ.
-
-ಲಾಗ್ ಫೈಲ್‌ಗಳನ್ನು ಸಂರಚಿತ ಲಾಗ್ ಡೈರೆಕ್ಟರಿಯಲ್ಲಿ ಬರೆಯಲಾಗುತ್ತದೆ ಮತ್ತು ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡುವಾಗ ಲಗತ್ತಿಸಬಹುದು.
+- **ಸಂರಚನೆ ಮತ್ತು ಲಾಗ್‌ಗಳು**: ಸೆಟ್ಟಿಂಗ್‌ಗಳಿಂದ ಡೀಫಾಲ್ಟ್ ಸ್ಥಾಪನಾ ಫೋಲ್ಡರ್, ಲಾಗ್ ಫೋಲ್ಡರ್ ಮತ್ತು ಮಟ್ಟ, UI ಭಾಷೆ, ಡಾರ್ಕ್ ಮೋಡ್, ನವೀಕರಣ ಪರಿಶೀಲನೆ ಆವರ್ತನ, ಸ್ವಯಂಪ್ರಾರಂಭ ಮತ್ತು ಮುಚ್ಚುವ ವರ್ತನೆ, ಹಾಗೂ ಸೈಡ್‌ಬಾರ್ ನಿರ್ವಹಿಸಿ.
+- **ಡಿಸ್ಟ್ರೋ ಚಾಲನೆಯಲ್ಲಿಡುವುದು**: «ಪ್ರಾರಂಭಿಸಿ» ಒಂದು ಕ್ಲಿಕ್‌ನಿಂದ ~60 ಸೆಕೆಂಡುಗಳ ನಿಷ್ಕ್ರಿಯತೆಯ ನಂತರ ಮುಚ್ಚುವ ಬದಲು ಡಿಸ್ಟ್ರೋ ಚಾಲನೆಯಲ್ಲಿರುತ್ತದೆ; «Windows ಪ್ರಾರಂಭವಾದಾಗ ಈ ಡಿಸ್ಟ್ರೋ ಪ್ರಾರಂಭಿಸಿ» ಸಹ ಸಕ್ರಿಯಗೊಳಿಸಬಹುದು.
+- **ಜಾಗತಿಕ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳು**: ಮುಖ್ಯ ವಿಂಡೋ ತೋರಿಸಲು/ಮರೆಮಾಡಲು ಅಥವಾ ಡಿಸ್ಟ್ರೋ ಟರ್ಮಿನಲ್ ತಕ್ಷಣ ತೆರೆಯಲು ಜಾಗತಿಕ ಶಾರ್ಟ್‌ಕಟ್‌ಗಳನ್ನು ಹೊಂದಿಸಿ.
 
 
 ## 🖼️ ಸಾಫ್ಟ್‌ವೇರ್ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ಗಳು
-
-### ಮುಖ್ಯ ಇಂಟರ್ಫೇಸ್ (ಡಾರ್ಕ್ & ಲೈಟ್ ಮೋಡ್)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & ಮೆನು ಕೊಲಾಪ್ಸ್
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### ನೆಟ್‌ವರ್ಕ್ ನಿರ್ವಹಣೆ
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### ಇನ್‌ಸ್ಟಾನ್ಸ್ ಸೇರಿಸಿ & ಸೆಟ್ಟಿಂಗ್‌ಗಳು
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### ಬಗ್ಗೆ & ದಾನ
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### ಡಿಸ್ಕ್ ಮೌಂಟ್ (Disk Mount)
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### ಕಾರ್ಯ ವೇಳಾಪಟ್ಟಿ (Task Scheduling)
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 ಕಾರ್ಯಾಚರಣೆ ಡೆಮೋ
-
-[ನಮ್ಮನ್ನು ಸುಧಾರಿಸಲು ಸಹಾಯ ಮಾಡಿ! ನಮ್ಮ ಪರಿಚಯ ವೀಡಿಯೊ ವೀಕ್ಷಿಸಿ ಮತ್ತು ನಿಮ್ಮ ಅಭಿಪ್ರಾಯಗಳನ್ನು ಹಂಚಿಕೊಳ್ಳಿ.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 ಸಿಸ್ಟಮ್ ಅಗತ್ಯತೆಗಳು
-
-- WSL ಸಕ್ರಿಯಗೊಳಿಸಿದ Windows 10 ಅಥವಾ Windows 11 (WSL 2 ಶಿಫಾರಸು).
-- ಕನಿಷ್ಠ ಒಂದು WSL ವಿತರಣೆ ಸ್ಥಾಪಿಸಲಾಗಿದೆ, ಅಥವಾ ಹೊಸ ವಿತರಣೆ ಸ್ಥಾಪಿಸಲು ಅನುಮತಿ.
-- 64-ಬಿಟ್ CPU; ಬಹು ಡಿಸ್ಟ್ರೋ ಬಳಕೆಗೆ 4 GB ಅಥವಾ ಹೆಚ್ಚಿನ RAM ಶಿಫಾರಸು.
+ಡ್ಯಾಶ್‌ಬೋರ್ಡ್ ಕೆಲಸ ಮಾಡುವುದನ್ನು ನೋಡಲು ಬಯಸುವಿರಾ? ಪೂರ್ಣ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಗ್ಯಾಲರಿಗಾಗಿ [ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್](https://www.wslui.com/) ಗೆ ಭೇಟಿ ನೀಡಿ.
 
 ## 📦 ಸ್ಥಾಪನಾ ಮಾರ್ಗದರ್ಶಿ
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For more information, visit the [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### ಆಯ್ಕೆ 3: ಪೂರ್ವ-ನಿರ್ಮಿತ ಬೈನರಿ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ
-
-ಆರಂಭಿಸಲು ಸುಲಭ ಮಾರ್ಗವೆಂದರೆ ನಿರ್ಮಿತ ಆವೃತ್ತಿಯನ್ನು ಬಳಸುವುದು:
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) ಪುಟಕ್ಕೆ ಹೋಗಿ.
-2. Windows ಗಾಗಿ ಇತ್ತೀಚಿನ `wsldashboard` ಎಕ್ಸಿಕ್ಯೂಟೆಬಲ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ.
-3. ಡಿಕಂಪ್ರೆಸ್ ಮಾಡಿ (ಕಂಪ್ರೆಸ್ಡ್ ಫೈಲ್ ಆಗಿದ್ದರೆ) ಮತ್ತು `wsldashboard.exe` ಚಲಾಯಿಸಿ.
-
-ಸ್ಥಾಪನೆ ಅಗತ್ಯವಿಲ್ಲ, ಈ ॲಪ್ ಸಿಂಗಲ್-ಫೈಲ್ ಪೋರ್ಟಬಲ್ ಪ್ರೋಗ್ರಾಂ ಆಗಿದೆ.
-
-### ಆಯ್ಕೆ 4: ಮೂಲದಿಂದ ನಿರ್ಮಿಸಿ
+### ಆಯ್ಕೆ 3: ಮೂಲದಿಂದ ನಿರ್ಮಿಸಿ
 
 Rust ಟೂಲ್‌ಚೈನ್ (Rust 1.92+ ಅಥವಾ ಹೊಸದು) ಸ್ಥಾಪಿಸಲಾಗಿದೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.
 
@@ -270,45 +174,18 @@ Rust ಟೂಲ್‌ಚೈನ್ (Rust 1.92+ ಅಥವಾ ಹೊಸದು) ಸ�
      ```
 
 
-## 🛠️ ತಂತ್ರಜ್ಞಾನ ಸ್ಟ್ಯಾಕ್ & ಕಾರ್ಯಕ್ಷಮತೆ
-
-- **ಕರ್ನಲ್**: ಮೆಮೊರಿ ಸುರಕ್ಷತೆ ಮತ್ತು ಝೀರೋ-ಕಾಸ್ಟ ಅಬ್ಸ್ಟ್ರಾಕ್ಷನ್‌ಗಳನ್ನು ಖಚಿತಪಡಿಸಲು Rust ನಲ್ಲಿ ಅನುಷ್ಠಾನ.
-- **UI ಫ್ರೇಮ್‌ವರ್ಕ್**: ಹೆಚ್ಚಿನ-ಕಾರ್ಯಕ್ಷಮತೆ **Skia** ರೆಂಡರಿಂಗ್ ಬ್ಯಾಕೆಂಡ್‌ನೊಂದಿಗೆ Slint.
-- **ಅಸಿಂಕ್ರೋನಸ್ ರನ್‌ಟೈಮ್**: ನಾನ್-ಬ್ಲಾಕಿಂಗ್ ಸಿಸ್ಟಮ್ ಕಮಾಂಡ್‌ಗಳು ಮತ್ತು I/O ಗಾಗಿ Tokio.
-- **ಕಾರ್ಯಕ್ಷಮತೆ ಮುಖ್ಯಾಂಶಗಳು**:
-  - **ಪ್ರತಿಕ್ರಿಯಾ ವೇಗ**: ತಕ್ಷಣದ ಸ್ಟಾರ್ಟಪ್ ವೇಗ, WSL ಸ್ಥಿತಿ ರಿಯಲ್-ಟೈಮ್ ನಿಗಾ.
-  - **ಸಂಪನ್ಮೂಲ ದಕ್ಷತೆ**: ಅತ್ಯಂತ ಕಡಿಮೆ ಸಂಪನ್ಮೂಲ ಬಳಕೆ (ವಿವರಗಳಿಗೆ [ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು](#-ಮುಖ್ಯ-ವೈಶಿಷ್ಟ್ಯಗಳು--ಬಳಕೆ) ನೋಡಿ).
-  - **ಪೋರ್ಟಬಿಲಿಟಿ**: ಆಪ್ಟಿಮೈಜ್ಡ್ ರಿಲೀಸ್ ಬಿಲ್ಡ್ ಒಂದು ಕಂಪ್ರೆಸ್ಡ್ ಎಕ್ಸಿಕ್ಯೂಟೆಬಲ್ ಅನ್ನು ಉತ್ಪಾದಿಸುತ್ತದೆ.
-
-
-
 ## 📢 ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳು
 
 WSL UI ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳಿಗೆ ಸ್ವಾಗತ! ಬಳಕೆ ಸಲಹೆಗಳ ಮೇಲೆ ಚರ್ಚಿಸಲು, ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಲು, ನವೀಕರಣಗಳನ್ನು ಪಡೆಯಲು ಮತ್ತು ಅಭಿವೃದ್ಧಿಗರ್ತರ ಹಾಗೂ ಇತರ ಬಳಕೆದಾರರೊಂದಿಗೆ ಸಂಪರ್ಕಿಸಲು ನಮ್ಮ ಚಾನಲ್‌ಗಳಿಗೆ ಸೇರಿಕೊಳ್ಳಿ.
+
+<div align="center">
 
 | ಜಾಗತಿಕ ಗುಂಪು (Telegram) | ಚೈನೀಸ್ ಗುಂಪು (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | ಸೇರಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ | ಸೇರಲು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ |
 
----
-
-
-## 🤝 ಸಮುದಾಯ ಬೆಂಬಲ
-
-ಈ ಸಮುದಾಯಗಳ ಬೆಂಬಲಕ್ಕಾಗಿ ಹೃತ್ಪೂರ್ವಕ ಕೃತಜ್ಞತೆ:
-
-- [Rust Programming Language](https://www.rust-lang.org) - ಶಕ್ತಿಶಾಲಿ ಮತ್ತು ಸುರಕ್ಷಿತ ಪ್ರೋಗ್ರಾಮಿಂಗ್ ಭಾಷೆ
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - ಆಧುನಿಕ UI ಫ್ರೇಮ್‌ವರ್ಕ್
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - ಅತ್ಯುತ್ತಮ Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - ದಕ್ಷ ಅಸಿಂಕ್ರೋನಸ್ ರನ್‌ಟೈಮ್
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - ನಿರಂತರ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಸುಧಾರಣೆ
-- [Reddit](https://www.reddit.com) - ಜಾಗತಿಕ ಸಮುದಾಯ ಚರ್ಚೆ ಮತ್ತು ಬೆಂಬಲ
-- [Hacker News](https://news.ycombinator.com) - ಜಾಗತಿಕ ಸಮುದಾಯ ಚರ್ಚೆ ಮತ್ತು ಬೆಂಬಲ
-- [Linux.do](https://linux.do) - IT ವೃತ್ತಿಪರರಿಗೆ ಜನಪ್ರಿಯ ಸಮುದಾಯ
-- [V2EX](https://www.v2ex.com) - ಚೈನೀಸ್ ಟೆಕ್ ಸಮುದಾಯ ಚರ್ಚೆ
-
-ನಿಮ್ಮ ಕೊಡುಗೆಗಳು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆಗಳು ಈ ಯೋಜನೆಯನ್ನು ಸಾಧ್ಯವಾಗಿಸುತ್ತವೆ!
+</div>
 
 
 ## ❤️ ಈ ಯೋಜನೆಗೆ ಬೆಂಬಲ ನೀಡಿ
@@ -316,9 +193,7 @@ WSL UI ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳಿಗೆ ಸ�
 - ಈ ಯೋಜನೆ GPL-3.0 ಮುಕ್ತ ಮೂಲ ಪರವಾನಗಿಯನ್ನು ಅನುಸರಿಸುತ್ತದೆ, ಎಲ್ಲಾ ಬಳಕೆದಾರರಿಗೆ ಉಚಿತ.
 - ವೈಶಿಷ್ಟ್ಯ ಅಭಿವೃದ್ಧಿ, ದೈನಂದಿನ ಪರೀಕ್ಷೆಯಿಂದ ಬಗ್ ಪರಿಹಾರದವರೆಗೆ, ಎಲ್ಲಾ ಕೆಲಸವು ಉಚಿತ ಸಮಯದ ನಿರಂತರತೆಯಿಂದ ಬರುತ್ತದೆ. ಮುಕ್ತ ಮೂಲ ಮಾರ್ಗವು ಒಬ್ಬರಿಗೆ ಸುಲಭವಲ್ಲ, ನಿಮ್ಮ ಗುರುತಿಸುವಿಕೆ ಮತ್ತು ಬೆಂಬಲವು ಯೋಜನೆಯನ್ನು ದೀರ್ಘಕಾಲ ಮುಂದುವರಿಸಲು ಶಕ್ತಿಯಾಗಿದೆ.
 - ಈ ಸಾಧನವು ನಿಜವಾಗಿಯೂ ನಿಮಗೆ ಸಹಾಯಕಾರಿ ಎಂದು ನಿಮಗೆ ಅನಿಸಿದರೆ, ದಯವಿಟ್ಟು ಸಹಾಯ ಮಾಡಿ. ಎಲ್ಲಾ ದಾನಗಳನ್ನು ಸರ್ವರ್ ವೆಚ್ಚ, ಆವೃತ್ತಿ ನವೀಕರಣ ಮತ್ತು ವೈಶಿಷ್ಟ್ಯ ಆಪ್ಟಿಮೈಜೇಶನ್‌ಗಾಗಿ ಬಳಸಲಾಗುತ್ತದೆ.
-- ಸಣ್ಣ ಕರುಣೆಯೂ ತಾರೆಯಂತೆ ಹೊಳೆಯುತ್ತದೆ. ನಿಮ್ಮ ತಿಳುವಳಿಕೆ ಮತ್ತು ಉದಾರತೆಗೆ ಮತ್ತೆ ಧನ್ಯವಾದಗಳು!
-
-ನಮ್ಮ ದಾನ ಪುಟಕ್ಕೆ ಭೇಟಿ ನೀಡಿ: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- ಸಣ್ಣ ಕರುಣೆಯೂ ತಾರೆಯಂತೆ ಹೊಳೆಯುತ್ತದೆ. ನಿಮ್ಮ ತಿಳುವಳಿಕೆ ಮತ್ತು ಉದಾರತೆಗೆ ಮತ್ತೆ ಧನ್ಯವಾದಗಳು! [ನಮ್ಮ ದಾನ ಪುಟಕ್ಕೆ ಭೇಟಿ ನೀಡಿ](https://www.wslui.com/donate/).
 
 
 ## ⭐️ ಪ್ರೀತಿಯಿಂದ ನಡೆಯುವ ಯೋಜನೆ
@@ -329,8 +204,3 @@ WSL UI ಅಧಿಕೃತ ಸಮುದಾಯ ಗುಂಪುಗಳಿಗೆ ಸ�
 ## 📄 ಮುಕ್ತ ಮೂಲ ಪರವಾನಗಿ
 
 ಈ ಯೋಜನೆ GPL-3.0 ಪರವಾನಗಿಯ ಅಡಿಯಲ್ಲಿ ಪರವಾನಗಿ ಪಡೆದಿದೆ – ವಿವರಗಳಿಗೆ [LICENSE](../LICENSE) ಫೈಲ್ ನೋಡಿ.
-
-
----
-
-Built with ❤️ for the WSL Community.

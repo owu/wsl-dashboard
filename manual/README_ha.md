@@ -6,8 +6,6 @@
 
 Dashboard sarrafa mawuyayin WSL (Windows Subsystem for Linux) na zamani, mai inganci mai girma, mai sauƙi kuma mai ƙarancin amfani da ƙwaƙwalwar ajiya. An gina shi da Rust da Slint, yana ba da ƙwarewar asalin mafi kyau.
 
----
-
 ```diff
 Sanarwa:
 
@@ -27,24 +25,12 @@ Sanarwa:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | Hausa | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | Hausa | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Abubuwan ciki
-- [🌍 Tallafin Harshe](#-tallafin-harshe)
-- [🚀 Babban Fasaloli da Amfani](#-babban-fasaloli-da-amfani)
-- [⚙️ Saiti da Log](#️-saiti-da-log)
-- [🖼️ Hotunan Software](#️-hotunan-software)
-- [🎬 Nuni Aiki](#-nuni-aiki)
-- [💻 Buƙatar Tsari](#-bukatar-tsari)
-- [🇵 Jagoran Shigarwa](#-jagoran-shigarwa)
-- [🛠️ Tattalin Arziki na Fasaha da Aiki](#️-tattalin-arziki-na-fasaha-da-aiki)
-- [📢 Ƙungiyoyin al'umma na hukuma](#-ƙungiyoyin-al-umma-na-hukuma)
-- [🤝 Tallafin Al'umma](#-tallafin-aluma)
-- [❤️ Tallafa wannan Shiri](#️-talla-fa-wannan-shiri)
-- [⭐️ Don Ƙauna](#️-don-kauna)
-- [📄 Lasisi na Buɗe Tushen](#-lasisi-na-bude-tushen)
+[🌍 Tallafin Harshe](#-tallafin-harshe) | [🚀 Babban Fasaloli da Amfani](#-babban-fasaloli-da-amfani) | [🖼️ Hotunan Software](#️-hotunan-software) | [🇵 Jagoran Shigarwa](#-jagoran-shigarwa) | [📢 Ƙungiyoyin al'umma na hukuma](#-ƙungiyoyin-alumma-na-hukuma) | [❤️ Tallafa wannan Shiri](#️-tallafa-wannan-shiri) | [⭐️ Don Ƙauna](#️-don-ƙauna) | [📄 Lasisi na Buɗe Tushen](#-lasisi-na-buɗe-tushen)
 
 ---
 
@@ -105,7 +91,6 @@ Turanci, Sinanci sauƙi, Sinanci na gargajiya, Hindi, Mutanen Espanya, Faransanc
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Babban Fasaloli da Amfani
 
 - **UI na zamani na asali**: GUI mai sauƙi, tare da yanayin duhu/haske, animations masu santsi, da high-performance rendering da **Skia** ke gudanarwa.
@@ -121,89 +106,18 @@ Turanci, Sinanci sauƙi, Sinanci na gargajiya, Hindi, Mutanen Espanya, Faransanc
 - **Ƙaramin Amfani da Ƙwaƙwalwa**: Ingantacciyar ingantacciyar albarkatun. Farawa a shirye (system tray) kawai **10MB** na ƙwaƙwalwa. A yanayin taga, amfani ya dogara da rikitarwar font: kusan **18MB** (haruffa na yau da kullum kamar Turanci, Jamusanci da sauransu) zuwa **38MB** (babban tsarin haruffa kamar CJK).
 - **Sarrafa Cibiyar Sadarwa**: Sarrafa canja wurin faɗakarwa (ƙirƙirar ka'idoji na firewall ta atomatik) da saitunan proxy HTTP na duniya ba tare da matsala ba.
 - **Sarrafa Na'urar USB**: Haɗin gwiwa mai zurfi tare da `usbipd-win`, ba da damar ayyuka na bind, attach, da sarrafa na'urori USB na gida a cikin UI na dashboard don dukkan mawuyayin WSL.
-
-
-## ⚙️ Saiti da Log
-
-Dukkan saituna ana sarrafawa ta hanyar duba "Saituna":
-
-- Zaɓi buɗaɗɗen shigarwa don sabbin mawuyayin WSL.
-- Saita buɗaɗɗen log da matakin log (Error / Warn / Info / Debug / Trace).
-- Zaɓi harshen UI ko bi tsarin tsarin.
-- Canja yanayin duhu, da ko app ya kamata ta rufe WSL ta atomatik bayan aiki.
-- Saita yawan binciken sabuntawa (kowace rana, mako, makonni biyu, wata).
-- Kunna farawa ta atomatik (tare da gyara hanyar ta atomatik).
-- Saita ƙarami zuwa tray a lokacin farawa.
-- Saita aikin maballin rufe (ƙarami zuwa tray maimakon fita daga shirin).
-- Yi nisa da sidebar ta hanyar canja gani na ƙayyadaddun shawarwarin fasali.
-
-Ana rubuta fayilolin log zuwa buɗaɗɗen log, kuma ana iya haɗa su lokacin bayar da rahoton matsala.
+- **Kanfigare da rajista**: Daga Saituna sarrafa babban fayil ɗin shigarwa, fayil ɗin rajista da matakinsa, harshen UI, yanayin duhu, mitar duba sabuntawa, farawa ta atomatik da halin rufewa, da kuma gefen gefe.
+- **Ajiye distro a kunne**: Danna «Fara» sau ɗaya yana ajiye distro a gudana maimakon kashewa bayan kusan dakika 60 na rashin aiki; za ka iya kunna «Fara wannan distro lokacin da Windows ya fara».
+- **Gajerun hanyoyi na duniya**: Saita gajerun hanyoyi na duniya don nuna/ɓoye babban taga ko buɗe terminal na distro nan take.
 
 
 ## 🖼️ Hotunan Software
-
-### Babban Fuskar (Yanayin Duhu & Haske)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Ƙididdigar Menu
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Sarrafa Cibiyar Sadarwa
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Ƙara Mawuyayi & Saituna
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Game da & Bayar da Gudummawa
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Hawan Faifai
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Tsara Ayyuka
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Nuni Aiki
-
-[Taimaka mu inganta! Kalli bidiyon gabatarwar mu kuma ka raba ra'ayinka.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Buƙatar Tsari
-
-- Windows 10 ko Windows 11 da aka kunna WSL (ana ba da shawarar amfani da WSL 2).
-- Aƙalla an shigar da wani WSL distro, ko kuna da izinin shigar da sabon distro.
-- CPU na bit 64; ana ba da shawarar 4 GB ko fiye RAM don amfani da distro da yawa cikin sauƙi.
+Kuna son gan dashboard ɗin yana aiki? Ziyarci [gidan yanar gizo na hukuma](https://www.wslui.com/) don cikakken hotunan allo.
 
 ## 📦 Jagoran Shigarwa
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Don ƙarin bayani, ziyarci [ma'ajiyar WinGet community](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Hanyar 3: Saukar da Binary da aka gina
-
-Mafi sauƙin hanyar ita ce amfani da ingantacciyar sigar:
-
-1. Je zuwa shafin [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Saukar da sabon fayilolin `wsldashboard` na Windows.
-3. Cire (idan fayil ɗin nika) kuma gudanar da `wsldashboard.exe`.
-
-Ba buƙatar shigarwa, wannan app shine shirin amfani guda ɗaya.
-
-### Hanyar 4: Gina daga Tushe
+### Hanyar 3: Gina daga Tushe
 
 Tabbatar da an shigar da kayan aikin Rust (Rust 1.92+ ko sabuwar sigar).
 
@@ -270,44 +174,18 @@ Tabbatar da an shigar da kayan aikin Rust (Rust 1.92+ ko sabuwar sigar).
      ```
 
 
-## 🛠️ Tattalin Arziki na Fasaha da Aiki
-
-- **Cibiya**: An aiwatar da ita da Rust, tabbatar da amincin ƙwaƙwalwar ajiya da ƙididdiga marasa kudi.
-- **Framework UI**: Slint tare da **Skia** high-performance rendering backend.
-- **Runtime Asynchronous**: Tokio, don umarnin tsari da I/O marasa hana.
-- **Babban Ayyuka**:
-  - **Gudu da Sauri**: Farawa kusan kai tsaye, kuma binciken halin WSL a lokaci gane.
-  - **Ingantacciyar Albarkatu**: Ƙaramin amfani da albarkatu (duba cikakken bayani a [Babban Fasaloli](#-babban-fasaloli-da-amfani)).
-  - **Daukaka**: Ingantacciyar sigar tana ƙirƙirar fayil ɗin guda ɗaya.
-
-
-
 ## 📢 Ƙungiyoyin al'umma na hukuma
 
 Barka da zuwa ga ƙungiyoyin al'umma na hukumar WSL UI! Shiga shafukanmu don magana kan shawarwari na amfani, cire matsaloli, samun sabbin shawarwari, da kuma haɗin da masu haɗawa da saƙoƙin wasu amfani.
+
+<div align="center">
 
 | Ƙungiya ta Duniya (Telegram) | Ƙungiya ta Sinanci (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Yi skan don shiga | Yi skan don shiga |
 
----
-
-## 🤝 Tallafin Al'umma
-
-Mun gode da tallafin al'umma masu zuwa:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Harshen shirye-shirye mai ƙarfi da aminci
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Framework UI na zamani
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Windows Subsystem for Linux mai kyau
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Runtime asynchronous mai inganci
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Ingantacciyar dandali
-- [Reddit](https://www.reddit.com) - Tattaunawa da tallafin al'umma na duniya
-- [Hacker News](https://news.ycombinator.com) - Tattaunawa da tallafin al'umma na duniya
-- [Linux.do](https://linux.do) - Al'umma mai shahara don ƙwararrun IT
-- [V2EX](https://www.v2ex.com) - Tattaunawar al'ummar fasaha ta Sinanci
-
-Gudummawar ku da bayanan ku sun sa wannan shiri ya zama mai yiwuwa!
+</div>
 
 
 ## ❤️ Tallafa wannan Shiri
@@ -315,9 +193,7 @@ Gudummawar ku da bayanan ku sun sa wannan shiri ya zama mai yiwuwa!
 - Wannan shiri yana amfani da lasisin buɗe tushen GPL-3.0, kyauta ga duk masu amfani.
 - Daga ƙirƙirar fasali, gwajin kowace rana, zuwa gyara matsaloli, duka aiki ne na lokaci na yau da kullun. Hanyar buɗe tushen ba ta da sauƙi idan kanka kai kaɗai, gane ku da tallafin ku, ƙarfin shiri ne don ci gaba.
 - Idan kun ji wannan kayan aiki yana taimaka muku, la'akar ku. Duk gudummawa za a yi amfani da ita don kudaden uwar garke, sake maimaita sigar, da ingantacciyar fasali.
-- Kyautar alheri, duka taurari ne. Gode sake da fahimta da jin daɗin ku!
-
-Ziyarci shafin gudummawar mu: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Kyautar alheri, duka taurari ne. Gode sake da fahimta da jin daɗin ku! [Ziyarci shafin gudummawar mu](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Don Ƙauna
@@ -328,8 +204,3 @@ Idan kun ji wannan shiri yana taimaka muku, zan yi farin ciki idan za ku iya kun
 ## 📄 Lasisi na Buɗe Tushen
 
 Wannan shiri yana lasisin GPL-3.0 – duba fayilolin [LICENSE](../LICENSE) don ƙarin bayani.
-
-
----
-
-Built with ❤️ for the WSL Community.

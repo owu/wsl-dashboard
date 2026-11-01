@@ -6,8 +6,6 @@
 
 Müasir, yüksək performanslı, yüngül və aşağı yaddaş istehlakı ilə WSL (Windows Subsystem for Linux) instans idarəetmə paneli. Rust və Slint əsasında qurulmuş, əla nativ təcrübə təqdim edir.
 
----
-
 ```diff
 Elan:
 
@@ -27,24 +25,12 @@ Elan:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | Azərbaycan | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | Azərbaycan | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Mündəricat
-- [🌍 Dil dəstəyi](#-dil-dəstəyi)
-- [🚀 Əsas xüsusiyyətlər və istifadə](#-əsas-xüsusiyyətlər-və-istifadə)
-- [⚙️ Konfiqurasiya və loqlar](#️-konfiqurasiya-və-loqlar)
-- [🖼️ Proqram skrinşotları](#️-proqram-skrinşotları)
-- [🎬 Əməliyyat demosu](#-əməliyyat-demosu)
-- [💻 Sistem tələbləri](#-sistem-tələbləri)
-- [📦 Quraşdırma bələdçisi](#-quraşdırma-bələdçisi)
-- [🛠️ Texnoloji stak və performans](#️-texnoloji-stak-və-performans)
-- [📢 Rəsmi icma qrupları](#-rəsmi-icma-qrupları)
-- [🤝 İcmal dəstəyi](#-icmal-dəstəyi)
-- [❤️ Bu layihəni dəstəkləyin](#️-bu-layihəni-dəstəkləyin)
-- [⭐️ Sevgi ilə çalışan layihə](#️-sevgi-ile-çalışan-layihə)
-- [📄 Açıq mənbə lisenziyası](#-açıq-mənbə-lisenziyası)
+[🌍 Dil dəstəyi](#-dil-dəstəyi) | [🚀 Əsas xüsusiyyətlər və istifadə](#-əsas-xüsusiyyətlər-və-istifadə) | [🖼️ Proqram skrinşotları](#️-proqram-skrinşotları) | [📦 Quraşdırma bələdçisi](#-quraşdırma-bələdçisi) | [📢 Rəsmi icma qrupları](#-rəsmi-icma-qrupları) | [❤️ Bu layihəni dəstəkləyin](#️-bu-layihəni-dəstəkləyin) | [⭐️ Sevgi ilə çalışan layihə](#️-sevgi-ilə-çalışan-layihə) | [📄 Açıq mənbə lisenziyası](#-açıq-mənbə-lisenziyası)
 
 ---
 
@@ -104,7 +90,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Əsas xüsusiyyətlər və istifadə
 
 - **Müasir nativ UI**: **Skia** ilə yüksək performanslı renderləmə, qaranlıq/işıqlı rejim, hamar animasiyalar ilə intuitiv GUI.
@@ -120,89 +105,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Çox aşağı yaddaş istifadəsi**: Yüksək optimizasiya edilmiş resurs səmərəliliyi. Səssiz başlanğıc (sistem trey) təxminən **10MB** yaddaş. Pəncərə rejimində şrift mürəkkəbliyinə görə təxminən **18MB** (İngiliscə, Almanca kimi standart dillər) ilə **38MB** (Çin-Yapon-Koreya kimi böyük simvol dəstləri) arası.
 - **Geniş şəbəkə idarəetməsi**: Port yönləndirmə (avtomatik firewall qaydaları yaratma) və qlobal HTTP proksi konfiqurasiyasını problemsiz idarə edin, birləşdirilmiş bağlantı təcrübəsi əldə edin.
 - **USB cihaz idarəetməsi**: `usbipd-win` ilə dərin inteqrasiya, panel UI-də birbaşa bütün WSL instanslarında lokal USB cihazlarını asanlıqla birləşdirmə, əlavə etmə və idarə etmə.
-
-
-## ⚙️ Konfiqurasiya və loqlar
-
-Bütün konfiqurasiyalar "Ayarlar" görünüşü vasitəsilə idarə olunur:
-
-- Yeni WSL instanslarının defolt quraşdırma kataloqunu seçin.
-- Loq kataloqu və loq səviyyəsini konfiqurasiya edin (Error / Warn / Info / Debug / Trace).
-- UI dilini seçin və ya sistem dilini izləyin.
-- Qaranlıq rejimi dəyişdirin, əməliyyatdan sonra tətbiqin avtomatik bağlanmasını tənzimləyin.
-- Yeniləmə yoxlama tezliyini konfiqurasiya edin (gündəlik, həftəlik, iki həftədən bir, aylıq).
-- Başlanğıcda avtomatik açmanı aktivləşdirin (yol avtomatik düzəliş xüsusiyyəti ilə).
-- Başlanğıcda treyə minimizasiyanı təyin edin.
-- Bağla düyməsinin davranışını konfiqurasiya edin (proqramdan çıxmaq əvəzinə treyə minimizasiya edin).
-- Müəyyən funksiya tablarının görünməsini dəyişdirərək yan paneli fərdiləşdirin.
-
-Loq faylları konfiqurasiya edilmiş loq kataloqunda yazılır, problemlər bildirilərkən loqları əlavə etmək olar.
+- **Konfiqurasiya və jurnallar**: Parametrlərdə standart quraşdırma qovluğunu, jurnal qovluğu və səviyyəsini, interfeys dilini, qaranlıq rejimi, yeniləmə yoxlama tezliyini, avtomatik başlatmanı və bağlanma davranışını, həmçinin yan paneli idarə edin.
+- **Distronun aktiv saxlanması**: «Başlat» düyməsinə bir klik distronun ~60 saniyə boş qaldıqdan sonra bağlanması əvəzinə işləməyə davam etməsini təmin edir; «Windows başlayarkən bu distronu başlat» seçimini də aktivləşdirə bilərsiniz.
+- **Qlobal qısayollar**: Əsas pəncərəni göstərmək/gizlətmək və ya seçilmiş distronun terminalını dərhal açmaq üçün qlobal qısayollar təyin edin.
 
 
 ## 🖼️ Proqram skrinşotları
-
-### Ana interfeys (qaranlıq & işıqlı rejim)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & menyu yığılması
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Şəbəkə idarəetməsi
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Instans əlavə etmə & ayarlar
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Haqqında & ianə
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Disk bağlama
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Tapşırıqların planlaşdırılması
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Əməliyyat demosu
-
-[Bizi təkmilləşdirməyə kömək edin! Təqdimat videomuza baxın və fikirlərinizi paylaşın.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Sistem tələbləri
-
-- WSL aktiv Windows 10 və ya Windows 11 (WSL 2 tövsiyə olunur).
-- Ən azı bir WSL distributivi quraşdırılmış olmalıdır və ya yeni distributiv quraşdırmaq icazəsi olmalıdır.
-- 64-bit CPU; çox-distributiv istifadəsi üçün 4 GB və ya daha çox RAM tövsiyə olunur.
+Paneli iş üzərində görmək istəyirsiniz? Tam ekran şəkilləri qalereyası üçün [rəsmi veb-sayta](https://www.wslui.com/) baş çəkin.
 
 ## 📦 Quraşdırma bələdçisi
 
@@ -232,17 +146,7 @@ winget install Owu.WSLDashboard
 
 Ətraflı məlumat üçün [WinGet icma repozitoriyasına](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) baş çəkin.
 
-### Üsul 3: Əvvəlcədən hazırlanmış ikili faylları yükləyin
-
-Ən asan yol hazır versiyanı istifadə etməkdir:
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) səhifəsinə keçin.
-2. Windows üçün ən son `wsldashboard` icra olunan faylı yükləyin.
-3. Sıxışmanı açın (sıxışdırılmış fayldırsa) və `wsldashboard.exe` faylını işə salın.
-
-Quraşdırma tələb olunmur, bu tətbiq tək fayllı daşınan proqramdır.
-
-### Üsul 4: Mənbədən qurun
+### Üsul 3: Mənbədən qurun
 
 Rust alət zəncirinin (Rust 1.92+ və ya ən son versiya) quraşdırıldığından əmin olun.
 
@@ -269,45 +173,18 @@ Rust alət zəncirinin (Rust 1.92+ və ya ən son versiya) quraşdırıldığın
      ```
 
 
-## 🛠️ Texnoloji stak və performans
-
-- **Nüvə**: Yaddaş təhlükəsizliyi və sıfır xərcli abstraksiyaları təmin etmək üçün Rust ilə həyata keçirilib.
-- **UI Framework**: Yüksək performanslı **Skia** renderləmə backend-i olan Slint.
-- **Asinxron Runtime**: Qeyri-bloklayan sistem əmrləri və I/O üçün Tokio.
-- **Performans üstünlükləri**:
-  - **Cavab sürəti**: Təxminən ani başlanğıc sürəti, WSL vəziyyətinin canlı monitorinqi.
-  - **Resurs səmərəliliyi**: Çox aşağı resurs istifadəsi (ətraflı məlumat üçün [Əsas xüsusiyyətlər](#-əsas-xüsusiyyətlər-və-istifadə) bölməsinə baxın).
-  - **Daşınabilirlik**: Optimizasiya edilmiş buraxılış versiyası kompakt icra olunan fayl yaradır.
-
-
-
 ## 📢 Rəsmi icma qrupları
 
 WSL UI rəsmi icma qruplarına xoş gəldiniz! İstifadə məsləhətlərini müzakirə etmək, problemləri bildirilmək, son yeniləmələri almaq və tərtibatçılar ilə digər istifadəçilərlə əlaqə qurmaq üçün kanallarımıza qoşulun.
+
+<div align="center">
 
 | Qlobal Qrup (Telegram) | Çin Qrupu (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Qoşulmaq üçün skaner edin | Qoşulmaq üçün skaner edin |
 
----
-
-
-## 🤝 İcmal dəstəyi
-
-Bu icmaların dəstəyinə ürəkdən təşəkkür edirik:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Güclü və təhlükəsiz proqramlaşdırma dili
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Müasir UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Əla Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Səmərəli asinxron runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Davamlı platforma təkmilləşdirmələri
-- [Reddit](https://www.reddit.com) - Qlobal icma müzakirəsi & dəstəyi
-- [Hacker News](https://news.ycombinator.com) - Qlobal icma müzakirəsi & dəstəyi
-- [Linux.do](https://linux.do) - IT mütəxəssisləri üçün populyar icma
-- [V2EX](https://www.v2ex.com) - Çin texnoloji icma müzakirəsi
-
-Sizin töhfəniz və rəyləriniz bu layihəni mümkün etdi!
+</div>
 
 
 ## ❤️ Bu layihəni dəstəkləyin
@@ -315,9 +192,7 @@ Sizin töhfəniz və rəyləriniz bu layihəni mümkün etdi!
 - Bu layihə GPL-3.0 açıq mənbə lisenziyası ilə yayımlanır, bütün istifadəçilər üçün pulsuzdur.
 - Xüsusiyyət inkişafı, gündəlik testlərdən xəta düzəlişlərinə qədər bütün işlər boş vaxtdakı davamlı səydir. Açıq mənbə yolu tək getmək asan deyil, sizin tanınmanız və dəstəyiniz layihənin uzunmüddətli davam etməsi üçün gücdür.
 - Bu alətin sizə həqiqətən faydalı olduğunu düşünürsünüzsə, lütfən əl uzadın. Bütün ianələr server xərcləri, versiya yeniləmələri və xüsusiyyət optimizasiyası üçün istifadə olunacaq.
-- Kiçik bir mərhəmət ulduz kimi parlayır. Anlayışınız və səxavətiniz üçün bir daha təşəkkürlər!
-
-İanə səhifəmizə daxil olun: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Kiçik bir mərhəmət ulduz kimi parlayır. Anlayışınız və səxavətiniz üçün bir daha təşəkkürlər! [İanə səhifəmizə daxil olun](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Sevgi ilə çalışan layihə
@@ -328,9 +203,3 @@ Bu layihə sizə faydalı olduqda, GitHub-da bir ulduz verərək tanınmanızı 
 ## 📄 Açıq mənbə lisenziyası
 
 Bu layihə GPL-3.0 lisenziyası altında lisenziyalaşdırılmışdır – ətraflı məlumat üçün [LICENSE](../LICENSE) faylına baxın.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

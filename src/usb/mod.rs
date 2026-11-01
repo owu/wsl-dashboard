@@ -196,7 +196,11 @@ impl UsbManager {
         // Redirect stdout+stderr to the temp file
         let cmd_with_output = format!("{} > \"{}\" 2>&1", display_command, output_path);
 
-        crate::utils::system::run_command_with_elevation("cmd", vec!["/c".to_string(), cmd_with_output])?;
+        // NOTE: do NOT short-circuit on the elevation result here. `usbipd attach`
+        // reports its failure via the redirected output file AND a non-zero exit
+        // code, so propagating the exit-code error first would discard the captured
+        // output and the user-facing "attach failed" hint would never be shown.
+        let elevation_result = crate::utils::system::run_command_with_elevation("cmd", vec!["/c".to_string(), cmd_with_output]);
 
         // Read the captured output
         let captured = std::fs::read_to_string(&output_file).unwrap_or_default();
@@ -208,6 +212,12 @@ impl UsbManager {
                 "usb_attach_failed:COMMAND:{}\n\nOUTPUT:{}",
                 display_command, captured
             ));
+        }
+
+        // No error text captured: surface the elevation/exit-code failure (if any),
+        // e.g. UAC denied or a non-zero exit code without a recognizable message.
+        if let Err(e) = elevation_result {
+            return Err(e);
         }
 
         Ok(())

@@ -1,7 +1,8 @@
 // SPDX-FileCopyrightText: Copyright (c) 2026 owu <wqh@live.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-import { Theme, AppI18n, SettingsStrings, LayoutConstants } from "../../theme.slint";
+import { Theme, AppI18n, SettingsStrings, LayoutConstants, ShortcutRow } from "../../theme.slint";
+import { ShortcutSettingsSection } from "shortcut_tab.slint";
 import { CustomScrollbar } from "../../components/scrollbar.slint";
 import { LanguageData } from "../../components/language_data.slint";
 import { 
@@ -83,6 +84,16 @@ export component SettingsView inherits Rectangle {
     in property <[string]> language_options;
     in-out property <int> selected_language_index;
 
+    // Shortcuts (Global Shortcut)
+    in property <[ShortcutRow]> shortcut_rows;
+    in property <string> shortcut_toggle_shortcut: "";
+    in property <[string]> shortcut_toggle_keycaps;
+    in property <int> shortcut_recording_slot: -1;
+    in property <string> shortcut_recording_text: "";
+    in property <int> shortcut_conflict_slot: -1;
+    in property <string> shortcut_conflict_text: "";
+    in property <bool> shortcut_can_add: false;
+
     property <int> active_tab: 0;
     in-out property <bool> show_language_dialog: false;
 
@@ -156,7 +167,22 @@ export component SettingsView inherits Rectangle {
         ui_language = lang_code;
     }
 
+    callback shortcut_tab_activated();
+    callback shortcut_start_recording(int);
+    callback shortcut_cancel_recording();
+    callback shortcut_clear(int);
+    callback shortcut_remove_row(int);
+    callback shortcut_add_row();
+    callback shortcut_distro_selected(int, int);
+
+    changed active_tab => {
+        if (root.active_tab == 3) { root.shortcut_tab_activated(); }
+    }
+
     VerticalLayout {
+        // Explicitly fill SettingsView (its size is assigned by the parent in app.slint) so the layout does not take only content height
+        width: root.width;
+        height: root.height;
         padding: 0px;
         spacing: 0px;
 
@@ -170,6 +196,7 @@ export component SettingsView inherits Rectangle {
             spacing: 4px;
             alignment: AppI18n.is-rtl ? end : start;
 
+            if (AppI18n.is-rtl): SettingsTab { text: root.strings.tab_shortcuts; active: root.active_tab == 3; clicked => { root.active_tab = 3; } }
             if (AppI18n.is-rtl): SettingsTab { text: root.strings.tab_interface; active: root.active_tab == 2; clicked => { root.active_tab = 2; } }
             if (AppI18n.is-rtl): SettingsTab { text: root.strings.tab_advanced; active: root.active_tab == 1; clicked => { root.active_tab = 1; } }
             if (AppI18n.is-rtl): SettingsTab { text: root.strings.tab_general; active: root.active_tab == 0; clicked => { root.active_tab = 0; } }
@@ -177,6 +204,7 @@ export component SettingsView inherits Rectangle {
             if (!AppI18n.is-rtl): SettingsTab { text: root.strings.tab_general; active: root.active_tab == 0; clicked => { root.active_tab = 0; } }
             if (!AppI18n.is-rtl): SettingsTab { text: root.strings.tab_advanced; active: root.active_tab == 1; clicked => { root.active_tab = 1; } }
             if (!AppI18n.is-rtl): SettingsTab { text: root.strings.tab_interface; active: root.active_tab == 2; clicked => { root.active_tab = 2; } }
+            if (!AppI18n.is-rtl): SettingsTab { text: root.strings.tab_shortcuts; active: root.active_tab == 3; clicked => { root.active_tab = 3; } }
         }
 
         // Divider
@@ -190,8 +218,18 @@ export component SettingsView inherits Rectangle {
         }
 
         // Tab Content
-        Rectangle {
+        // tab-content's height is allocated by the outer layout via stretch (it is not driven by child
+        // content, so binding to its height does not create a cyclic evaluation). Conditional branches
+        // placed inside a layout are not stretched to full height, so they must explicitly follow
+        // tab-content's size; otherwise the scroll area of tabs with shorter content (e.g. shortcuts)
+        // occupies only half the height.
+        tab-content := Rectangle {
+            vertical-stretch: 1;
+            clip: true;
             if (root.active_tab == 0): Rectangle {
+                x: 0px; y: 0px;
+                width: tab-content.width;
+                height: tab-content.height;
                 clip: true;
                 flickable-general := Flickable {
                     viewport-height: general-layout.preferred-height; width: parent.width; height: 100%;
@@ -218,6 +256,9 @@ export component SettingsView inherits Rectangle {
             }
             
             if (root.active_tab == 1): Rectangle {
+                x: 0px; y: 0px;
+                width: tab-content.width;
+                height: tab-content.height;
                 clip: true;
                 flickable-advanced := Flickable {
                     viewport-height: advanced-layout.preferred-height; width: parent.width; height: 100%;
@@ -249,6 +290,9 @@ export component SettingsView inherits Rectangle {
             }
             
             if (root.active_tab == 2): Rectangle {
+                x: 0px; y: 0px;
+                width: tab-content.width;
+                height: tab-content.height;
                 clip: true;
                 flickable-interface := Flickable {
                     viewport-height: interface-layout.preferred-height; width: parent.width; height: 100%;
@@ -278,17 +322,57 @@ export component SettingsView inherits Rectangle {
                     value: -flickable-interface.viewport-y; scroll_to(v) => { flickable-interface.viewport-y = -v; }
                 }
             }
+
+            if (root.active_tab == 3): Rectangle {
+                x: 0px; y: 0px;
+                width: tab-content.width;
+                height: tab-content.height;
+                clip: true;
+                flickable-shortcut := Flickable {
+                    viewport-height: shortcut-layout.preferred-height; width: parent.width; height: 100%;
+                    shortcut-layout := VerticalLayout {
+                        padding-left: AppI18n.is-rtl ? 16px : 4px; padding-right: AppI18n.is-rtl ? 4px : 16px; padding-top: 14px; padding-bottom: 14px;
+                        ShortcutSettingsSection {
+                            toggle_shortcut: root.shortcut_toggle_shortcut;
+                            toggle_keycaps: root.shortcut_toggle_keycaps;
+                            recording_slot: root.shortcut_recording_slot;
+                            recording_text: root.shortcut_recording_text;
+                            conflict_slot: root.shortcut_conflict_slot;
+                            conflict_text: root.shortcut_conflict_text;
+                            rows: root.shortcut_rows;
+                            can_add: root.shortcut_can_add;
+                            start-recording(slot) => { root.shortcut_start_recording(slot); }
+                            cancel-recording => { root.shortcut_cancel_recording(); }
+                            clear(slot) => { root.shortcut_clear(slot); }
+                            remove-row(slot) => { root.shortcut_remove_row(slot); }
+                            add-row => { root.shortcut_add_row(); }
+                            distro-selected(slot, index) => { root.shortcut_distro_selected(slot, index); }
+                        }
+                    }
+                }
+                if (flickable-shortcut.viewport-height > flickable-shortcut.height): CustomScrollbar {
+                    x: AppI18n.is-rtl ? 4px : parent.width - 10px; y: 0; width: 8px; height: 100%;
+                    maximum: flickable-shortcut.viewport-height - flickable-shortcut.height; page_size: flickable-shortcut.height;
+                    value: -flickable-shortcut.viewport-y; scroll_to(v) => { flickable-shortcut.viewport-y = -v; }
+                }
+            }
         }
 
         // Action Buttons
         HorizontalLayout {
+            // Explicitly cap the vertical constraint: with all buttons hidden on the shortcut tab, only a
+            // horizontal stretching spacer remains in this row, and its implicit constraint (max infinite /
+            // stretch 1) would make this row share the remaining height with tab-content, leaving the scroll
+            // area only half the height. Fix this row's height so all remaining space goes to tab-content.
+            vertical-stretch: 0;
+            max-height: 48px;
             padding-top: 12px;
             padding-bottom: 4px;
             padding-left: AppI18n.is-rtl ? 16px : 4px;
             padding-right: AppI18n.is-rtl ? 4px : 16px;
             spacing: 8px;
 
-            if (AppI18n.is-rtl): CustomButton {
+            if (AppI18n.is-rtl && root.active_tab != 3): CustomButton {
                 text: root.strings.save; primary: true; height: 32px; width: 80px;
                 clicked => {
                     if (root.active_tab == 0) { root.save_general_settings(); }
@@ -321,7 +405,7 @@ export component SettingsView inherits Rectangle {
 
             if (!AppI18n.is-rtl): Rectangle { horizontal-stretch: 1; }
 
-            if (!AppI18n.is-rtl): CustomButton {
+            if (!AppI18n.is-rtl && root.active_tab != 3): CustomButton {
                 text: root.strings.save; primary: true; height: 32px; width: 80px;
                 clicked => {
                     if (root.active_tab == 0) { root.save_general_settings(); }

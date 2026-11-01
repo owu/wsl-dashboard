@@ -6,8 +6,6 @@
 
 Ένας σύγχρονος, υψηλής απόδοσης, ελαφρύς και με χαμηλή μνήμη πίνακας ελέγχου διαχείρισης στιγμιότυπων WSL (Windows Subsystem for Linux). Δημιουργημένος με Rust και Slint για μια κορυφαία εγγενή εμπειρία.
 
----
-
 ```diff
 Ειδοποίηση:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | Ελληνικά | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | Ελληνικά | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Πίνακας Περιεχομένων
-- [🌍 Υποστηριζόμενες Γλώσσες](#-υποστηριζόμενες-γλώσσες)
-- [🚀 Κύρια Χαρακτηριστικά & Χρήση](#-κύρια-χαρακτηριστικά--χρήση)
-- [⚙️ Ρυθμίσεις & Logs](#️-ρυθμίσεις--logs)
-- [🖼️ Στιγμιότυπα Οθόνης](#️-στιγμιότυπα-οθόνης)
-- [🎬 Επίδειξη Λειτουργίας](#-επίδειξη-λειτουργίας)
-- [💻 Απαιτήσεις Συστήματος](#-απαιτήσεις-συστήματος)
-- [📦 Οδηγός Εγκατάστασης](#-οδηγός-εγκατάστασης)
-- [🛠️ Τεχνολογίες & Απόδοση](#️-τεχνολογίες--απόδοση)
-- [📢 Επίσημες Ομάδες Κοινότητας](#-επίσημες-ομάδες-κοινότητας)
-- [🤝 Υποστήριξη Κοινότητας](#-υποστήριξη-κοινότητας)
-- [❤️ Υποστήριξη αυτού του έργου](#️-υποστήριξη-αυτού-του-έργου)
-- [⭐️ Έργο αγάπης](#️-έργο-αγάπης)
-- [📄 Άδεια Χρήσης](#-άδεια-χρήσης)
+[🌍 Υποστηριζόμενες Γλώσσες](#-υποστηριζόμενες-γλώσσες) | [🚀 Κύρια Χαρακτηριστικά & Χρήση](#-κύρια-χαρακτηριστικά--χρήση) | [🖼️ Στιγμιότυπα Οθόνης](#️-στιγμιότυπα-οθόνης) | [📦 Οδηγός Εγκατάστασης](#-οδηγός-εγκατάστασης) | [📢 Επίσημες Ομάδες Κοινότητας](#-επίσημες-ομάδες-κοινότητας) | [❤️ Υποστήριξη αυτού του έργου](#️-υποστήριξη-αυτού-του-έργου) | [⭐️ Έργο αγάπης](#️-έργο-αγάπης) | [📄 Άδεια Χρήσης](#-άδεια-χρήσης)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Αμχαρικά" alt="Αμχαρικά" />
 </p>
 
-
 ## 🚀 Κύρια Χαρακτηριστικά & Χρήση
 
 - **Σύγχρονο Γραφικό Περιβάλλον**: Διαισθητικό GUI με υποστήριξη Dark/Light mode, ομαλά εφέ κίνησης και απόδοση υψηλής ταχύτητας μέσω της μηχανής **Skia**.
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Ελάχιστο Αποτύπωμα Μνήμης**: Εξαιρετικά βελτιστοποιημένο για αποδοτικότητα. Η εκκίνηση στο system tray χρησιμοποιεί μόνο **~10MB** RAM. Η χρήση σε προβολή παραθύρου ποικίλλει ανάλογα με τη γλώσσα: **~18MB** για τυπικές γλώσσες και **~38MB** για γλώσσες με μεγάλα σύνολα χαρακτήρων (Κινέζικα, Ιαπωνικά, Κορεάτικα).
 - **Προηγμένα δίκτυα**: Απρόσκοπτη διαχείριση προώθησης θυρών (με αυτόματη δημιουργία κανόνων τείχους προστασίας) και καθολική διαμόρφωση διακομιστή μεσολάβησης HTTP για ενοποιημένη συνδεσιμότητα.
 - **Διαχείριση συσκευών USB**: Πλήρης ενσωμάτωση με το `usbipd-win` για εύκολη δέσμευση, προσάρτηση και διαχείριση τοπικών συσκευών USB σε όλες τις παρουσίες WSL απευθείας από τη διεπαφή χρήστη του πίνακα ελέγχου.
-
-
-## ⚙️ Ρυθμίσεις & Logs
-
-Η διαχείριση όλων των ρυθμίσεων γίνεται μέσω της καρτέλας "Ρυθμίσεις":
-
-- Επιλογή προεπιλεγμένου φακέλου εγκατάστασης για νέα WSL instances.
-- Ρύθμιση φακέλου καταγραφής και επιπέδου logs (Error / Warn / Info / Debug / Trace).
-- Επιλογή γλώσσας διεπαφής ή αυτόματη ακολουθία της γλώσσας του συστήματος.
-- Εναλλαγή Dark mode και επιλογή για αυτόματο κλείσιμο του WSL μετά από λειτουργίες.
-- Ρύθμιση συχνότητας ελέγχου ενημερώσεων (καθημερινά, εβδομαδιαία, ανά δύο εβδομάδες, μηνιαία).
-- Ενεργοποίηση αυτόματης εκκίνησης με το σύστημα (με αυτόματη διόρθωση διαδρομής).
-- Ρύθμιση της εφαρμογής για ελαχιστοποίηση στο tray κατά την εκκίνηση.
-- Ρύθμιση του κουμπιού κλεισίματος για ελαχιστοποίηση στο tray αντί για έξοδο.
-- Προσαρμόστε την πλευρική γραμμή εναλλάσσοντας την ορατότητα συγκεκριμένων καρτελών δυνατοτήτων.
-
-Τα αρχεία καταγραφής εγγράφονται στον ρυθμισμένο φάκελο και μπορούν να επισυναφθούν κατά την αναφορά προβλημάτων.
+- **Ρυθμίσεις και αρχεία καταγραφής**: Από τις Ρυθμίσεις διαχειριστείτε τον προεπιλεγμένο φάκελο εγκατάστασης, τον φάκελο και το επίπεδο καταγραφής, τη γλώσσα, τη σκοτεινή λειτουργία, τη συχνότητα ελέγχου ενημερώσεων, την αυτόματη εκκίνηση και τη συμπεριφορά κλεισίματος, καθώς και την πλαϊνή γραμμή.
+- **Διατήρηση διανομών ενεργών**: Ένα κλικ στο «Εκκίνηση» κρατά τη διανομή σε λειτουργία αντί να τερματιστεί μετά από ~60 s αδράνειας· μπορείτε επίσης να ενεργοποιήσετε το «Εκκίνηση αυτής της διανομής κατά την εκκίνηση των Windows».
+- **Καθολικές συντομεύσεις**: Ορίστε καθολικές συντομεύσεις για εμφάνιση/απόκρυψη του κύριου παραθύρου ή άνοιγμα του τερματικού μιας διανομής.
 
 
 ## 🖼️ Στιγμιότυπα Οθόνης
-
-### Αρχική (Light & Dark Mode)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Συμπτυγμένο Μενού
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Δίκτυο
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Προσθήκη Περιβάλλοντος & Ρυθμίσεις
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Σχετικά & Δωρεά
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Προσάρτηση Δίσκου
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Προγραμματισμός Εργασιών
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Επίδειξη Λειτουργίας
-
-[Βοηθήστε μας να βελτιωθούμε! Δείτε το εισαγωγικό μας βίντεο και μοιραστείτε τις σκέψεις σας.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Απαιτήσεις Συστήματος
-
-- Windows 10 ή Windows 11 με ενεργοποιημένο το WSL (συστήνεται το WSL 2).
-- Τουλάχιστον μία εγκατεστημένη διανομή WSL ή δικαιώματα για την εγκατάσταση νέων.
-- Επεξεργαστής 64-bit. Προτείνονται 4 GB RAM ή περισσότερο για ομαλή χρήση πολλών διανομών ταυτόχρονα.
+Θέλετε να δείτε τον πίνακα ελέγχου σε δράση; Επισκεφθείτε την [επίσημη ιστοσελίδα](https://www.wslui.com/) για την πλήρη συλλογή στιγμιοτύπων.
 
 ## 📦 Οδηγός Εγκατάστασης
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Για περισσότερες πληροφορίες, επισκεφθείτε το [αποθετήριο κοινότητας WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Επιλογή 3: Λήψη έτοιμου εκτελέσιμου αρχείου
-
-Ο ευκολότερος τρόπος για να ξεκινήσετε είναι η χρήση μιας προ-μεταγλωττισμένης έκδοσης:
-
-1. Μεταβείτε στη σελίδα [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Κατεβάστε το πιο πρόσφατο εκτελέσιμο αρχείο `wsldashboard` για Windows.
-3. Αποσυμπιέστε (αν χρειάζεται) και εκτελέστε το `wsldashboard.exe`.
-
-Δεν απαιτείται εγκατάσταση. Η εφαρμογή είναι ένα φορητό (portable) εκτελέσιμο αρχείο.
-
-### Επιλογή 4: Μεταγλώττιση από τον κώδικα
+### Επιλογή 3: Μεταγλώττιση από τον κώδικα
 
 Βεβαιωθείτε ότι έχετε εγκατεστημένη την εργαλειοθήκη Rust (Rust 1.92+ ή νεότερη).
 
@@ -270,44 +174,18 @@ winget install Owu.WSLDashboard
      ```
 
 
-## 🛠️ Τεχνολογίες & Απόδοση
-
-- **Πυρήνας**: Υλοποιημένος σε Rust για ασφάλεια μνήμης και μέγιστη ταχύτητα.
-- **Περιβάλλον UI**: Slint με backend απόδοσης **Skia** υψηλής ταχύτητας.
-- **Async Runtime**: Tokio για μη-ανασταλτικές εντολές συστήματος και I/O.
-- **Κύρια Σημεία Απόδοσης**:
-  - **Αμεσότητα**: Σχεδόν ακαριαία εκκίνηση και παρακολούθηση της κατάστασης του WSL σε πραγματικό χρόνο.
-  - **Αποδοτικότητα**: Εξαιρετικά χαμηλή κατανάλωση πόρων (βλ. [Κύρια Χαρακτηριστικά](#-κύρια-χαρακτηριστικά--χρήση)).
-  - **Φορητότητα**: Η βελτιστοποιημένη έκδοση παράγει ένα μοναδικό, συμπαγές εκτελέσιμο αρχείο.
-
-
-
 ## 📢 Επίσημες Ομάδες Κοινότητας
 
 Καλώς ήρθατε στις επίσημες ομάδες κοινότητας του WSL UI! Γίνετε μέλη των καναλιών μας για να συζητήσετε συμβουλές χρήσης, να αναφέρετε προβλήματα, να λάβετε τις τελευταίες ενημερώσεις και να επικοινωνήσετε με τους προγραμματιστές και άλλους χρήστες.
+
+<div align="center">
 
 | Παγκόσμια Ομάδα (Telegram) | Ομάδα Κινεζικής (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Σαρώστε για εγγραφή | Σαρώστε για εγγραφή |
 
----
-
-## 🤝 Υποστήριξη Κοινότητας
-
-Ένα μεγάλο ευχαριστώ στις ακόλουθες κοινότητες για την υποστήριξή τους:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Για την ισχυρή και ασφαλή γλώσσα προγραμματισμού
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Για το σύγχρονο UI framework
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Για το καταπληκτικό Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Για το αποδοτικό asynchronous runtime
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Για τις συνεχείς βελτιώσεις της πλατφόρμας
-- [Reddit](https://www.reddit.com) - Για παγκόσμιες συζητήσεις και υποστήριξη κοινότητας
-- [Hacker News](https://news.ycombinator.com) - Για παγκόσμιες συζητήσεις και υποστήριξη κοινότητας
-- [Linux.do](https://linux.do) - Για τη δημοφιλή κοινότητα επαγγελματιών πληροφορικής
-- [V2EX](https://www.v2ex.com) - Για συζητήσεις στην κινεζική τεχνολογική κοινότητα
-
-Οι συνεισφορές και τα σχόλιά σας κάνουν αυτό το έργο δυνατό！
+</div>
 
 
 ## ❤️ Υποστήριξη αυτού του έργου
@@ -315,9 +193,7 @@ winget install Owu.WSLDashboard
 - Αυτό το έργο είναι υπό άδεια GPL-3.0 και είναι δωρεάν για όλους τους χρήστες.
 - Από την ανάπτυξη λειτουργιών και τις καθημερινές δοκιμές μέχρι τη διόρθωση σφαλμάτων, όλη η εργασία γίνεται στον ελεύθερο χρόνο. Ο δρόμος του ανοιχτού κώδικα δεν είναι εύκολος μόνος — η αναγνώριση και η υποστήριξή σας δίνουν στο έργο την εμπιστοσύνη να συνεχίσει.
 - Αν αυτό το εργαλείο σας βοήθησε πραγματικά, σκεφτείτε να βοηθήσετε. Όλες οι δωρεές πηγαίνουν στα έξοψα διακομιστή, τις ενημερώσεις εκδόσεων και τις βελτιώσεις λειτουργιών, διατηρώντας το έργο συνεχώς ενημερωμένο και σταθερά προοδευτικό.
-- Κάθε μικρή καλοσύνη είναι μια ακτίνα αστρικού φωτός. Ευχαριστούμε και πάλι για την κατανόηση και τη γενναιοδωρία σας！
-
-Επισκεφτείτε τη σελίδα δωρεάς μας：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Κάθε μικρή καλοσύνη είναι μια ακτίνα αστρικού φωτός. Ευχαριστούμε και πάλι για την κατανόηση και τη γενναιοδωρία σας！ [Επισκεφτείτε τη σελίδα δωρεάς μας](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Έργο αγάπης
@@ -328,9 +204,3 @@ winget install Owu.WSLDashboard
 ## 📄 Άδεια Χρήσης
 
 Αυτό το έργο διατίθεται υπό την άδεια GPL-3.0 – δείτε το αρχείο [LICENSE](../LICENSE) για λεπτομέρειες.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

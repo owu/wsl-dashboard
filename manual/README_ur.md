@@ -6,8 +6,6 @@
 
 ایک جدید، اعلیٰ کارکردگی، ہلکا پھلکا، اور کم میموری والا WSL (Windows Subsystem for Linux) انسٹینس مینجمنٹ ڈیش بورڈ۔ پریمیم مقامی تجربے کے لیے Rust اور Slint کے ساتھ بنایا گیا ہے۔
 
----
-
 ```diff
 اطلاع:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | اردو | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | اردو | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 فہرست مضامین
-- [🌍 معاون زبانیں](#-معاون-زبانیں)
-- [🚀 اہم خصوصیات اور استعمال](#-اہم-خصوصیات-اور-استعمال)
-- [⚙️ کنفیگریشن اور لاگز](#️-کنفیگریشن-اور-لاگز)
-- [🖼️ اسکرین شاٹس](#️-اسکرین-شاٹس)
-- [🎬 آپریشن ڈیمو](#-آپریشن-ڈیمو)
-- [💻 سسٹم کی ضروریات](#-سسٹم-کی-ضروریات)
-- [📦 انسٹالیشن گائیڈ](#-انسٹالیشن-گائیڈ)
-- [🛠️ ٹیکنالوجی اور کارکردگی](#️-ٹیکنالوجی-اور-کارکردگی)
-- [📢 سرکاری کمیونٹی گروپس](#-سرکاری-کمیونٹی-گروپس)
-- [🤝 کمیونٹی سپورٹ](#-کمیونٹی-سپورٹ)
-- [❤️ اس پروجیکٹ کی حمایت کریں](#️-اس-پروجیکٹ-کی-حمایت-کریں)
-- [⭐️ محبت کی محنت](#️-محبت-کی-محنت)
-- [📄 لائسنس](#-لائسنس)
+[🌍 معاون زبانیں](#-معاون-زبانیں) | [🚀 اہم خصوصیات اور استعمال](#-اہم-خصوصیات-اور-استعمال) | [🖼️ اسکرین شاٹس](#️-اسکرین-شاٹس) | [📦 انسٹالیشن گائیڈ](#-انسٹالیشن-گائیڈ) | [📢 سرکاری کمیونٹی گروپس](#-سرکاری-کمیونٹی-گروپس) | [❤️ اس پروجیکٹ کی حمایت کریں](#️-اس-پروجیکٹ-کی-حمایت-کریں) | [⭐️ محبت کی محنت](#️-محبت-کی-محنت) | [📄 لائسنس](#-لائسنس)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="امہاری" alt="امہاری" />
 </p>
 
-
 ## 🚀 اہم خصوصیات اور استعمال
 
 - **جدید نیٹو UI**: ڈارک/لائٹ موڈ سپورٹ، ہموار اینیمیشنز، اور **Skia** کے ذریعے چلنے والی اعلی کارکردگی والی رینڈرنگ کے ساتھ بدیہی GUI۔
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **انتہائی کم میموری کا استعمال**: کارکردگی کے لیے انتہائی بہتر بنایا گیا ہے۔ سائلنٹ اسٹارٹ اپ (سسٹم ٹرے) صرف **~10MB** RAM استعمال کرتا ہے۔ ونڈوز موڈ کا استعمال فونٹ کی پیچیدگی کے لحاظ سے مختلف ہوتا ہے: معیاری زبانوں کے لیے **~18MB** اور بڑے کریکٹر سیٹ والی زبانوں (چینی، جاپانی، کوریائی وغیرہ) کے لیے **~38MB**۔
 - **اعلی درجے کی نیٹ ورکنگ**: بغیر کسی رکاوٹ کے پورٹ فارورڈنگ کا انتظام (خودکار فائر وال اصول کی تخلیق کے ساتھ) اور متحد رابطے کے لیے عالمی HTTP پراکسی کی تشکیل۔
 - **USB ڈیوائس مینجمنٹ**: ڈیش بورڈ UI سے براہ راست آپ کے تمام WSL مثالوں میں مقامی USB آلات کو آسانی سے منسلک کرنے، جوڑنے اور ان کا انتظام کرنے کے لیے `usbipd-win` کے ساتھ مکمل انضمام۔
-
-
-## ⚙️ کنفیگریشن اور لاگز
-
-تمام کنفیگریشن 'سیٹنگز' ویو کے ذریعے منظم کی جاتی ہیں:
-
-- نئے WSL انسٹنس کے لیے ڈیفالٹ انسٹالیشن ڈائرکٹری منتخب کریں۔
-- لاگ ڈائرکٹری اور لاگ لیول (Error / Warn / Info / Debug / Trace) سیٹ کریں۔
-- UI کی زبان منتخب کریں یا اسے سسٹم کی زبان کے مطابق رہنے دیں۔
-- ڈارک موڈ کو ٹوگل کریں اور یہ منتخب کریں کہ آیا ایپ آپریشنز کے بعد WSL کو خودکار طور پر بند کر سکتی ہے۔
-- ترتیب دیں کہ ایپ کتنی بار اپ ڈیٹس چیک کرے (روزانہ، ہفتہ وار، پندرہ روزہ، ماہانہ)۔
-- سسٹم بوٹ پر خودکار اسٹارٹ اپ فعال کریں (خودکار پاتھ مرمت کے ساتھ)۔
-- اسٹارٹ اپ پر ایپ کو سسٹم ٹرے میں منیمائز کرنے کے لیے سیٹ کریں۔
-- کلوز بٹن کو باہر نکلنے کے بجائے سسٹم ٹرے میں منیمائز کرنے کے لیے کنفیگر کریں۔
-- مخصوص فیچر ٹیبز کی مرئیت کو ٹوگل کر کے سائیڈ بار کو اپنی مرضی کے مطابق بنائیں۔
-
-لاگ فائلیں کنفیگر کردہ لاگ ڈائرکٹری میں لکھی جاتی ہیں اور مسائل کی اطلاع دیتے وقت منسلک کی جا سکتی ہیں۔
+- **ترتیب اور لاگز**: ترتیبات میں ڈیفالٹ انسٹال فولڈر، لاگ فولڈر اور لیول، انٹرفیس زبان، ڈارک موڈ، اپڈیٹ چیک کی تعدد، آٹو اسٹارٹ اور بند ہونے کا رویہ، نیز سائیڈ بار کو حسبِ ضرورت ترتیب دیں۔
+- **ڈسٹرو کو فعال رکھنا**: ایک کلک پر «اسٹارٹ» ڈسٹرو کو تقریباً 60 سیکنڈ بے کاری کے بعد بند ہونے کے بجائے چلتا رکھتا ہے؛ آپ «ونڈوز اسٹارٹ پر یہ ڈسٹرو شروع کریں» بھی فعال کر سکتے ہیں۔
+- **گلوبل شارٹ کٹس**: مین ونڈو دکھانے/چھپانے یا کسی ڈسٹرو کا ٹرمینل فوراً کھولنے کے لیے گلوبل شارٹ کٹس مقرر کریں۔
 
 
 ## 🖼️ اسکرین شاٹس
-
-### ہوم (لائٹ اور ڈارک موڈ)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### یو ایس بی اور فولڈ ایبل مینو
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### نیٹ ورک
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### انسٹنس شامل کریں اور سیٹنگز
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### درخواست کے بارے میں اور عطیہ
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### ڈسک ماؤنٹ (Disk Mount)
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### ٹاسک شیڈیولنگ (Task Scheduling)
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 آپریشن ڈیمو
-
-[ہمیں بہتر بنانے میں مدد کریں! ہمارا تعارفی ویڈیو دیکھیں اور اپنے خیالات شیئر کریں۔](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 سسٹم کی ضروریات
-
-- ونڈوز 10 یا ونڈوز 11 جس میں WSL فعال ہو (WSL 2 تجویز کردہ)۔
-- کم از کم ایک WSL ڈسٹری بیوشن انسٹال ہو، یا نئی ڈسٹری بیوشنز انسٹال کرنے کی اجازت ہو۔
-- 64 بٹ CPU؛ متعدد ڈسٹروز کے ہموار استعمال کے لیے 4 GB RAM یا اس سے زیادہ تجویز کردہ۔
+ڈیش بورڈ کو عملی طور پر دیکھنا چاہتے ہیں؟ مکمل اسکرین شاٹ گیلری کے لیے [آفیشل ویب سائٹ](https://www.wslui.com/) ملاحظہ کریں۔
 
 ## 📦 انسٹالیشن گائیڈ
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 مزید معلومات کے لیے، [WinGet کمیونٹی ریپوزٹری](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) دیکھیں۔
 
-### آپشن 3: تیار شدہ بائنری ڈاؤن لوڈ کریں
-
-شروع کرنے کا سب سے آسان طریقہ پہلے سے کمپائل شدہ ریلیز کا استعمال کرنا ہے:
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) صفحہ پر جائیں۔
-2. ونڈوز کے لیے تازہ ترین `wsldashboard` ایگزیکیوٹیبل فائل ڈاؤن لوڈ کریں۔
-3. فائل کو ایکسٹریکٹ کریں (اگر زپ ہے) اور `wsldashboard.exe` چلائیں۔
-
-کسی انسٹالر کی ضرورت نہیں ہے؛ ایپ ایک واحد پورٹیبل بائنری ہے۔
-
-### آپشن 4: سورس سے بلڈ کریں
+### آپشن 3: سورس سے بلڈ کریں
 
 یقینی بنائیں کہ آپ کے پاس Rust ٹول چین (Rust 1.92+ یا نیا) انسٹال ہے۔
 
@@ -270,47 +174,18 @@ winget install Owu.WSLDashboard
      ```
 
 
-## 🛠️ ٹیکنالوجی اور کارکردگی
-
-- **کور**: میموری کی حفاظت اور زیرو-کاسٹ ایبسٹریکشنز کے لیے Rust میں لاگو کیا گیا۔
-- **UI فریم ورک**: اعلی کارکردگی والے **Skia** رینڈرنگ بیک اینڈ کے ساتھ Slint۔
-- **Async رن ٹائم**: نان بلاکنگ سسٹم کمانڈز اور I/O کے لیے Tokio۔
-- **کارکردگی کی جھلکیاں**:
-  - **ردعمل**: تقریباً فوری اسٹارٹ اپ اور ریئل ٹائم WSL اسٹیٹس مانیٹرنگ۔
-  - **افادیت**: انتہائی کم وسائل کا استعمال (مزید تفصیلات کے لیے [اہم خصوصیات](#-اہم-خصوصیات-اور-استعمال) دیکھیں)۔
-  - **پورٹیبلٹی**: بہتر ریلیز بلڈ ایک واحد کومپیکٹ ایگزیکیوٹیبل فائل تیار کرتا ہے۔
-
-
-
----
-
 ## 📢 سرکاری کمیونٹی گروپس
 
 WSL UI کے سرکاری کمیونٹی گروپس میں خوش آمدید! استعمال کے تجربات پر بات چیت کرنے، مسائل کی اطلاع دینے، تازہ ترین اپڈیٹس حاصل کرنے اور ڈویلپرز اور دیگر صارفین سے جڑنے کے لیے ہمارے چینلز میں شامل ہوں۔
+
+<div align="center">
 
 | عالمی گروپ (Telegram) | چینی گروپ (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | شامل ہونے کے لیے اسکین کریں | شامل ہونے کے لیے اسکین کریں |
 
----
-
-
-## 🤝 کمیونٹی سپورٹ
-
-مندرجہ ذیل کمیونٹیز کی حمایت کے لیے بہت بہت شکریہ:
-
-- [Rust Programming Language](https://www.rust-lang.org) - طاقتور اور محفوظ پروگرامنگ زبان کے لیے
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - جدید UI فریم ورک کے لیے
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - شاندار Windows Subsystem for Linux کے لیے
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - موثر ایسنک رن ٹائم کے لیے
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - پلیٹ فارم میں مسلسل بہتری کے لیے
-- [Reddit](https://www.reddit.com) - عالمی کمیونٹی بحث اور تائید کے لیے
-- [Hacker News](https://news.ycombinator.com) - عالمی کمیونٹی بحث اور تائید کے لیے
-- [Linux.do](https://linux.do) - آئی ٹی پیشہ ور افراد کے لیے مقبول کمیونٹی
-- [V2EX](https://www.v2ex.com) - چینی ٹیکنالوجی کمیونٹی بحث کے لیے
-
-آپ کے حصے اور تبصرے اس پروجیکٹ کو ممکن بناتے ہیں！
+</div>
 
 
 ## ❤️ اس پروجیکٹ کی حمایت کریں
@@ -318,9 +193,7 @@ WSL UI کے سرکاری کمیونٹی گروپس میں خوش آمدید! ا�
 - یہ پروجیکٹ GPL-3.0 اوپن سورس لائسنس کے تحت ہے اور تمام صارفین کے لیے مفت ہے۔
 - فنکشنل ڈویلپمنٹ، روزانہ ٹیسٹنگ سے لے کر بگ فکس تک، تمام کام فارغ وقت میں کیا جاتا ہے۔ اوپن سورس کا راستہ اکیلے چلنا آسان نہیں — آپ کی تسلیم اور سپورٹ پروجیکٹ کو آگے بڑھنے کا حوصلہ دیتی ہے۔
 - اگر اس ٹول نے واقعی آپ کی مدد کی ہے، تو براہ کرم ساتھ دیں۔ تمام عطیات سرور اخراجات، ورژن اپڈیٹس اور فیچر بہتری پر خرچ کیے جاتے ہیں، جو پروجیکٹ کو مسلسل اپڈیٹ اور مستحکم ترقی بنائے رکھتے ہیں۔
-- ہر چھوٹی نیکی ستاروں کی روشنی کی ایک کرن ہے۔ آپ کی سمجھ اور سخاوت کا دوبارہ شکریہ！
-
-ہمارے عطیہ صفحے پر جائیں：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- ہر چھوٹی نیکی ستاروں کی روشنی کی ایک کرن ہے۔ آپ کی سمجھ اور سخاوت کا دوبارہ شکریہ！ [ہمارے عطیہ صفحے پر جائیں](https://www.wslui.com/donate/).
 
 
 ## ⭐️ محبت کی محنت
@@ -331,9 +204,3 @@ WSL UI کے سرکاری کمیونٹی گروپس میں خوش آمدید! ا�
 ## 📄 لائسنس
 
 یہ پروجیکٹ GPL-3.0 کے تحت لائسنس یافتہ ہے – تفصیلات کے لیے [LICENSE](../LICENSE) فائل دیکھیں۔
-
-
----
-
-Built with ❤️ for the WSL Community.
-

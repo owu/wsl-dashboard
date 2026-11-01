@@ -17,6 +17,7 @@ mod app;
 mod i18n;
 mod network;
 mod api;
+mod shortcut;
 
 // Re-export types so other modules can continue using crate::AppWindow, crate::AppState etc.
 pub use app::state::AppState;

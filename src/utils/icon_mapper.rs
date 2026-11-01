@@ -86,6 +86,45 @@ pub fn map_name_to_icon_key(name: &str) -> Option<&'static str> {
     else { None }
 }
 
+// Distro name -> icon background color (hex, used as the fill of the distro icon / initial badge).
+//
+// Keywords and match order are kept **exactly identical** to [`map_name_to_icon_key`], so the same
+// distro always gets a matching icon and background color; the order matters, e.g.
+// "openSUSE-Tumbleweed" must match `opensuse` before `suse`, and likewise `fedora`/`fed`.
+//
+// Returns `&'static str` instead of `Option`: the background color is mandatory styling, and distros
+// not listed fall back to a neutral gray, so callers never need to handle a missing-color branch.
+//
+// All values are checked against "white text >= 4.5:1" (WCAG relative luminance; the tightest is void at 4.64:1),
+// so white text over the icon/badge stays readable.
+pub fn map_name_to_color(name: &str) -> &'static str {
+    let lower_name = name.to_lowercase();
+    if lower_name.contains("ubuntu") { "#C2410C" }
+    else if lower_name.contains("debian") { "#A81D33" }
+    else if lower_name.contains("kali") { "#256699" }
+    else if lower_name.contains("fedora") || lower_name.contains("fed") { "#2E6CB5" }
+    else if lower_name.contains("opensuse") { "#2F7A38" }
+    else if lower_name.contains("suse") { "#17794A" }
+    else if lower_name.contains("arch") { "#10638F" }
+    else if lower_name.contains("mint") { "#3D7A24" }
+    else if lower_name.contains("alpine") { "#0D597F" }
+    else if lower_name.contains("manjaro") { "#1F7A3D" }
+    else if lower_name.contains("pop") { "#17727E" }
+    else if lower_name.contains("centos") { "#932279" }
+    else if lower_name.contains("alma") { "#0F4266" }
+    else if lower_name.contains("rocky") { "#0E7A5F" }
+    else if lower_name.contains("oracle") || lower_name == "ol" { "#C74634" }
+    else if lower_name.contains("gentoo") { "#54487A" }
+    else if lower_name.contains("zorin") { "#0F6C9E" }
+    else if lower_name.contains("nix") { "#3A5C9E" }
+    else if lower_name.contains("amazon") { "#232F3E" }
+    else if lower_name.contains("cachy") { "#147478" }
+    else if lower_name.contains("redhat") || lower_name.contains("red hat") { "#A30000" }
+    else if lower_name.contains("slackware") { "#2E2E2E" }
+    else if lower_name.contains("void") { "#478061" }
+    else { "#6B7684" } // Distro not listed: neutral gray fallback
+}
+
 pub fn add_dynamic_mapping(distro_name: String, icon_key: &'static str) {
     let mut dynamic_map = DYNAMIC_ICON_MAP.lock().unwrap();
     dynamic_map.insert(distro_name, icon_key);

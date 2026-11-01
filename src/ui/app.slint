@@ -20,6 +20,7 @@ import {
     UsbDeviceDetailInfo,
     PhysicalDiskInfo,
     MountedDiskInfo,
+    ShortcutRow,
 } from "theme.slint";
 import { AppConstants } from "constants.slint";
 import { TitleBar } from "components/title_bar.slint";
@@ -135,6 +136,16 @@ export component AppWindow inherits Window {
     in-out property <bool> sidebar_about: true;
     in-out property <bool> sparse_vhd: false;
     in-out property <bool> mount_auto_probe: false;
+
+    // --- Global Shortcut ---
+    in-out property <[ShortcutRow]> shortcut_rows: [];
+    in-out property <string> shortcut_toggle_shortcut: "";
+    in-out property <[string]> shortcut_toggle_keycaps: [];
+    in-out property <int> shortcut_recording_slot: -1;
+    in-out property <string> shortcut_recording_text: "";
+    in-out property <int> shortcut_conflict_slot: -1;
+    in-out property <string> shortcut_conflict_text: "";
+    in-out property <bool> shortcut_can_add: false;
     in-out property <bool> system_color <=> Theme.system_color;
     in-out property <bool> colorful_icons <=> Theme.colorful_icons;
     in property <string> task_status_text: "";
@@ -392,6 +403,14 @@ export component AppWindow inherits Window {
     callback save_general_settings();
     callback save_advanced_settings();
     callback save_interface_settings();
+    callback shortcut_tab_activated();
+    callback shortcut_start_recording(int);
+    callback shortcut_key_input(string, bool, bool, bool, bool);
+    callback shortcut_cancel_recording();
+    callback shortcut_clear(int);
+    callback shortcut_remove_row(int);
+    callback shortcut_add_row();
+    callback shortcut_distro_selected(int, int);
     callback save_sidebar_state();
     callback select_distro_folder();
     callback select_logs_folder();
@@ -658,6 +677,8 @@ export component AppWindow inherits Window {
                         padding-right: AppI18n.is-rtl ? 16px : 6px;
                         padding-left: AppI18n.is-rtl ? 6px : 16px;
                         Rectangle {
+                            // Fill the remaining height to the right of the sidebar, so pages with little content (e.g. shortcut settings) do not occupy only half the screen
+                            vertical-stretch: 1;
                             MainView {
                                 visible: true;
                                 z: 3;
@@ -962,6 +983,9 @@ export component AppWindow inherits Window {
                             }
 
                             SettingsView {
+                                // Explicitly follow the container size: absolutely positioned children default to content height only
+                                width: parent.width;
+                                height: parent.height;
                                 visible: true;
                                 opacity: selected_tab == 7 ? 1 : 0;
                                 z: 6;
@@ -999,6 +1023,35 @@ export component AppWindow inherits Window {
                                 sidebar_about <=> root.sidebar_about;
                                 sparse_vhd <=> root.sparse_vhd;
                                 mount_auto_probe <=> root.mount_auto_probe;
+                                shortcut_rows: root.shortcut_rows;
+                                shortcut_toggle_shortcut: root.shortcut_toggle_shortcut;
+                                shortcut_toggle_keycaps: root.shortcut_toggle_keycaps;
+                                shortcut_recording_slot: root.shortcut_recording_slot;
+                                shortcut_recording_text: root.shortcut_recording_text;
+                                shortcut_conflict_slot: root.shortcut_conflict_slot;
+                                shortcut_conflict_text: root.shortcut_conflict_text;
+                                shortcut_can_add: root.shortcut_can_add;
+                                shortcut_tab_activated => {
+                                    root.shortcut_tab_activated();
+                                }
+                                shortcut_start_recording(slot) => {
+                                    root.shortcut_start_recording(slot);
+                                }
+                                shortcut_cancel_recording => {
+                                    root.shortcut_cancel_recording();
+                                }
+                                shortcut_clear(slot) => {
+                                    root.shortcut_clear(slot);
+                                }
+                                shortcut_remove_row(slot) => {
+                                    root.shortcut_remove_row(slot);
+                                }
+                                shortcut_add_row => {
+                                    root.shortcut_add_row();
+                                }
+                                shortcut_distro_selected(slot, index) => {
+                                    root.shortcut_distro_selected(slot, index);
+                                }
                                 save_general_settings => {
                                     root.save_general_settings();
                                 }
@@ -1565,6 +1618,36 @@ export component AppWindow inherits Window {
         y: root.height - self.height - 14px;
         close => {
             root.close_task_status();
+        }
+    }
+
+    // Shortcut recording: during recording the window focus is handed to this FocusScope, which passes captured keys to Rust
+    shortcut-catcher := FocusScope {
+        width: 0;
+        height: 0;
+
+        key-pressed(event) => {
+            if (root.shortcut_recording_slot < 0) { return reject; }
+            root.shortcut_key_input(
+                event.text,
+                event.modifiers.control,
+                event.modifiers.alt,
+                event.modifiers.shift,
+                event.modifiers.meta);
+            return accept;
+        }
+
+        key-released(event) => {
+            if (root.shortcut_recording_slot < 0) { return reject; }
+            return accept;
+        }
+    }
+
+    changed shortcut_recording_slot => {
+        if (root.shortcut_recording_slot >= 0) {
+            shortcut-catcher.focus();
+        } else {
+            shortcut-catcher.clear-focus();
         }
     }
 }

@@ -6,8 +6,6 @@
 
 Nútímalegt, afkastamikið, létt og minnissparandi mælaborð fyrir WSL (Windows Subsystem for Linux) tilviksstjórnun. Byggt með Rust og Slint fyrir frábæra innfædda upplifun.
 
----
-
 ```diff
 Tilkynning:
 
@@ -27,24 +25,12 @@ Tilkynning:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | Íslenska | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | Íslenska | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Efnisyfirlit
-- [🌍 Tungumálastuðningur](#-tungumálastuðningur)
-- [🚀 Helstu eiginleikar og notkun](#-helstu-eiginleikar-og-notkun)
-- [⚙️ Stillingar og annálar](#️-stillingar-og-annálar)
-- [🖼️ Skjámyndir](#️-skjámyndir)
-- [🎬 Sýnikennsla](#-sýnikennsla)
-- [💻 Kerfiskröfur](#-kerfiskröfur)
-- [📦 Uppsetningarleiðbeiningar](#-uppsetningarleiðbeiningar)
-- [🛠️ Tæknistafla og afköst](#️-tæknistafla-og-afköst)
-- [📢 Opinber samfélags hópar](#-opinber-samfélags-hópar)
-- [🤝 Samfélagsstuðningur](#-samfélagsstuðningur)
-- [❤️ Styðja þetta verkefni](#️-styðja-þetta-verkefni)
-- [⭐️ Gert af ást](#️-gert-af-ást)
-- [📄 Leyfi](#-leyfi)
+[🌍 Tungumálastuðningur](#-tungumálastuðningur) | [🚀 Helstu eiginleikar og notkun](#-helstu-eiginleikar-og-notkun) | [🖼️ Skjámyndir](#️-skjámyndir) | [📦 Uppsetningarleiðbeiningar](#-uppsetningarleiðbeiningar) | [📢 Opinber samfélags hópar](#-opinber-samfélags-hópar) | [❤️ Styðja þetta verkefni](#️-styðja-þetta-verkefni) | [⭐️ Gert af ást](#️-gert-af-ást) | [📄 Leyfi](#-leyfi)
 
 ---
 
@@ -105,7 +91,6 @@ Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska
   <img src="../assets/flags/et.svg" width="32" title="Amharíska" alt="Amharíska" />
 </p>
 
-
 ## 🚀 Helstu eiginleikar og notkun
 
 - **Nútímalegt viðmót**: Innsæi GUI með stuðningi fyrir dökka og ljósa stillingu, mjúkar hreyfingar og afkastamikil teiknun knúin af **Skia**.
@@ -121,90 +106,18 @@ Enska, einfölduð kínverska, hefðbundin kínverska, hindí, spænska, franska
 - **Mjög lítil minnisnotkun**: Mjög fínstillt fyrir skilvirkni. Hljóðlaus ræsing (í bakka) notar aðeins um **~10MB** vinnsluminni. Notkun í gluggaham fer eftir leturgerðum: **~18MB** fyrir stöðluð tungumál og **~38MB** fyrir tungumál með stóra táknasett (kínverska, japanska, kóreska).
 - **Ítarleg netkerfi**: Óaðfinnanleg stjórnun á áframsendingu gátta (með sjálfvirkri gerð eldveggsreglna) og alþjóðleg uppsetning HTTP-umboðsþjóns fyrir sameinaða tengingu.
 - **Stjórnun USB-tækja**: Full samþætting við `usbipd-win` til að binda, tengja og stjórna staðbundnum USB-tækjum áreynslulaust í öllum WSL-tilvikum þínum beint af mælaborðinu.
-
-
-## ⚙️ Stillingar og annálar
-
-Öllum stillingum er stjórnað í gegnum stillingavalmyndina:
-
-- Velja sjálfgefna uppsetningarmöppu fyrir ný WSL tilvik.
-- Stilla möppu fyrir annála og skráningarstig (Error / Warn / Info / Debug / Trace).
-- Velja tungumál viðmóts eða láta það fylgja kerfistungumáli.
-- Skipta yfir í dökka stillingu og velja hvort forritið megi slökkva sjálfkrafa á WSL eftir aðgerðir.
-- Stilla hversu oft forritið leitar að uppfærslum (daglega, vikulega, hálfsmánaðarlega, mánaðarlega).
-- Virkja sjálfvirka ræsingu með kerfinu (með sjálfvirkri slóðaviðgerð).
-- Stilltu forritið á að lágmarkast í kerfisbakka við ræsingu.
-- Stilla lokunarhnappinn á að lágmarka forritið í bakka í stað þess að hætta.
-- Sérsníddu hliðarstikuna með því að skipta um sýnileika tiltekinna eiginleikaflipa.
-
-Annálaskrár eru skrifaðar í stillta möppu og má láta þær fylgja með þegar tilkynnt er um vandamál.
+- **Stillingar og annálar**: Stýra í Stillingum sjálfgefinni uppsetningarmöppu, annálamöppu og -stigi, viðmótsmáli, dökku ham, tíðni uppfærsluleitrar, sjálfvirkri ræsingu og hegðun við lokun, auk hliðarspjaltsins.
+- **Halda dreifingum í gangi**: Einn smellur á „Ræsa“ heldur dreifingunni í gangi í stað þess að hún lokist eftir ~60 s aðgerðaleysi; þú getur líka virkjað „Ræsa þessa dreifingu við ræsingu Windows“.
+- **Altökkvalar**: Skilgreindu altökkvala til að sýna/fela aðalgluggann eða opna fljótt skjáhermi valinnar dreifingar.
 
 
 ## 🖼️ Skjámyndir
-
-### Heimaskjár (Ljós og dökk stilling)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB og saman dreginn matseðill
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### net
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Bæta við tilviki og Stillingar
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Um forritið & Greiðsla
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Diskatenging
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Verkefnaáætlun
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Sýnikennsla
-
-[Hjálpaðu okkur að bæta okkur! Horfðu á kynningarmyndbandið okkar og deildu skoðunum þínum.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Kerfiskröfur
-
-- Windows 10 eða Windows 11 með WSL virkt (mælt er með WSL 2).
-- Minnst eitt WSL kerfi uppsett, eða leyfi til að setja upp ný.
-- 64-bita örgjörvi; mælt er með 4 GB vinnsluminni eða meira fyrir snurðulausa notkun.
+Viltu sjá stjórnborðið í notkun? Heimsæktu [opinberu vefsíðuna](https://www.wslui.com/) til að skoða heila skjáskotsmyndasafnið.
 
 ## 📦 Uppsetningarleiðbeiningar
 
@@ -234,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Fyrir frekari upplýsingar, heimsæktu [WinGet samfélagsgeymsluna](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Valkostur 3: Sækja tilbúna keyrsluskrá
-
-Auðveldasta leiðin til að byrja er að nota tilbúna útgáfu:
-
-1. Farðu á [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) síðuna.
-2. Sæktu nýjustu `wsldashboard` keyrsluskrána fyrir Windows.
-3. Taktu úr þjöppun (ef við á) og keyrðu `wsldashboard.exe`.
-
-Engin uppsetning er nauðsynleg; forritið er ein sjálfstæð keyrsluskrá.
-
-### Valkostur 4: Smíða úr frumkóða
+### Valkostur 3: Smíða úr frumkóða
 
 Gakktu úr skugga um að þú hafir Rust tækjapakkann (Rust 1.92+ eða nýrri) uppsettan.
 
@@ -271,45 +174,18 @@ Gakktu úr skugga um að þú hafir Rust tækjapakkann (Rust 1.92+ eða nýrri) 
      ```
 
 
-## 🛠️ Tæknistafla og afköst
-
-- **Kjarni**: Útfærður í Rust fyrir minnisöryggi og hámarksafköst.
-- **Viðmótskerfi**: Slint með hágæða **Skia** teiknivél.
-- **Ósamhæfð keyrsla**: Tokio fyrir kerfisskipanir og inntak/úttak án tafa.
-- **Helstu kostir**:
-  - **Viðbragðsflýtir**: Ræstist nánast samstundis og fylgist með stöðu WSL í rauntíma.
-  - **Skilvirkni**: Einstaklega lítil auðlindanotkun (sjá [Helstu eiginleikar](#-helstu-eiginleikar-og-notkun) fyrir nánari upplýsingar).
-  - **Sveigjanleiki**: Fínstillt útgáfusmíð skilar einni þéttri keyrsluskrá.
-
-
-
 ## 📢 Opinber samfélags hópar
 
 Velkominn að heita í opinberu samfélags hópunum WSL UI! Aðgangi til að umræða ábendingar, tilkynna vandamál, fá uppfærslur og tengjast þróunaraðilum og öðrum notendum.
+
+<div align="center">
 
 | Alþjóðlegur hópur (Telegram) | Kínverskur hópur (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Skanna til að ganga í | Skanna til að ganga í |
 
----
-
-
-## 🤝 Samfélagsstuðningur
-
-Stór þakkir eftirfarandi samfélögum fyrir stuðning þeirra:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Fyrir öfluga og örugga forritunarmálið
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Fyrir nútímalega viðmótsgrindina
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Fyrir frábæra Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Fyrir skilvirka ósamræmda keyrsluumhverfið
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Fyrir stöðugar endurbætur á kerfinu
-- [Reddit](https://www.reddit.com) - Fyrir alþjóðlegar samfélagsumræður og stuðning
-- [Hacker News](https://news.ycombinator.com) - Fyrir alþjóðlegar samfélagsumræður og stuðning
-- [Linux.do](https://linux.do) - Fyrir vinsælt samfélag IT sérfræðinga
-- [V2EX](https://www.v2ex.com) - Fyrir umræður í kínverska tæknisamfélaginu
-
-Þín framlög og endurgjörð gera þetta verkefni mögulegt！
+</div>
 
 
 ## ❤️ Styðja þetta verkefni
@@ -317,9 +193,7 @@ Stór þakkir eftirfarandi samfélögum fyrir stuðning þeirra:
 - Þetta verkefni er undir GPL-3.0 leyfi og er ókeypis fyrir alla notendur.
 - Frá eiginleikaþróun og daglegum prófunum til villuleiðréttinga — öll vinna er unnin í frítíma. Leið opins hugbúnaðar er ekki auðvelt að ganga ein. Viðurkenning þín og stuðningur gefur verkefninu sjálfstraust til að halda áfram.
 - Ef þetta tól hefur raunverulega hjálpað þér, íhugaðu að leggja hönd á plóg. Allar gjafir fara í þjónnuskostnað, útgáfuuppfærslur og eiginleikabætur, sem heldur verkefninu stöðugt uppfærðu og stöðugt framfarandi.
-- Hver lítil góðvild er geisli stjörnuljósi. Takk aftur fyrir skilning þinn og rausnarsemi！
-
-Heimsæktu framlags síðuna okkar：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Hver lítil góðvild er geisli stjörnuljósi. Takk aftur fyrir skilning þinn og rausnarsemi！ [Heimsæktu framlags síðuna okkar](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Gert af ást
@@ -330,9 +204,3 @@ Ef þér finnst þetta verkefni gagnlegt væri ég þakklátur ef þú gætir ge
 ## 📄 Leyfi
 
 Þetta verkefni er gefið út undir GPL-3.0 leyfinu – sjá [LICENSE](../LICENSE) skrána fyrir nánari upplýsingar.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

@@ -6,8 +6,6 @@
 
 לוח בקרה מודרני, בעל ביצועים גבוהים, קל משקל וחסכוני בזיכרון לניהול מופעי WSL (Windows Subsystem for Linux). נבנה עם Rust ו-Slint לחוויית משתמש טבעית ויוקרתית.
 
----
-
 ```diff
 הודעה:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | עברית | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | עברית | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 תוכן עניינים
-- [🌍 שפות נתמכות](#-שפות-נתמכות)
-- [🚀 תכונות עיקריות ושימוש](#-תכונות-עיקריות-ושימוש)
-- [⚙️ הגדרות ויומנים](#️-הגדרות-ויומנים)
-- [🖼️ צילומי מסך](#️-צילומי-מסך)
-- [🎬 הדגמת פעולה](#-הדגמת-פעולה)
-- [💻 דרישות מערכת](#-דרישות-מערכת)
-- [📦 מדריך התקנה](#-מדריך-התקנה)
-- [🛠️ טכנולוגיה וביצועים](#️-טכנולוגיה-וביצועים)
-- [📢 קבוצות הקהילה הרשמיות](#-קבוצות-הקהילה-הרשמיות)
-- [🤝 תמיכת קהילה](#-תמיכת-קהילה)
-- [❤️ תמיכה בפרויקט זה](#️-תמיכה-בפרויקט-זה)
-- [⭐️ עבודה מאהבה](#️-עבודה-מאהבה)
-- [📄 רישיון](#-רישיון)
+[🌍 שפות נתמכות](#-שפות-נתמכות) | [🚀 תכונות עיקריות ושימוש](#-תכונות-עיקריות-ושימוש) | [🖼️ צילומי מסך](#️-צילומי-מסך) | [📦 מדריך התקנה](#-מדריך-התקנה) | [📢 קבוצות הקהילה הרשמיות](#-קבוצות-הקהילה-הרשמיות) | [❤️ תמיכה בפרויקט זה](#️-תמיכה-בפרויקט-זה) | [⭐️ עבודה מאהבה](#️-עבודה-מאהבה) | [📄 רישיון](#-רישיון)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="אמהרית" alt="אמהרית" />
 </p>
 
-
 ## 🚀 תכונות עיקריות ושימוש
 
 - **ממשק משתמש מודרני**: ממשק גרפי אינטואיטיבי עם תמיכה במצב כהה/בהיר, אנימציות חלקות ורינדור בביצועים גבוהים המופעל על ידי **Skia**.
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **טביעת רגל זיכרון נמוכה במיוחד**: מותאם במיוחד ליעילות. הפעלה שקטה (במגש המערכת) צורכת רק כ-**10MB** RAM. השימוש במצב חלון משתנה בהתאם למורכבות הגופנים: כ-**18MB** לשפות סטנדרטיות וכ-**38MB** לשפות עם ערכת תווים גדולה (סינית, יפנית, קוריאנית).
 - **רשתות מתקדמות**: ניהול חלק של העברת פורטים (עם יצירה אוטומטית של חוקי חומת אש) ותצורת פרוקסי HTTP גלובלית לקישוריות מאוחדת.
 - **ניהול התקני USB**: שילוב מלא עם `usbipd-win` לקישור, צירוף וניהול ללא מאמץ של התקני USB מקומיים על פני מופעי ה-WSL שלך ישירות ממשק המשתמש של לוח המחוונים.
-
-
-## ⚙️ הגדרות ויומנים
-
-כל ההגדרות מנוהלות דרך תצוגת ההגדרות:
-
-- בחירת ספריית התקנה כברירת מחדל עבור מופעי WSL חדשים.
-- הגדרת ספריית יומנים ורמת יומן (Error / Warn / Info / Debug / Trace).
-- בחירת שפת הממשק או מעקב אחר שפת המערכת.
-- החלפה למצב כהה והגדרת כיבוי אוטומטי של WSL לאחר פעולות.
-- הגדרת תדירות בדיקת עדכונים (יומית, שבועית, דו-שבועית, חודשית).
-- הפעלת הפעלה אוטומטית עם עליית המערכת (עם תיקון נתיב אוטומטי).
-- הגדרת האפליקציה למזעור למגש המערכת בזמן ההפעלה.
-- הגדרת כפתור הסגירה למזעור למגש המערכת במקום יציאה.
-- התאם אישית את סרגל הצד על ידי החלפת נראות של כרטיסיות תכונות מסוימות.
-
-קבצי יומן נכתבים לספריית היומנים שהוגדרה וניתן לצרף אותם בעת דיווח על בעיות.
+- **הגדרות ויומנים**: מתוך ההגדרות נהלו את תיקיית ההתקנה, תיקיית היומנים ורמתם, שפת הממשק, המצב הכהה, תדירות בדיקת העדכונים, הפעלה אוטומטית והתנהגות בעת סגירה, וכן את סרגל הצד.
+- **שמירת ההפצה פעילה**: לחיצה אחת על «הפעל» משאירה את ההפצה פועלת במקום כיבויה לאחר כ־60 שניות חוסר פעילות; אפשר גם להפעיל «הפעל הפצה זו בעת עליית Windows».
+- **קיצורי דרך גלובליים**: הגדירו קיצורי דרך גלובליים להצגה/הסתרה של החלון הראשי או לפתיחת מסוף של הפצה נבחרת.
 
 
 ## 🖼️ צילומי מסך
-
-### דף הבית (מצב בהיר וכהה)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & תפריט פשוט
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### רֶשֶׁת
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### הוספת מופע והגדרות
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### אוֹדוֹת & תרומה
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### עיגון דיסק (Disk Mount)
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### תזמון משימות (Task Scheduling)
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 הדגמת פעולה
-
-[עזרו לנו להשתפר! צפו בסרטון ההקדמה שלנו ושתפו אותנו בדעותיכם.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 דרישות מערכת
-
-- Windows 10 או Windows 11 עם WSL מופעל (מומלץ WSL 2).
-- לפחות הפצת WSL אחת מותקנת, או הרשאה להתקנת חדשות.
-- מעבד 64 סיביות; מומלץ 4 GB RAM או יותר לשימוש חלק בכמה הפצות.
+רוצים לראות את לוח הבקרה בפעולה? בקרו ב[אתר הרשמי](https://www.wslui.com/) כדי לצפות בגלריית צילומי המסך המלאה.
 
 ## 📦 מדריך התקנה
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 למידע נוסף, בקר ב-[מאגר הקהילה של WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### אפשרות 3: הורדת קובץ בינארי מוכן
-
-הדרך הקלה ביותר להתחיל היא להשתמש בגרסה המקומפלת מראש:
-
-1. עבור לדף ה-[GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. הורד את קובץ ההרצה `wsldashboard` העדכני ביותר עבור Windows.
-3. חלץ (אם זה בארכיון) והפעל את `wsldashboard.exe`.
-
-אין צורך במתקין; האפליקציה היא קובץ בינארי נייד יחיד.
-
-### אפשרות 4: בנייה מקוד המקור
+### אפשרות 3: בנייה מקוד המקור
 
 ודא שמותקנת אצלך ערכת הכלים של Rust (גרסה 1.92 ומעלה).
 
@@ -270,45 +174,18 @@ winget install Owu.WSLDashboard
      ```
 
 
-## 🛠️ טכנולוגיה וביצועים
-
-- **ליבה**: מיושמת ב-Rust לבטיחות זיכרון והפשטות ללא עלות ביצועים.
-- **תשתית ממשק משתמש**: Slint עם מנוע רינדור **Skia** בעל ביצועים גבוהים.
-- **זמן ריצה אסינכרוני**: Tokio לפקודות מערכת וקלט/פלט לא חוסמים.
-- **דגשי ביצועים**:
-  - **תגובתיות**: הפעלה כמעט מיידית וניטור מצב WSL בזמן אמת.
-  - **יעילות**: שימוש נמוך במיוחד במשאבים (ראה [תכונות עיקריות](#-תכונות-עיקריות-ושימוש) לפרטים).
-  - **ניידות**: בניית ה-Release מפיקה קובץ הרצה קומפקטי יחיד.
-
-
-
 ## 📢 קבוצות הקהילה הרשמיות
 
 ברוכים הבאים לקבוצות הקהילה הרשמיות של WSL UI! הצטרפו לערוצים שלנו לדיון בשלטי שימוש, דיווח על בעיות, קבלת עדכונים אחרונים ומפגש עם המפתחים ומשתמשים אחרים.
+
+<div align="center">
 
 | קבוצה גלובלית (Telegram) | קבוצה סינית (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | סרוק כדי להצטרף | סרוק כדי להצטרף |
 
----
-
-
-## 🤝 תמיכת קהילה
-
-תודה רבה לקהילות הבאות על תמיכתן:
-
-- [Rust Programming Language](https://www.rust-lang.org) - על שפת התכנות החזקה והבטוחה
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - על מסגרת הממשק המודרנית
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - על ה-Windows Subsystem for Linux המדהים
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - על סביבת הריצה האסינכרונית היעילה
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - על שיפורים מתמשכים בפלטפורמה
-- [Reddit](https://www.reddit.com) - על דיוני קהילה גלובליים ותמיכה
-- [Hacker News](https://news.ycombinator.com) - על דיוני קהילה גלובליים ותמיכה
-- [Linux.do](https://linux.do) - על הקהילה הפופולרית לאנשי IT
-- [V2EX](https://www.v2ex.com) - על דיונים בקהילת הטכנולוגיה הסינית
-
-התרומות והמשוב שלכם הם מה שהופך את הפרויקט הזה לאפשרי！
+</div>
 
 
 ## ❤️ תמיכה בפרויקט זה
@@ -316,9 +193,7 @@ winget install Owu.WSLDashboard
 - פרויקט זה מורשה תחת GPL-3.0 וחינמי לכל המשתמשים.
 - מפיתוח תכונות ובדיקות יומיות ועד תיקון באגים, כל העבודה נעשית בזמן פנוי. הדרך של קוד פתוח אינה קלה לבד — ההכרה והתמיכה שלכם נותנות לפרויקט את הביטחון להמשיך.
 - אם הכלי הזה באמת עזר לכם, שקלו להושיט יד. כל התרומות מיועדות להוצאות שרת, עדכוני גרסאות ושיפור תכונות, לשמירה על עדכון שוטף והתקדמות יציבה של הפרויקט.
-- כל מעשה טוב קטן הוא קרן של אור כוכבים. תודה שוב על הבנתכם והנדיבות שלכם！
-
-בקר בדף התרומה שלנו：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- כל מעשה טוב קטן הוא קרן של אור כוכבים. תודה שוב על הבנתכם והנדיבות שלכם！ [בקר בדף התרומה שלנו](https://www.wslui.com/donate/).
 
 
 ## ⭐️ עבודה מאהבה
@@ -329,8 +204,3 @@ winget install Owu.WSLDashboard
 ## 📄 רישיון
 
 פרויקט זה מופץ תחת רישיון GPL-3.0 – לפרטים נוספים עיין בקובץ ה-[LICENSE](../LICENSE).
-
-
----
-
-Built with ❤️ for the WSL Community.

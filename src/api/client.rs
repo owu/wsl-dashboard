@@ -112,7 +112,7 @@ impl WslUiClient {
             };
 
             // Inject request headers uniformly: User-Agent + global request metadata (version/system language/device ID)
-            let mut req = req.header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+            let mut req = req.header("User-Agent", crate::utils::system_info::user_agent());
             if let Some(meta) = REQUEST_META.get() {
                 if !meta.app_version.is_empty() {
                     req = req.header("App-Version", meta.app_version.as_str());

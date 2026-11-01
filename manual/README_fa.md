@@ -6,8 +6,6 @@
 
 داشبورد مدیریت نمونه‌های WSL (Windows Subsystem for Linux) مدرن، با کارایی بالا، سبک و با مصرف حافظه پایین. ساخته شده با Rust و Slint برای ارائه تجربه بومی عالی.
 
----
-
 ```diff
 اعلامیه:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | فارسی | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | فارسی | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 فهرست
-- [🌍 پشتیبانی زبان](#-پشتیبانی-زبان)
-- [🚀 ویژگی‌های اصلی و استفاده](#-ویژگی‌های-اصلی-و-استفاده)
-- [⚙️ پیکربندی و گزارش‌ها](#️-پیکربندی-و-گزارش‌ها)
-- [🖼️ تصاویر صفحه](#️-تصاویر-صفحه)
-- [🎬 نمایش عملیات](#-نمایش-عملیات)
-- [💻 الزامات سیستم](#-الزامات-سیستم)
-- [📦 راهنمای نصب](#-راهنمای-نصب)
-- [🛠️ فناوری و عملکرد](#️-فناوری-و-عملکرد)
-- [📢 گروه‌های رسمی جامعه](#-گروه‌های-رسمی-جامعه)
-- [🤝 حمایت جامعه](#-حمایت-جامعه)
-- [❤️ حمایت از پروژه](#️-حمایت-از-پروژه)
-- [⭐️ ستاره حمایت](#️-ستاره-حمایت)
-- [📄 مجوز متن‌باز](#-مجوز-متن‌باز)
+[🌍 پشتیبانی زبان](#-پشتیبانی-زبان) | [🚀 ویژگی‌های اصلی و استفاده](#-ویژگیهای-اصلی-و-استفاده) | [🖼️ تصاویر صفحه](#️-تصاویر-صفحه) | [📦 راهنمای نصب](#-راهنمای-نصب) | [📢 گروه‌های رسمی جامعه](#-گروههای-رسمی-جامعه) | [❤️ حمایت از پروژه](#️-حمایت-از-پروژه) | [⭐️ ستاره حمایت](#️-ستاره-حمایت) | [📄 مجوز متن‌باز](#-مجوز-متنباز)
 
 ---
 
@@ -105,7 +91,6 @@ I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中�
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 ویژگی‌های اصلی و استفاده
 
 - **رابط بومی مدرن**: GUI بصری با پشتیبانی از حالت تاریک/روشن، انیمیشن‌های روان و رندرینگ با کارایی بالا توسط **Skia**.
@@ -121,89 +106,18 @@ I18N : [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中�
 - **مصرف حافظه بسیار پایین**: بهینه‌سازی بالای منابع. راه‌اندازی بی‌صدا (سینی سیستم) تنها حدود **10 مگابایت** حافظه مصرف می‌کند. در حالت پنجره، بسته به پیچیدگی فونت، حدود **18 مگابایت** (زبان‌های استاندارد مانند انگلیسی، آلمانی و غیره) تا **38 مگابایت** (مجموعه کاراکترهای بزرگ مانند CJK) مصرف می‌شود.
 - **مدیریت شبکه پیشرفته**: مدیریت یکپارچه ارسال پورت (ایجاد خودکار قوانین فایروال) و پیکربندی پراکسی HTTP سراسری برای تجربه اتصال یکپارچه.
 - **مدیریت دستگاه USB**: ادغام عمیق با `usbipd-win`، که امکان اتصال، پیوست و مدیریت آسان دستگاه‌های USB محلی را برای همه نمونه‌های WSL مستقیماً از رابط داشبورد فراهم می‌کند.
-
-
-## ⚙️ پیکربندی و گزارش‌ها
-
-تمام پیکربندی‌ها از طریق نمای "تنظیمات" مدیریت می‌شوند:
-
-- انتخاب دایرکتوری نصب پیش‌فرض برای نمونه‌های جدید WSL.
-- پیکربندی دایرکتوری گزارش و سطح گزارش (Error / Warn / Info / Debug / Trace).
-- انتخاب زبان رابط یا پیروی از زبان سیستم.
-- تغییر حالت تاریک و انتخاب بسته خودکار WSL پس از عملیات.
-- پیکربندی فرکانس بررسی به‌روزرسانی (روزانه، هفتگی، دو هفتگی، ماهانه).
-- فعال‌سازی راه‌اندازی خودکار (با قابلیت تعمیر خودکار مسیر).
-- تنظیم حداقل‌سازی به سینی هنگام راه‌اندازی.
-- پیکربندی رفتار دکمه بستن (حداقل‌سازی به سینی به جای خروج از برنامه).
-- سفارشی‌سازی نوار کناری با تغییر نمایش تب‌های ویژگی خاص.
-
-فایل‌های گزارش در دایرکتوری گزارش پیکربندی شده نوشته می‌شوند و می‌توان هنگام گزارش مشکلات پیوست کرد.
+- **پیکربندی و گزارش‌ها**: از بخش تنظیمات، پوشه نصب پیش‌فرض، پوشه و سطح گزارش‌ها، زبان رابط، حالت تیره، بازه بررسی به‌روزرسانی، اجرای خودکار و رفتار بستن، و همچنین نوار کناری را مدیریت کنید.
+- **زنده نگه داشتن توزیع**: با یک کلیک روی «راه‌اندازی»، توزیع به‌جای خاموش‌شدن پس از حدود ۶۰ ثانیه بیکاری، به کار خود ادامه می‌دهد؛ می‌توانید گزینه «اجرای این توزیع هنگام راه‌اندازی Windows» را نیز فعال کنید.
+- **میانبرهای سراسری**: میانبرهای سراسری برای نمایش/پنهان‌کردن پنجره اصلی یا باز کردن فوری ترمینال یک توزیع تعیین کنید.
 
 
 ## 🖼️ تصاویر صفحه
-
-### صفحه اصلی (حالت تاریک و روشن)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB و منوی جمع‌شده
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### مدیریت شبکه
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### افزودن نمونه و تنظیمات
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### درباره و اهدا
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### نصب دیسک (Disk Mount)
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### زمان‌بندی وظایف (Task Scheduling)
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 نمایش عملیات
-
-[به ما کمک کنید بهتر شویم! ویدیوی معرفی ما را تماشا کنید و نظرات خود را به اشتراک بگذارید.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 الزامات سیستم
-
-- Windows 10 یا Windows 11 با WSL فعال (WSL 2 توصیه می‌شود).
-- حداقل یک توزیع WSL نصب شده، یا مجوز نصب توزیع جدید.
-- CPU 64 بیتی؛ 4 گیگابایت رم یا بیشتر برای استفاده روان از چندین توزیع توصیه می‌شود.
+می‌خواهید داشبورد را در حال کار ببینید؟ برای دیدن گالری کامل تصاویر صفحه، از [وب‌سایت رسمی](https://www.wslui.com/) بازدید کنید.
 
 ## 📦 راهنمای نصب
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For more information, visit the [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### گزینه 3: دانلود باینری از پیش کامپایل شده
-
-ساده‌ترین راه برای شروع استفاده از نسخه کامپایل شده است:
-
-1. به صفحه [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) بروید.
-2. آخرین فایل اجرایی `wsldashboard` برای Windows را دانلود کنید.
-3. استخراج کنید (اگر آرشیو است) و `wsldashboard.exe` را اجرا کنید.
-
-نیازی به نصب نیست — برنامه یک نرم‌افزار قابل حمل تک‌فایلی است.
-
-### گزینه 4: ساخت از کد منبع
+### گزینه 3: ساخت از کد منبع
 
 مطمئن شوید که Rust toolchain (Rust 1.92+ یا جدیدتر) را نصب کرده‌اید.
 
@@ -270,45 +174,18 @@ For more information, visit the [WinGet community repository](https://github.com
      ```
 
 
-## 🛠️ فناوری و عملکرد
-
-- **هسته**: پیاده‌سازی شده با Rust برای امنیت حافظه و zero-cost abstraction.
-- **فریمورک UI**: Slint با بک‌اند رندرینگ **Skia** با کارایی بالا.
-- **Async runtime**: Tokio، برای دستورات سیستمی و I/O غیرمسدودکننده.
-- **نقاط برجسته عملکرد**:
-  - **سرعت پاسخ**: راه‌اندازی تقریباً آنی، نظارت بر وضعیت WSL در زمان واقعی.
-  - **بهره‌وری منابع**: مصرف منابع بسیار پایین (به [ویژگی‌های اصلی](#-ویژگی‌های-اصلی-و-استفاده) مراجعه کنید).
-  - **قابلیت حمل**: نسخه انتشار بهینه‌شده یک فایل اجرایی فشرده واحد تولید می‌کند.
-
-
-
 ## 📢 گروه‌های رسمی جامعه
 
 به گروه‌های رسمی جامعه WSL UI خوش آمدید! به کانال‌های ما بپیوندید تا نکات استفاده را بحث کنید، مشکلات را گزارش دهید، آخرین به‌روزرسانی‌ها را دریافت کنید و با توسعه‌دهندگان و کاربران دیگر ارتباط برقرار کنید.
+
+<div align="center">
 
 | گروه جهانی (Telegram) | گروه چینی (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | برای عضویت اسکن کنید | برای عضویت اسکن کنید |
 
----
-
-
-## 🤝 حمایت جامعه
-
-صمیمانه از جوامع زیر بابت حمایتشان تشکر می‌کنیم:
-
-- [Rust Programming Language](https://www.rust-lang.org) - زبان برنامه‌نویسی قدرتمند و امن
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - فریمورک UI مدرن
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Windows Subsystem for Linux عالی
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Async runtime کارآمد
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - بهبود مستمر پلتفرم
-- [Reddit](https://www.reddit.com) - بحث و حمایت جامعه جهانی
-- [Hacker News](https://news.ycombinator.com) - بحث و حمایت جامعه جهانی
-- [Linux.do](https://linux.do) - جامعه محبوب متخصصان فناوری اطلاعات
-- [V2EX](https://www.v2ex.com) - بحث جامعه فناوری چینی
-
-مشارکت‌ها و بازخوردهای شما این پروژه را ممکن می‌سازد!
+</div>
 
 
 ## ❤️ حمایت از پروژه
@@ -316,9 +193,7 @@ For more information, visit the [WinGet community repository](https://github.com
 - این پروژه تحت مجوز GPL-3.0 منتشر شده و برای همه کاربران رایگان است.
 - از توسعه ویژگی، تست روزانه تا رفع باگ — تمام کارها در اوقات فراغت انجام می‌شود. مسیر متن‌باز به تنهایی آسان نیست. تأیید و حمایت شما به پروژه انگیزه ادامه می‌دهد.
 - اگر این ابزار واقعاً به شما کمک کرده، لطفاً حمایت را در نظر بگیرید. تمام کمک‌ها صرف هزینه سرور، توسعه نسخه و بهبود ویژگی‌ها می‌شود تا پروژه به‌روز و پایدار بماند.
-- هر مهربانی کوچکی پرتویی از ستاره است. یک بار دیگر از درک و سخاوت شما متشکریم!
-
-از صفحه اهدای ما دیدن کنید: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- هر مهربانی کوچکی پرتویی از ستاره است. یک بار دیگر از درک و سخاوت شما متشکریم! [از صفحه اهدای ما دیدن کنید](https://www.wslui.com/donate/).
 
 
 ## ⭐️ ستاره حمایت
@@ -329,8 +204,3 @@ For more information, visit the [WinGet community repository](https://github.com
 ## 📄 مجوز متن‌باز
 
 این پروژه تحت مجوز GPL-3.0 منتشر شده است – برای جزئیات بیشتر فایل [LICENSE](../LICENSE) را ببینید.
-
-
----
-
-Built with ❤️ for the WSL Community.

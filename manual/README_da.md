@@ -6,8 +6,6 @@
 
 Et moderne, højtydende, letvægts og hukommelsesbesparende kontrolpanel til administration af WSL-instanser (Windows Subsystem for Linux). Bygget med Rust og Slint for en førsteklasses indfødt oplevelse.
 
----
-
 ```diff
 Bemærk:
 
@@ -27,24 +25,12 @@ Bemærk:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | Dansk | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | Dansk | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Indholdsfortegnelse
-- [🌍 Sprogstøtte](#-sprogstøtte)
-- [🚀 Nøglefunktioner og brug](#-nøglefunktioner-og-brug)
-- [⚙️ Konfiguration og logfiler](#️-konfiguration-og-logfiler)
-- [🖼️ Skærmbilleder](#️-skærmbilleder)
-- [🎬 Demonstration](#-demonstration)
-- [💻 Systemkrav](#-systemkrav)
-- [📦 Installationsvejledning](#-installationsvejledning)
-- [🛠️ Teknologistak og ydeevne](#️-teknologistak-og-ydeevne)
-- [📢 Officielle fællesskabsgrupper](#-officielle-fællesskabsgrupper)
-- [🤝 Fællesskabsstøtte](#-fællesskabsstøtte)
-- [❤️ Støt dette projekt](#️-støt-dette-projekt)
-- [⭐️ Arbejde udført med kærlighed](#️-arbejde-udført-med-kærlighed)
-- [📄 Licens](#-licens)
+[🌍 Sprogstøtte](#-sprogstøtte) | [🚀 Nøglefunktioner og brug](#-nøglefunktioner-og-brug) | [🖼️ Skærmbilleder](#️-skærmbilleder) | [📦 Installationsvejledning](#-installationsvejledning) | [📢 Officielle fællesskabsgrupper](#-officielle-fællesskabsgrupper) | [❤️ Støt dette projekt](#️-støt-dette-projekt) | [⭐️ Arbejde udført med kærlighed](#️-arbejde-udført-med-kærlighed) | [📄 Licens](#-licens)
 
 ---
 
@@ -105,7 +91,6 @@ Engelsk, forenklet kinesisk, traditionelt kinesisk, hindi, spansk, fransk, arabi
   <img src="../assets/flags/et.svg" width="32" title="Amharisk" alt="Amharisk" />
 </p>
 
-
 ## 🚀 Nøglefunktioner og brug
 
 - **Moderne nativ brugerflade**: Intuitiv GUI med understøttelse af mørk/lys tilstand, jævne animationer og højtydende rendering drevet af **Skia**.
@@ -121,89 +106,18 @@ Engelsk, forenklet kinesisk, traditionelt kinesisk, hindi, spansk, fransk, arabi
 - **Ultra-lavt hukommelsesaftryk**: Højt optimeret for effektivitet. Lydløs opstart (systembakke) bruger kun **~10 MB** RAM. Brug i vinduestilstand varierer efter skrifttypekompleksitet: **~18 MB** for standardsprog og **~38 MB** for sprog med store tegnsæt (kinesisk, japansk, koreansk).
 - **Avanceret netværk**: Problemfri styring af portvideresendelse (med automatisk oprettelse af firewallregler) og global HTTP-proxykonfiguration for samlet forbindelse.
 - **Håndtering af USB-enheder**: Fuld integration med `usbipd-win` for ubesværet binding, vedhæftning og administration af lokale USB-enheder på tværs af dine WSL-instanser direkte fra dashboardet.
-
-
-## ⚙️ Konfiguration og logfiler
-
-Al konfiguration administreres via visningen Indstillinger:
-
-- Vælg standardinstallationsmappe for nye WSL-instanser.
-- Konfigurer logmappe og logniveau (Error / Warn / Info / Debug / Trace).
-- Vælg brugerfladesprog eller lad det følge systemsproget.
-- Skift mellem mørk tilstand og om appen skal lukke WSL automatisk efter operationer.
-- Konfigurer hvor ofte appen skal søge efter opdateringer (dagligt, ugentligt, hver anden uge, månedligt).
-- Aktiver automatisk start ved systemstart (med automatisk reparation af sti).
-- Indstil appen til at minimere til systembakken ved opstart.
-- Konfigurer lukkeknappen til at minimere til systembakken i stedet for at afslutte.
-- Tilpas sidepanelet ved at slå synligheden af specifikke funktionfaner til eller fra.
-
-Logfiler skrives til den konfigurerede logmappe og kan vedlægges ved rapportering af problemer.
+- **Konfiguration og logfiler**: Administrer i Indstillinger standardinstallationsmappen, logmappen og logniveau, UI-sprog, mørk tilstand, opdateringsfrekvens, automatisk start og lukkeadfærd samt sidepanelet.
+- **Holde distributioner kørende**: Et klik på »Start« holder distributionen kørende i stedet for at blive lukket efter ~60 s inaktivitet; du kan også aktivere »Start denne distribution, når Windows starter«.
+- **Globale genveje**: Angiv globale genveje til at vise/skjule hovedvinduet eller åbne terminalen for en distribution.
 
 
 ## 🖼️ Skærmbilleder
-
-### Hjem (Lys og mørk tilstand)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB og minimeret menu
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Nettverk
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Tilføj instans og indstillinger
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Om & Doner
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Diskmontering
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Opgaveplanlægning
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Demonstration
-
-[Hjælp os med at blive bedre! Se vores introduktionsvideo og del dine tanker.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Systemkrav
-
-- Windows 10 eller Windows 11 med WSL aktiveret (WSL 2 anbefales).
-- Mindst én WSL-distribution installeret, eller tilladelse til at installere nye.
-- 64-bit CPU; 4 GB RAM eller mere anbefales til smidig brug af flere distroer.
+Vil du se dashboardet i aktion? Besøg den [officielle hjemmeside](https://www.wslui.com/) for det komplette skærmbilledgalleri.
 
 ## 📦 Installationsvejledning
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For mere information, besøg [WinGet-fællesskabslageret](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Mulighed 3: Download færdigbygget binær fil
-
-Den nemmeste måde at komme i gang på er at bruge den prækompilerede udgivelse:
-
-1. Gå til siden for [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Download den seneste `wsldashboard` eksekverbare fil til Windows.
-3. Udpak (hvis den er pakket) og kør `wsldashboard.exe`.
-
-Der kræves ingen installation; appen er en enkelt bærbar binær fil.
-
-### Mulighed 4: Byg fra kildekode
+### Mulighed 3: Byg fra kildekode
 
 Sørg for, at du har Rust-værktøjskæden (Rust 1.92+ eller nyere) installeret.
 
@@ -270,44 +174,18 @@ Sørg for, at du har Rust-værktøjskæden (Rust 1.92+ eller nyere) installeret.
      ```
 
 
-## 🛠️ Teknologistak og ydeevne
-
-- **Kerne**: Implementeret i Rust for hukommelsessikkerhed og nulomkostningsabstraktioner.
-- **Brugerflade-framework**: Slint med højtydende **Skia** renderings-backend.
-- **Async Runtime**: Tokio til ikke-blokerende systemkommandoer og I/O.
-- **Højdepunkter for ydeevne**:
-  - **Responstid**: Næsten øjeblikkelig opstart og realtidsovervågning af WSL-status.
-  - **Effektivitet**: Ultra-lavt ressourceforbrug (se [Nøglefunktioner](#-nøglefunktioner-og-brug) for detaljer).
-  - **Portabilitet**: Optimeret udgivelsesbyg producerer en enkelt kompakt eksekverbar fil.
-
-
-
 ## 📢 Officielle fællesskabsgrupper
 
 Velkommen til de officielle WSL UI fællesskabsgrupper! Tilmeld dig vores kanaler for at diskutere brugstips, rapportere problemer, få de nyeste opdateringer og forbinde med udviklere og andre brugere.
+
+<div align="center">
 
 | Global gruppe (Telegram) | Kinesisk gruppe (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Scan for at deltage | Scan for at deltage |
 
----
-
-## 🤝 Fællesskabsstøtte
-
-En stor tak til følgende fællesskaber for deres støtte:
-
-- [Rust Programming Language](https://www.rust-lang.org) - For det kraftfulde og sikre programmeringssprog
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - For det moderne UI-rammeværk
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - For det fantastiske Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - For den effektive asynkrone kørselstid
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - For løbende platformforbedringer
-- [Reddit](https://www.reddit.com) - For globale fællesskabsdiskussioner og støtte
-- [Hacker News](https://news.ycombinator.com) - For globale fællesskabsdiskussioner og støtte
-- [Linux.do](https://linux.do) - For det populære fællesskab for IT-fagfolk
-- [V2EX](https://www.v2ex.com) - For diskussioner i det kinesiske teknologifællesskab
-
-Dine bidrag og tilbagemeldinger gør dette projekt muligt！
+</div>
 
 
 ## ❤️ Støt dette projekt
@@ -315,9 +193,7 @@ Dine bidrag og tilbagemeldinger gør dette projekt muligt！
 - Dette projekt er licenseret under GPL-3.0 og er gratis for alle brugere.
 - Fra funktionsudvikling og daglige tests til fejlrettelser — alt arbejde udføres i fritiden. Vejen for open source er ikke let at gå alene. Din anerkendelse og støtte giver projektet tilliden til at fortsætte.
 - Hvis dette værktøj virkelig har hjulpet dig, så overvej at give en hånd. Alle donationer går til serveromkostninger, versionsopdateringer og funktionsforbedringer, så projektet holdes løbende opdateret og stabilt fremadskridende.
-- Hver lille venlighed er en stråle af stjernelys. Tak igen for din forståelse og generøsitet！
-
-Besøg vores donationsside：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Hver lille venlighed er en stråle af stjernelys. Tak igen for din forståelse og generøsitet！ [Besøg vores donationsside](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Arbejde udført med kærlighed
@@ -328,8 +204,3 @@ Hvis du har fundet dette projekt nyttigt, ville jeg være taknemmelig, hvis du v
 ## 📄 Licens
 
 Dette projekt er licenseret under GPL-3.0 – se [LICENSE](../LICENSE) filen for detaljer.
-
-
----
-
-Built with ❤️ for the WSL Community.

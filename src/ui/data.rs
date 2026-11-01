@@ -115,6 +115,7 @@ pub fn refresh_localized_strings(app: &AppWindow) {
         tab_general: i18n::tr("settings.tab_general", &[]).into(),
         tab_advanced: i18n::tr("settings.tab_advanced", &[]).into(),
         tab_interface: i18n::tr("settings.tab_interface", &[]).into(),
+        tab_shortcuts: i18n::tr("settings.tab_shortcuts", &[]).into(),
         sparse_vhd: i18n::tr("settings.sparse_vhd", &[]).into(),
         sparse_vhd_desc: i18n::tr("settings.sparse_vhd_desc", &[]).into(),
         mount_auto_probe: i18n::tr("settings.mount_auto_probe", &[]).into(),
@@ -136,9 +137,6 @@ pub fn refresh_localized_strings(app: &AppWindow) {
         repository: i18n::tr("about.repository", &[]).into(),
         group: i18n::tr("about.group", &[]).into(),
         issues: i18n::tr("about.issues", &[]).into(),
-        announcements: i18n::tr("about.announcements", &[]).into(),
-        talk: i18n::tr("about.talk", &[]).into(),
-        documents: i18n::tr("about.documents", &[]).into(),
         star: i18n::tr("about.star", &[]).into(),
         love: i18n::tr("about.love", &[]).into(),
         github: "".into(), // Not used in UI currently

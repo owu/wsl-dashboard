@@ -6,8 +6,6 @@
 
 Zamonaviy, yuqori samarali, yengil va past xotira iste'moli bilan WSL (Windows Subsystem for Linux) instansiyalarini boshqarish paneli. Rust va Slint asosida qurilgan, ajoyib nativ tajriba taqdim etadi.
 
----
-
 ```diff
 E'lon:
 
@@ -27,24 +25,12 @@ E'lon:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | Oʻzbek | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | Oʻzbek | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
-## 📑 Mündəricat
-- [🌍 Til qo'llab-quvvatlash](#-til-qo'llab-quvvatlash)
-- [🚀 Asosiy xususiyatlar va foydalanish](#-asosiy-xususiyatlar-va-foydalanish)
-- [⚙️ Konfiguratsiya va loglar](#️-konfiguratsiya-va-loglar)
-- [🖼️ Dastur skrinshotlari](#️-dastur-skrinshotlari)
-- [🎬 Amaliyot demosu](#-amaliyot-demosu)
-- [💻 Sistema talablari](#-sistema-talablari)
-- [📦 O'rnatish bo'yicha qo'llanma](#-o'rnatish-bo'yicha-qo'llanma)
-- [🛠️ Texnologik stak va samaradorlik](#️-texnologik-stak-va-samaradorlik)
-- [📢 Rasmiy jamoa guruhlari](#-rasmiy-jamoa-guruhlari)
-- [🤝 Jamiyat qo'llab-quvvatlash](#-jamiyat-qo'llab-quvvatlash)
-- [❤️ Loyihani qo'llab-quvvatlang](#️-loyihani-qo'llab-quvvatlang)
-- [⭐️ Sevgi bilan ishlaydigan loyiha](#️-sevgi-bilan-ishlaydigan-loyiha)
-- [📄 Ochiq manba litsenziyasi](#-ochiq-manba-litsenziyasi)
+## 📑 Mundarija
+[🌍 Til qo'llab-quvvatlash](#-til-qollab-quvvatlash) | [🚀 Asosiy xususiyatlar va foydalanish](#-asosiy-xususiyatlar-va-foydalanish) | [🖼️ Dastur skrinshotlari](#️-dastur-skrinshotlari) | [📦 O'rnatish bo'yicha qo'llanma](#-ornatish-boyicha-qollanma) | [📢 Rasmiy jamoa guruhlari](#-rasmiy-jamoa-guruhlari) | [❤️ Loyihani qo'llab-quvvatlang](#️-loyihani-qollab-quvvatlang) | [⭐️ Sevgi bilan ishlaydigan loyiha](#️-sevgi-bilan-ishlaydigan-loyiha) | [📄 Ochiq manba litsenziyasi](#-ochiq-manba-litsenziyasi)
 
 ---
 
@@ -105,138 +91,33 @@ Ingliz, Sadalashtirilgan Xitoy, An'anaviy Xitoy, Hindi, Ispan, Fransuz, Arab, Be
   <img src="../assets/flags/et.svg" width="32" title="Amxar" alt="Amxar" />
 </p>
 
----
-
 ## 🚀 Asosiy xususiyatlar va foydalanish
 
-- **Zamonaviy UI dizayni** - Slint 6.x asosida qurilgan, silliq animatsiyalar va yuqori tezlik
-- **Past xotira iste'moli** - Minimal xotira bilan ishlaydi
-- **WMI integratsiyasi** - Windows Management Instrumentation orqali WSL instansiyalarini boshqarish
-- **Vazifalarni rejalashtirish** - Moslashuvchan vazifalarni rejalashtirish boshqaruvi, avtomatlashtirilgan operatsiyalar uchun WSL instansiyalarida belgilangan vaqtda yoki oraliqlarda skript va buyruqlarni avtomatik bajarishni qo'llab-quvvatlaydi
-- **Ko'p tilli qo'llab-quvvatlash** - 51 til qo'llab-quvvatlanadi
-- **Real vaqt monitoringi** - WSL instansiyalarining holatini real vaqtda kuzatish
-- **Diskni ulash** - WSL instansiyasi VHDX virtual disklarini to'g'ridan-to'g'ri ulash va boshqarish, mount, unmount va disk boshqaruvi operatsiyalarini qo'llab-quvvatlaydi, host va WSL o'rtasida fayllarni uzatishni osonlashtiradi
+- **Zamonaviy nativ UI**: Qorong'i/yorug' rejimni qo'llab-quvvatlaydigan, silliq animatsiyalar va **Skia** asosidagi yuqori unumdorlikdagi renderlashga ega intuitiv GUI.
+- **Tizim treyi integratsiyasi**: Tizim treyiga yig'ishni to'liq qo'llab-quvvatlash (~10MB RAM iste'moli), ikki marta bosish bilan oynani almashtirish va ishlaydigan o'ng tugma menyusi.
+- **Aqlli ishga tushirish**: Paneli Windows bilan birga ishga tushirish, treyga yig'ish (`/silent` bilan jim rejim) va chiqishda distributsiyalarni avtomatik to'xtatish.
+- **Vazifalarni rejalashtirish**: Moslashuvchan vazifalarni rejalashtirish boshqaruvi, avtomatlashtirilgan operatsiyalar uchun WSL instansiyalarida belgilangan vaqtda yoki oraliqlarda skript va buyruqlarni avtomatik bajarishni qo'llab-quvvatlaydi.
+- **To'liq instansiya boshqaruvi**: Bir bosishda ishga tushirish, to'xtatish, yakunlash va ro'yxatdan chiqarish. Real vaqtda holat monitoringi, disk hajmi va fayl joylashuvi haqida batafsil ma'lumot.
+- **Distro boshqaruvi**: Standart sifatida belgilash, migratsiya (VHDXni boshqa diskka ko'chirish) va `.tar` yoki `.tar.gz` arxivlariga eksport/klonlash.
+- **Diskni ulash**: WSL instansiyasi VHDX virtual disklarini to'g'ridan-to'g'ri ulash va boshqarish, mount, unmount va disk boshqaruvi operatsiyalarini qo'llab-quvvatlaydi, host va WSL o'rtasida fayllarni uzatishni osonlashtiradi.
+- **Tezkor integratsiya**: Terminal, VS Code yoki Fayl Exploreriga bir zumda ochish, ish papkasi va ishga tushirish skripti ilgaklarini sozlash imkoniyati bilan.
+- **Distro o'rnatish**: Linux distributsiyalarini Microsoft Store, GitHub, lokal fayllar (RootFS/VHDX) yoki onlayn mirrorlar orqali o'rnatish (eng tez mirrorni avtomatik aniqlash va o'rnatilgan RootFS yuklab olish yordamchisi bilan).
+- **Global xavfsizlik**: Bir vaqtda migratsiya/zaxiralash operatsiyalari uchun Mutex qulflari va o'chirishda Appxni avtomatik tozalash.
+- **Ultra past xotira iste'moli**: Samaradorlik uchun yuqori darajada optimallashtirilgan. Jim ishga tushish (tizim treyi) faqat **~10MB** RAM iste'mol qiladi. Oynali rejim shrift murakkabligiga qarab farq qiladi: standart tillar (ingliz, nemis, ispan va boshqalar) uchun **~18MB**, katta shriftli tillar (xitoy, yapon, koreys va boshqalar) uchun **~38MB**.
+- **Kengaytirilgan tarmoq**: Port forwarding boshqaruvi (fayl devor qoidalarini avtomatik yaratish bilan) va yagona ulanish uchun global HTTP proxy sozlamasi.
+- **USB qurilmalarini boshqarish**: `usbipd-win` bilan to'liq integratsiya — lokal USB qurilmalarini WSL instansiyalari bo'ylab dashboard UI orqali osongina bog'lash, ulash va boshqarish.
+- **Konfiguratsiya va loglar**: Standart o'rnatish papkasi, log papkasi va darajasi, interfeys tili, qorong'u rejim, yangilanishlarni tekshirish davriyligi, avtomatik ishga tushish va yopilish xatti-harakati, hamda yon panelni Sozlamalardan boshqaring.
+- **Distro faol turishi**: «Ishga tushirish» tugmasini bir marta bosish orqali distro ~60 soniya bo'sh turgandan so'ng avtomatik yopilish o'rniga ishlashda davom etadi; «Windows ishga tushganda ushbu distroni ishga tushirish»ni ham yoqishingiz mumkin.
+- **Global tezkor tugmalar**: Asosiy oynani ko'rsatish/yashirish yoki tanlangan distro terminalini darhol ochish uchun global tezkor tugmalarni belgilang.
 
-### Asosiy funksiyalar
-
-| Funktsiya | Tavsif |
-|-----------|--------|
-| Instansiyalarni boshqarish | Barcha WSL instansiyalarini ko'rish, ishga tushirish, to'xtatish |
-| Import/Export | WSL instansiyalarini import va export qilish |
-| Backup/Restore | Instansiyalarni zaxiralash va tiklash |
-| Sozlamalar | Dastur sozlamalarini boshqarish |
-| Loglar | Tizim loglarini ko'rish |
-
----
-
-## ⚙️ Konfiguratsiya va loglar
-
-Dastur sozlamalari va loglar fayllari quyidagi joylarda saqlanadi:
-
-### Konfiguratsiya fayllari
-
-| Fayl | Joylashuvi | Tavsif |
-|------|------------|--------|
-| `config.toml` | `%APPDATA%/wsl-dashboard/` | Asosiy konfiguratsiya |
-| `i18n/` | Dastur katalogi | Til fayllari |
-
-### Log fayllari
-
-| Fayl | Joylashuvi | Tavsif |
-|------|------------|--------|
-| `app.log` | `%APPDATA%/wsl-dashboard/logs/` | Asosiy log fayli |
-| `error.log` | `%APPDATA%/wsl-dashboard/logs/` | Xatolik loglari |
-
-### Log darajalari
-
-Log darajalari `config.toml` faylida sozlanishi mumkin:
-
-```toml
-[log]
-level = "info"  # debug, info, warn, error
-```
-
----
 
 ## 🖼️ Dastur skrinshotlari
-
-### Asosiy interfeys
-
 <p align="center">
-  <img src="../docs/screenshots/main_window.png" width="800" alt="Asosiy oyna" />
+  <img src="../assets/screenshot/home.png" width="48%" />
+  <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-### Sozlamalar
-
-<p align="center">
-  <img src="../docs/screenshots/settings.png" width="800" alt="Sozlamalar oynasi" />
-</p>
-
-### Til tanlash
-<p align="center">
-  <img src="../docs/screenshots/language_selector.png" width="800" alt="Lav tanlash" />
-</p>
-
-### Diskni ulash
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Vazifalarni rejalashtirish
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
----
-
-## 🎬 Amaliyot demosu
-
-### WSL instansiyalarini boshqarish
-
-1. **Instansiyalarni ko'rish** - Barcha WSL instansiyalari ro'yxatini ko'rish
-2. **Ishga tushirish** - Instansiyani ishga tushirish
-3. **To'xtatish** - Instansiyani to'xtatish
-4. **Import/Export** - Instansiyalarni import va export qilish
-
-### Backup/Restore
-
-1. **Backup yaratish** - Instansiyani zaxiralash
-2. **Restore qilish** - Zaxiralangan instansiyani tiklash
-3. **Avtomatik backup** - Rejalashtirilgan zaxiralash
-
----
-
-## 💻 Sistema talablari
-
-### Minimal talablar
-
-| Komponent | Talab |
-|-----------|-------|
-| OS | Windows 10 (1903+) yoki Windows 11 |
-| WSL | WSL 2 |
-| RAM | 512 MB bo'sh xotira |
-| Disk | 100 MB bo'sh joy |
-| CPU | 1 GHz yoki undan tez |
-
-### Tavsiya etilgan talablar
-
-| Komponent | Tavsiya |
-|-----------|---------|
-| OS | Windows 11 |
-| WSL | WSL 2 (so'nggi versiya) |
-| RAM | 2 GB yoki undan ko'p |
-| Disk | 1 GB yoki undan ko'p |
-| CPU | 2 GHz yoki undan tez |
-
-### Kerakli komponentlar
-
-- **WSL 2** - Windows Subsystem for Linux 2
-- **.NET Runtime** - .NET 8.0 yoki undan yuqori (ixtiyoriy)
-- **Visual C++ Redistributable** - 2015-2022
-
----
+Boshqaruv panelini ish jarayonida ko'rishni xohlaysizmi? To'liq skrinshotlar galereyasi uchun [rasmiy veb-saytga](https://www.wslui.com/) tashrif buyuring.
 
 ## 📦 O'rnatish bo'yicha qo'llanma
 
@@ -266,126 +147,60 @@ winget install Owu.WSLDashboard
 
 Qo'shimcha ma'lumot uchun [WinGet hamjamiyat ombori](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) ga tashrif buyuring.
 
-### 3-usul: Portable versiya
+### 3-usul: Manba koddan qurish
 
-1. Portable versiyani yuklab oling
-2. Arxivni istalgan joyga oching
-3. `wsl-dashboard.exe` faylini ishga tushiring
+Rust toolchain (Rust 1.92+ yoki yangiroq) o'rnatilganligiga ishonch hosil qiling.
 
-### 4-usul: Manba koddan
+1. Repozitoriyni klonlash:
 
-```bash
-# Repositoryni klonlash
-git clone https://github.com/your-repo/wsl-dashboard.git
-cd wsl-dashboard
+   ```powershell
+   git clone https://github.com/owu/wsl-dashboard.git
+   cd wsl-dashboard
+   ```
 
-# Rust toolchain o'rnatilganligini tekshirish
-rustc --version
-cargo --version
+2. Qurish va ishga tushirish:
 
-# Loyihani qurish
-cargo build --release
+   - Ishlab chiqish uchun:
 
-# Ishga tushirish
-cargo run --release
-```
+     ```powershell
+     cargo run
+     ```
+   - Optimallashtirilgan release build, build skripti orqali:
 
-## 🛠️ Texnologik stak va samaradorlik
+     > Build skripti `x86_64-pc-windows-msvc` toolchain talab qiladi.
 
-- **Yadro**: Xotira xavfsizligi va nol xarajatli abstraksiyalar uchun Rust'da amalga oshirilgan.
-- **UI ramkasi**: Yuqori samarali **Skia** renderlov backendi bilan Slint.
-- **Asinxron runtime**: Tizim buyruqlari va I/O uchun bloklamaydigan Tokio.
-- **Samaradorlik ko'rsatkichlari**:
-  - **Tezkor javob berish**: Deyarli darhol ishga tushish va WSL holatini real vaqtda monitoring qilish.
-  - **Samaradorlik**: Ultra-past resurs sarfi (tafsilotlar uchun [Asosiy xususiyatlar](#-asosiy-xususiyatlar-va-foydalanish) ni ko'ring).
-  - **Ko'chma qulaylik**: Optimallashtirilgan release build bitta ixcham ijro etiladigan fayl hosil qiladi.
+     ```powershell
+     .\build\portable\build.ps1 -Arch x64
+     ```
 
----
 
 ## 📢 Rasmiy jamoa guruhlari
 
-WSL UI rasmiy jamoa guruhlari ga xush kelibsiz! Foydalanish maslahatlarini muhokama qilish, muammolarni xabar qilish, so'nggi yangiliklarni olish va dasturchilar bilan boshqa foydalanuvchilar bilan bog'lanish uchun kanallarimizga qo'shiling.
+WSL UI rasmiy jamoa guruhlariga xush kelibsiz! Foydalanish maslahatlarini muhokama qilish, muammolarni xabar qilish, so'nggi yangiliklarni olish va dasturchilar bilan boshqa foydalanuvchilar bilan bog'lanish uchun kanallarimizga qo'shiling.
+
+<div align="center">
 
 | Global Guruh (Telegram) | Xitoy Guruh (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Qo'shilish uchun skanerlang | Qo'shilish uchun skanerlang |
 
----
+</div>
 
-
-## 🤝 Jamiyat qo'llab-quvvatlash
-
-### Xatoliklar haqida xabar berish
-
-Agar siz xatolik topsangiz, iltimos [Issues](https://github.com/your-repo/wsl-dashboard/issues) sahifasida xabar bering.
-
-### Takliflar
-
-Yangi funksiyalar yoki yaxshilashlar uchun [Discussions](https://github.com/your-repo/wsl-dashboard/discussions) sahifasida muhokama qiling.
-
-### Kod hissasi
-
-1. Repositoryni fork qiling
-2. Yangi branch yarating: `git checkout -b feature/your-feature`
-3. O'zgarishlarni kiriting: `git commit -m 'Add your feature'`
-4. Branchga push qiling: `git push origin feature/your-feature`
-5. Pull Request yarating
-
----
 
 ## ❤️ Loyihani qo'llab-quvvatlang
 
-Agar sizga bu loyiha yoqqan bo'lsa, iltimos ⭐ bosing va do'stlaringizga ayting!
+- Bu loyiha GPL-3.0 litsenziyasi ostida va barcha foydalanuvchilar uchun bepul.
+- Xususiyatlar ishlab chiqish va kundalik testlardan tortib xatoliklarni tuzatishgacha — barcha ishlar bo'sh vaqtda amalga oshiriladi. Ochiq manba yo'li yolg'iz oson emas — sizning e'tirofingiz va qo'llab-quvvatlashingiz loyihaga davom etish uchun ishonch beradi.
+- Agar bu vosita sizga haqiqatan foyda bergan bo'lsa, qo'l uzatishni o'ylab ko'ring. Barcha xayriyalar server xarajatlari, versiya iteratsiyalari va funksiyalarni yaxshilashga yo'naltiriladi, loyiha doimiy yangilanib, barqaror rivojlanadi.
+- Har bir samimiy yaxshilik — bir nur yulduz. Tushunishingiz va saxovatlaringiz uchun yana bir bor rahmat! [Donat sahifamizga tashrif buyuring](https://www.wslui.com/donate/).
 
-### Qo'llab-quvvatlash usullari
-
-- ⭐ **Star bosing** - Loyihani GitHubda yulduzlang
-- 🐛 **Xatoliklar haqida xabar bering** - Topilgan muammolarni bildiring
-- 💡 **Takliflar bering** - Yangi g'oyalar va takliflar
-- 📖 **Hujjatlarni yaxshilang** - Tarjima va hujjatlar
-- 💻 **Kod yozing** - Yangi funksiyalar qo'shing
-
----
 
 ## ⭐️ Sevgi bilan ishlaydigan loyiha
 
-Bu loyiha sevgi va ehtiros bilan yaratilgan. Maqsad - WSL foydalanuvchilari uchun eng qulay va samarali boshqarish panelini yaratish.
+Agar bu loyiha sizga foydali bo'lgan bo'lsa, GitHubda yulduzcha qoldirsangiz juda minnatdor bo'lardim. Sizning e'tirofingiz loyihani kengroq auditoriyaga yetib borishiga yordam beradi va juda qadrlanadi. Aynan shu dalda meni qurishda davom etishga undaydi.
 
-### Loyiha maqsadlari
-
-- ✅ Zamonaviy va chiroyli interfeys
-- ✅ Yuqori samaradorlik
-- ✅ Past xotira iste'moli
-- ✅ Ko'p tilli qo'llab-quvvatlash
-- ✅ Oson foydalanish
-- ✅ Barqaror ishlash
-
----
 
 ## 📄 Ochiq manba litsenziyasi
 
-Bu loyiha [GPL-3.0](../LICENSE) litsenziyasi ostida tarqatiladi.
-
-```
-GNU GENERAL PUBLIC LICENSE
-Version 3, 29 June 2007
-
-Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
-Everyone is permitted to copy and distribute verbatim copies
-of this license document, but changing it is not allowed.
-```
-
-### Asosiy shartlar
-
-- ✅ Erkin foydalanish
-- ✅ O'zgartirish
-- ✅ Tarqatish
-- ⚠️ Bir xil litsenziya ostida tarqatish shart
-- ⚠️ Manba kodni ochiq saqlash shart
-
----
-
-<p align="center">
-  <sub>Bu hujjat <a href="https://github.com/your-repo/wsl-dashboard">WSL Dashboard</a> loyihasi uchun yaratilgan.</sub>
-</p>
+Bu loyiha GPL-3.0 litsenziyasi ostida — tafsilotlar uchun [LICENSE](../LICENSE) fayliga qarang.

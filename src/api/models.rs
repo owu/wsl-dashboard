@@ -19,17 +19,8 @@ pub struct OfficialGroup {
 }
 
 #[derive(Debug, Deserialize, Clone, Default)]
-pub struct HelperAboutLink {
-    #[allow(dead_code)]
-    pub name: String,
-    pub url: String,
-}
-
-#[derive(Debug, Deserialize, Clone, Default)]
 pub struct HelperAboutData {
     pub official_group: Vec<OfficialGroup>,
-    pub documents: Option<HelperAboutLink>,
-    pub discussions: Option<HelperAboutLink>,
 }
 
 // 2. wslui_helper_distro data structure

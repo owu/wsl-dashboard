@@ -6,8 +6,6 @@
 
 لوحة تحكم حديثة وعالية الأداء وخفيفة الوزن ومنخفضة الذاكرة لإدارة مثيلات WSL (النظام الفرعي لـ Windows لنظام Linux). تم إنشاؤه باستخدام Rust و Slint للحصول على تجربة أصلية مميزة.
 
----
-
 ```diff
 تنبيه:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | العربية | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | العربية | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 جدول المحتويات
-- [🌍 اللغات المدعومة](#-اللغات-المدعومة)
-- [🚀 الميزات الرئيسية والاستخدام](#-الميزات-الرئيسية-والاستخدام)
-- [⚙️ الإعدادات والسجلات](#️-الإعدادات-والسجلات)
-- [🖼️ لقطات الشاشة](#️-لقطات-الشاشة)
-- [🎬 عرض توضيحي](#-عرض-توضيحي)
-- [💻 متطلبات النظام](#-متطلبات-النظام)
-- [📦 دليل التثبيت](#-دليل-التثبيت)
-- [🛠️ التقنيات والأداء](#️-التقنيات-والأداء)
-- [📢 مجموعات المجتمع الرسمية](#-مجموعات-المجتمع-الرسمية)
-- [🤝 دعم المجتمع](#-دعم-المجتمع)
-- [❤️ دعم هذا المشروع](#️-دعم-هذا-المشروع)
-- [⭐️ عمل نابع من الحب](#️-عمل-نابع-من-الحب)
-- [📄 الترخيص](#-الترخيص)
+[🌍 اللغات المدعومة](#-اللغات-المدعومة) | [🚀 الميزات الرئيسية والاستخدام](#-الميزات-الرئيسية-والاستخدام) | [🖼️ لقطات الشاشة](#️-لقطات-الشاشة) | [📦 دليل التثبيت](#-دليل-التثبيت) | [📢 مجموعات المجتمع الرسمية](#-مجموعات-المجتمع-الرسمية) | [❤️ دعم هذا المشروع](#️-دعم-هذا-المشروع) | [⭐️ عمل نابع من الحب](#️-عمل-نابع-من-الحب) | [📄 الترخيص](#-الترخيص)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="الأمهرية" alt="الأمهرية" />
 </p>
 
-
 ## 🚀 الميزات الرئيسية والاستخدام
 
 - **واجهة مستخدم عصرية**: واجهة رسومية بديهية مع دعم الوضعين الداكن والفاتح، ورسوم متحركة سلسة، ورندرة عالية الأداء مدعومة بمحرك **Skia**.
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **بصمة ذاكرة منخفضة للغاية**: محسن للغاية لتحقيق الكفاءة. يستهلك بدء التشغيل الصامت (في منطقة الإشعارات) حوالي **10 ميجابايت** فقط من الذاكرة. يختلف الاستهلاك في وضع النافذة حسب تعقيد الخط: **~18 ميجابايت** للغات القياسية و **~38 ميجابايت** للغات ذات مجموعات المحارف الكبيرة (الصينية، اليابانية، الكورية).
 - **الشبكات المتقدمة**: إدارة سلسة لإعادة توجيه المنافذ (مع إنشاء قواعد جدار حماية تلقائياً) وتكوين وكيل HTTP عالمي لتحقيق اتصال موحد.
 - **إدارة أجهزة USB**: تكامل كامل مع `usbipd-win` لربط وإرفاق وإدارة أجهزة USB المحلية بسهولة عبر مثيلات WSL الحالية مباشرة من واجهة المستخدم.
-
-
-## ⚙️ الإعدادات والسجلات
-
-تتم إدارة جميع الإعدادات من خلال عرض "الإعدادات":
-
-- اختر دليل التثبيت الافتراضي لمثيلات WSL الجديدة.
-- قم بتهيئة دليل السجلات ومستوى التسجيل (Error / Warn / Info / Debug / Trace).
-- اختر لغة واجهة المستخدم أو اجعلها تتبع لغة النظام.
-- تبديل الوضع الداكن وما إذا كان بإمكان التطبيق إغلاق WSL تلقائيًا بعد العمليات.
-- تهيئة عدد مرات تحقق التطبيق من التحديثات (يوميًا، أسبوعيًا، كل أسبوعين، شهريًا).
-- تمكين بدء التشغيل التلقائي عند بدء تشغيل النظام (مع إصلاح المسار تلقائيًا).
-- ضبط التطبيق ليصغر إلى منطقة الإشعارات عند بدء التشغيل.
-- تهيئة زر الإغلاق ليقوم بالتصغير إلى منطقة الإشعارات بدلاً من الخروج.
-- تخصيص الشريط الجانبي عن طريق تبديل رؤية علامات تبويب ميزات معينة.
-
-يتم كتابة ملفات السجل في دليل السجلات المكون ويمكن إرفاقها عند الإبلاغ عن المشكلات.
+- **الإعدادات والسجلات**: إدارة المجلد الافتراضي للتثبيت، ومجلد السجلات ومستواها، ولغة الواجهة، والوضع الداكن، وتكرار فحص التحديثات، والتشغيل التلقائي وسلوك الإغلاق، وتخصيص الشريط الجانبي من صفحة الإعدادات.
+- **إبقاء التوزيعة نشطة**: نقرة واحدة على «تشغيل» تُبقي التوزيعة قيد التشغيل بدلاً من إيقافها بعد نحو 60 ثانية من الخمول؛ ويمكنك تمكين «تشغيل هذه التوزيعة عند بدء Windows».
+- **اختصارات عالمية**: حدّد اختصارات عالمية لإظهار/إخفاء النافذة الرئيسية أو فتح طرفية توزيعة محددة فورًا.
 
 
 ## 🖼️ لقطات الشاشة
-
-### الشاشة الرئيسية (الوضعين الفاتح والداكن)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & قائمة قابلة للطي
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### شبكة
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### إضافة مثيل والإعدادات
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### حول التطبيق & التبرع
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### تثبيت القرص (Disk Mount)
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### جدولة المهام (Task Scheduling)
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 عرض توضيحي
-
-[ساعدنا على التحسين! شاهد فيديو التعريف الخاص بنا وشاركنا آراءك.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 متطلبات النظام
-
-- نظام ويندوز 10 أو 11 مع تمكين WSL (يوصى بـ WSL 2).
-- مثبت توزيعة WSL واحدة على الأقل، أو إذن لتثبيت توزيعات جديدة.
-- معالج 64 بت؛ يوصى بذاكرة رام 4 جيجابايت أو أكثر للاستخدام السلس لتوزيعات متعددة.
+هل تريد رؤية لوحة التحكم أثناء العمل؟ تفضل بزيارة [الموقع الرسمي](https://www.wslui.com/) للاطلاع على معرض لقطات الشاشة الكامل.
 
 ## 📦 دليل التثبيت
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 لمزيد من المعلومات، تفضل بزيارة [مستودع WinGet المجتمعي](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### الخيار 3: تنزيل الملف الثنائي الجاهز
-
-أسهل طريقة للبدء هي استخدام الإصدار المجمع مسبقًا:
-
-1. اذهب إلى صفحة [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. قم بتنزيل أحدث ملف تنفيذي `wsldashboard` لويندوز.
-3. قم بفك الضغط (إذا كان ملفًا مضغوطًا) وشغل `wsldashboard.exe`.
-
-لا يتطلب البرنامج تثبيتًا؛ التطبيق عبارة عن ملف ثنائي محمول واحد.
-
-### الخيار 4: البناء من المصدر
+### الخيار 3: البناء من المصدر
 
 تأكد من تثبيت أدوات Rust (Rust 1.92+ أو أحدث).
 
@@ -270,44 +174,18 @@ winget install Owu.WSLDashboard
      ```
 
 
-## 🛠️ التقنيات والأداء
-
-- **النواة**: تم تنفيذها بلغة Rust لضمان سلامة الذاكرة وتوفير تجريدات بدون تكلفة.
-- **إطار عمل الواجهة**: Slint مع محرك رندرة **Skia** عالي الأداء.
-- **وقت التشغيل غير المتزامن**: Tokio للأوامر النظامية وعمليات الإدخال والإخراج غير المحظورة.
-- **أبرز مزايا الأداء**:
-  - **الاستجابة**: بدء تشغيل فوري تقريبًا ومراقبة حالة WSL في الوقت الفعلي.
-  - **الكفاءة**: استهلاك منخفض جدًا للموارد (انظر [الميزات الرئيسية](#-الميزات-الرئيسية-والاستخدام) لمزيد من التفاصيل).
-  - **المحمولية**: ينتج عن بناء الإصدار المحسن ملف تنفيذي مضغوط واحد.
-
-
-
 ## 📢 مجموعات المجتمع الرسمية
 
 مرحبًا بكم في مجموعات مجتمع WSL UI الرسمية! انضم إلى قنواتنا لمناقشة نصائح الاستخدام والإبلاغ عن المشكلات والحصول على آخر التحديثات والتواصل مع المطورين والمستخدمين الآخرين.
+
+<div align="center">
 
 | المجموعة العالمية (Telegram) | المجموعة الصينية (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | امسح للانضمام | امسح للانضمام |
 
----
-
-## 🤝 دعم المجتمع
-
-شكراً كبيراً للمجتمعات التالية على دعمها:
-
-- [Rust Programming Language](https://www.rust-lang.org) - للغة البرمجة القوية والآمنة
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - لإطار عمل واجهة المستخدم الحديث
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - للنظام الفرعي المذهل Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - لبيئة التشغيل غير المتزامنة الفعالة
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - للتحسينات المستمرة للمنصة
-- [Reddit](https://www.reddit.com) - لمناقشات المجتمع العالمي ودعمه
-- [Hacker News](https://news.ycombinator.com) - لمناقشات المجتمع العالمي ودعمه
-- [Linux.do](https://linux.do) - للمجتمع الشعبي لمتخصصي تكنولوجيا المعلومات
-- [V2EX](https://www.v2ex.com) - لمناقشات المجتمع التكنولوجي الصيني
-
-مساهماتكم وتعليقاتكم تجعل هذا المشروع ممكناً!
+</div>
 
 
 ## ❤️ دعم هذا المشروع
@@ -315,9 +193,7 @@ winget install Owu.WSLDashboard
 - هذا المشروع مرخص بموجب GPL-3.0 ومجاني لجميع المستخدمين.
 - من تطوير الميزات والاختبار اليومي إلى إصلاح الأخطاء، يتم كل العمل في وقت الفراغ. طريق المصادر المفتوحة ليس سهلاً بمفردك — تقديرك和支持ك يمنح المشروع الثقة للاستمرار.
 - إذا ساعدك هذا الأداة حقاً، فكّر في مد يد العون. جميع التبرعات تذهب نحو تكاليف الخادم وتحديثات الإصدارات وتحسين الميزات، مما يحافظ على تحديث المشروع باستمرار وتقدمه المستقر.
-- كل لطف صغير هو شعاع من ضوء النجوم. شكراً لك مرة أخرى على تفهمك وكرمك！
-
-قم بزيارة صفحة التبرع：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- كل لطف صغير هو شعاع من ضوء النجوم. شكراً لك مرة أخرى على تفهمك وكرمك！ [قم بزيارة صفحة التبرع](https://www.wslui.com/donate/).
 
 
 ## ⭐️ عمل نابع من الحب
@@ -328,9 +204,3 @@ winget install Owu.WSLDashboard
 ## 📄 الترخيص
 
 هذا المشروع مرخص بموجب رخصة GPL-3.0 - انظر ملف [LICENSE](../LICENSE) لمزيد من التفاصيل.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

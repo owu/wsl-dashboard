@@ -6,6 +6,7 @@ pub mod logging;
 pub mod machine;
 pub mod registry;
 pub mod system;
+pub mod system_info;
 pub mod wsl_config;
 pub mod theme;
 pub mod device_id;

@@ -6,8 +6,6 @@
 
 Sodobna, visoko zmogljiva, lahka in pomnilniško varčna nadzorna plošča za upravljanje primerkov WSL (Windows Subsystem for Linux). Izdelana v jezikih Rust in Slint za vrhunsko naravno izkušnjo.
 
----
-
 ```diff
 Obvestilo:
 
@@ -27,24 +25,12 @@ Obvestilo:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | Slovenščina | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | Slovenščina | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Kazalo vsebine
-- [🌍 Podprti jeziki](#-podprti-jeziki)
-- [🚀 Ključne lastnosti in uporaba](#-ključne-lastnosti-in-uporaba)
-- [⚙️ Konfiguracija in dnevniki](#️-konfiguracija-in-dnevniki)
-- [🖼️ Posnetki zaslona](#️-posnetki-zaslona)
-- [🎬 Prikaz delovanja](#-prikaz-delovanja)
-- [💻 Sistemske zahteve](#-sistemske-zahteve)
-- [📦 Vodnik za namestitev](#-vodnik-za-namestitev)
-- [🛠️ Tehnologije in zmogljivost](#️-tehnologije-in-zmogljivost)
-- [📢 Uradne skupine skupnosti](#-uradne-skupine-skupnosti)
-- [🤝 Podpora skupnosti](#-podpora-skupnosti)
-- [❤️ Podprite ta projekt](#️-podprite-ta-projekt)
-- [⭐️ Delo iz ljubezni](#️-delo-iz-ljubezni)
-- [📄 Licenca](#-licenca)
+[🌍 Podprti jeziki](#-podprti-jeziki) | [🚀 Ključne lastnosti in uporaba](#-ključne-lastnosti-in-uporaba) | [🖼️ Posnetki zaslona](#️-posnetki-zaslona) | [📦 Vodnik za namestitev](#-vodnik-za-namestitev) | [📢 Uradne skupine skupnosti](#-uradne-skupine-skupnosti) | [❤️ Podprite ta projekt](#️-podprite-ta-projekt) | [⭐️ Delo iz ljubezni](#️-delo-iz-ljubezni) | [📄 Licenca](#-licenca)
 
 ---
 
@@ -105,7 +91,6 @@ Angleščina, poenostavljena kitajščina, tradicionalna kitajščina, hindijš�
   <img src="../assets/flags/et.svg" width="32" title="Amharščina" alt="Amharščina" />
 </p>
 
-
 ## 🚀 Ključne lastnosti in uporaba
 
 - **Sodoben izvorni uporabniški vmesnik**: Intuitiven GUI s podporo za temni/svetli način, gladkimi animacijami in visoko zmogljivim upodabljanjem, ki ga poganja **Skia**.
@@ -121,90 +106,18 @@ Angleščina, poenostavljena kitajščina, tradicionalna kitajščina, hindijš�
 - **Izjemno nizka poraba pomnilnika**: Visoko optimizirano za učinkovitost. Tihi zagon (v sistemski vrstici) porabi le okoli **10 MB** RAM-a. Poraba v okenskem načinu se razlikuje glede na kompleksnost pisav: **~18 MB** za standardne jezike in **~38 MB** za jezike z velikimi nabori znakov (kitajščina, japonščina, korejščina).
 - **Napredna omrežja**: Brezhibno upravljanje posredovanja vrat (s samodejnim ustvarjanjem pravil požarnega zidu) in globalna konfiguracija proxyja HTTP za poenoteno povezljivost.
 - **Upravljanje naprav USB**: Popolna integracija z orodjem `usbipd-win` za enostavno vezavo, pripenjanje in upravljanje lokalnih naprav USB v vseh primerih WSL neposredno z nadzorne plošče.
-
-
-## ⚙️ Konfiguracija in dnevniki
-
-Vse nastavitve se upravljajo prek pogleda Nastavitve:
-
-- Izberite privzeti imenik za namestitev novih instanc WSL.
-- Konfigurirajte imenik za dnevnike in raven beleženja (Error / Warn / Info / Debug / Trace).
-- Izberite jezik uporabniškega vmesnika ali pustite, da sledi sistemskemu jeziku.
-- Preklopite temni način in izberite, ali lahko aplikacija samodejno izklopi WSL po operacijah.
-- Konfigurirajte pogostost preverjanja posodobitev (dnevno, tedensko, dvotedensko, mesečno).
-- Omogočite samodejni zagon ob zagonu sistema (s samodejnim popravilom poti).
-- Nastavite aplikacijo, da se ob zagonu zmanjša v sistemsko vrstico.
-- Konfigurirajte gumb za zapiranje, da se aplikacija zmanjša v sistemsko vrstico namesto izhoda.
-- Prilagodite stransko vrstico s preklopom vidnosti določenih zavihkov funkcij.
-
-Dnevniške datoteke se zapisujejo v konfiguriran imenik in jih je mogoče priložiti ob prijavi težav.
+- **Konfiguracija in dnevniki**: V Nastavitvah upravljajte privzeto mapo za namestitev, mapo in raven dnevnikov, jezik vmesnika, temni način, pogostost preverjanja posodobitev, samodejni zagon in vedenje ob zaprtju ter stransko vrstico.
+- **Ohranjanje distribucije aktivne**: En klik na »Zaženi« ohrani distribucijo delujočo, namesto da se ustavi po ~60 s mirovanja; omogočite lahko tudi »Zaženi to distribucijo ob zagonu Windows«.
+- **Globalne bližnjice**: Nastavite globalne bližnjice za prikaz/skritje glavnega okna ali takojšnje odpiranje terminala izbrane distribucije.
 
 
 ## 🖼️ Posnetki zaslona
-
-### Domov (Svetli in temni način)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB in strnjeni meni
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### omrežje
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Dodajanje instance in Nastavitve
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### O aplikaciji & Donacija
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Pripneta diska
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Načrtovanje opravil
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Prikaz delovanja
-
-[Pomagajte nam izboljšati! Oglejte si naš uvodni video in delite svoje misli.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Sistemske zahteve
-
-- Windows 10 ali Windows 11 z omogočenim WSL (priporočljiv WSL 2).
-- Vsaj ena nameščena distribucija WSL ali dovoljenje za namestitev novih.
-- 64-bitni procesor; priporočljivo 4 GB RAM-a ali več za nemoteno uporabo več distribucij.
+Si želite videti nadzorno ploščo v delovanju? Obiščite [uradno spletno stran](https://www.wslui.com/) za celotno galerijo posnetkov zaslona.
 
 ## 📦 Vodnik za namestitev
 
@@ -234,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Za več informacij obiščite [skupnostno skladišče WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Možnost 3: Prenos že zgrajene binarne datoteke
-
-Najlažji način za začetek je uporaba vnaprej prevedene različice:
-
-1. Obiščite stran [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Prenesite najnovejšo izvršljivo datoteko `wsldashboard` za Windows.
-3. Razširite (če je pakirano) in zaženite `wsldashboard.exe`.
-
-Namestitev ni potrebna; aplikacija je ena sama prenosna binarna datoteka.
-
-### Možnost 4: Gradnja iz izvorne kode
+### Možnost 3: Gradnja iz izvorne kode
 
 Prepričajte se, da imate nameščena orodja Rust (Rust 1.92+ ali novejša).
 
@@ -271,47 +174,18 @@ Prepričajte se, da imate nameščena orodja Rust (Rust 1.92+ ali novejša).
      ```
 
 
-## 🛠️ Tehnologije in zmogljivost
-
-- **Jedro**: Implementirano v jeziku Rust za varnost pomnilnika in brezplačne abstrakcije.
-- **UI ogrodje**: Slint z visoko zmogljivim **Skia** zaledjem za upodabljanje.
-- **Asinhroni čas izvajanja**: Tokio za neblokirajoče sistemske ukaze in I/O.
-- **Poudarki delovanja**:
-  - **Odzivnost**: Skoraj takojšen zagon in spremljanje stanja WSL v realnem času.
-  - **Učinkovitost**: Izjemno nizka poraba virov (za podrobnosti glejte [Ključne lastnosti](#-ključne-lastnosti-in-uporaba)).
-  - **Prenosljivost**: Optimizirana izdaja ustvari eno samo kompaktno izvršljivo datoteko.
-
-
-
----
-
 ## 📢 Uradne skupine skupnosti
 
 Dobrodošli v uradnih skupinah skupnosti WSL UI! Pridružite se nam za razprave o nasvetih, poročanje težav, spremljanje posodobitev in povezovanje z razvijalci ter drugimi uporabniki.
+
+<div align="center">
 
 | Globalna skupina (Telegram) | Kitajska skupina (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Skenirajte za vstop | Skenirajte za vstop |
 
----
-
-
-## 🤝 Podpora skupnosti
-
-Velika zahvala naslednjim skupnostim za njihovo podporo:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Za zmogljiv in varen programski jezik
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Za sodobno UI ogrodje
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Za neverjetni Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Za učinkovito asinhrono izvajalno okolje
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Za nenehne izboljšave platforme
-- [Reddit](https://www.reddit.com) - Za globalne razprave skupnosti in podporo
-- [Hacker News](https://news.ycombinator.com) - Za globalne razprave skupnosti in podporo
-- [Linux.do](https://linux.do) - Za priljubljeno skupnost IT strokovnjakov
-- [V2EX](https://www.v2ex.com) - Za razprave v kitajski tehnološki skupnosti
-
-Vaši prispevki in povratne informacije omogočajo ta projekt！
+</div>
 
 
 ## ❤️ Podprite ta projekt
@@ -319,9 +193,7 @@ Vaši prispevki in povratne informacije omogočajo ta projekt！
 - Ta projekt je licenciran pod GPL-3.0 in je brezplačen za vse uporabnike.
 - Od razvoja funkcij in dnevnega testiranja do popravil napak — vse delo poteka v prostem času. Pot odprte kode ni enostavna hoditi sami. Vaše priznanje in podpora projektu dajeta zaupanje za nadaljevanje.
 - Če vam je to orodje resnično pomagalo, razmislite o podpori. Vse donacije gredo za stroške strežnika, posodobitve različic in izboljšave funkcij, kar projekt ohranja nenehno posodobljen in stabilno napredujoč.
-- Vsaka majhna prijaznost je žarek zvezdne svetlobe. Hvala še enkrat za vaše razumevanje in velikodušnost！
-
-Obiščite našo stran za donacije：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Vsaka majhna prijaznost je žarek zvezdne svetlobe. Hvala še enkrat za vaše razumevanje in velikodušnost！ [Obiščite našo stran za donacije](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Delo iz ljubezni
@@ -332,9 +204,3 @@ Obiščite našo stran za donacije：[https://www.wslui.com/donate/](https://www
 ## 📄 Licenca
 
 Ta projekt je licenciran pod GPL-3.0 – podrobnosti najdete v datoteki [LICENSE](../LICENSE).
-
-
----
-
-Built with ❤️ for the WSL Community.
-

@@ -6,8 +6,6 @@
 
 Modern, nagy teljesítményű, könnyű és alacsony memóriájú WSL (Windows Subsystem for Linux) példánykezelő irányítópult. Rust és Slint alapokon épült a prémium natív élmény érdekében.
 
----
-
 ```diff
 Értesítés:
 
@@ -27,24 +25,12 @@ Modern, nagy teljesítményű, könnyű és alacsony memóriájú WSL (Windows S
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | Magyar | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | Magyar | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Tartalomjegyzék
-- [🌍 Támogatott nyelvek](#-támogatott-nyelvek)
-- [🚀 Főbb jellemzők és használat](#-főbb-jellemzők-és-használat)
-- [⚙️ Beállítások és naplók](#️-beállítások-és-naplók)
-- [🖼️ Képernyőképek](#️-képernyőképek)
-- [🎬 Működési bemutató](#-működési-bemutató)
-- [💻 Rendszerkövetelmények](#-rendszerkövetelmények)
-- [📦 Telepítési útmutató](#-telepítési-útmutató)
-- [🛠️ Technológiai háttér és teljesítmény](#️-technológiai-háttér-és-teljesítmény)
-- [📢 Hivatalos Közösségi Csoportok](#-hivatalos-közösségi-csoportok)
-- [🤝 Közösségi támogatás](#-közösségi-támogatás)
-- [❤️ Támogassa ezt a projektet](#️-támogassa-ezt-a-projektet)
-- [⭐️ Szerelemprojekt](#️-szerelemprojekt)
-- [📄 Licenc](#-licenc)
+[🌍 Támogatott nyelvek](#-támogatott-nyelvek) | [🚀 Főbb jellemzők és használat](#-főbb-jellemzők-és-használat) | [🖼️ Képernyőképek](#️-képernyőképek) | [📦 Telepítési útmutató](#-telepítési-útmutató) | [📢 Hivatalos Közösségi Csoportok](#-hivatalos-közösségi-csoportok) | [❤️ Támogassa ezt a projektet](#️-támogassa-ezt-a-projektet) | [⭐️ Szerelemprojekt](#️-szerelemprojekt) | [📄 Licenc](#-licenc)
 
 ---
 
@@ -105,7 +91,6 @@ Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, ar
   <img src="../assets/flags/et.svg" width="32" title="Amhara" alt="Amhara" />
 </p>
 
-
 ## 🚀 Főbb jellemzők és használat
 
 - **Modern natív felület**: Intuitív grafikus felhasználói felület sötét/világos mód támogatással, folyamatos animációkkal és nagy teljesítményű, **Skia** alapú megjelenítéssel.
@@ -121,89 +106,18 @@ Angol, egyszerűsített kínai, hagyományos kínai, hindi, spanyol, francia, ar
 - **Rendkívül alacsony memóriaigény**: Hatékonyságra optimalizálva. A tálcán futó (csendes) mód csupán **~10 MB** RAM-ot használ. Az ablakos mód használata a betűtípusok összetettségétől függően változik: **~18 MB** a standard nyelveknél és **~38 MB** a nagy karakterkészletű nyelveknél (kínai, japán, koreai).
 - **Fejlett hálózatkezelés**: A porttovábbítás zökkenőmentes kezelése (automatikus tűzfalszabály-létrehozással) és globális HTTP-proxy konfiguráció az egységes kapcsolat érdekében.
 - **USB eszközök kezelése**: Teljes integráció az `usbipd-win` rendszerrel a helyi USB-eszközök egyszerű összekapcsolásához, csatlakoztatásához és kezeléséhez a WSL-példányokon a műszerfal UI-ján keresztül.
-
-
-## ⚙️ Beállítások és naplók
-
-Minden konfiguráció a Beállítások nézetben kezelhető:
-
-- Válassza ki az alapértelmezett telepítési könyvtárat az új WSL példányokhoz.
-- Konfigurálja a naplózási könyvtárat és a naplózási szintet (Error / Warn / Info / Debug / Trace).
-- Válassza ki a felhasználói felület nyelvét, vagy hagyja, hogy kövesse a rendszer nyelvét.
-- Váltson sötét módra, és állítsa be, hogy az alkalmazás automatikusan leállítsa-e a WSL-t a műveletek után.
-- Állítsa be a frissítések ellenőrzésének gyakoriságát (naponta, hetente, kéthetente, havonta).
-- Engedélyezze az automatikus indítást a rendszer indításakor (automatikus elérési út javítással).
-- Állítsa be az alkalmazást, hogy indításkor a rendszertálcára kicsinyítsen.
-- Konfigurálja a bezárás gombot, hogy a tálcára kicsinyítsen a programból való kilépés helyett.
-- Szabja testre az oldalsávot az egyes funkciók lapja láthatóságának váltásával.
-
-A naplófájlok a konfigurált könyvtárba íródnak, és csatolhatók hiba jelentésekor.
+- **Konfiguráció és naplók**: A Beállításokban kezelheti a telepítési könyvtárat, a naplók könyvtárát és szintjét, a felület nyelvét, a sötét módot, a frissítésellenőrzés gyakoriságát, az automatikus indítást és a bezárási viselkedést, valamint az oldalsávot.
+- **Disztribúció életben tartása**: Egy kattintás az „Indítás” gombra életben tartja a disztribúciót a ~60 másodperces tétlenség utáni leállítás helyett; bekapcsolhatja a „Disztribúció indítása a Windows indításakor” opciót is.
+- **Globális gyorsbillentyűk**: Állítson be globális gyorsbillentyűket a főablak megjelenítéséhez/elrejtéséhez vagy egy disztribúció termináljának azonnali megnyitásához.
 
 
 ## 🖼️ Képernyőképek
-
-### Főoldal (Világos és sötét mód)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB és összecsukott menü
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### hálózat
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Példány hozzáadása és Beállítások
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Névjegy & Adomány
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Lemez csatlakoztatás
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Feladatütemezés
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Működési bemutató
-
-[Segítsen nekünk fejlődni! Nézze meg bemutatkozó videónkat, és ossza meg véleményét.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Rendszerkövetelmények
-
-- Windows 10 vagy Windows 11 engedélyezett WSL-lel (WSL 2 javasolt).
-- Legalább egy telepített WSL disztribúció, vagy jogosultság újak telepítéséhez.
-- 64 bites CPU; 4 GB RAM vagy több javasolt a több disztribúció zökkenőmentes használatához.
+Szeretné látni a vezérlőpultot működés közben? Nézze meg a teljes képernyőképek galériáját az [official weboldalon](https://www.wslui.com/).
 
 ## 📦 Telepítési útmutató
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 További információért látogassa meg a [WinGet közösségi tárolót](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### 3. lehetőség: Előre fordított bináris letöltése
-
-A legegyszerűbb módja a kezdésnek az előre fordított kiadás használata:
-
-1. Látogasson el a [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) oldalra.
-2. Töltse le a legújabb `wsldashboard` futtatható fájlt Windowshoz.
-3. Csomagolja ki (ha szükséges) és futtassa a `wsldashboard.exe` fájlt.
-
-Nincs szükség telepítőre; az alkalmazás egyetlen hordozható bináris fájl.
-
-### 4. lehetőség: Fordítás forráskódból
+### 3. lehetőség: Fordítás forráskódból
 
 Győződjön meg arról, hogy a Rust eszközkészlet (Rust 1.92+ vagy újabb) telepítve van.
 
@@ -270,45 +174,18 @@ Győződjön meg arról, hogy a Rust eszközkészlet (Rust 1.92+ vagy újabb) te
      ```
 
 
-## 🛠️ Technológiai háttér és teljesítmény
-
-- **Mag**: Rust nyelven valósítva meg a memóriabiztonság és a zéró költségű absztrakció érdekében.
-- **UI Framework**: Slint nagy teljesítményű **Skia** megjelenítő motorral.
-- **Async Runtime**: Tokio a nem blokkoló rendszerparancsokhoz és I/O műveletekhez.
-- **Teljesítmény főbb jellemzői**:
-  - **Válaszkészség**: Közel azonnali indítás és valós idejű WSL állapotfigyelés.
-  - **Hatékonyság**: Rendkívül alacsony erőforrás-használat (részletekért lásd: [Főbb jellemzők](#-főbb-jellemzők-és-használat)).
-  - **Hordozhatóság**: Az optimalizált kiadási verzió egyetlen kompakt futtatható fájlt eredményez.
-
-
-
 ## 📢 Hivatalos Közösségi Csoportok
 
 Üdvözöljük a WSL UI hivatalos közösségi csoportjaiban! Csatlakozzon, hogy megbeszélje a tippeket, jelentse a problémákat, kapjon frissítéseket, és vegye fel a kapcsolatot a fejlesztőkkel és más felhasználókkal.
+
+<div align="center">
 
 | Globális csoport (Telegram) | Kínai csoport (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Szkennereld a csatlakozáshoz | Szkennereld a csatlakozáshoz |
 
----
-
-
-## 🤝 Közösségi támogatás
-
-Nagy köszönet a következő közösségeknek a támogatásukért:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Az erős és biztonságos programozási nyelvért
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - A modern UI keretrendszerért
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - A csodálatos Windows Subsystem for Linux-ért
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - A hatékony aszinkron futtatókörnyezetért
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - A folyamatos platformfejlesztésekért
-- [Reddit](https://www.reddit.com) - A globális közösségi beszélgetésekért és támogatásért
-- [Hacker News](https://news.ycombinator.com) - A globális közösségi beszélgetésekért és támogatásért
-- [Linux.do](https://linux.do) - A népszerű IT szakembereknek szóló közösségért
-- [V2EX](https://www.v2ex.com) - A kínai technológiai közösségi beszélgetésekért
-
-Az Ön hozzájárulásai és visszajelzései teszik lehetővé ezt a projektet！
+</div>
 
 
 ## ❤️ Támogassa ezt a projektet
@@ -316,9 +193,7 @@ Az Ön hozzájárulásai és visszajelzései teszik lehetővé ezt a projektet�
 - Ez a projekt GPL-3.0 nyílt forráskódú licenc alatt áll, és minden felhasználó számára ingyenes.
 - A funkciófejlesztéstől és a napi teszteléstől a hibajavításokig minden munka szabadidőben készül. A nyílt forráskód útja nem könnyű egyedül — az Ön elismerése és támogatása adja a projektnek a bizalmat a folytatáshoz.
 - Ha ez az eszköz valóban segített Önnek, fontolja meg a támogatást. Minden adomány a szerverköltségekre, verziófrissítésekre és funkciófejlesztésekre fordítódik, biztosítva a projekt folyamatos frissítését és stabil előrehaladását.
-- Minden apró kedvesség egy sugár a csillagfényből. Köszönjük még egyszer a megértését és nagylelkűségét！
-
-Látogasd meg az adományozási oldalunkat：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Minden apró kedvesség egy sugár a csillagfényből. Köszönjük még egyszer a megértését és nagylelkűségét！ [Látogasd meg az adományozási oldalunkat](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Szerelemprojekt
@@ -329,9 +204,3 @@ Ha hasznosnak találta ezt a projektet, hálás lennék, ha csillagot adna rá G
 ## 📄 Licenc
 
 Ez a projekt a GPL-3.0 licenc alatt áll – részletekért lásd a [LICENSE](../LICENSE) fájlt.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

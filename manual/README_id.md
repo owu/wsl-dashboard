@@ -6,8 +6,6 @@
 
 Dasbor manajemen instans WSL (Windows Subsystem for Linux) yang modern, berkinerja tinggi, ringan, dan hemat memori. Dibangun dengan Rust dan Slint untuk pengalaman asli premium.
 
----
-
 ```diff
 Pemberitahuan:
 
@@ -27,24 +25,12 @@ Pemberitahuan:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | Bahasa Indonesia | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | Bahasa Indonesia | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Daftar Isi
-- [🌍 Dukungan Bahasa](#-dukungan-bahasa)
-- [🚀 Fitur Utama & Penggunaan](#-fitur-utama--penggunaan)
-- [⚙️ Konfigurasi & Log](#️-konfigurasi--log)
-- [🖼️ Tangkapan Layar](#️-tangkapan-layar)
-- [🎬 Demo Operasi](#-demo-operasi)
-- [💻 Persyaratan Sistem](#-persyaratan-sistem)
-- [📦 Panduan Instalasi](#-panduan-instalasi)
-- [🛠️ Stack Teknologi & Performa](#️-stack-teknologi--performa)
-- [📢 Kelompok Komunitas Resmi](#-kelompok-komunitas-resmi)
-- [🤝 Dukungan Komunitas](#-dukungan-komunitas)
-- [❤️ Dukung proyek ini](#️-dukung-proyek-ini)
-- [⭐️ Karya penuh cinta](#️-karya-penuh-cinta)
-- [📄 Lisensi](#-lisensi)
+[🌍 Dukungan Bahasa](#-dukungan-bahasa) | [🚀 Fitur Utama & Penggunaan](#-fitur-utama--penggunaan) | [🖼️ Tangkapan Layar](#️-tangkapan-layar) | [📦 Panduan Instalasi](#-panduan-instalasi) | [📢 Kelompok Komunitas Resmi](#-kelompok-komunitas-resmi) | [❤️ Dukung proyek ini](#️-dukung-proyek-ini) | [⭐️ Karya penuh cinta](#️-karya-penuh-cinta) | [📄 Lisensi](#-lisensi)
 
 ---
 
@@ -105,7 +91,6 @@ Inggris, Mandarin, Mandarin, Hindi, Spanyol, Prancis, Arabic, Bengali, Portugis,
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 Fitur Utama & Penggunaan
 
 - **UI Native Modern**: GUI intuitif dengan dukungan mode terang/gelap, animasi halus, dan rendering performa tinggi bertenaga **Skia**.
@@ -121,89 +106,18 @@ Inggris, Mandarin, Mandarin, Hindi, Spanyol, Prancis, Arabic, Bengali, Portugis,
 - **Jejak Memori Ultra Rendah**: Sangat dioptimalkan untuk efisiensi. Startup senyap (system tray) hanya menggunakan **~10MB** RAM. Penggunaan mode jendela bervariasi menurut kompleksitas font: **~18MB** untuk bahasa standar dan **~38MB** untuk bahasa dengan set karakter besar (Mandarin, Jepang, Korea).
 - **Jaringan Lanjutan**: Manajemen port forwarding yang mulus (dengan pembuatan aturan firewall otomatis) dan konfigurasi proxy HTTP global untuk konektivitas terpadu.
 - **Manajemen Perangkat USB**: Integrasi penuh dengan `usbipd-win` untuk penyatuan, pelekatan, dan manajemen perangkat USB lokal tanpa kesulitan di seluruh instance WSL Anda melalui antarmuka dasbor.
-
-
-## ⚙️ Konfigurasi & Log
-
-Semua konfigurasi dikelola melalui tampilan Pengaturan:
-
-- Pilih direktori instalasi default untuk instance WSL baru.
-- Konfigurasikan direktori log dan level log (Error / Warn / Info / Debug / Trace).
-- Pilih bahasa UI atau biarkan mengikuti bahasa sistem.
-- Alihkan mode gelap, dan matikan WSL otomatis setelah operasi.
-- Konfigurasikan frekuensi pemeriksaan pembaruan (harian, mingguan, dua mingguan, bulanan).
-- Aktifkan startup otomatis saat boot sistem (dengan perbaikan jalur otomatis).
-- Atur aplikasi untuk meminimalkan ke tray saat startup.
-- Konfigurasikan tombol tutup untuk meminimalkan ke tray alih-alih keluar dari program.
-- Sesuaikan bilah samping dengan mengatur visibilitas tab fitur tertentu.
-
-File log ditulis ke direktori log yang dikonfigurasi dan dapat dilampirkan saat melaporkan masalah.
+- **Konfigurasi dan log**: Kelola folder instalasi default, folder dan level log, bahasa UI, mode gelap, frekuensi pemeriksaan pembaruan, autostart, dan perilaku penutupan, serta sidebar dari Pengaturan.
+- **Menjaga distro tetap aktif**: Satu klik «Mulai» membuat distro terus berjalan alih-alih dimatikan setelah ~60 detik idle; aktifkan juga «Mulai distro ini saat Windows dimulai».
+- **Pintasan global**: Tetapkan pintasan global untuk menampilkan/menyembunyikan jendela utama atau langsung membuka terminal distro tertentu.
 
 
 ## 🖼️ Tangkapan Layar
-
-### Beranda (Mode Gelap & Terang)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Menu ciutkan
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### jaringan
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Tambah Instance & Pengaturan
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Tentang & Donasi
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Pemasangan Disk
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Penjadwalan Tugas
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Demo Operasi
-
-[Bantu kami meningkatkan! Tonton video pengantar kami dan bagikan pendapat Anda.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Persyaratan Sistem
-
-- Windows 10 atau Windows 11 dengan WSL diaktifkan (disarankan WSL 2).
-- Setidaknya satu distribusi WSL terpasang, atau izin untuk memasang yang baru.
-- CPU 64-bit; RAM 4 GB atau lebih disarankan untuk penggunaan yang lancar.
+Ingin melihat dasbor saat digunakan? Kunjungi [situs web resmi](https://www.wslui.com/) untuk melihat galeri tangkapan layar lengkap.
 
 ## 📦 Panduan Instalasi
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Untuk informasi lebih lanjut, kunjungi [repositori komunitas WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Opsi 3: Unduh binary yang sudah dikompilasi
-
-Cara termudah untuk memulai adalah menggunakan rilis yang sudah dikompilasi:
-
-1. Buka halaman [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Unduh executable `wsldashboard` terbaru untuk Windows.
-3. Ekstrak (jika dikemas) dan jalankan `wsldashboard.exe`.
-
-Tidak diperlukan penginstal; aplikasi ini adalah binary portabel tunggal.
-
-### Opsi 4: Rakit dari sumber kode
+### Opsi 3: Rakit dari sumber kode
 
 Pastikan Anda telah memasang alat bantu Rust (Rust 1.92+ atau yang lebih baru).
 
@@ -270,45 +174,18 @@ Pastikan Anda telah memasang alat bantu Rust (Rust 1.92+ atau yang lebih baru).
      ```
 
 
-## 🛠️ Stack Teknologi & Performa
-
-- **Inti**: Diimplementasikan dalam Rust untuk keamanan memori dan abstraksi tanpa biaya.
-- **Framework UI**: Slint dengan backend rendering **Skia** performa tinggi.
-- **Async Runtime**: Tokio untuk perintah sistem dan I/O non-blocking.
-- **Sorotan Performa**:
-  - **Responsivitas**: Startup hampir instan dan pemantauan status WSL real-time.
-  - **Efisiensi**: Penggunaan sumber daya ultra rendah (lihat [Fitur Utama](#-fitur-utama--penggunaan) untuk detail).
-  - **Portabilitas**: Rakitan rilis yang dioptimalkan menghasilkan executable tunggal yang ringkas.
-
-
-
 ## 📢 Kelompok Komunitas Resmi
 
 Selamat datang di kelompok komunitas resmi WSL UI! Bergabunglah dengan saluran kami untuk membahas tips penggunaan, melapor masalah, mendapatkan pembaruan terbaru, dan terhubung dengan pengembang dan pengguna lain.
+
+<div align="center">
 
 | Kelompok Global (Telegram) | Kelompok Cina (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Pindai untuk bergabung | Pindai untuk bergabung |
 
----
-
-
-## 🤝 Dukungan Komunitas
-
-Terima kasih banyak kepada komunitas berikut atas dukungan mereka:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Untuk bahasa pemrograman yang kuat dan aman
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Untuk framework UI modern
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Untuk Windows Subsystem for Linux yang luar biasa
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Untuk runtime asinkron yang efisien
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Untuk peningkatan platform yang berkelanjutan
-- [Reddit](https://www.reddit.com) - Untuk diskusi dan dukungan komunitas global
-- [Hacker News](https://news.ycombinator.com) - Untuk diskusi dan dukungan komunitas global
-- [Linux.do](https://linux.do) - Untuk komunitas populer bagi profesional TI
-- [V2EX](https://www.v2ex.com) - Untuk diskusi komunitas teknologi Tionghoa
-
-Kontribusi dan umpan balik Anda membuat proyek ini menjadi mungkin！
+</div>
 
 
 ## ❤️ Dukung proyek ini
@@ -316,9 +193,7 @@ Kontribusi dan umpan balik Anda membuat proyek ini menjadi mungkin！
 - Proyek ini dilisensikan di bawah GPL-3.0 dan gratis untuk semua pengguna.
 - Dari pengembangan fitur dan pengujian harian hingga perbaikan bug, semua pekerjaan dilakukan di waktu luang. Jalan open source tidak mudah ditempuh sendiri — pengakuan dan dukungan Anda memberikan kepercayaan diri proyek untuk terus berjalan.
 - Jika alat ini benar-benar membantu Anda, pertimbangkan untuk memberikan dukungan. Semua donasi digunakan untuk biaya server, pembaruan versi, dan peningkatan fitur, menjaga proyek tetap diperbarui dan berkembang secara stabil.
-- Setiap kebaikan kecil adalah seberkas cahaya bintang. Terima kasih lagi atas pengertian dan kemurahan hati Anda！
-
-Kunjungi halaman donasi kami：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Setiap kebaikan kecil adalah seberkas cahaya bintang. Terima kasih lagi atas pengertian dan kemurahan hati Anda！ [Kunjungi halaman donasi kami](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Karya penuh cinta
@@ -329,8 +204,3 @@ Jika Anda merasa proyek ini bermanfaat, saya akan sangat berterima kasih jika An
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah GPL-3.0 – lihat file [LICENSE](../LICENSE) untuk detailnya.
-
-
----
-
-Built with ❤️ for the WSL Community.

@@ -6,8 +6,6 @@
 
 モダンで高性能、軽量、かつ低メモリの WSL (Windows Subsystem for Linux) インスタンス管理ダッシュボード。プレミアムなネイティブ体験のために Rust と Slint で構築されています。
 
----
-
 ```diff
 注意:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | 日本語 | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | 日本語 | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 目次
-- [🌍 多言語対応](#-多言語対応)
-- [🚀 主な機能と使用方法](#-主な機能と使用方法)
-- [⚙️ 設定とログ](#️-設定とログ)
-- [🖼️ スクリーンショット](#️-スクリーンショット)
-- [🎬 操作デモ](#-操作デモ)
-- [💻 システム要件](#-システム要件)
-- [📦 インストール指南](#-インストール指南)
-- [🛠️ 技術スタックとパフォーマンス](#️-技术スタックとパフォーマンス)
-- [📢 公式コミュニティグループ](#-公式コミュニティグループ)
-- [🤝 コミュニティサポート](#-コミュニティサポート)
-- [❤️ このプロジェクトを支援する](#️-このプロジェクトを支援する)
-- [⭐️ 愛の結晶](#️-愛の結晶)
-- [📄 ライセンス](#-ライセンス)
+[🌍 多言語対応](#-多言語対応) | [🚀 主な機能と使用方法](#-主な機能と使用方法) | [🖼️ スクリーンショット](#️-スクリーンショット) | [📦 インストール指南](#-インストール指南) | [📢 公式コミュニティグループ](#-公式コミュニティグループ) | [❤️ このプロジェクトを支援する](#️-このプロジェクトを支援する) | [⭐️ 愛の結晶](#️-愛の結晶) | [📄 ライセンス](#-ライセンス)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="アムハラ語" alt="アムハラ語" />
 </p>
 
-
 ## 🚀 主な機能と使用方法
 
 - **モダンなネイティブ UI**：直感的でダーク/ライトモードに対応した GUI、スムーズなアニメーション、**Skia** による高性能なレンダリング。
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **超低メモリフットプリント**：効率を極限まで最適化。トレイ待機時は約 **10MB**、ウィンドウモードでも言語に応じ **18MB**（標準）〜 **38MB**（中日韓などの複雑なフォント）で動作。
 - **高度なネットワーク**: シームレスなポート転送管理（ファイアウォールルールの自動作成機能付き）および統合接続のためのグローバルHTTPプロキシ設定。
 - **USBデバイス管理**: `usbipd-win`との完全な統合により、ダッシュボードから直接、すべてのWSLインスタンスにわたってローカルUSBデバイスを簡単にバインド、アタッチ、および管理できます。
-
-
-## ⚙️ 設定とログ
-
-すべての設定は「設定」ビューで管理されます：
-
-- 新しい WSL インスタンスのデフォルトインストール先を選択。
-- ログディレクトリとログレベル (Error / Warn / Info / Debug / Trace) の設定。
-- UI 言語の選択（またはシステム言語に従う）。
-- ダークモードの切り替え、および操作後に WSL を自動シャットダウンするかどうかの設定。
-- アップデート確認の頻度（毎日、毎週、隔週、毎月）の設定。
-- Windows 起動時の自動開始（パス自動修復機能付き）。
-- 起動時にシステムトレイへ最小化する設定。
-- 閉じるボタンで終了せずトレイに最小化する設定。
-- 特定の機能タブの表示/非表示を切り替えてサイドバーをカスタマイズします。
-
-ログファイルは指定されたディレクトリに書き込まれ、問題報告時に添付できます。
+- **設定とログ**：設定画面で既定のインストール先、ログの保存先とレベル、UI 言語、ダークモード、アップデート確認の頻度、自動起動と終了時の動作、サイドバーの表示を一括管理できます。
+- **ディストロの常駐**：［起動］をワンクリックするだけで、約 60 秒アイドルで自動終了せず稼働を継続します。「Windows 起動時にこのディストロを起動する」を有効にすると常時稼働も可能です。
+- **グローバルショートカット**：グローバルホットキーを設定し、メインウィンドウの表示/非表示や、指定ディストロのターミナルを即座に開けます。
 
 
 ## 🖼️ スクリーンショット
-
-### ホーム (ライト＆ダークモード)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB ＆ メニューの折りたたみ
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### ネットワーク
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### インスタンス追加 ＆ 設定
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### バージョン情報 & 寄付
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### ディスクマウント
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### タスクスケジューリング
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 操作デモ
-
-[改善にご協力ください！紹介ビデオをご覧いただき、ご意見をお聞かせください。](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 システム要求
-
-- WSL が有効な Windows 10 または Windows 11（WSL 2 推奨）。
-- 少なくとも 1 つの WSL ディストリビューションがインストールされているか、新しいものをインストールする権限があること。
-- 64ビット CPU。複数のディストリビューションをスムーズに使用するために 4 GB 以上の RAM を推奨。
+ダッシュボードの実際の動作を見たいですか？完全なスクリーンショットギャラリーは[公式サイト](https://www.wslui.com/)でご覧ください。
 
 ## 📦 インストール指南
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 詳細については、[WinGet コミュニティリポジトリ](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) を参照してください。
 
-### 方法 3: ビルド済みバイナリをダウンロードする
-
-最も簡単な方法は、コンパイル済みのリリースを使用することです：
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) ページにアクセスします。
-2. Windows 用の最新の `wsldashboard` 実行ファイルをダウンロードします。
-3. 必要に応じて解凍し、`wsldashboard.exe` を実行します。
-
-インストーラーは不要です。アプリは単一のポータブルバイナリです。
-
-### 方法 4: ソースからビルドする
+### 方法 3: ソースからビルドする
 
 Rust ツールチェーン (Rust 1.92+ 以降) がインストールされていることを確認してください。
 
@@ -270,44 +174,18 @@ Rust ツールチェーン (Rust 1.92+ 以降) がインストールされてい
      ```
 
 
-## 🛠️ 技術スタックとパフォーマンス
-
-- **コア**: メモリ安全性とゼロコスト抽象化のために Rust で実装。
-- **UI フレームワーク**: 高性能な **Skia** レンダリングバックエンドを備えた Slint。
-- **非同期ランタイム**: Tokio。非ブロッキングなシステムコマンドと I/O を実現。
-- **パフォーマンスハイライト**:
-  - **レスポンス**: ほぼ瞬時の起動とリアルタイムの WSL 状態監視。
-  - **効率性**: 超低リソース使用量（詳細は [主な機能](#-主な機能と使用方法) を参照）。
-  - **ポータビリティ**: 単一のコンパクトな実行ファイルを生成。
-
-
-
 ## 📢 公式コミュニティグループ
 
 WSL UI の公式コミュニティグループへようこそ！使い方のお tips、問題の報告、最新情報の入手、開発者や他のユーザーとのつながりにご活用ください。
+
+<div align="center">
 
 | グローバルグループ (Telegram) | 中国語グループ (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | QR コードをスキャン | QR コードをスキャン |
 
----
-
-## 🤝 コミュニティサポート
-
-以下のコミュニティのサポートに心から感謝します：
-
-- [Rust Programming Language](https://www.rust-lang.org) - 強力で安全なプログラミング言語
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - モダンなUIフレームワーク
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - 素晴らしいWindows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - 効率的な非同期ランタイム
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - 継続的なプラットフォームの改善
-- [Reddit](https://www.reddit.com) - グローバルコミュニティの議論とサポート
-- [Hacker News](https://news.ycombinator.com) - グローバルコミュニティの議論とサポート
-- [Linux.do](https://linux.do) - ITプロフェッショナル向けの人気コミュニティ
-- [V2EX](https://www.v2ex.com) - 中国語テクノロジーコミュニティの議論
-
-皆様の貢献とフィードバックがこのプロジェクトを可能にしています！
+</div>
 
 
 ## ❤️ このプロジェクトを支援する
@@ -315,9 +193,7 @@ WSL UI の公式コミュニティグループへようこそ！使い方のお 
 - 本プロジェクトはGPL-3.0のオープンソースライセンスの下、すべてのユーザーに無料で提供されています。
 - 機能開発、日常テスト、バグ修正まで、すべての作業は余暇の時間に行われています。オープンソースの道を一人で歩むのは容易ではありません。あなたの認知と支援が、プロジェクトを持続させる力となります。
 - このツールがあなたの役に立ったと感じたら、ぜひご支援をお願いいたします。すべての寄付はサーバー費用、バージョンアップ、機能改善に充てられ、プロジェクトの継続的な更新と着実な進歩を支えます。
-- ささやかな善意も、星の光となります。ご理解とご支援に心より感謝いたします！
-
-寄付ページにアクセスする：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- ささやかな善意も、星の光となります。ご理解とご支援に心より感謝いたします！[寄付ページにアクセスする](https://www.wslui.com/donate/)。
 
 
 ## ⭐️ 愛の結晶
@@ -328,9 +204,3 @@ WSL UI の公式コミュニティグループへようこそ！使い方のお 
 ## 📄 ライセンス
 
 このプロジェクトは GPL-3.0 の下でライセンスされています。詳細は [LICENSE](../LICENSE) ファイルをご覧ください。
-
-
----
-
-Built with ❤️ for the WSL Community.
-

@@ -7,7 +7,6 @@ use tokio::sync::Mutex;
 use tracing::{debug, warn};
 use crate::{AppWindow, AppState};
 use crate::api::models::OfficialGroup;
-use slint::ComponentHandle;
 
 pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, _app_state: Arc<Mutex<AppState>>) {
     let ah = app_handle.clone();
@@ -40,17 +39,6 @@ pub fn trigger_fetch(app_handle: slint::Weak<AppWindow>, app_state: Arc<Mutex<Ap
         }).await.unwrap_or_default();
 
         debug!("about: wslui_helper_about success, official-group count={}", resp.official_group.len());
-        
-        let app_handle_urls = app_handle.clone();
-        let documents_url = resp.documents.as_ref().map(|d| d.url.clone()).unwrap_or_default();
-        let talk_url = resp.discussions.as_ref().map(|d| d.url.clone()).unwrap_or_default();
-
-        let _ = slint::invoke_from_event_loop(move || {
-            if let Some(app) = app_handle_urls.upgrade() {
-                app.global::<crate::AppInfo>().set_documents_url(documents_url.into());
-                app.global::<crate::AppInfo>().set_talk_url(talk_url.into());
-            }
-        });
 
         if let Some(item) = match_group(&resp.official_group, &sys_lang, &timezone) {
             let pic_url = item.pic.clone();

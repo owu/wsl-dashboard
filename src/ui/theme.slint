@@ -130,6 +130,26 @@ export struct MountedDiskInfo {
     is_mounted: bool,
 }
 
+// Shortcut settings: distro dropdown options
+export struct DistroOption {
+    name: string,
+    mono: string,
+    color: color,
+}
+
+// Shortcut settings: distro shortcut row (the index is the slot; slot 0 is always "show / hide main window")
+export struct ShortcutRow {
+    distro: string,
+    mono: string,
+    color: color,
+    shortcut: string,
+    keycaps: [string],
+    enabled: bool,
+    registered: bool,
+    options: [DistroOption],
+    selected_index: int,
+}
+
 export struct SettingsStrings {
     language: string,
     auto_update: string,
@@ -150,6 +170,7 @@ export struct SettingsStrings {
     tab_general: string,
     tab_advanced: string,
     tab_interface: string,
+    tab_shortcuts: string,
     sparse_vhd: string,
     sparse_vhd_desc: string,
     mount_auto_probe: string,
@@ -171,9 +192,6 @@ export struct AboutStrings {
     repository: string,
     group: string,
     issues: string,
-    announcements: string,
-    talk: string,
-    documents: string,
     star: string,
     love: string,
     github: string,
@@ -270,9 +288,6 @@ export global AppInfo {
     in property <string> license_url: project_repository + AppConstants.license_url;
     in property <string> issues_url: project_repository + "/issues";
     in property <string> release_url: project_repository + "/releases";
-    in property <string> announcements_url: project_repository + "/discussions";
-    in property <string> talk_url: "";
-    in property <string> documents_url: "";
     in property <string> donate_url: "";
 }
 

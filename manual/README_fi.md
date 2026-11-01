@@ -6,8 +6,6 @@
 
 Moderni, suorituskykyinen, kevyt ja vähän muistia vievä WSL-instanssien (Windows Subsystem for Linux) hallintapaneeli. Rakennettu Rustilla ja Slintillä ensiluokkaista natiivikokemusta varten.
 
----
-
 ```diff
 Ilmoitus:
 
@@ -27,24 +25,12 @@ Ilmoitus:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | Suomi | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | Suomi | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Sisällysluettelo
-- [🌍 Kielituki](#-kielituki)
-- [🚀 Tärkeimmät ominaisuudet ja käyttö](#-tärkeimmät-ominaisuudet-ja-käyttö)
-- [⚙️ Asetukset ja lokit](#️-asetukset-ja-lokit)
-- [🖼️ Kuvakaappaukset](#️-kuvakaappaukset)
-- [🎬 Demonstraatio](#-demonstraatio)
-- [💻 Järjestelmävaatimukset](#-järjestelmävaatimukset)
-- [📦 Asennusopas](#-asennusopas)
-- [🛠️ Teknologiapina ja suorituskyky](#️-teknologiapina-ja-suorituskyky)
-- [📢 Viralliset yhteisöryhmät](#-viralliset-yhteisöryhmät)
-- [🤝 Yhteisön tuki](#-yhteisön-tuki)
-- [❤️ Tue tätä projektia](#️-tee-tätä-projektia)
-- [⭐️ Sydämen asia](#️-sydämen-asia)
-- [📄 Lisenssi](#-lisenssi)
+[🌍 Kielituki](#-kielituki) | [🚀 Tärkeimmät ominaisuudet ja käyttö](#-tärkeimmät-ominaisuudet-ja-käyttö) | [🖼️ Kuvakaappaukset](#️-kuvakaappaukset) | [📦 Asennusopas](#-asennusopas) | [📢 Viralliset yhteisöryhmät](#-viralliset-yhteisöryhmät) | [❤️ Tue tätä projektia](#️-tue-tätä-projektia) | [⭐️ Sydämen asia](#️-sydämen-asia) | [📄 Lisenssi](#-lisenssi)
 
 ---
 
@@ -105,7 +91,6 @@ Englanti, Kiina (Yksinkertaistettu), Kiina (Perinteinen), Hindi, Espanja, Ranska
   <img src="../assets/flags/et.svg" width="32" title="Amhara" alt="Amhara" />
 </p>
 
-
 ## 🚀 Tärkeimmät ominaisuudet ja käyttö
 
 - **Moderni natiivi käyttöliittymä**: Intuitiivinen GUI, jossa on tumma/vaalea tila -tuki, sulavat animaatiot ja korkean suorituskyvyn rendering, jota tukee **Skia**.
@@ -121,89 +106,18 @@ Englanti, Kiina (Yksinkertaistettu), Kiina (Perinteinen), Hindi, Espanja, Ranska
 - **Erittäin pieni muistijälki**: Optimoitu tehokkuutta varten. Hiljainen käynnistys (ilmoitusalueelle) käyttää vain **n. 10 MB** RAM-muistia. Ikkunatilassa käyttö vaihtelee kirjasinten monimutkaisuuden mukaan: **n. 18 MB** peruskielille ja **n. 38 MB** kielille, joissa on laajat merkistöt (kiina, japani, korea).
 - **Kehittynyt verkko**: Saumaton porttiohjauksen hallinta (automaattisella palomuurisääntöjen luonnilla) ja globaali HTTP-välityspalvelimen määritys yhtenäistä yhteyttä varten.
 - **USB-laitteiden hallinta**: Täydellinen integraatio `usbipd-win`:n kanssa paikallisten USB-laitteiden vaivatonta sitomista, liittämistä ja hallintaa varten WSL-ilmentymissä suoraan käyttöliittymästä.
-
-
-## ⚙️ Asetukset ja lokit
-
-Kaikki asetukset hallitaan Asetukset-näkymän kautta:
-
-- Valitse oletusasennushakemisto uusille WSL-instansseille.
-- Määritä lokihakemisto ja lokitaso (Error / Warn / Info / Debug / Trace).
-- Valitse käyttöliittymän kieli tai anna sen seurata järjestelmän kieltä.
-- Vaihda tumma tila ja valitse, voiko sovellus sammuttaa WSL:n automaattisesti operaatioiden jälkeen.
-- Määritä, kuinka usein sovellus tarkistaa päivitykset (päivittäin, viikoittain, kahden viikon välein, kuukausittain).
-- Ota käyttöön automaattinen käynnistys järjestelmän käynnistyessä (automaattisella polun korjauksella).
-- Aseta sovellus pienentymään ilmoitusalueelle käynnistettäessä.
-- Määritä sulkemispainike pienentämään sovellus ilmoitusalueelle sulkemisen sijaan.
-- Mukauta sivupalkkia vaihtamalla tiettyjen ominaisuusvälilehtien näkyvyyttä.
-
-Lokitiedostot kirjoitetaan määritettyyn lokihakemistoon ja ne voidaan liittää mukaan ongelmista ilmoitettaessa.
+- **Asetukset ja lokit**: Hallitse Asetuksissa oletusasennuskansiota, lokikansiota ja -tasoa, käyttöliittymän kieltä, tummaa tilaa, päivitysten tarkistusväliä, automaattikäynnistystä ja sulkemiskäyttäytymistä sekä sivupalkkia.
+- **Jakelun pitäminen käynnissä**: Yksi napsautus »Käynnistä» pitää jakelun käynnissä sen sijaan, että se sammuisi ~60 s joutenolon jälkeen; voit myös ottaa käyttöön »Käynnistä tämä jakelu Windowsin käynnistyessä».
+- **Globaalit pikakuvakkeet**: Määritä globaalit pikanäppäimet pääikkunan näyttämiseen/piilottamiseen tai jakelun terminaalin avaamiseen.
 
 
 ## 🖼️ Kuvakaappaukset
-
-### Koti (Vaalea ja tumma tila)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB  ja pienennetty valikko
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### Verkko
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Lisää instanssi ja asetukset
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Tietoja & Lahjoitus
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Levyn asennus
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Tehtävien ajoitus
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Demonstraatio
-
-[Auta meitä parantamaan! Katso esittelyvideomme ja jaa ajatuksesi.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Järjestelmävaatimukset
-
-- Windows 10 tai Windows 11, jossa WSL on käytössä (WSL 2 suositeltu).
-- Vähintään yksi asennettu WSL-distributio tai oikeus asentaa uusia.
-- 64-bittinen CPU; suosittelemme vähintään 4 Gt RAM-muistia useiden distributioiden sujuvaan käyttöön.
+Haluatko nähdä kojelaudan toiminnassa? Katso täydellinen kuvakaappausgalleria [viralliselta verkkosivustolta](https://www.wslui.com/).
 
 ## 📦 Asennusopas
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Lisätietoja saat [WinGet-yhteisön arkistosta](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Vaihtoehto 3: Lataa valmiiksi koottu binääri
-
-Helpoin tapa aloittaa on käyttää valmiiksi käännettyä julkaisua:
-
-1. Siirry [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) -sivulle.
-2. Lataa uusin Windows-yhteensopiva `wsldashboard`-suoritustiedosto.
-3. Pura (jos pakattu) ja suorita `wsldashboard.exe`.
-
-Asennusohjelmaa ei tarvita; sovellus on yksi kannettava binääritiedosto.
-
-### Vaihtoehto 4: Kokoa lähdekoodista
+### Vaihtoehto 3: Kokoa lähdekoodista
 
 Varmista, että sinulla on Rust-työkalukehys (Rust 1.92+ tai uudempi) asennettuna.
 
@@ -270,44 +174,18 @@ Varmista, että sinulla on Rust-työkalukehys (Rust 1.92+ tai uudempi) asennettu
      ```
 
 
-## 🛠️ Teknologiapina ja suorituskyky
-
-- **Ydin**: Toteutettu Rustilla muistiturvallisuuden ja nollakustannusabstraktioiden saavuttamiseksi.
-- **UI-kehys**: Slint, jossa on korkean suorituskyvyn **Skia**-renderöintitausta.
-- **Async Runtime**: Tokio ei-blokkaavia järjestelmäkomentoja ja I/O:ta varten.
-- **Suorituskyvyn kohokohdat**:
-  - **Vasteaika**: Lähes välitön käynnistys ja reaaliaikainen WSL-tilan seuranta.
-  - **Tehokkuus**: Erittäin pieni resurssien käyttö (katso lisätietoja kohdasta [Tärkeimmät ominaisuudet](#-tärkeimmät-ominaisuudet-ja-käyttö)).
-  - **Siirrettävyys**: Optimoitu julkaisuversio tuottaa yhden tiiviin suoritustiedoston.
-
-
-
 ## 📢 Viralliset yhteisöryhmät
 
 Tervetuloa WSL UI:n virallisiin yhteisöryhmiin! Liity kanaviimme keskustellaksesi käyttövinkeistä, ilmoittaaksesi ongelmista, saadaksesi uusimmat päivitykset ja ollaksesi yhteydessä kehittäjiin ja muihinkin käyttäjiin.
+
+<div align="center">
 
 | Maailmanlaajuinen ryhmä (Telegram) | Kiinalainen ryhmä (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Skannaa liittymistäksesi | Skannaa liittymistäksesi |
 
----
-
-## 🤝 Yhteisön tuki
-
-Suuri kiitos seuraaville yhteisöille tuestaan:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Tehokkaasta ja turvallisesta ohjelmointikielestä
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Modernista UI-kehyksestä
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Mahtavasta Windows Subsystem for Linux:stä
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Tehokkaasta asynkronisesta ajoympäristöstä
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Jatkuvista alustaparannuksista
-- [Reddit](https://www.reddit.com) - Maailmanlaajuisista yhteisökeskusteluista ja tuesta
-- [Hacker News](https://news.ycombinator.com) - Maailmanlaajuisista yhteisökeskusteluista ja tuesta
-- [Linux.do](https://linux.do) - Suositusta IT-ammattilaisten yhteisöstä
-- [V2EX](https://www.v2ex.com) - Kiinalaisen teknologiayhteisön keskusteluista
-
-Sinun panoksesi ja palautteesi tekevät tästä projektista mahdollisen！
+</div>
 
 
 ## ❤️ Tue tätä projektia
@@ -315,9 +193,7 @@ Sinun panoksesi ja palautteesi tekevät tästä projektista mahdollisen！
 - Tämä projekti on lisensoitu GPL-3.0-lisenssillä ja on ilmainen kaikille käyttäjille.
 - Ominaisuuskehityksestä ja päivittäisistä testeistä virheenkorjauksiin — kaikki työ tehdään vapaa-ajalla. Avoimen lähdekoodin tie ei ole helppo kävellä yksin. Tunnustuksesi ja tukesi antavat projektille luottamuksen jatkaa.
 - Jos tämä työkalu on aidosti auttanut sinua, harkitse tukemista. Kaikki lahjoitukset menevät palvelinkustannuksiin, versiopäivityksiin ja ominaisuusparannuksiin, pitäen projektin jatkuvasti päivitettynä ja vakaasti etenevänä.
-- Jokainen pieni ystävällisyys on tähtivalonsäde. Kiitos vielä kerran ymmärryksestäsi ja anteliaisuudestasi！
-
-Vieraile lahjoitussivullamme：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Jokainen pieni ystävällisyys on tähtivalonsäde. Kiitos vielä kerran ymmärryksestäsi ja anteliaisuudestasi！ [Vieraile lahjoitussivullamme](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Sydämen asia
@@ -328,9 +204,3 @@ Jos olet kokenut tämän projektin hyödylliseksi, olisin kiitollinen, jos voisi
 ## 📄 Lisenssi
 
 Tämä projekti on lisensoitu GPL-3.0-lisenssillä – katso tarkemmat tiedot [LICENSE](../LICENSE)-tiedostosta.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

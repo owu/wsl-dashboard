@@ -197,7 +197,10 @@ pub fn setup(app: &AppWindow, app_handle: slint::Weak<AppWindow>, app_state: Arc
                 });
 
                 dashboard.delete_distro(&config_manager, &name).await;
-                
+
+                // after a distro is uninstalled, unregister the OS-level shortcut first, then clean up the binding in shortcuts.toml
+                crate::ui::handlers::shortcut::remove_distro_binding(&name);
+
                 let ah_final = ah.clone();
                 let _ = slint::invoke_from_event_loop(move || {
                     if let Some(app) = ah_final.upgrade() {

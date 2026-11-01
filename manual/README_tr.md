@@ -6,8 +6,6 @@
 
 Modern, yüksek performanslı, hafif ve düşük bellekli bir WSL (Linux için Windows Alt Sistemi) örnek yönetim panosu. Birinci sınıf yerel deneyim için Rust ve Slint ile oluşturulmuştur.
 
----
-
 ```diff
 Uyarı:
 
@@ -27,24 +25,12 @@ Uyarı:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | Türkçe | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | Türkçe | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 İçindekiler
-- [🌍 Dil Desteği](#-dil-desteği)
-- [🚀 Temel Özellikler ve Kullanım](#-temel-özellikler-ve-kullanım)
-- [⚙️ Yapılandırma ve Günlükler](#️-yapılandırma-ve-günlükler)
-- [🖼️ Ekran Görüntüleri](#️-ekran-görüntüleri)
-- [🎬 Çalışma Gösterimi](#-çalışma-gösterimi)
-- [💻 Sistem Gereksinimleri](#-sistem-gereksinimleri)
-- [📦 Kurulum Kılavuzu](#-kurulum-kılavuzu)
-- [🛠️ Teknoloji Yığını ve Performans](#️-teknoloji-yığını-ve-performans)
-- [📢 Resmi Topluluk Grupları](#-resmi-topluluk-grupları)
-- [🤝 Topluluk Desteği](#-topluluk-desteği)
-- [❤️ Bu projeyi destekle](#️-bu-projeyi-destekle)
-- [⭐️ Emek ve sevgi işi](#️-emek-ve-sevgi-işi)
-- [📄 Lisans](#-lisans)
+[🌍 Dil Desteği](#-dil-desteği) | [🚀 Temel Özellikler ve Kullanım](#-temel-özellikler-ve-kullanım) | [🖼️ Ekran Görüntüleri](#️-ekran-görüntüleri) | [📦 Kurulum Kılavuzu](#-kurulum-kılavuzu) | [📢 Resmi Topluluk Grupları](#-resmi-topluluk-grupları) | [❤️ Bu projeyi destekle](#️-bu-projeyi-destekle) | [⭐️ Emek ve sevgi işi](#️-emek-ve-sevgi-işi) | [📄 Lisans](#-lisans)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Amharca" alt="Amharca" />
 </p>
 
-
 ## 🚀 Temel Özellikler ve Kullanım
 
 - **Modern Yerel UI**: Sezgisel GUI, koyu/açık mod desteği, akıcı animasyonlar ve **Skia** ile güçlendirilmiş yüksek performanslı işleme.
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **Süper Düşük Bellek Kullanımı**: Verimlilik için yüksek düzeyde optimize edilmiştir. Sessiz başlangıç (tepsi) yalnızca **~10MB** RAM kullanır. Pencere modu kullanımı yazı tipi karmaşıklığına göre değişir: Standart diller için **~18MB** ve büyük karakter setli diller (Çince, Japonca, Korece) için **~38MB**.
 - **Gelişmiş Ağ**: Kesintisiz bağlantı noktası yönlendirme yönetimi (otomatik güvenlik duvarı kuralı oluşturma ile) ve birleşik bağlantı için küresel HTTP proxy yapılandırması.
 - **USB Cihaz Yönetimi**: Tüm WSL örneklerinizde yerel USB cihazlarını doğrudan kontrol panelinden zahmetsizce bağlamak, eklemek ve yönetmek için `usbipd-win` ile tam entegrasyon.
-
-
-## ⚙️ Yapılandırma ve Günlükler
-
-Tüm yapılandırmalar Ayarlar görünümü üzerinden yönetilir:
-
-- Yeni WSL örnekleri için varsayılan kurulum dizinini seçin.
-- Günlük dizinini ve günlük seviyesini (Error / Warn / Info / Debug / Trace) yapılandırın.
-- Kullanıcı arayüzü dilini seçin veya sistem dilini takip etmesini sağlayın.
-- Koyu modu ve işlemlerden sonra WSL'yi otomatik kapatmayı yapılandırın.
-- Güncelleme kontrol sıklığını ayarlayın (günlük, haftalık, iki haftalık, aylık).
-- Sistem başlangıcında otomatik başlamayı etkinleştirin (otomatik yol onarımı ile).
-- Uygulamayı başlangıçta sistem tepsisine küçülecek şekilde ayarlayın.
-- Kapat düğmesini uygulamadan çıkmak yerine tepsiye küçülecek şekilde yapılandırın.
-- Belirli özellik sekmelerinin görünürlüğünü değiştirerek kenar çubuğunu özelleştirin.
-
-Günlük dosyaları yapılandırılan günlük dizinine yazılır ve sorunları bildirirken eklenebilir.
+- **Yapılandırma ve günlükler**: Ayarlar'dan varsayılan kurulum dizinini, günlük dizini ve düzeyini, arayüz dilini, koyu modu, güncelleme sıklığını, otomatik başlatmayı ve kapatma davranışını yönetin; kenar çubuğunu özelleştirin.
+- **Dağıtımı açık tutma**: Tek tıkla «Başlat», dağıtımın ~60 s boşta kaldıktan sonra kapanması yerine çalışmaya devam etmesini sağlar; «Windows başladığında bu dağıtımı başlat» seçeneğini de açabilirsiniz.
+- **Genel kısayollar**: Ana pencereyi göstermek/gizlemek veya bir dağıtımın terminalini hemen açmak için genel kısayollar tanımlayın.
 
 
 ## 🖼️ Ekran Görüntüleri
-
-### Ana Sayfa (Koyu ve Açık Mod)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB ve Menü daraltma
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### ağ
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Örnek Ekle ve Ayarlar
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Hakkında & Bağış
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Disk Bağlama
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Görev Zamanlama
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Çalışma Gösterimi
-
-[Geliştirmemize yardımcı olun! Tanıtım videomuzu izleyin ve düşüncelerinizi paylaşın.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Sistem Gereksinimleri
-
-- WSL etkinleştirilmiş Windows 10 veya Windows 11 (WSL 2 önerilir).
-- En az bir WSL dağıtımı yüklü veya yenilerini yükleme izni olmalı.
-- 64 bit CPU; sorunsuz çoklu dağıtım kullanımı için 4 GB RAM veya daha fazlası önerilir.
+Panoyu iş başında görmek ister misiniz? Tam ekran görüntüsü galerisi için [resmi web sitesini](https://www.wslui.com/) ziyaret edin.
 
 ## 📦 Kurulum Kılavuzu
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Daha fazla bilgi için [WinGet topluluk deposunu](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) ziyaret edin.
 
-### Seçenek 3: Önceden derlenmiş ikiliyi indirin
-
-Başlamanın en kolay yolu önceden derlenmiş sürümü kullanmaktır:
-
-1. [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) sayfasına gidin.
-2. Windows için en son `wsldashboard` yürütülebilir dosyasını indirin.
-3. Paket dosyası ise çıkartın ve `wsldashboard.exe` dosyasını çalıştırın.
-
-Yükleyici gerekmez; uygulama tek bir taşınabilir ikili dosyadır.
-
-### Seçenek 4: Kaynaktan derleyin
+### Seçenek 3: Kaynaktan derleyin
 
 Rust araç zincirinin (Rust 1.92+ veya daha yeni) kurulu olduğundan emin olun.
 
@@ -270,45 +174,18 @@ Rust araç zincirinin (Rust 1.92+ veya daha yeni) kurulu olduğundan emin olun.
      ```
 
 
-## 🛠️ Teknoloji Yığını ve Performans
-
-- **Çekirdek**: Bellek güvenliği ve sıfır maliyetli soyutlamalar için Rust ile uygulanmıştır.
-- **UI Çerçevesi**: Yüksek performanslı **Skia** işleme arka ucuna sahip Slint.
-- **Asenkron Çalışma Zamanı**: Engelleyici olmayan sistem komutları ve G/Ç için Tokio.
-- **Performans Önemli Noktaları**:
-  - **Tepkisellik**: Neredeyse anında başlatma ve gerçek zamanlı WSL durum izleme.
-  - **Verimlilik**: Süper düşük kaynak kullanımı (ayrıntılar için [Temel Özellikler](#-temel-özellikler-ve-kullanım) bölümüne bakın).
-  - **Taşınabilirlik**: Optimize edilmiş yayın derlemesi tek bir kompakt yürütülebilir dosya üretir.
-
-
-
 ## 📢 Resmi Topluluk Grupları
 
 WSL UI resmi topluluk gruplarına hoş geldiniz! Kullanım ipuçlarını tartışmak, sorunları bildirmek, son güncellemeleri almak ve geliştiriciler ile diğer kullanıcılarla bağlantı kurmak için kanallarımıza katılın.
+
+<div align="center">
 
 | Küresel Grup (Telegram) | Çin Grubu (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Katılmak için tarayın | Katılmak için tarayın |
 
----
-
-
-## 🤝 Topluluk Desteği
-
-Destekleri için aşağıdaki topluluklara çok teşekkür ederiz:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Güçlü ve güvenli programlama dili için
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Modern UI çerçevesi için
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Harika Windows Subsystem for Linux için
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Verimli asenkron çalışma zamanı için
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Sürekli platform iyileştirmeleri için
-- [Reddit](https://www.reddit.com) - Küresel topluluk tartışmaları ve desteği için
-- [Hacker News](https://news.ycombinator.com) - Küresel topluluk tartışmaları ve desteği için
-- [Linux.do](https://linux.do) - BT profesyonelleri için popüler topluluk
-- [V2EX](https://www.v2ex.com) - Çin teknoloji topluluk tartışmaları için
-
-Katkılarınız ve geri bildirimleriniz bu projeyi mümkün kılıyor！
+</div>
 
 
 ## ❤️ Bu projeyi destekle
@@ -316,9 +193,7 @@ Katkılarınız ve geri bildirimleriniz bu projeyi mümkün kılıyor！
 - Bu proje GPL-3.0 açık kaynak lisansı altında olup tüm kullanıcılar için ücretsizdir.
 - Geliştirme, günlük testler ve hata düzeltmeleri dahil tüm çalışmalar boş zamanlarda yapılmaktadır. Açık kaynak yolunda yalnız yürümek kolay değildir — takdiriniz ve desteğiniz, projeye devam etme güveni verir.
 - Bu araç size gerçekten yardımcı olduysa, lütfen destek olmayı düşünün. Tüm bağışlar sunucu maliyetleri, sürüm güncellemeleri ve özellik iyileştirmelerine harcanarak projenin sürekli güncellenmesini ve istikrarlı ilerlemesini sağlar.
-- Her küçük iyilik bir yıldız ışığıdır. Anlayışınız ve cömertliğiniz için tekrar teşekkürler！
-
-Bağış sayfamızı ziyaret edin：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Her küçük iyilik bir yıldız ışığıdır. Anlayışınız ve cömertliğiniz için tekrar teşekkürler！ [Bağış sayfamızı ziyaret edin](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Emek ve sevgi işi
@@ -329,8 +204,3 @@ Eğer bu projeyi faydalı bulduysanız, GitHub'da bir yıldız bırakırsanız m
 ## 📄 Lisans
 
 Bu proje GPL-3.0 altında lisanslanmıştır – detaylar için [LICENSE](../LICENSE) dosyasına bakın.
-
-
----
-
-Built with ❤️ for the WSL Community.

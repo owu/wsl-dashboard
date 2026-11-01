@@ -6,8 +6,6 @@
 
 Um painel moderno, de alto desempenho, leve e com baixo consumo de memória para gerenciamento de instâncias do WSL (Windows Subsystem for Linux). Criado com Rust e Slint para uma experiência nativa premium.
 
----
-
 ```diff
 Aviso:
 
@@ -27,24 +25,12 @@ Aviso:
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | Português | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | Português | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 Índice
-- [🌍 Idiomas Suportados](#-idiomas-suportados)
-- [🚀 Funcionalidades Principais e Utilização](#-funcionalidades-principais-e-utilização)
-- [⚙️ Configuração e Registos](#️-configuração-e-registos)
-- [🖼️ Capturas de Ecrã](#️-capturas-de-ecrã)
-- [🎬 Demonstração de Funcionamento](#-demonstração-de-funcionamento)
-- [💻 Requisitos do Sistema](#-requisitos-do-sistema)
-- [📦 Guia de Instalação](#-guia-de-instalação)
-- [🛠️ Tecnologias e Desempenho](#️-tecnologias-e-desempenho)
-- [📢 Grupos Oficiais da Comunidade](#-grupos-oficiais-da-comunidade)
-- [🤝 Apoio da Comunidade](#-apoio-da-comunidade)
-- [❤️ Apoiar este projeto](#️-apoiar-este-projeto)
-- [⭐️ Trabalho de amor](#️-trabalho-de-amor)
-- [📄 Licença](#-licença)
+[🌍 Idiomas Suportados](#-idiomas-suportados) | [🚀 Funcionalidades Principais e Utilização](#-funcionalidades-principais-e-utilização) | [🖼️ Capturas de Ecrã](#️-capturas-de-ecrã) | [📦 Guia de Instalação](#-guia-de-instalação) | [📢 Grupos Oficiais da Comunidade](#-grupos-oficiais-da-comunidade) | [❤️ Apoiar este projeto](#️-apoiar-este-projeto) | [⭐️ Trabalho de amor](#️-trabalho-de-amor) | [📄 Licença](#-licença)
 
 ---
 
@@ -105,7 +91,6 @@ Inglês, Chinês, Chinês, Hindi, Espanhol, Francês, Arabic, Bengali, Portuguê
   <img src="../assets/flags/et.svg" width="32" title="Amárico" alt="Amárico" />
 </p>
 
-
 ## 🚀 Funcionalidades Principais e Utilização
 
 - **Interface Nativa Moderna**: GUI intuitiva com suporte para modo escuro/claro, animações suaves e renderização de alto desempenho via **Skia**.
@@ -121,89 +106,18 @@ Inglês, Chinês, Chinês, Hindi, Espanhol, Francês, Arabic, Bengali, Portuguê
 - **Pegada de Memória Ultra Baixa**: Altamente otimizado para eficiência. O arranque silencioso (tray) utiliza apenas **~10MB** de RAM. O uso em modo janela varia conforme a complexidade do tipo de letra: **~18MB** para idiomas padrão e **~38MB** para idiomas com grandes conjuntos de caracteres (Chinês, Japonês, Coreano).
 - **Redes avançadas**: Gerenciamento contínuo de encaminhamento de portas (com criação automática de regras de firewall) e configuração global de proxy HTTP para conectividade unificada.
 - **Gerenciamento de Dispositivos USB**: Integração total com `usbipd-win` para uma vinculação, anexação e gerenciamento fáceis de dispositivos USB locais em suas instâncias do WSL, diretamente da interface do painel.
-
-
-## ⚙️ Configuração e Registos
-
-Toda a configuração é gerida através da vista Definições:
-
-- Escolha o diretório de instalação padrão para as novas instâncias WSL.
-- Configure o diretório de registos e o nível de registo (Error / Warn / Info / Debug / Trace).
-- Escolha o idioma da interface ou deixe-o seguir o idioma do sistema.
-- Alterne o modo escuro e se a aplicação pode encerrar automaticamente o WSL após operações.
-- Configure a frequência com que a aplicação verifica atualizações (diariamente, semanalmente, quinzenalmente, mensalmente).
-- Ative o arranque automático no boot do sistema (com reparação automática de caminhos).
-- Configure a aplicação para minimizar para a bandeja ao iniciar.
-- Configure o botão de fechar para minimizar para a bandeja em vez de sair do programa.
-- Personalize a barra lateral alternando a visibilidade de guias de recursos específicos.
-
-Os ficheiros de registo são gravados no diretório configurado e podem ser anexados ao reportar problemas.
+- **Configuração e logs**: Gerencie nas Configurações o diretório de instalação, o diretório e nível de logs, o idioma, o modo escuro, a frequência de atualização, a inicialização automática e o comportamento ao fechar, além da barra lateral.
+- **Manter distros ativas**: Um clique em «Iniciar» mantém a distro em execução em vez de encerrá-la após ~60 s ociosa; ou ative «Iniciar esta distro ao iniciar o Windows».
+- **Atalhos globais**: Defina atalhos globais para mostrar/ocultar a janela principal ou abrir o terminal de uma distro.
 
 
 ## 🖼️ Capturas de Ecrã
-
-### Início (Modos Escuro e Claro)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & Menu recolhido
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### rede
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### Adicionar Instância & Definições
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### Sobre & Doar
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### Montagem de disco
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### Agendamento de tarefas
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 Demonstração de Funcionamento
-
-[Ajude-nos a melhorar! Assista ao nosso vídeo de introdução e compartilhe suas opiniões.](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 Requisitos do Sistema
-
-- Windows 10 ou Windows 11 com WSL ativado (recomenda-se WSL 2).
-- Pelo menos uma distribuição WSL instalada, ou permissão para instalar novas.
-- CPU de 64 bits; recomenda-se 4 GB de RAM ou mais para uma utilização fluida.
+Quer ver o painel em ação? Visite o [site oficial](https://www.wslui.com/) para conferir a galeria completa de capturas de tela.
 
 ## 📦 Guia de Instalação
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 Para mais informações, visite o [repositório comunitário do WinGet](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### Opção 3: Descarregar o binário pré-compilado
-
-A forma mais fácil de começar é utilizar a versão já compilada:
-
-1. Vá para a página de [GitHub Releases](https://github.com/owu/wsl-dashboard/releases).
-2. Transfira o executável `wsldashboard` mais recente para Windows.
-3. Extraia (si necessário) e execute `wsldashboard.exe`.
-
-Não é necessário instalador; a aplicação é um binário portátil único.
-
-### Opção 4: Compilar a partir do código-fonte
+### Opção 3: Compilar a partir do código-fonte
 
 Certifique-se de que tem o conjunto de ferramentas Rust instalado (Rust 1.92+ ou superior).
 
@@ -270,44 +174,18 @@ Certifique-se de que tem o conjunto de ferramentas Rust instalado (Rust 1.92+ ou
      ```
 
 
-## 🛠️ Tecnologias e Desempenho
-
-- **Núcleo**: Implementado em Rust para segurança de memória e abstrações de custo zero.
-- **Framework de UI**: Slint com backend de renderização **Skia** de alto desempenho.
-- **Runtime Assíncrono**: Tokio para comandos de sistema e E/S não bloqueantes.
-- **Destaques de Desempenho**:
-  - **Capacidade de resposta**: Arranque quase instantâneo e monitorização do estado WSL em tempo real.
-  - **Eficiência**: Utilização de recursos ultra-baixa (detalhes em [Funcionalidades Principais](#-funcionalidades-principais-e-utilização)).
-  - **Portabilidade**: O build otimizado produz um único executável compacto.
-
-
-
 ## 📢 Grupos Oficiais da Comunidade
 
 Bem-vindo aos grupos oficiais da comunidade WSL UI! Junte-se aos nossos canais para discutir dicas de uso, relatar problemas, obter as últimas atualizações e conectar-se com os desenvolvedores e outros usuários.
+
+<div align="center">
 
 | Grupo Global (Telegram) | Grupo Chinês (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | Escaneie para entrar | Escaneie para entrar |
 
----
-
-## 🤝 Apoio da Comunidade
-
-Um grande agradecimento às seguintes comunidades pelo seu apoio:
-
-- [Rust Programming Language](https://www.rust-lang.org) - Pela linguagem de programação poderosa e segura
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - Pelo framework de UI moderno
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Pelo incrível Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Pelo eficiente runtime assíncrono
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - Pelas contínuas melhorias da plataforma
-- [Reddit](https://www.reddit.com) - Pelas discussões e apoio da comunidade global
-- [Hacker News](https://news.ycombinator.com) - Pelas discussões e apoio da comunidade global
-- [Linux.do](https://linux.do) - Pela popular comunidade para profissionais de TI
-- [V2EX](https://www.v2ex.com) - Pelas discussões da comunidade tecnológica chinesa
-
-As vossas contribuições e feedback tornam este projeto possível!
+</div>
 
 
 ## ❤️ Apoiar este projeto
@@ -315,9 +193,7 @@ As vossas contribuições e feedback tornam este projeto possível!
 - Este projeto está licenciado sob a GPL-3.0 e é gratuito para todos os utilizadores.
 - Desde o desenvolvimento de funcionalidades e testes diários até à correção de erros, todo o trabalho é feito no tempo livre. O caminho do código aberto não é fácil de percorrer sozinho — o seu reconhecimento e apoio dão ao projeto a confiança para continuar.
 - Se esta ferramenta realmente o ajudou, considere dar uma mão. Todas as doações são destinadas a custos de servidor, iterações de versão e melhorias de funcionalidades, mantendo o projeto continuamente atualizado e em progresso constante.
-- Cada pequeno ato de bondade é um raio de luz estelar. Obrigado novamente pela sua compreensão e generosidade！
-
-Visite nossa página de doações：[https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- Cada pequeno ato de bondade é um raio de luz estelar. Obrigado novamente pela sua compreensão e generosidade！ [Visite nossa página de doações](https://www.wslui.com/donate/).
 
 
 ## ⭐️ Trabalho de amor
@@ -328,9 +204,3 @@ Se achou este projeto útil, ficaria grato se pudesse deixar uma estrela no GitH
 ## 📄 Licença
 
 Este projeto está licenciado sob a GPL-3.0 – consulte o ficheiro [LICENSE](../LICENSE) para mais detalhes.
-
-
----
-
-Built with ❤️ for the WSL Community.
-

@@ -347,193 +347,47 @@ export component AboutView inherits VerticalLayout {
                             }
                         }
 
-                        // Project Links Grid
-                        GridLayout {
-                            spacing-vertical: 12px;
-                            spacing-horizontal: 24px;
-                            
-                            // Row 1
-                            Row {
-                                // Left Column: Documents
-                                Rectangle {
-                                    horizontal-stretch: 1;
-                                    HorizontalLayout {
-                                        alignment: AppI18n.is-rtl ? end : start;
-                                        spacing: 12px;
-                                        if (!AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e8a5}";
-                                                icon_type: "indigo";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                        VerticalLayout {
-                                            alignment: center;
-                                            Text {
-                                                text: root.strings.documents;
-                                                font-size: 13px * LayoutConstants.font-scale;
-                                                font-family: Theme.default_font;
-                                                color: Theme.text_primary;
-                                                horizontal-alignment: AppI18n.is-rtl ? right : left;
-                                                TouchArea {
-                                                    mouse-cursor: AppInfo.documents_url != "" ? pointer : default;
-                                                    clicked => {
-                                                        if (AppInfo.documents_url != "") {
-                                                            root.open_url(AppInfo.documents_url);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e8a5}";
-                                                icon_type: "indigo";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                    }
+                        // Group
+                        HorizontalLayout {
+                            alignment: AppI18n.is-rtl ? end : start;
+                            spacing: 12px;
+                            if (!AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e8f2}";
+                                    icon_type: "info";
+                                    font-size: 15px;
                                 }
-
-                                // Right Column: Announcements
-                                Rectangle {
-                                    horizontal-stretch: 1;
-                                    HorizontalLayout {
-                                        alignment: AppI18n.is-rtl ? end : start;
-                                        spacing: 12px;
-                                        if (!AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e95a}";
-                                                icon_type: "purple";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                        VerticalLayout {
-                                            alignment: center;
-                                            Text {
-                                                text: root.strings.announcements;
-                                                font-size: 13px * LayoutConstants.font-scale;
-                                                font-family: Theme.default_font;
-                                                color: Theme.text_primary;
-                                                horizontal-alignment: AppI18n.is-rtl ? right : left;
-                                                TouchArea {
-                                                    mouse-cursor: pointer;
-                                                    clicked => {
-                                                        root.open_url(AppInfo.announcements_url);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e95a}";
-                                                icon_type: "purple";
-                                                font-size: 15px;
-                                            }
+                            }
+                            VerticalLayout {
+                                alignment: center;
+                                Text {
+                                    text: root.strings.group;
+                                    font-size: 13px * LayoutConstants.font-scale;
+                                    font-family: Theme.default_font;
+                                    color: Theme.text_primary;
+                                    horizontal-alignment: AppI18n.is-rtl ? right : left;
+                                    TouchArea {
+                                        mouse-cursor: pointer;
+                                        clicked => {
+                                            root.group_clicked();
                                         }
                                     }
                                 }
                             }
 
-                            // Row 2
-                            Row {
-                                // Left Column: Discussions (Talk)
-                                Rectangle {
-                                    horizontal-stretch: 1;
-                                    HorizontalLayout {
-                                        alignment: AppI18n.is-rtl ? end : start;
-                                        spacing: 12px;
-                                        if (!AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e77b}";
-                                                icon_type: "teal";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                        VerticalLayout {
-                                            alignment: center;
-                                            Text {
-                                                text: root.strings.talk;
-                                                font-size: 13px * LayoutConstants.font-scale;
-                                                font-family: Theme.default_font;
-                                                color: Theme.text_primary;
-                                                horizontal-alignment: AppI18n.is-rtl ? right : left;
-                                                TouchArea {
-                                                    mouse-cursor: AppInfo.talk_url != "" ? pointer : default;
-                                                    clicked => {
-                                                        if (AppInfo.talk_url != "") {
-                                                            root.open_url(AppInfo.talk_url);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e77b}";
-                                                icon_type: "teal";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                    }
-                                }
-
-                                // Right Column: Group
-                                Rectangle {
-                                    horizontal-stretch: 1;
-                                    HorizontalLayout {
-                                        alignment: AppI18n.is-rtl ? end : start;
-                                        spacing: 12px;
-                                        if (!AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e8f2}";
-                                                icon_type: "info";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                        VerticalLayout {
-                                            alignment: center;
-                                            Text {
-                                                text: root.strings.group;
-                                                font-size: 13px * LayoutConstants.font-scale;
-                                                font-family: Theme.default_font;
-                                                color: Theme.text_primary;
-                                                horizontal-alignment: AppI18n.is-rtl ? right : left;
-                                                TouchArea {
-                                                    mouse-cursor: pointer;
-                                                    clicked => {
-                                                        root.group_clicked();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        if (AppI18n.is-rtl): Rectangle {
-                                            width: 20px;
-                                            ThemedIcon {
-                                                y: 1px;
-                                                icon_code: "\u{e8f2}";
-                                                icon_type: "info";
-                                                font-size: 15px;
-                                            }
-                                        }
-                                    }
+                            if (AppI18n.is-rtl): Rectangle {
+                                width: 20px;
+                                ThemedIcon {
+                                    y: 1px;
+                                    icon_code: "\u{e8f2}";
+                                    icon_type: "info";
+                                    font-size: 15px;
                                 }
                             }
                         }
+
                     }
                 }
 

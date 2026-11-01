@@ -6,8 +6,6 @@
 
 แดชบอร์ดจัดการอินสแตนซ์ WSL (Windows Subsystem for Linux) ที่ทันสมัย ประสิทธิภาพสูง น้ำหนักเบา และใช้หน่วยความจำต่ำ สร้างขึ้นด้วย Rust และ Slint เพื่อมอบประสบการณ์เนทีฟที่ยอดเยี่ยม
 
----
-
 ```diff
 ประกาศ:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | ภาษาไทย | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | ภาษาไทย | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | [አማርኛ](./README_am.md)
 
 ---
 
 ## 📑 สารบัญ
-- [🌍 การรองรับภาษา](#-การรองรับภาษา)
-- [🚀 ฟีเจอร์หลักและการใช้งาน](#-ฟีเจอร์หลักและการใช้งาน)
-- [⚙️ การตั้งค่าและบันทึก](#️-การตั้งค่าและบันทึก)
-- [🖼️ ภาพหน้าจอ](#️-ภาพหน้าจอ)
-- [🎬 การสาธิต](#-การสาธิต)
-- [💻 ข้อกำหนดของระบบ](#-ข้อกำหนดของระบบ)
-- [📦 คู่มือการติดตั้ง](#-คู่มือการติดตั้ง)
-- [🛠️ เทคโนโลยีและประสิทธิภาพ](#️-เทคโนโลยีและประสิทธิภาพ)
-- [📢 กลุ่มชุมชนทางการ](#-กลุ่มชุมชนทางการ)
-- [🤝 การสนับสนุนจากชุมชน](#-การสนับสนุนจากชุมชน)
-- [❤️ สนับสนุนโครงการ](#️-สนับสนุนโครงการ)
-- [⭐️ สนับสนุนด้วยใจ](#️-สนับสนุนด้วยใจ)
-- [📄 สัญญาอนุญาตโอเพนซอร์ส](#-สัญญาอนุญาตโอเพนซอร์ส)
+[🌍 การรองรับภาษา](#-การรองรับภาษา) | [🚀 ฟีเจอร์หลักและการใช้งาน](#-ฟีเจอร์หลักและการใช้งาน) | [🖼️ ภาพหน้าจอ](#️-ภาพหน้าจอ) | [📦 คู่มือการติดตั้ง](#-คู่มือการติดตั้ง) | [📢 กลุ่มชุมชนทางการ](#-กลุ่มชุมชนทางการ) | [❤️ สนับสนุนโครงการ](#️-สนับสนุนโครงการ) | [⭐️ สนับสนุนด้วยใจ](#️-สนับสนุนด้วยใจ) | [📄 สัญญาอนุญาตโอเพนซอร์ส](#-สัญญาอนุญาตโอเพนซอร์ส)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 ฟีเจอร์หลักและการใช้งาน
 
 - **อินเทอร์เฟซเนทีฟที่ทันสมัย**: GUI ที่ใช้งานง่าย รองรับโหมดมืด/สว่าง แอนิเมชันลื่นไหล การเรนเดอร์ประสิทธิภาพสูงที่ขับเคลื่อนโดย **Skia**
@@ -121,89 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **การใช้หน่วยความจำต่ำมาก**: ปรับทรัพยากรอย่างเหมาะสมที่สุด การเริ่มต้นแบบเงียบ (ซิสเต็มเทรย์) ใช้หน่วยความจำเพียงประมาณ **10MB** ในโหมดหน้าต่าง ใช้ประมาณ **18MB** (ภาษามาตรฐาน เช่น อังกฤษ เยอรมัน ฯลฯ) ถึง **38MB** (ชุดอักขระขนาดใหญ่ เช่น CJK) ขึ้นอยู่กับความซับซ้อนของแบบอักษร
 - **การจัดการเครือข่ายขั้นสูง**: จัดการการส่งต่อพอร์ต (สร้างกฎไฟร์วอลล์โดยอัตโนมัติ) และการกำหนดค่า HTTP proxy ทั่วไปอย่างราบรื่น เพื่อประสบการณ์การเชื่อมต่อที่เป็นหนึ่งเดียว
 - **การจัดการอุปกรณ์ USB**: ผสานรวมอย่างลึกซึ้งกับ `usbipd-win` สามารถผูก ต่อ และจัดการอุปกรณ์ USB ท้องถิ่นได้อย่างง่ายดายสำหรับอินสแตนซ์ WSL ทั้งหมดโดยตรงจากแดชบอร์ด UI
-
-
-## ⚙️ การตั้งค่าและบันทึก
-
-การตั้งค่าทั้งหมดจัดการผ่านมุมมอง "การตั้งค่า":
-
-- เลือกไดเรกทอรีติดตั้งเริ่มต้นสำหรับอินสแตนซ์ WSL ใหม่
-- กำหนดค่าไดเรกทอรีบันทึกและระดับบันทึก (Error / Warn / Info / Debug / Trace)
-- เลือกภาษาอินเทอร์เฟซหรือให้ตามภาษาของระบบ
-- สลับโหมดมืด และเลือกว่าแอปพลิเคชันจะปิด WSL โดยอัตโนมัติหลังปฏิบัติการหรือไม่
-- กำหนดค่าความถี่ในการตรวจสอบอัปเดต (รายวัน รายสัปดาห์ ทุกสองสัปดาห์ รายเดือน)
-- เปิดใช้งานการเริ่มต้นพร้อม Windows (มีฟีเจอร์ซ่อมแซมเส้นทางอัตโนมัติ)
-- ตั้งค่าย่อเล็กสุดไปที่เทรย์เมื่อเริ่มต้น
-- กำหนดค่าพฤติกรรมปุ่มปิด (ย่อเล็กสุดไปที่เทรย์แทนการออกจากโปรแกรม)
-- ปรับแต่งแถบข้างโดยสลับการแสดงแท็บฟีเจอร์เฉพาะ
-
-ไฟล์บันทึกจะถูกเขียนไปยังไดเรกทอรีบันทึกที่กำหนดค่าไว้ สามารถแนบมาพร้อมกับรายงานปัญหาได้
+- **การกำหนดค่าและบันทึก**: จัดการโฟลเดอร์ติดตั้งเริ่มต้น โฟลเดอร์และระดับบันทึก ภาษาของ UI โหมดมืด ความถี่ในการตรวจสอบอัปเดต การเริ่มอัตโนมัติ และพฤติกรรมการปิด รวมถึงแถบด้านข้างได้จากหน้าตั้งค่า
+- **การคงสถานะดิสโทรให้ทำงาน**: คลิก «เริ่ม» ครั้งเดียวเพื่อให้ดิสโทรทำงานต่อเนื่องแทนที่จะถูกปิดหลังไม่ได้ใช้งาน ~60 วินาที หรือเปิด «เริ่มดิสโทรนี้เมื่อ Windows เริ่มทำงาน» ก็ได้
+- **คีย์ลัดแบบทั่วระบบ**: กำหนดคีย์ลัดทั่วระบบเพื่อแสดง/ซ่อนหน้าต่างหลัก หรือเปิดเทอร์มินัลของดิสโทรที่ต้องการได้ทันที
 
 
 ## 🖼️ ภาพหน้าจอ
-
-### หน้าหลัก (โหมดมืด & สว่าง)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & การพับเมนู
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### การจัดการเครือข่าย
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### เพิ่มอินสแตนซ์ & การตั้งค่า
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### เกี่ยวกับ & การบริจาค
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### การต่อเชื่อมดิสก์
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-  <img src="../assets/screenshot/mount-add.png" width="48%" />
-</p>
-
-### การกำหนดเวลางาน
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-  <img src="../assets/screenshot/task-add.png" width="48%" />
-</p>
-
-## 🎬 การสาธิต
-
-[ช่วยเราปรับปรุง! ชมวิดีโอแนะนำและแบ่งปันความคิดเห็นของคุณ](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 ข้อกำหนดของระบบ
-
-- Windows 10 หรือ Windows 11 ที่เปิดใช้งาน WSL (แนะนำ WSL 2)
-- มีดิสทริบิวชัน WSL ติดตั้งอยู่อย่างน้อยหนึ่งรายการ หรือมีสิทธิ์ในการติดตั้งดิสทริบิวชันใหม่
-- CPU 64 บิต; แนะนำ RAM 4 GB ขึ้นไปเพื่อการใช้งานหลายดิสทริบิวชันอย่างราบรื่น
+ต้องการเห็นแดชบอร์ดทำงานจริงหรือไม่? เข้าชม[เว็บไซต์อย่างเป็นทางการ](https://www.wslui.com/) เพื่อดูแกลเลอรีภาพหน้าจอทั้งหมด
 
 ## 📦 คู่มือการติดตั้ง
 
@@ -233,17 +147,7 @@ winget install Owu.WSLDashboard
 
 For more information, visit the [WinGet community repository](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard).
 
-### วิธีที่ 3: ดาวน์โหลดไบนารีที่คอมไพล์แล้ว
-
-วิธีที่ง่ายที่สุดในการเริ่มต้นคือใช้เวอร์ชันที่คอมไพล์แล้ว:
-
-1. ไปที่หน้า [GitHub Releases](https://github.com/owu/wsl-dashboard/releases)
-2. ดาวน์โหลดไฟล์ปฏิบัติการ `wsldashboard` ล่าสุดสำหรับ Windows
-3. แตกไฟล์ (ถ้าเป็นไฟล์บีบอัด) และเรียกใช้ `wsldashboard.exe`
-
-ไม่จำเป็นต้องติดตั้ง แอปพลิเคชันเป็นโปรแกรมพกพาไฟล์เดี่ยว
-
-### วิธีที่ 4: คอมไพล์จากซอร์สโค้ด
+### วิธีที่ 3: คอมไพล์จากซอร์สโค้ด
 
 ตรวจสอบให้แน่ใจว่าคุณได้ติดตั้ง Rust toolchain (Rust 1.92+ หรือใหม่กว่า) แล้ว
 
@@ -270,45 +174,18 @@ For more information, visit the [WinGet community repository](https://github.com
      ```
 
 
-## 🛠️ เทคโนโลยีและประสิทธิภาพ
-
-- **แกนหลัก**: พัฒนาด้วย Rust เพื่อความปลอดภัยของหน่วยความจำและ zero-cost abstraction
-- **กรอบงาน UI**: Slint ที่มีแบ็กเอนด์เรนเดอร์ **Skia** ประสิทธิภาพสูง
-- **Async runtime**: Tokio สำหรับคำสั่งระบบและ I/O แบบ non-blocking
-- **จุดเด่นด้านประสิทธิภาพ**:
-  - **ความเร็วในการตอบสนอง**: การเริ่มต้นเกือบจะทันที ตรวจสอบสถานะ WSL แบบเรียลไทม์
-  - **ประสิทธิภาพทรัพยากร**: การใช้ทรัพยากรต่ำมาก (ดู [ฟีเจอร์หลัก](#-ฟีเจอร์หลักและการใช้งาน))
-  - **ความพกพาสะดวก**: เวอร์ชันรีลีสที่ปรับปรุงแล้วสร้างไฟล์ปฏิบัติการเดี่ยวที่กะทัดรัด
-
-
-
 ## 📢 กลุ่มชุมชนทางการ
 
 ยินดีต้อนรับสู่กลุ่มชุมชน WSL UI ทางการ! เข้าร่วมช่องทางของเราเพื่อพูดคุยเคล็ดลับการใช้งาน รายงานปัญหา รับอัปเดตล่าสุด และเชื่อมต่อกับนักพัฒนาและผู้ใช้อื่น
+
+<div align="center">
 
 | กลุ่มทั่วโลก (Telegram) | กลุ่มภาษาจีน (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | สแกนเพื่อเข้าร่วม | สแกนเพื่อเข้าร่วม |
 
----
-
-
-## 🤝 การสนับสนุนจากชุมชน
-
-ขอขอบคุณอย่างจริงใจต่อชุมชนต่อไปนี้สำหรับการสนับสนุน:
-
-- [Rust Programming Language](https://www.rust-lang.org) - ภาษาโปรแกรมที่ทรงพลังและปลอดภัย
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - กรอบงาน UI ที่ทันสมัย
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - Windows Subsystem for Linux ที่ยอดเยี่ยม
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - Async runtime ที่มีประสิทธิภาพ
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - การปรับปรุงแพลตฟอร์มอย่างต่อเนื่อง
-- [Reddit](https://www.reddit.com) - การสนทนาและสนับสนุนจากชุมชนทั่วโลก
-- [Hacker News](https://news.ycombinator.com) - การสนทนาและสนับสนุนจากชุมชนทั่วโลก
-- [Linux.do](https://linux.do) - ชุมชนผู้เชี่ยวชาญ IT ที่ได้รับความนิยม
-- [V2EX](https://www.v2ex.com) - การสนทนาชุมชนเทคโนโลยีภาษาจีน
-
-การมีส่วนร่วมและข้อเสนอแนะของคุณทำให้โครงการนี้เป็นไปได้!
+</div>
 
 
 ## ❤️ สนับสนุนโครงการ
@@ -316,9 +193,7 @@ For more information, visit the [WinGet community repository](https://github.com
 - โครงการนี้ใช้สัญญาอนุญาต GPL-3.0 ให้ใช้งานได้ฟรีสำหรับผู้ใช้ทุกคน
 - ตั้งแต่การพัฒนาฟีเจอร์ การทดสอบประจำวัน ไปจนถึงการแก้ไขข้อบกพร่อง ทุกงานล้วนทำในเวลาว่าง เส้นทางโอเพนซอร์สไม่ง่ายที่จะเดินคนเดียว การยอมรับและการสนับสนุนของคุณเป็นพลังให้โครงการเดินต่อไป
 - หากเครื่องมือนี้มีประโยชน์กับคุณจริงๆ โปรดพิจารณาให้การสนับสนุน การบริจาคทั้งหมดจะนำไปใช้สำหรับค่าใช้จ่ายเซิร์ฟเวอร์ การพัฒนาเวอร์ชัน และการปรับปรุงฟีเจอร์ เพื่อให้โครงการอัปเดตอย่างต่อเนื่องและก้าวไปอย่างมั่นคง
-- น้ำใจเล็กน้อยคือแสงดาว ขอขอบคุณอีกครั้งสำหรับความเข้าใจและความใจดีของคุณ!
-
-เยี่ยมชมหน้าบริจาคของเรา: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- น้ำใจเล็กน้อยคือแสงดาว ขอขอบคุณอีกครั้งสำหรับความเข้าใจและความใจดีของคุณ! [เยี่ยมชมหน้าบริจาคของเรา](https://www.wslui.com/donate/).
 
 
 ## ⭐️ สนับสนุนด้วยใจ
@@ -329,8 +204,3 @@ For more information, visit the [WinGet community repository](https://github.com
 ## 📄 สัญญาอนุญาตโอเพนซอร์ส
 
 โครงการนี้เผยแพร่ภายใต้สัญญาอนุญาต GPL-3.0 – ดูไฟล์ [LICENSE](../LICENSE) สำหรับรายละเอียดเพิ่มเติม
-
-
----
-
-Built with ❤️ for the WSL Community.

@@ -6,8 +6,6 @@
 
 ዘመናዊ፣ ከፍተኛ አፈጻጸም፣ ቀላል እና ዝቅተኛ ማዕረግ ማስታወሻ ያለው WSL (Windows Subsystem for Linux) ተጠቃሚ ማናጀር ዳሽቦርድ። በ Rust እና Slint የተገነባ፣ ምርጥ ነባሪ ተሞክሮ ይሰጣል።
 
----
-
 ```diff
 ማሳወቂያ:
 
@@ -27,24 +25,12 @@
   <a href="https://hellogithub.com/repository/owu/wsl-dashboard" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=cb1edc45846e475da1dae615a4b4f71c&claim_uid=mWIRuYqZo1FUrjE&theme=small" alt="Featured｜HelloGitHub" /></a>
 </p>
 
-I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | አማርኛ
+README I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中文](./README_zh_TW.md) | [हिन्दी](./README_hi.md) | [Español](./README_es.md) | [Français](./README_fr.md) | [العربية](./README_ar.md) | [বাংলা](./README_bn.md) | [Português](./README_pt.md) | [Русский](./README_ru.md) | [اردو](./README_ur.md) | [Bahasa Indonesia](./README_id.md) | [Deutsch](./README_de.md) | [日本語](./README_ja.md) | [Türkçe](./README_tr.md) | [한국어](./README_ko.md) | [Italiano](./README_it.md) | [Nederlands](./README_nl.md) | [Svenska](./README_sv.md) | [Čeština](./README_cs.md) | [Ελληνικά](./README_el.md) | [Magyar](./README_hu.md) | [עברית](./README_he.md) | [Norsk](./README_no.md) | [Dansk](./README_da.md) | [Suomi](./README_fi.md) | [Slovenčina](./README_sk.md) | [Slovenščina](./README_sl.md) | [Íslenska](./README_is.md) | [Tiếng Việt](./README_vi.md) | [తెలుగు](./README_te.md) | [Basa Jawa](./README_jv.md) | [ภาษาไทย](./README_th.md) | [தமிழ்](./README_ta.md) | [Filipino](./README_fil.md) | [ਪੰਜਾਬੀ](./README_pa.md) | [Bahasa Melayu](./README_ms.md) | [Polski](./README_pl.md) | [Українська](./README_uk.md) | [فارسی](./README_fa.md) | [ಕನ್ನಡ](./README_kn.md) | [मराठी](./README_mr.md) | [Hausa](./README_ha.md) | [မြန်မာ](./README_my.md) | [Oʻzbek](./README_uz.md) | [Azərbaycan](./README_az.md) | [Cebuano](./README_ceb.md) | [മലയാളം](./README_ml.md) | [سنڌي](./README_sd.md) | አማርኛ
 
 ---
 
 ## 📑 ማውጫ
-- [🌍 ቋንቋ ድጋፍ](#-ቋንቋ-ድጋፍ)
-- [🚀 ዋና ባህሪያት እና አጠቃቀም](#-ዋና-ባህሪያት-እና-አጠቃቀም)
-- [⚙️ ማዋቀር እና ምዝግብ](#️-ማዋቀር-እና-ምዝግብ)
-- [🖼️ ሶፍትዌር ስክሪንሾቶች](#️-ሶፍትዌር-ስክሪንሾቶች)
-- [🎬 ስራ ማሳያ](#-ስራ-ማሳያ)
-- [💻 የስርዓት መስፈርቶች](#-የስርዓት-መስፈርቶች)
-- [📦 መጫኛ መመሪያ](#-መጫኛ-መመሪያ)
-- [🛠️ ቴክ ስታክ እና አፈጻጸም](#️-ቴክ-ስታክ-እና-አፈጻጸም)
-- [📢 አስመላይ ማህበረሰብ ቡድኖች](#-አስመላይ-ማህበረሰብ-ቡድኖች)
-- [🤝 ማህበረሰብ ድጋፍ](#-ማህበረሰብ-ድጋፍ)
-- [❤️ ይህን ፕሮጀክት ይደግፉ](#️-ይህን-ፕሮጀክት-ይደግፉ)
-- [⭐️ ለፍቅር](#️-ለፍቅር)
-- [📄 ክፍት ምንጭ ፈቃድ](#-ክፍት-ምንጭ-ፈቃድ)
+[🌍 ቋንቋ ድጋፍ](#-ቋንቋ-ድጋፍ) | [🚀 ዋና ባህሪያት እና አጠቃቀም](#-ዋና-ባህሪያት-እና-አጠቃቀም) | [🖼️ ሶፍትዌር ስክሪንሾቶች](#️-ሶፍትዌር-ስክሪንሾቶች) | [📦 መጫኛ መመሪያ](#-መጫኛ-መመሪያ) | [📢 አስመላይ ማህበረሰብ ቡድኖች](#-የጽንደቁ-ማህበረሰብ-ቡድኖች) | [❤️ ይህን ፕሮጀክት ይደግፉ](#️-ይህን-ፕሮጀክት-ይደግፉ) | [⭐️ ለፍቅር](#️-ለፍቅር) | [📄 ክፍት ምንጭ ፈቃድ](#-ክፍት-ምንጭ-ፈቃድ)
 
 ---
 
@@ -105,7 +91,6 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
   <img src="../assets/flags/et.svg" width="32" title="Amharic" alt="Amharic" />
 </p>
 
-
 ## 🚀 ዋና ባህሪያት እና አጠቃቀም
 
 - **ዘመናዊ ነባሪ UI**: ጥቁር/ብሩህ ሁኔታ፣ ለስላሳ አኒሜሽን ያለው ተራ መስክ GUI፣ እና በ **Skia** የሚሰራ ከፍተኛ አፈጻጸም ማሳየት።
@@ -121,87 +106,18 @@ I18N :  [English](../README.md) | [简体中文](./README_zh_CN.md) | [繁體中
 - **እጅጉን ዝቅተኛ ማዕረግ ጥቅም**: ከፍተኛ ጥቅም ላይ ያሉ ሀብቶች። ዝምታ ማስጀመሪያ (ስርዓት ትራይ) **10MB** ማዕረግ ብቻ። በመስኮት ሁኔታ ፊደል ውስብስብነት ላይ ተመስርቶ: **18MB** (መደበኛ ቋንቋዎች እንደ እንግሊዝኛ፣ ጀርመንኛ ወዘተ) እስከ **38MB** (ትልልቅ ቁምፊ ስብስብ እንደ CJK)።
 - **የላቀ አውታር አስተዳደር**: ፖርት ማስተላለፊያ (ራስ-ሰር firewall ህግ ፈጠራ) እና ዓለም አቀፍ HTTP ፕሮክሲ ማዋቀርን ሳይቋሽሽ ማስተዳድር።
 - **USB መሣሪያ አስተዳደር**: ከ `usbipd-win` ጋር ጥልቅ ውህደት፣ ሁሉንም WSL ተጠቃሚዎች በዳሽቦርድ UI ውስጥ የአካባቢ USB መሣሪያዎችን bind፣ attach እና አስተዳደር ድርጅቶችን በቀጥታ መፈጸም።
-
-
-## ⚙️ ማዋቀር እና ምዝግብ
-
-ሁሉም ማዋቀር በ "ቅንብሮች" ትዕይንት ይተዳደራል:
-
-- ለአዲስ WSL ተጠቃሚዎች ነባር መጫኛ ማውጫ ይምረጡ።
-- የምዝግብ ማውጫ እና የምዝግብ ደረጃ (Error / Warn / Info / Debug / Trace) ያዋቅሩ።
-- UI ቋንቋ ይምረጡ ወይም የስርዓት ቋንቋን ይከተሉ።
-- ጥቁር ሁኔታን ይቀይሩ፣ እና አፕ ከስራ በኋላ WSL በራስ-ሰር ይዘጋ እንደሆን።
-- የማዘመኛ ማረጋገጫ ድግግሞሽን ያዋቅሩ (በየቀኑ፣ በየሳምንቱ፣ በየሁለት ሳምንት፣ በየወሩ)።
-- ቡት ላይ ራስ-ጀማሪን ያብሩ (ራስ-ሰር መንገድ ማረም ባህሪ ያለው)።
-- ሲጀምር ወደ ትራይ ማሳነሻን ያዘጋጁ።
-- የመዝጊያ ቁልፍ ባህሪን ያዋቅሩ (ከፕሮግራሙ መውጣት ይልቅ ወደ ትራይ ማሳነሻ)።
-- ስለ ስለተለይ የባህሪ ትሮች ታይነትን በመቀያየር ጎን አሞሌን ያብጁ።
-
-የምዝግብ ፋይሎች ወደ ተዋቀረ የምዝግብ ማውጫ ይጻፋሉ፣ እና ችግር ሲያሳውቁ ምዝግቦችን ማያያዥ ይችላሉ።
+- **ውቅር እና መዝገቦች**: ከቅንብሮች ውስጥ ነባሪውን የመጫኛ አቃፊ፣ የመዝገብ አቃፊና ደረጃ፣ የUI ቋንቋ፣ ጥቁር ሁኔታ፣ የማዘመኛ ምርመራ ድግግሞሽ፣ ራስ-ሰር ማስጀመሪያ እና የመዝጊያ ባህሪ፣ እንዲሁም የጎን አሞሌን ያስተዳድሩ።
+- **ስርጭቱን ንቁ ማድረግ**: በ«አስጀምር» ላይ አንድ ጠቅታ ስርጭቱ ከ~60 ሰከንድ እንቅስቃሴ-አልባነት በኋላ ከመዘጋት ይልቅ እንዲሠራ ያደርገዋል፤ «ዊንዶውስ ሲጀምር ይህን ስርጭት አስጀምር» ማንቃትም ይቻላል።
+- **አለምአቀፍ አቋራጮች**: ዋናውን መስኮት ለማሳየት/ለመደበቅ ወይም የስርጭትን ተርሚናል ወዲያውኑ ለመክፈት አለምአቀፍ አቋራጮችን ያዘጋጁ።
 
 
 ## 🖼️ ሶፍትዌር ስክሪንሾቶች
-
-### ዋና ተግባር (ጥቁር & ብሩህ ሁኔታ)
 <p align="center">
   <img src="../assets/screenshot/home.png" width="48%" />
   <img src="../assets/screenshot/home-dark.png" width="48%" />
 </p>
 
-<p align="center">
-  <img src="../assets/screenshot/home-settings.png" width="48%" />
-  <img src="../assets/screenshot/home-configs.png" width="48%" />
-</p>
-
-### USB & ዝርዝር ማሳጠፊያ
-<p align="center">
-  <img src="../assets/screenshot/usb.png" width="48%" />
-  <img src="../assets/screenshot/collapsed.png" width="48%" />
-</p>
-
-### አውታር አስተዳደር
-<p align="center">
-  <img src="../assets/screenshot/port-forwarding.png" width="48%" />
-  <img src="../assets/screenshot/http-proxy.png" width="48%" />
-</p>
-
-### ተጠቃሚ መጨመር & ቅንብሮች
-<p align="center">
-  <img src="../assets/screenshot/add.png" width="48%" />
-  <img src="../assets/screenshot/settings.png" width="48%" />
-</p>
-<p align="center">
-  <img src="../assets/screenshot/settings-advanced.png" width="48%" />
-  <img src="../assets/screenshot/settings-interface.png" width="48%" />
-</p>
-
-### ስለ & ስጦታ
-<p align="center">
-  <img src="../assets/screenshot/about.png" width="48%" />
-  <img src="../assets/screenshot/donate.png" width="48%" />
-</p>
-
-### ዲስክ መጫን
-<p align="center">
-  <img src="../assets/screenshot/mount.png" width="48%" />
-</p>
-
-### የተግባር መርሐግብር
-<p align="center">
-  <img src="../assets/screenshot/task.png" width="48%" />
-</p>
-
-## 🎬 ስራ ማሳያ
-
-[ለማሻሻል ይረዱን! የእኛን መግቢያ ቪዲዮ ይመልከቱ እና ሀሳብዎን ያካፍሉ።](https://github.com/owu/wsl-dashboard/discussions/9)
-
-
-
-## 💻 የስርዓት መስፈርቶች
-
-- WSL ያስችለው Windows 10 ወይም Windows 11 (WSL 2 መጠቀም ይመከራል)።
-- ቢያንስ አንድ WSL ዲስትሮ የተመሰበረ ወይም አዲስ ዲስትሮ ለመጫኛ ፈቃድ ያለው።
-- 64-bit CPU; ለምቹ multi-distro ጥቅም 4 GB ወይም ከዚያ በላይ RAM ይመከራል።
+ዳሽቦርዱ ሲሠራ ማየት ይፈልጋሉ? ሙሉውን የስክሪንሾት ማዕከል ለማየት [ኦፊሴላዊ ድረ-ገጹን](https://www.wslui.com/) ይጎብኙ።
 
 ## 📦 መጫኛ መመሪያ
 
@@ -231,17 +147,7 @@ winget install Owu.WSLDashboard
 
 ለተጨማሪ መረጃ፣ የ[WinGet ማህበረሰብ ማከማቻ](https://github.com/microsoft/winget-pkgs/tree/master/manifests/o/Owu/WSLDashboard) ን ይጎብኙ።
 
-### ዘዴ 3: ቅድመ-ተሰብሮ ብሄሪ ማውረጃ
-
-ቀላሉ ዘዴ ተዘጋጅቶ ያለውን ስሪት መጠቀም ነው:
-
-1. ወደ [GitHub Releases](https://github.com/owu/wsl-dashboard/releases) ገጽ ይሂዱ።
-2. ለ Windows የቅርብ ጊዜውን `wsldashboard` ተጫዋች ያውርዱ።
-3. (ግፊት ፋይል ከሆነ) ያውልዱ እና `wsldashboard.exe` ያሂዱ።
-
-መጫኛ አያስፈልግም፣ ይህ አፕ ነጠላ-ፋይል ተንቀሳቃሽ ፕሮግራም ነው።
-
-### ዘዴ 4: ከምንጭ ግንባታ
+### ዘዴ 3: ከምንጭ ግንባታ
 
 Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ መሆኑን ያረጋግጡ።
 
@@ -268,45 +174,18 @@ Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ 
      ```
 
 
-## 🛠️ ቴክ ስታክ እና አፈጻጸም
-
-- **ኬርነል**: በ Rust የተተገበረ፣ የማዕረግ ደህንነት እና ዜሮ-ወጪ ማጻፊያን ያረጋግጣል።
-- **UI ግንባታ**: ከፍተኛ አፈጻጸም **Skia** ማሳያ ተመለስተኛ ያለው Slint።
-- **ያልተገለጸ ሪን ተመን**: ለማይገለበጥ የስርዓት ትዕዛዞች እና I/O Tokio።
-- **የአፈጻጸም ጉልህ ነጥቦች**:
-  - **ምላሽ ፍጥነት**: ወዲያውኑ ማስጀመሪያ፣ እና በእውነተኛ ጊዜ WSL ሁኔታ መከታተያ።
-  - **ሀብት ቁጠባ**: እጅጉን ዝቅተኛ ሀብት ጥቅም ([ዋና ባህሪያት](#-ዋና-ባህሪያት-እና-አጠቃቀም) ውስጥ ዝርዝር ይመልከቱ)።
-  - **ተንቀሳቃሽነት**: ጥቅም ላይ የዋለ ስሪት ነጠላ ትንሽ ተጫዋች ፋይል ይፈጥራል።
-
-
-
 ## 📢 የጽንደቁ ማህበረሰብ ቡድኖች
 
 እንኳን ወደ ጽንደቁ የ WSL UI ማህበረሰብ ቡድኖች ደህና መጣችሁ! መርሃቶችን ለማወዳደር፣ ችግሮችን ለመጠቆም፣ ዘመናዊ ዕውቀቶችን ለማግኘት እና ከተሰላሽ አንባቢዎች ጋር ለመገናኘት በደረጃ አገናኝተልን።
+
+<div align="center">
 
 | አለም አቀፍ ቡድን (Telegram) | የቻይና ቡድን (WeChat) |
 | :---: | :---: |
 | <img src="https://cdn1.wslui.com/static/images/group/group-telegram.png" width="240" alt="Telegram Group QR Code" /> | <img src="https://cdn1.wslui.com/static/images/group/group-wechat.png" width="240" alt="WeChat Group QR Code" /> |
 | ለመገናኘት ስካን ያድርጉ | ለመገናኘት ስካን ያድርጉ |
 
----
-
-
-## 🤝 ማህበረሰብ ድጋፍ
-
-ከሚከተሉት ማህበረሰቦች ድጋፍ ለ በጣም አመሰግናለሁ:
-
-- [Rust Programming Language](https://www.rust-lang.org) - ጠንካራ እና ደህንነቱ የተጠበቀ የፕሮግራም ቋንቋ
-- [Slint | Declarative GUI for Rust, C++, JavaScript & Python](https://slint.dev) - ዘመናዊ UI ግንባታ
-- [WSL: Windows Subsystem for Linux](https://github.com/microsoft/WSL) - ምርጥ Windows Subsystem for Linux
-- [Tokio - An asynchronous Rust runtime](https://tokio.rs) - ቆንጆ ያልተገለጸ ሪን ተመን
-- [Windows Developer Community](https://developer.microsoft.com/en-us/windows/community) - ቀጥታ የመድረክ ማሻሻያ
-- [Reddit](https://www.reddit.com) - ዓለም አቀፍ የማህበረሰብ ውይይት እና ድጋፍ
-- [Hacker News](https://news.ycombinator.com) - ዓለም አቀፍ የማህበረሰብ ውይይት እና ድጋፍ
-- [Linux.do](https://linux.do) - ለ IT ባለሙያዎች ታዋቂ ማህበረሰብ
-- [V2EX](https://www.v2ex.com) - የቻይና ቴክ ማህበረሰብ ውይይት
-
-እርስዎ አስተዋጽኦ እና ግብረመልስ ይህንን ፕሮጀክት ያስችለዋል!
+</div>
 
 
 ## ❤️ ይህን ፕሮጀክት ይደግፉ
@@ -314,9 +193,7 @@ Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ 
 - ይህ ፕሮጀክት GPL-3.0 ክፍት ምንጭ ፈቃድ ይጠቀማል፣ ለሁሉም ተጠቃሚዎች ነፃ።
 - ከባህሪ ልማት፣ በየቀኑ ማሞከር እስከ ስህተት ማረም ድረስ ሁሉም ስራ ከነጻ ጊዜ ይመጣል። የክፍት ምንጭ መንገድ ብቻውን መሄድ አይቀላም፣ የእርስዎ አቀባበል እና ድጋፍ ፕሮጀክቱ ለረጅም ጊዜ እንዲቀጥል ጉልበት ነው።
 - ይህ መሣሪያ እርስዎን በእርግጥ እንደረዳ ቢሰማዎ እባክዎን ይርዱ። ሁሉም ስጦታ ለሰርቨር ወጪ፣ የስሪት ማዘዋወር እና የባህሪ ማሻሻያ ይጠቀማል።
-- ትንሽ ጸጋ፣ ከዋክብት ይሆናሉ። ለተረድኦትዎ እና ለልበ ስልጣኔዎ እንደገና አመሰግናለሁ!
-
-የእኛን የስጦታ ገጽ ይጎብኙ: [https://www.wslui.com/donate/](https://www.wslui.com/donate/)
+- ትንሽ ጸጋ፣ ከዋክብት ይሆናሉ። ለተረድኦትዎ እና ለልበ ስልጣኔዎ እንደገና አመሰግናለሁ! [የእኛን የስጦታ ገጽ ይጎብኙ](https://www.wslui.com/donate/).
 
 
 ## ⭐️ ለፍቅር
@@ -327,9 +204,3 @@ Rust ቱልቻይን (Rust 1.92+ ወይም አዲስ ስሪት) ተመስብሮ 
 ## 📄 ክፍት ምንጭ ፈቃድ
 
 ይህ ፕሮጀክት በ GPL-3.0 ፈቃድ ስር ይፈቀዳል – ዝርዝር ለመመልከት [LICENSE](../LICENSE) ፋይል ይመልከቱ።
-
-
----
-
-Built with ❤️ for the WSL Community.
-
